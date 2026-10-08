@@ -215,7 +215,7 @@ test('gallery pauses on hover, supports pause/resume and repeated cards stay int
   await page.getByRole('button', { name: 'Resume scrolling' }).click();
   await page.mouse.move(0, 0);
   await expect.poll(() => group.evaluate(element => getComputedStyle(element.parentElement!).animationPlayState)).toBe('running');
-  // Show the second copy without waiting for a full 42-second cycle.
+  // Show the second copy without waiting for a full animation cycle.
   await group.evaluate(element => {
     const animation = element.parentElement!.getAnimations()[0];
     animation.pause();

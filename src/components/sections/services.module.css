@@ -8,7 +8,7 @@
 .gallery { position: absolute; inset: 0; overflow-y: hidden; overscroll-behavior-y: contain; scrollbar-width: none; border-radius: 20px; }
 .gallery::-webkit-scrollbar { display: none; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 1.1111cqw; padding-top: .4167cqw; }
-.column { display: flex; flex-direction: column; animation: cards-up 42s linear infinite; will-change: transform; }
+.column { display: flex; flex-direction: column; animation: cards-up 32s linear infinite; will-change: transform; }
 .column:nth-child(2) { margin-top: -1.0417cqw; }
 .cardGroup { display: flex; flex-direction: column; gap: 1.1111cqw; padding-bottom: 1.1111cqw; }
 /* Each track is two equal groups. At -50%, the copy exactly replaces the
