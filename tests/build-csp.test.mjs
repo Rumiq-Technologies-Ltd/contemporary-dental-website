@@ -37,9 +37,9 @@ test('finds adapter-scoped HTML and patches CDN routing and copied function mani
   const f = await fixture(t);
   const inline = 'self.__next_f.push([0])';
   await f.put(join(f.distDirectory, 'server/route-cache/APP_PAGE/owner/$/index.html'), `<script>${inline}</script>`);
-  const configPath = join(f.vercelOutputDirectory, 'config.json');
+  const configPath = join(f.distDirectory, 'output/config.json');
   await f.put(configPath, { version: 3, routes: [{ src: '/(.*)', headers: { 'content-security-policy': policy, 'X-Frame-Options': 'DENY' }, continue: true }, { handle: 'filesystem' }] });
-  const copyPath = join(f.vercelOutputDirectory, 'functions/index.func/.next/routes-manifest.json');
+  const copyPath = join(f.distDirectory, 'output/functions/index.func/.next/routes-manifest.json');
   await f.put(copyPath, manifest());
   const hashes = await buildCsp(f);
   assert.deepEqual(hashes, [hash(inline)]);

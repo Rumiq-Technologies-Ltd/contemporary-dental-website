@@ -44,7 +44,10 @@ export async function buildCsp({ distDirectory = '.next', vercelOutputDirectory 
   // Adapter builds use server/route-cache/<owner>/... rather than server/app.
   // Also inspect adapter output: onBuildComplete runs before this post-build step.
   const nextFiles = await filesUnder(join(distDirectory, 'server'));
-  const outputFiles = await filesUnder(vercelOutputDirectory);
+  // The Vercel Next adapter emits Build Output API artifacts in .next/output;
+  // the CLI may instead use .vercel/output. Both must receive the final policy.
+  const outputDirectories = [join(distDirectory, 'output'), vercelOutputDirectory];
+  const outputFiles = (await Promise.all(outputDirectories.map(filesUnder))).flat();
   const htmlFiles = [...nextFiles, ...outputFiles].filter(file => file.endsWith('.html'));
   const hashes = new Set();
   for (const file of htmlFiles) {
@@ -72,8 +75,9 @@ export async function buildCsp({ distDirectory = '.next', vercelOutputDirectory 
     patchNextHeaders(copy, scriptPolicy);
     await writeFile(file, JSON.stringify(copy));
   }
-  const outputConfigPath = join(vercelOutputDirectory, 'config.json');
-  if (outputFiles.includes(outputConfigPath)) {
+  for (const directory of outputDirectories) {
+    const outputConfigPath = join(directory, 'config.json');
+    if (!outputFiles.includes(outputConfigPath)) continue;
     const config = JSON.parse(await readFile(outputConfigPath, 'utf8'));
     let patched = false;
     for (const route of config.routes ?? []) {
