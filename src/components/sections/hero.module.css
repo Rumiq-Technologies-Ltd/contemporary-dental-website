@@ -56,3 +56,38 @@
   .clean .headline { padding-top: 70px; padding-bottom: 45px; }
 }
 @media (prefers-reduced-motion: reduce) { .cta > span { transition: none; } .cta:hover > span { transform: none; } }
+@media (prefers-reduced-motion: no-preference) {
+  .lineOne { --compose-shift: 12.9861cqw; }
+  .lineTwo { --compose-shift: -19.3055cqw; }
+  .lineThree { --compose-shift: 12.7083cqw; }
+  .clean .lineOne, .clean .lineTwo, .clean .lineThree { --compose-shift: 0px; }
+  .hero:global([data-motion='ready'][data-entered='false']) .lineOne,
+  .hero:global([data-motion='ready'][data-entered='false']) .lineTwo,
+  .hero:global([data-motion='ready'][data-entered='false']) .lineThree { transform: translateX(var(--compose-shift)); }
+  .hero:global([data-motion='ready'][data-entered='true']) .lineOne,
+  .hero:global([data-motion='ready'][data-entered='true']) .lineTwo,
+  .hero:global([data-motion='ready'][data-entered='true']) .lineThree { animation: hero-compose 900ms var(--ease-in-out) 650ms both; }
+  .hero:global([data-motion='ready'][data-entered='false']) .inlineDecor,
+  .hero:global([data-motion='ready'][data-entered='false']) .assistance,
+  .hero:global([data-motion='ready'][data-entered='false']) .solutions,
+  .hero:global([data-motion='ready'][data-entered='false']) .avatars > span,
+  .hero:global([data-motion='ready'][data-entered='false']) .videoCard,
+  .hero:global([data-motion='ready'][data-entered='false']) .cta { opacity: 0; }
+  .hero:global([data-motion='ready'][data-entered='true']) .inlineDecor { animation: detail-in 600ms var(--ease-out) 1050ms both; }
+  .hero:global([data-motion='ready'][data-entered='true']) .assistance { animation: detail-in 600ms var(--ease-out) 1120ms both; }
+  .hero:global([data-motion='ready'][data-entered='true']) .solutions { animation: detail-in 600ms var(--ease-out) 1200ms both; }
+  .hero:global([data-motion='ready'][data-entered='true']) .avatars > span { animation: detail-in 500ms var(--ease-out) 1320ms both; }
+  .avatars > span:nth-child(2) { animation-delay: 1380ms !important; }
+  .avatars > span:nth-child(3) { animation-delay: 1440ms !important; }
+  .avatars > span:nth-child(4) { animation-delay: 1500ms !important; }
+  .hero:global([data-motion='ready'][data-entered='true']) .videoCard { animation: detail-in 600ms var(--ease-out) 1400ms both; }
+  .hero:global([data-motion='ready'][data-entered='true']) .cta { animation: cta-in 600ms var(--ease-out) 300ms both; }
+  @media (max-width: 899px) {
+    .lineOne, .lineTwo, .lineThree { --compose-shift: 0px; }
+  }
+}
+/* Headline masks rise first; the lines then slide into the decorated Figma
+   positions as the small details arrive. The clean variant only reveals text. */
+@keyframes hero-compose { from { transform: translateX(var(--compose-shift)); } to { transform: translateX(0); } }
+@keyframes cta-in { from { opacity: 0; translate: 0 20px; } to { opacity: 1; translate: 0 0; } }
+@keyframes detail-in { from { opacity: 0; transform: translateY(20px) scale(.94); } to { opacity: 1; transform: none; } }

@@ -1,4 +1,4 @@
-:root { --ink: #131c15; --surface: #fff; --accent: #a9eaf7; --muted: #f4f5f7; --panel-radius: 32px; color-scheme: light; }
+:root { --ink: #131c15; --surface: #fff; --accent: #a9eaf7; --muted: #f4f5f7; --panel-radius: 32px; --ease-out: cubic-bezier(.23, 1, .32, 1); --ease-in-out: cubic-bezier(.77, 0, .175, 1); color-scheme: light; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--muted); color: var(--ink); font-family: var(--font-body), sans-serif; -webkit-font-smoothing: antialiased; }
@@ -21,4 +21,7 @@ img { display: block; }
 .message-page { min-height: 100dvh; max-width: 800px; margin: auto; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 26px; padding: 32px; }
 .message-page h1 { font-family: var(--font-display); font-size: clamp(30px, 6vw, 58px); font-weight: 200; }
 @media (max-width: 899px) { .page-shell { padding: 16px; gap: 24px; } .pill { min-height: 40px; } }
+/* Loops sleep outside the viewport and in background tabs. One-shot entrances
+   retain their final frame, so scrolling back never hides readable content. */
+[data-active='false'] [data-loop], body:has(dialog[open]) [data-loop] { animation-play-state: paused !important; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }

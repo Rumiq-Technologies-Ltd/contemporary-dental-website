@@ -179,28 +179,94 @@ test('reduced motion preference disables smooth scrolling', async ({ page }) => 
   await expect(page.locator('#services [data-duplicate="true"]').first()).not.toBeVisible();
 });
 
-test('service columns move upward and join seamlessly across the loop boundary', async ({ page }) => {
+test('service columns move in opposite directions and join seamlessly across the loop boundary', async ({ page }) => {
   await ready(page);
+  await page.locator('#services').scrollIntoViewIfNeeded();
   const groups = page.locator('#services [data-duplicate="false"]');
   for (const group of await groups.all()) {
     const result = await group.evaluate(element => {
       const track = element.parentElement!;
       const animation = track.getAnimations()[0];
       const duration = Number(animation.effect!.getTiming().duration);
+      const reverse = animation.effect!.getTiming().direction === 'reverse';
       animation.pause();
       animation.currentTime = 0;
       const start = element.getBoundingClientRect().top;
-      animation.currentTime = 1000;
+      animation.currentTime = 1600;
       const moved = element.getBoundingClientRect().top;
       animation.currentTime = duration - 1;
-      const beforeWrap = track.children[1].getBoundingClientRect().top;
+      const beforeWrap = (reverse ? element : track.children[1]).getBoundingClientRect().top;
       animation.currentTime = duration + 1;
-      const afterWrap = element.getBoundingClientRect().top;
-      return { start, moved, difference: Math.abs(beforeWrap - afterWrap) };
+      const afterWrap = (reverse ? track.children[1] : element).getBoundingClientRect().top;
+      return { start, moved, reverse, difference: Math.abs(beforeWrap - afterWrap) };
     });
-    expect(result.moved).toBeLessThan(result.start - 10);
+    if (result.reverse) expect(result.moved).toBeGreaterThan(result.start + 10);
+    else expect(result.moved).toBeLessThan(result.start - 10);
     expect(result.difference).toBeLessThan(1);
   }
+});
+
+test('section entrances run once and card loops pause outside the viewport', async ({ page }) => {
+  await ready(page);
+  await expect(page.locator('#home')).toHaveAttribute('data-entered', 'true');
+  await expect(page.locator('#advantages')).toHaveAttribute('data-entered', 'false');
+  const frontCard = page.locator('[data-loop="advantages"]').last();
+  await expect(frontCard).toHaveCSS('animation-play-state', 'paused');
+  await page.locator('#advantages').scrollIntoViewIfNeeded();
+  await expect(page.locator('#advantages')).toHaveAttribute('data-entered', 'true');
+  await expect(frontCard).toHaveCSS('animation-play-state', 'running');
+  // Inspect the lift-away beat and its wrap without waiting for an entire cycle.
+  const cycle = await frontCard.evaluate(element => {
+    const animation = element.getAnimations()[0];
+    animation.pause();
+    animation.currentTime = 0;
+    const start = element.getBoundingClientRect().top;
+    animation.currentTime = 1520;
+    const departing = element.getBoundingClientRect().top;
+    const opacity = getComputedStyle(element).opacity;
+    animation.currentTime = 8000;
+    const returned = element.getBoundingClientRect().top;
+    return { start, departing, returned, opacity };
+  });
+  expect(cycle.departing).toBeLessThan(cycle.start - 200);
+  expect(Number(cycle.opacity)).toBeLessThan(.1);
+  expect(Math.abs(cycle.returned - cycle.start)).toBeLessThan(1);
+  await page.getByRole('button', { name: 'Pause cards', exact: true }).click();
+  await expect(page.getByRole('button', { name: 'Resume cards', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await page.getByRole('button', { name: 'Resume cards', exact: true }).click();
+  await page.mouse.move(0, 0);
+  await page.locator('#advantages').getByRole('button', { name: 'Log In — coming soon' }).click();
+  await expect(frontCard).toHaveCSS('animation-play-state', 'paused');
+  await page.keyboard.press('Escape');
+  await page.locator('#home').scrollIntoViewIfNeeded();
+  await expect(page.locator('#advantages')).toHaveAttribute('data-active', 'false');
+  await expect(frontCard).toHaveCSS('animation-play-state', 'paused');
+  await expect(page.locator('#advantages')).toHaveAttribute('data-entered', 'true');
+});
+
+test('reduced motion can be enabled during an entrance without leaving hidden content', async ({ page }) => {
+  await ready(page);
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  await expect(page.locator('#home')).toHaveAttribute('data-motion', 'reduced');
+  await expect(page.getByRole('link', { name: 'GET STARTED' })).toHaveCSS('opacity', '1');
+  await expect(page.locator('#home h1')).toBeVisible();
+  await page.locator('#advantages').scrollIntoViewIfNeeded();
+  await expect(page.getByRole('button', { name: 'Pause cards', exact: true })).not.toBeVisible();
+  expect(await page.locator('[data-loop="advantages"]').evaluateAll(cards => cards.every(card => card.getAnimations().length === 0))).toBe(true);
+});
+
+test('server-rendered content stays readable without JavaScript', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto('http://127.0.0.1:3000/');
+  await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'GET STARTED' })).toHaveCSS('opacity', '1');
+  await page.locator('#advantages').scrollIntoViewIfNeeded();
+  await expect(page.getByRole('heading', { name: 'OUR ADVANTAGES' })).toBeVisible();
+  await page.locator('#services').scrollIntoViewIfNeeded();
+  await expect(page.getByRole('region', { name: 'Dental services gallery' })).toHaveCSS('overflow-y', 'auto');
+  await expect(page.locator('#services [data-duplicate="true"]').first()).not.toBeVisible();
+  await context.close();
 });
 
 test('gallery pauses on hover, supports pause/resume and repeated cards stay interactive', async ({ page }) => {

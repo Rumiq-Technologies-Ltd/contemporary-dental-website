@@ -5,22 +5,44 @@
 .copy h2 { font-family: var(--font-display); font-weight: 200; font-size: 3.6389cqw; line-height: 5cqw; letter-spacing: -.0364cqw; }
 .actions { display: flex; gap: 16px; margin-top: 5.5556cqw; }
 .galleryFrame { position: absolute; left: 52.6389cqw; top: 0; bottom: 0; width: 43.4722cqw; }
-.gallery { position: absolute; inset: 0; overflow-y: hidden; overscroll-behavior-y: contain; scrollbar-width: none; border-radius: 20px; }
+.gallery { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: none; border-radius: 20px; }
 .gallery::-webkit-scrollbar { display: none; }
 .grid { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 1.1111cqw; padding-top: .4167cqw; }
-.column { display: flex; flex-direction: column; animation: cards-up 32s linear infinite; will-change: transform; }
+.column { display: flex; flex-direction: column; }
 .column:nth-child(2) { margin-top: -1.0417cqw; }
 .cardGroup { display: flex; flex-direction: column; gap: 1.1111cqw; padding-bottom: 1.1111cqw; }
+.cardGroup[data-duplicate='true'] { display: none; }
 /* Each track is two equal groups. At -50%, the copy exactly replaces the
    original, so resetting the animation introduces no blank frame or jump. */
-@keyframes cards-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
-.galleryFrame:hover .column, .galleryFrame:active .column,
+@keyframes cards-up {
+  0%, 20% { transform: translateY(0); }
+  33.3333%, 53.3333% { transform: translateY(var(--step-one)); }
+  66.6667%, 86.6667% { transform: translateY(var(--step-two)); }
+  100% { transform: translateY(-50%); }
+}
+@keyframes detail-in { from { opacity: 0; transform: translateY(20px) scale(.94); } to { opacity: 1; transform: none; } }
+.galleryFrame:active .column,
 .galleryFrame[data-paused='true'] .column, .gallery:focus-within .column,
 :global(body:has(dialog[open])) .column { animation-play-state: paused; }
+@media (hover: hover) and (pointer: fine) { .galleryFrame:hover .column { animation-play-state: paused; } }
+@media (prefers-reduced-motion: no-preference) {
+  /* Keep a complete static gallery before hydration or when JS is unavailable. */
+  .services:global([data-motion='ready']) .column { animation-name: cards-up; animation-duration: 4.8s; animation-timing-function: var(--ease-in-out); animation-iteration-count: infinite; will-change: transform; }
+  .services:global([data-motion='ready']) .column:nth-child(2) { animation-direction: reverse; }
+  .services:global([data-motion='ready']) .galleryFrame[data-manual='false'] .gallery { overflow-y: hidden; }
+  .services:global([data-motion='ready']) .galleryFrame[data-manual='false'] [data-duplicate='true'] { display: flex; }
+  .services:global([data-motion='ready'][data-entered='false']) .galleryFrame,
+  .services:global([data-motion='ready'][data-entered='false']) .actions,
+  .services:global([data-motion='ready'][data-entered='false']) .trio > span { opacity: 0; }
+  .services:global([data-motion='ready'][data-entered='true']) .galleryFrame { animation: detail-in 800ms var(--ease-out) 180ms both; }
+  .services:global([data-motion='ready'][data-entered='true']) .actions { animation: detail-in 600ms var(--ease-out) 300ms both; }
+  .services:global([data-motion='ready'][data-entered='true']) .trio > span { animation: detail-in 500ms var(--ease-out) both; }
+  .trio > span:nth-child(2) { animation-delay: 60ms !important; } .trio > span:nth-child(3) { animation-delay: 120ms !important; }
+}
 /* Keyboard users get a stable, manually scrollable original set of cards. */
-.gallery:focus-within { overflow-y: auto; }
-.gallery:focus-visible .column, .gallery:has(:focus-visible) .column { animation: none; transform: none; }
-.gallery:focus-visible [data-duplicate='true'], .gallery:has(:focus-visible) [data-duplicate='true'] { display: none; }
+.galleryFrame[data-manual='true'] .gallery { overflow-y: auto; }
+.galleryFrame[data-manual='true'] .column { animation: none; transform: none; }
+.galleryFrame[data-manual='true'] [data-duplicate='true'] { display: none; }
 .motionControl { position: absolute; z-index: 4; bottom: 14px; right: 14px; min-height: 36px; padding: 0 14px; background: white; border: 1px solid #131c1533; border-radius: 999px; font-size: 11px; box-shadow: 0 3px 16px #131c1526; }
 .motionControl:hover { background: var(--accent); }
 .card { position: relative; height: var(--card-height); min-height: 140px; border-radius: 1.3889cqw; overflow: hidden; background: var(--muted); flex-shrink: 0; }
@@ -40,7 +62,7 @@
   .actions { gap: 12px; margin-top: 32px; flex-wrap: wrap; }
   .galleryFrame { position: relative; inset: auto; width: auto; height: 660px; margin: 0 24px; }
   .gallery { border-radius: 20px; }
-  .grid { gap: 16px; padding: 0; } .column, .column:nth-child(2) { padding: 0; margin: 0; }
+  .grid { gap: 16px; padding: 0; } .column, .column:nth-child(2) { padding: 0; margin: 0; --step-one: -346px !important; --step-two: -692px !important; }
   .cardGroup { gap: 16px; padding-bottom: 16px; }
   .card { border-radius: 20px; height: 330px; }
   .cardActions { top: 12px; right: 12px; gap: 8px; } .cardButton { width: 40px; height: 40px; }
@@ -50,6 +72,7 @@
 @media (max-width: 600px) {
   .galleryFrame { margin: 0 16px; height: 560px; }
   .grid { gap: 10px; } .cardGroup { gap: 10px; padding-bottom: 10px; }
+  .column, .column:nth-child(2) { --step-one: -260px !important; --step-two: -520px !important; }
   .card { height: 250px; } .cardActions { top: 8px; right: 8px; gap: 6px; }
   .cardButton { width: 36px; height: 36px; }
   .cardLabel { left: 8px; bottom: 12px; max-width: calc(100% - 16px); font-size: 10px; }

@@ -34,7 +34,11 @@ tests/                    Production browser and accessibility tests
 docs/                     Plan, asset provenance, validation and reports
 ```
 
-Colors and reusable surface styles live in `src/app/globals.css`. Each section owns its CSS Module. Desktop composition follows the 1440 × 900 Figma panels using container-relative units; below 900px content reflows. The two service columns automatically move upward in seamless 32-second loops on desktop and mobile. Hover, keyboard focus and open dialogs pause movement; a pause/resume button provides explicit control. Keyboard focus switches to a stable, manually scrollable original set. Reduced-motion preferences disable animation and hide repeat copies. Adjust the duration in `src/components/sections/services.module.css` to change speed.
+Colors, motion easing and reusable surface styles live in `src/app/globals.css`. Each section owns its CSS Module. Desktop composition follows the 1440 × 900 Figma panels using container-relative units; below 900px content reflows.
+
+The reference-video choreography runs when each section enters view: masked headline reveals, hero lines sliding into their decorated positions, staggered badges and avatars, and a rotating advantage-card stack. `Screen` observes visibility once for entrances and pauses ongoing loops outside the viewport or in background tabs. `RevealText` shares the line masks. Content remains visible without JavaScript.
+
+The advantage stack advances every 1.6 seconds through an 8-second cycle. Service columns move in opposite directions, with eased steps and holds in a seamless 4.8-second cycle. Their step distances follow the actual card heights. Hover, keyboard focus and open dialogs pause movement; both galleries have pause/resume controls. Keyboard focus keeps an original, manually scrollable service set stable when switching to the mouse. Reduced-motion preferences restore the static composition immediately and hide repeat copies. Timing lives in the respective section CSS Modules.
 
 Add/edit services in `src/content/services.ts`; cards and details derive from the same data. Image imports in `src/content/assets.ts` supply dimensions and blur placeholders to `next/image`. The SVG exports keep their intrinsic dimensions and are served locally. Components contain comments explaining layout, accessibility, storage and security decisions rather than repeating obvious markup.
 
@@ -64,7 +68,7 @@ npm test
 
 On macOS/Linux, use `PLAYWRIGHT_BROWSERS_PATH="$PWD/.playwright-browsers" npx playwright install chromium`.
 
-Tests start a production server if one is not already running. They cover desktop panel geometry, images, console errors, responsive widths (360, 390, 768, 1024, 1520px), menu navigation, keyboard focus and Escape handling, service details, saved preferences, malformed storage, reduced motion, the clean hero, 404s, WCAG checks via axe, and production security headers/CSP enforcement. `npm run test:report` opens the detailed report.
+Tests start a production server if one is not already running. They cover desktop panel geometry, images, console errors, responsive widths (360, 390, 768, 1024, 1520px), menu navigation, keyboard focus and Escape handling, service details, saved preferences, malformed storage, loop directions and seams, card departure/wrap, visibility pause, reduced motion (including preference changes), rendering without JavaScript, the clean hero, 404s, WCAG checks via axe, and production security headers/CSP enforcement. `npm run test:report` opens the detailed report.
 
 Optional Firefox tests: install Firefox with Playwright and set `CDC_TEST_FIREFOX=1` before `npm test`. Firefox startup did not complete on this host; the completed browser suite uses Chromium. Automated accessibility checks are useful evidence, not a substitute for a complete human accessibility audit.
 

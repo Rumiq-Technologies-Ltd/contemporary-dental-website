@@ -1,0 +1,7 @@
+.mask { display: block; overflow: clip; }
+.line { display: block; }
+@media (prefers-reduced-motion: no-preference) {
+  :global([data-motion='ready'][data-entered='false']) .line { transform: translateY(110%); }
+  :global([data-motion='ready'][data-entered='true']) .line { animation: reveal-line 700ms var(--ease-out) both; }
+}
+@keyframes reveal-line { from { transform: translateY(110%); } to { transform: translateY(0); } }

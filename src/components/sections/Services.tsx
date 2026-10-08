@@ -10,7 +10,15 @@ import { Action, DestinationAction } from '@/components/ui/Interactions';
 import { SaveService } from '@/components/ui/SaveService';
 import { Icon } from '@/components/ui/Icon';
 import { ServiceGallery } from './ServiceGallery';
+import { RevealText } from '@/components/ui/RevealText';
 import styles from './services.module.css';
+
+const columns = (['a', 'b'] as const).map(id => {
+  const cards = services.filter(service => service.column === id);
+  // The desktop beat advances by an actual card plus its Figma 16px gap.
+  const step = (count: number) => `${-cards.slice(0, count).reduce((sum, card) => sum + card.height + 16, 0) / 14.4}cqw`;
+  return { id, cards, steps: { '--step-one': step(1), '--step-two': step(2) } as CSSProperties };
+});
 
 function ServiceCard({ service, duplicate = false }: { service: Service; duplicate?: boolean }) {
   const tabIndex = duplicate ? -1 : undefined;
@@ -29,7 +37,7 @@ export function Services() {
     <SiteHeader />
     <div className={styles.copy}>
       <div className={styles.trio} aria-hidden="true">{[0, 1, 2].map(index => <span key={index}><Icon name="tooth" /></span>)}</div>
-      <h2 id="services-title">EXPLORE OUR<br />SERVICE, MAKE<br />YOUR SMILE SHINE</h2>
+      <h2 id="services-title"><RevealText>EXPLORE OUR</RevealText><RevealText delay={70}>SERVICE, MAKE</RevealText><RevealText delay={140}>YOUR SMILE SHINE</RevealText></h2>
       <div className={styles.actions}>
         <DestinationAction destination="app" className="pill pill-accent pill-large" label="Get The App — coming soon">Get The App</DestinationAction>
         <Link href="/#advantages" className="pill pill-outline pill-large">Meet The Team</Link>
@@ -37,12 +45,12 @@ export function Services() {
     </div>
     <ServiceGallery>
       <div className={styles.grid}>
-        {(['a', 'b'] as const).map(column => <div key={column} className={styles.column}>
+        {columns.map(({ id, cards, steps }) => <div key={id} className={styles.column} data-loop="services" style={steps}>
           {/* Identical groups make the -50% wrap seamless. Copies remain clickable
               but are excluded from screen readers and sequential keyboard focus. */}
           {[false, true].map(duplicate => <div key={String(duplicate)} className={styles.cardGroup}
             data-duplicate={duplicate} aria-hidden={duplicate || undefined}>
-            {services.filter(service => service.column === column).map(service => <ServiceCard key={service.id} service={service} duplicate={duplicate} />)}
+            {cards.map(service => <ServiceCard key={service.id} service={service} duplicate={duplicate} />)}
           </div>)}
         </div>)}
       </div>
