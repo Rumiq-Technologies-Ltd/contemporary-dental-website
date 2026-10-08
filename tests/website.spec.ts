@@ -211,6 +211,7 @@ test('service columns move in opposite directions and join seamlessly across the
 });
 
 test('section entrances run once and card loops pause outside the viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 1520, height: 800 });
   await ready(page);
   await expect(page.locator('#home')).toHaveAttribute('data-entered', 'true');
   await expect(page.locator('#advantages')).toHaveAttribute('data-entered', 'false');
@@ -246,6 +247,36 @@ test('section entrances run once and card loops pause outside the viewport', asy
   await expect(page.locator('#advantages')).toHaveAttribute('data-active', 'false');
   await expect(frontCard).toHaveCSS('animation-play-state', 'paused');
   await expect(page.locator('#advantages')).toHaveAttribute('data-entered', 'true');
+});
+
+test('continuous page keeps the complete services arrow visible and clickable at every breakpoint', async ({ page }) => {
+  await page.emulateMedia({ reducedMotion: 'reduce' });
+  for (const width of [360, 390, 768, 900, 1024, 1520]) {
+    await page.setViewportSize({ width, height: 844 });
+    await ready(page);
+    const sections = await page.locator('main > section').evaluateAll(elements => elements.map(element => {
+      const rect = element.getBoundingClientRect();
+      const style = getComputedStyle(element);
+      return { top: rect.top, bottom: rect.bottom, radius: style.borderRadius, shadow: style.boxShadow };
+    }));
+    for (let index = 0; index < sections.length; index++) {
+      expect(sections[index].radius).toBe('0px');
+      expect(sections[index].shadow).toBe('none');
+      if (index) expect(Math.abs(sections[index].top - sections[index - 1].bottom)).toBeLessThan(1);
+    }
+    await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
+    const arrow = page.getByRole('link', { name: 'Explore our services', exact: true });
+    await arrow.scrollIntoViewIfNeeded();
+    const geometry = await arrow.evaluate(element => {
+      const rect = element.getBoundingClientRect();
+      const section = element.closest('section')!.getBoundingClientRect();
+      const hit = document.elementFromPoint(rect.x + rect.width / 2, rect.bottom - 3);
+      return { contained: rect.top >= section.top && rect.bottom <= section.bottom, hit: hit?.closest('a') === element };
+    });
+    expect(geometry).toEqual({ contained: true, hit: true });
+    await arrow.click();
+    await expect(page).toHaveURL(/#services$/);
+  }
 });
 
 test('reduced motion can be enabled during an entrance without leaving hidden content', async ({ page }) => {

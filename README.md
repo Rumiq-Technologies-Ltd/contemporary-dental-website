@@ -34,7 +34,7 @@ tests/                    Production browser and accessibility tests
 docs/                     Plan, asset provenance, validation and reports
 ```
 
-Colors, motion easing and reusable surface styles live in `src/app/globals.css`. Each section owns its CSS Module. Desktop composition follows the 1440 × 900 Figma panels using container-relative units; below 900px content reflows.
+Colors, motion easing and reusable surface styles live in `src/app/globals.css`. Each section owns its CSS Module. The page uses one continuous white background, with one header at the top and no section card borders, rounded corners, shadows or gaps. Desktop composition follows the 1440 × 900 Figma proportions using container-relative units; below 900px content reflows. The services arrow stays fully inside its section so it cannot be clipped.
 
 The reference-video choreography runs when each section enters view: masked headline reveals, hero lines sliding into their decorated positions, staggered badges and avatars, and a rotating advantage-card stack. `Screen` observes visibility once for entrances and pauses ongoing loops outside the viewport or in background tabs. `RevealText` shares the line masks. Content remains visible without JavaScript.
 

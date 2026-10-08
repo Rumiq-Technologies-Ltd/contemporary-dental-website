@@ -1,7 +1,7 @@
-:root { --ink: #131c15; --surface: #fff; --accent: #a9eaf7; --muted: #f4f5f7; --panel-radius: 32px; --ease-out: cubic-bezier(.23, 1, .32, 1); --ease-in-out: cubic-bezier(.77, 0, .175, 1); color-scheme: light; }
+:root { --ink: #131c15; --surface: #fff; --accent: #a9eaf7; --muted: #f4f5f7; --ease-out: cubic-bezier(.23, 1, .32, 1); --ease-in-out: cubic-bezier(.77, 0, .175, 1); color-scheme: light; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--muted); color: var(--ink); font-family: var(--font-body), sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0; background: var(--surface); color: var(--ink); font-family: var(--font-body), sans-serif; -webkit-font-smoothing: antialiased; }
 button, a, summary { -webkit-tap-highlight-color: transparent; }
 button { font: inherit; color: inherit; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
@@ -9,7 +9,7 @@ h1, h2, h3, p { margin: 0; }
 img { display: block; }
 ::selection { background: var(--accent); color: var(--ink); }
 :focus-visible { outline: 3px solid #217487; outline-offset: 4px; }
-.page-shell { display: flex; flex-direction: column; gap: 40px; max-width: 1520px; margin: 0 auto; padding: 40px; }
+.page-shell { display: flex; flex-direction: column; width: 100%; max-width: 1440px; margin: 0 auto; }
 .pill { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; min-height: 36px; padding: 0 18px; border-radius: 999px; font-size: 13px; font-weight: 500; line-height: 1.3; transition: background .16s, transform .16s; }
 .pill-outline { border: 1px solid var(--ink); background: white; }
 .pill-accent { border: 1px solid transparent; background: var(--accent); }
@@ -20,7 +20,7 @@ img { display: block; }
 .skip-link:focus { transform: translateY(0); }
 .message-page { min-height: 100dvh; max-width: 800px; margin: auto; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 26px; padding: 32px; }
 .message-page h1 { font-family: var(--font-display); font-size: clamp(30px, 6vw, 58px); font-weight: 200; }
-@media (max-width: 899px) { .page-shell { padding: 16px; gap: 24px; } .pill { min-height: 40px; } }
+@media (max-width: 899px) { .pill { min-height: 40px; } }
 /* Loops sleep outside the viewport and in background tabs. One-shot entrances
    retain their final frame, so scrolling back never hides readable content. */
 [data-active='false'] [data-loop], body:has(dialog[open]) [data-loop] { animation-play-state: paused !important; }
