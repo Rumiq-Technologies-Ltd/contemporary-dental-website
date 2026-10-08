@@ -13,6 +13,10 @@ test('Figma screens, local images and desktop geometry render without runtime er
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
   await ready(page);
   await expect(page.locator('main > section')).toHaveCount(3);
+  await expect(page.locator('header')).toHaveCount(1);
+  await expect(page.getByLabel('Menu — open navigation')).toHaveCount(1);
+  await expect(page.getByRole('button', { name: 'Log In — coming soon' })).toHaveCount(1);
+  await expect(page.getByRole('button', { name: 'Sign Up — coming soon' })).toHaveCount(1);
   const panel = await page.locator('#home').boundingBox();
   expect(panel?.width).toBe(1440);
   expect(panel?.height).toBe(900);
@@ -235,7 +239,7 @@ test('section entrances run once and card loops pause outside the viewport', asy
   await expect(page.getByRole('button', { name: 'Resume cards', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: 'Resume cards', exact: true }).click();
   await page.mouse.move(0, 0);
-  await page.locator('#advantages').getByRole('button', { name: 'Log In — coming soon' }).click();
+  await page.locator('#advantages').getByRole('button', { name: 'Instagram — coming soon' }).click();
   await expect(frontCard).toHaveCSS('animation-play-state', 'paused');
   await page.keyboard.press('Escape');
   await page.locator('#home').scrollIntoViewIfNeeded();

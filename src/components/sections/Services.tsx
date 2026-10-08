@@ -4,7 +4,6 @@ import type { CSSProperties } from 'react';
 import { photos } from '@/content/assets';
 import { services, type Service } from '@/content/services';
 import { Screen } from '@/components/layout/Screen';
-import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SectionFooter } from '@/components/layout/SectionFooter';
 import { Action, DestinationAction } from '@/components/ui/Interactions';
 import { SaveService } from '@/components/ui/SaveService';
@@ -34,7 +33,6 @@ function ServiceCard({ service, duplicate = false }: { service: Service; duplica
 
 export function Services() {
   return <Screen id="services" labelledBy="services-title" className={styles.services}>
-    <SiteHeader />
     <div className={styles.copy}>
       <div className={styles.trio} aria-hidden="true">{[0, 1, 2].map(index => <span key={index}><Icon name="tooth" /></span>)}</div>
       <h2 id="services-title"><RevealText>EXPLORE OUR</RevealText><RevealText delay={70}>SERVICE, MAKE</RevealText><RevealText delay={140}>YOUR SMILE SHINE</RevealText></h2>

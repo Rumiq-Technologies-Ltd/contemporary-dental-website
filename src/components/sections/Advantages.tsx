@@ -3,7 +3,6 @@ import Link from 'next/link';
 import type { CSSProperties } from 'react';
 import { photos } from '@/content/assets';
 import { Screen } from '@/components/layout/Screen';
-import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SectionFooter } from '@/components/layout/SectionFooter';
 import { Icon } from '@/components/ui/Icon';
 import { RevealText } from '@/components/ui/RevealText';
@@ -19,7 +18,6 @@ const stack = [
 ];
 export function Advantages() {
   return <Screen id="advantages" labelledBy="advantages-title" className={styles.advantages}>
-    <SiteHeader />
     <h2 id="advantages-title" className={styles.title}><RevealText>OUR ADVANTAGES</RevealText></h2>
     <p className="sr-only">{stack.map(card => card.label).join('. ')}.</p>
     <AdvantageStack>
