@@ -1,0 +1,63 @@
+.services { overflow: clip; }
+.copy { position: absolute; left: 3.8889cqw; top: 16.5278cqw; width: 40cqw; }
+.trio { display: flex; gap: .5556cqw; margin-bottom: 3.2639cqw; }
+.trio > span { width: 2.7778cqw; height: 2.7778cqw; border-radius: 50%; display: grid; place-items: center; background: var(--accent); }
+.copy h2 { font-family: var(--font-display); font-weight: 200; font-size: 3.6389cqw; line-height: 5cqw; letter-spacing: -.0364cqw; }
+.actions { display: flex; gap: 16px; margin-top: 5.5556cqw; }
+.galleryFrame { position: absolute; left: 52.6389cqw; top: 0; bottom: 0; width: 43.4722cqw; }
+.gallery { position: absolute; inset: 0; overflow-y: hidden; overscroll-behavior-y: contain; scrollbar-width: none; border-radius: 20px; }
+.gallery::-webkit-scrollbar { display: none; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 1.1111cqw; padding-top: .4167cqw; }
+.column { display: flex; flex-direction: column; animation: cards-up 42s linear infinite; will-change: transform; }
+.column:nth-child(2) { margin-top: -1.0417cqw; }
+.cardGroup { display: flex; flex-direction: column; gap: 1.1111cqw; padding-bottom: 1.1111cqw; }
+/* Each track is two equal groups. At -50%, the copy exactly replaces the
+   original, so resetting the animation introduces no blank frame or jump. */
+@keyframes cards-up { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+.galleryFrame:hover .column, .galleryFrame:active .column,
+.galleryFrame[data-paused='true'] .column, .gallery:focus-within .column,
+:global(body:has(dialog[open])) .column { animation-play-state: paused; }
+/* Keyboard users get a stable, manually scrollable original set of cards. */
+.gallery:focus-within { overflow-y: auto; }
+.gallery:focus-visible .column, .gallery:has(:focus-visible) .column { animation: none; transform: none; }
+.gallery:focus-visible [data-duplicate='true'], .gallery:has(:focus-visible) [data-duplicate='true'] { display: none; }
+.motionControl { position: absolute; z-index: 4; bottom: 14px; right: 14px; min-height: 36px; padding: 0 14px; background: white; border: 1px solid #131c1533; border-radius: 999px; font-size: 11px; box-shadow: 0 3px 16px #131c1526; }
+.motionControl:hover { background: var(--accent); }
+.card { position: relative; height: var(--card-height); min-height: 140px; border-radius: 1.3889cqw; overflow: hidden; background: var(--muted); flex-shrink: 0; }
+.card > img { object-fit: cover; }
+.cardActions { position: absolute; top: .8333cqw; right: .8333cqw; display: flex; gap: .5556cqw; }
+.cardButton { display: grid; place-items: center; width: max(40px, 2.7778cqw); height: max(40px, 2.7778cqw); border-radius: 50%; border: 0; background: white; }
+.cardButton:hover, .cardButton[aria-pressed='true'] { background: var(--accent); }
+.cardButton[aria-pressed='true'] { box-shadow: inset 0 0 0 2px var(--ink); }
+/* A darker glass pill keeps the Figma cyan text readable on bright photos. */
+.cardLabel { position: absolute; left: 1.5278cqw; bottom: 1.5278cqw; max-width: calc(100% - 3.0556cqw); font-size: .9722cqw; font-weight: 500; }
+.cardLabel button { padding: 0 1.3889cqw; min-height: 2.7778cqw; border: 0; border-radius: 999px; color: var(--accent); background: #131c15ba; backdrop-filter: blur(8px); white-space: nowrap; }
+@media (min-width: 900px) and (max-width: 1230px) { .actions { gap: 8px; } .actions a, .actions button { padding: 0 16px; font-size: 12px; } .cardLabel { font-size: 10px; } .cardLabel button { padding: 0 10px; min-height: 32px; } }
+@media (max-width: 899px) {
+  .copy { position: relative; inset: auto; width: auto; padding: 38px 24px; }
+  .trio { gap: 8px; margin-bottom: 28px; } .trio > span { width: 40px; height: 40px; }
+  .copy h2 { font-size: clamp(25px, 5.8vw, 48px); line-height: 1.45; letter-spacing: -.04em; }
+  .actions { gap: 12px; margin-top: 32px; flex-wrap: wrap; }
+  .galleryFrame { position: relative; inset: auto; width: auto; height: 660px; margin: 0 24px; }
+  .gallery { border-radius: 20px; }
+  .grid { gap: 16px; padding: 0; } .column, .column:nth-child(2) { padding: 0; margin: 0; }
+  .cardGroup { gap: 16px; padding-bottom: 16px; }
+  .card { border-radius: 20px; height: 330px; }
+  .cardActions { top: 12px; right: 12px; gap: 8px; } .cardButton { width: 40px; height: 40px; }
+  .cardLabel { left: 14px; bottom: 18px; max-width: calc(100% - 28px); font-size: 11px; }
+  .cardLabel button { padding: 8px 16px; min-height: 38px; white-space: normal; text-align: left; }
+}
+@media (max-width: 600px) {
+  .galleryFrame { margin: 0 16px; height: 560px; }
+  .grid { gap: 10px; } .cardGroup { gap: 10px; padding-bottom: 10px; }
+  .card { height: 250px; } .cardActions { top: 8px; right: 8px; gap: 6px; }
+  .cardButton { width: 36px; height: 36px; }
+  .cardLabel { left: 8px; bottom: 12px; max-width: calc(100% - 16px); font-size: 10px; }
+  .cardLabel button { padding: 8px 10px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .column { animation: none; will-change: auto; }
+  .cardGroup[data-duplicate='true'] { display: none; }
+  .gallery { overflow-y: auto; }
+  .motionControl { display: none; }
+}

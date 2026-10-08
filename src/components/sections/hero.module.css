@@ -1,0 +1,58 @@
+.hero { overflow: clip; }
+.headline { position: absolute; inset: 0; font-family: var(--font-display); font-weight: 200; font-size: 6.28472cqw; letter-spacing: -.1257cqw; line-height: 12.1528cqw; }
+.lineOne, .lineTwo, .lineThree { position: absolute; white-space: nowrap; }
+.lineOne { left: 8.9583cqw; top: 9.9102cqw; }
+.lineTwo { left: 26.4583cqw; top: 22.063cqw; display: flex; align-items: center; }
+.lineThree { left: 9.0278cqw; top: 34.7019cqw; }
+.inlineDecor { display: flex; align-items: center; margin-left: 1.5972cqw; margin-right: .4861cqw; }
+.portrait, .flower { width: 6.9444cqw; height: 6.9444cqw; position: relative; border-radius: 50%; overflow: hidden; display: grid; place-items: center; }
+.portrait { background: var(--muted); }
+.portrait img { object-fit: contain; width: 134% !important; height: 110% !important; max-width: none; left: -11% !important; }
+.flower { background: var(--accent); margin-left: -1.25cqw; }
+.assistance { position: absolute; left: 7.9861cqw; top: 27.0833cqw; display: flex; gap: 3.2639cqw; align-items: center; font-size: .9722cqw; letter-spacing: .0389cqw; }
+.assistance > span:first-child { background: var(--accent); height: 2.7778cqw; padding: 0 1.3889cqw; border-radius: 999px; display: grid; place-items: center; }
+.assistance > span:last-child { width: 3.6111cqw; height: 3.6111cqw; background: var(--accent); border-radius: 50%; display: grid; place-items: center; }
+.solutions { position: absolute; left: 79.5139cqw; top: 14.0278cqw; font-size: .9722cqw; line-height: 1.3889cqw; }
+.iconTrio { display: flex; gap: .3472cqw; margin-bottom: .6944cqw; }
+.iconTrio > span { width: 2.6389cqw; height: 2.6389cqw; display: grid; place-items: center; background: var(--accent); border-radius: 12px; }
+.avatars { position: absolute; left: 82.0139cqw; top: 38.8889cqw; width: 14.5833cqw; height: 4.8611cqw; }
+.avatars > span { width: 4.8611cqw; height: 4.8611cqw; border: 3px solid white; position: absolute; top: 0; border-radius: 50%; overflow: hidden; background: var(--muted); }
+.avatars > span:nth-child(2) { left: 3.4722cqw; } .avatars > span:nth-child(3) { left: 6.9444cqw; }
+.avatars img { object-fit: cover; }
+.avatars > .plus { left: 11.1111cqw; top: 1.25cqw; width: 2.3611cqw; height: 2.3611cqw; border: 0; background: var(--accent); display: grid; place-items: center; }
+.videoCard { position: absolute; left: 7.5cqw; top: 42.7083cqw; width: 16.25cqw; height: 9.6528cqw; background: transparent; border: 0; border-radius: 16px; }
+.videoImage { display: block; position: absolute; inset: 0; border-radius: 16px; background: var(--muted); overflow: hidden; }
+.videoImage img { object-fit: cover; }
+.play { position: absolute; right: -.625cqw; bottom: -2.0139cqw; width: 2.6389cqw; height: 2.6389cqw; display: grid; place-items: center; border-radius: 50%; background: var(--accent); }
+.cta { position: absolute; left: calc(50% + .4167cqw); top: 48.8889cqw; width: 8.0556cqw; height: 9.3056cqw; transform: translateX(-50%); font-size: 1.0417cqw; font-weight: 700; line-height: 1.25cqw; letter-spacing: .0208cqw; text-align: center; border-radius: 50%; }
+.cta::before { content: ''; position: absolute; inset: 1.25cqw 0 0; border: 1.2px solid var(--ink); border-radius: 50%; }
+.cta > span { position: relative; display: grid; align-content: center; width: 8.0556cqw; height: 8.0556cqw; border-radius: 50%; background: var(--accent); transition: transform .2s; }
+.cta:hover > span { transform: translateY(-5px); }
+/* The alternate composition uses the same typography, CTA and shared shell. */
+.clean .lineOne { left: 21.9444cqw; top: 10.9469cqw; }
+.clean .lineTwo { left: 7.1528cqw; top: 23.0997cqw; gap: 2.0833cqw; }
+.clean .lineThree { left: 21.7361cqw; top: 35.2525cqw; }
+.clean .cta { left: 50%; top: 49.2361cqw; }
+@media (max-width: 899px) {
+  .hero { padding-bottom: 0; }
+  .headline { position: relative; inset: auto; padding: 42px 24px 26px; font-size: clamp(22px, 5.9vw, 49px); letter-spacing: -.04em; line-height: 1.5; }
+  .lineOne, .lineTwo, .lineThree, .clean .lineOne, .clean .lineTwo, .clean .lineThree { position: relative; inset: auto; display: flex; justify-content: center; }
+  .lineTwo { gap: 8px; margin: 24px 0; }
+  .inlineDecor { margin: 0; }
+  .portrait, .flower { width: clamp(40px, 7.8vw, 64px); height: clamp(40px, 7.8vw, 64px); }
+  .flower { margin-left: -9px; } .flower img { transform: scale(.65); }
+  .assistance { position: relative; inset: auto; justify-content: center; font-size: 10px; gap: 16px; margin: 2px auto 28px; }
+  .assistance > span:first-child { height: 32px; padding: 0 18px; }
+  .assistance > span:last-child { width: 40px; height: 40px; } .assistance img { transform: scale(.8); }
+  .solutions { position: relative; inset: auto; display: flex; justify-content: center; align-items: center; gap: 14px; font-size: 11px; line-height: 1.5; margin-bottom: 26px; }
+  .iconTrio { gap: 4px; margin: 0; } .iconTrio > span { width: 32px; height: 32px; border-radius: 10px; }
+  .avatars { position: relative; inset: auto; width: 162px; height: 54px; margin: 0 auto 24px; }
+  .avatars > span { width: 54px; height: 54px; } .avatars > span:nth-child(2) { left: 38px; } .avatars > span:nth-child(3) { left: 76px; }
+  .avatars > .plus { left: 122px; top: 12px; width: 30px; height: 30px; }
+  .videoCard { position: relative; inset: auto; display: block; width: 160px; height: 100px; margin: 0 auto 38px; }
+  .play { width: 38px; height: 38px; right: -10px; bottom: -12px; }
+  .cta, .clean .cta { position: relative; inset: auto; display: block; transform: none; width: 100px; height: 116px; margin: 32px auto 24px; font-size: 13px; line-height: 16px; }
+  .cta::before { inset: 16px 0 0; } .cta > span { width: 100px; height: 100px; }
+  .clean .headline { padding-top: 70px; padding-bottom: 45px; }
+}
+@media (prefers-reduced-motion: reduce) { .cta > span { transition: none; } .cta:hover > span { transform: none; } }

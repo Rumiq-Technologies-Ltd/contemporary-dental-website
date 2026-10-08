@@ -1,0 +1,140 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/1c2bc322-e653-4985-99af-c0a45ef387e3";
+const imgIcon = `${assetPathPrefix}/26f89.svg`;
+const imgIcon1 = `${assetPathPrefix}/ef68b.svg`;
+const imgIcon2 = `${assetPathPrefix}/344c7.svg`;
+const imgIcon3 = `${assetPathPrefix}/b4625.svg`;
+const imgIcon4 = `${assetPathPrefix}/8e6b4.svg`;
+
+function CtaCircle({ className }: { className?: string }) {
+  return (
+    <div className={className || "h-[134px] relative w-[116px]"} data-node-id="8:462" data-name="CTA Circle">
+      <div className="absolute border-[1.2px] border-[var(--color\/ink,#131c15)] border-solid left-0 rounded-[999px] size-[116px] top-[18px]" data-node-id="8:463" data-name="Ring" />
+      <div className="absolute bg-[var(--color\/accent,#a9eaf7)] content-stretch flex flex-col items-center justify-center left-0 overflow-clip rounded-[999px] size-[116px] top-0" data-node-id="8:464" data-name="Disc">
+        <div className="[word-break:break-word] font-['Inter:Bold'] font-bold leading-[0] not-italic relative shrink-0 text-[15px] text-[color:var(--color\/ink,#131c15)] text-center tracking-[0.3px] whitespace-nowrap" data-node-id="8:465">
+          <p className="leading-[18px] mb-0">GET</p>
+          <p className="leading-[18px]">STARTED</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function SocialFacebook({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="8:364" data-name="Social / facebook">
+      <div className="absolute left-0 size-[24px] top-0" data-node-id="8:365" data-name="Icon">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon} />
+      </div>
+    </div>
+  );
+}
+
+function SocialYoutube({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="8:360" data-name="Social / youtube">
+      <div className="absolute left-0 size-[24px] top-0" data-node-id="8:361" data-name="Icon">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon1} />
+      </div>
+    </div>
+  );
+}
+
+function SocialInstagram({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="8:355" data-name="Social / instagram">
+      <div className="absolute left-0 size-[24px] top-0" data-node-id="8:356" data-name="Icon">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon2} />
+      </div>
+    </div>
+  );
+}
+
+type IconButtonProps = {
+  className?: string;
+  type?: "Menu";
+};
+
+function IconButton({ className, type = "Menu" }: IconButtonProps) {
+  return (
+    <div className={className || "bg-[var(--color\\/surface,white)] border border-[var(--color\\/ink,#131c15)] border-solid relative rounded-[999px] size-[36px]"} data-node-id="8:316">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[20px] top-1/2" data-node-id="8:317" data-name="Icon">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon3} />
+      </div>
+    </div>
+  );
+}
+
+export default function Viewport1440X900() {
+  return (
+    <div className="bg-[var(--color\/surface,white)] overflow-clip relative rounded-[32px] shadow-[0px_20px_60px_0px_rgba(19,28,21,0.07)] size-full" data-node-id="8:553" data-name="Viewport / 1440x900">
+      <div className="absolute content-stretch flex h-[36px] items-center justify-between left-[56px] right-[56px] top-[40px]" data-node-id="8:554" data-name="Header">
+        <div className="content-stretch flex gap-[6px] items-center overflow-clip relative shrink-0" data-node-id="I8:554;8:510" data-name="Nav Left">
+          <div className="bg-[var(--color\/surface,white)] border border-[var(--color\/ink,#131c15)] border-solid content-stretch flex h-[36px] items-center justify-center px-[18px] relative rounded-[999px] shrink-0" data-node-id="I8:554;8:511" data-name="Menu">
+            <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[13px] text-[color:var(--color\/ink,#131c15)] whitespace-nowrap" data-node-id="I8:554;8:511;8:287">
+              Menu
+            </p>
+          </div>
+          <IconButton className="bg-[var(--color\/surface,white)] border border-[var(--color\/ink,#131c15)] border-solid relative rounded-[999px] shrink-0 size-[36px]" />
+        </div>
+        <div className="content-stretch flex gap-[10px] items-center relative shrink-0" data-node-id="I8:554;8:516" data-name="Logo">
+          <div className="bg-[var(--color\/accent,#a9eaf7)] overflow-clip relative rounded-[999px] shrink-0 size-[28px]" data-node-id="I8:554;8:516;8:276" data-name="Mark">
+            <div className="absolute left-[5.5px] size-[17px] top-[5.5px]" data-node-id="I8:554;8:516;8:277" data-name="Icon">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon4} />
+            </div>
+          </div>
+          <p className="[word-break:break-word] font-['Unbounded:Medium'] font-medium leading-[normal] relative shrink-0 text-[16px] text-[color:var(--color\/ink,#131c15)] tracking-[1.92px] whitespace-nowrap" data-node-id="I8:554;8:516;8:280">
+            CONTEMPORARY DENTAL CARE
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[6px] items-center justify-end overflow-clip relative shrink-0" data-node-id="I8:554;8:522" data-name="Nav Right">
+          <div className="bg-[var(--color\/surface,white)] border border-[var(--color\/ink,#131c15)] border-solid content-stretch flex h-[36px] items-center justify-center px-[18px] relative rounded-[999px] shrink-0" data-node-id="I8:554;8:523" data-name="Log In">
+            <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[13px] text-[color:var(--color\/ink,#131c15)] whitespace-nowrap" data-node-id="I8:554;8:523;8:287">
+              Log In
+            </p>
+          </div>
+          <div className="bg-[var(--color\/accent,#a9eaf7)] content-stretch flex h-[36px] items-center justify-center px-[18px] relative rounded-[999px] shrink-0" data-node-id="I8:554;8:525" data-name="Sign Up">
+            <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[13px] text-[color:var(--color\/ink,#131c15)] whitespace-nowrap" data-node-id="I8:554;8:525;8:285">
+              Sign Up
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bottom-[44px] content-stretch flex h-[44px] items-end justify-between left-[56px] right-[56px]" data-node-id="8:572" data-name="Footer Meta">
+        <div className="content-stretch flex flex-col gap-[8px] items-start justify-end overflow-clip relative shrink-0" data-node-id="I8:572;8:531" data-name="Tagline">
+          <div className="bg-[var(--color\/accent,#a9eaf7)] relative rounded-[999px] shrink-0 size-[5px]" data-node-id="I8:572;8:532" data-name="Dot" />
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[12px] text-[color:var(--color\/ink,#131c15)] whitespace-nowrap" data-node-id="I8:572;8:533">
+            Your Smile, Our Passion
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[10px] items-end justify-end overflow-clip relative shrink-0" data-node-id="I8:572;8:534" data-name="Award">
+          <div className="content-stretch flex gap-[20px] items-center overflow-clip relative shrink-0" data-node-id="I8:572;8:535" data-name="Social">
+            <SocialInstagram className="relative shrink-0 size-[24px]" />
+            <SocialYoutube className="relative shrink-0 size-[24px]" />
+            <SocialFacebook className="relative shrink-0 size-[24px]" />
+          </div>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[12px] text-[color:var(--color\/ink,#131c15)] text-right whitespace-nowrap" data-node-id="I8:572;8:549">
+            Best Start Up of 2023
+          </p>
+        </div>
+      </div>
+      <div className="-translate-y-1/2 absolute content-stretch flex flex-col items-start left-0 overflow-clip right-0 top-[calc(50%-29.86px)]" data-node-id="8:592" data-name="Headline">
+        <div className="content-stretch flex h-[175px] items-center overflow-clip pl-[316px] relative shrink-0 w-full" data-node-id="8:593" data-name="Line — REVOLUTIONIZING">
+          <p className="[word-break:break-word] font-['Unbounded:ExtraLight'] font-extralight leading-[175px] relative shrink-0 text-[90.3px] text-[color:var(--color\/ink,#131c15)] tracking-[-1.806px] whitespace-nowrap" data-node-id="8:594">
+            REVOLUTIONIZING
+          </p>
+        </div>
+        <div className="content-stretch flex h-[175px] items-center overflow-clip pl-[103px] relative shrink-0 w-full" data-node-id="8:595" data-name="Line — DENTAL CARE">
+          <p className="[word-break:break-word] font-['Unbounded:ExtraLight'] font-extralight leading-[175px] relative shrink-0 text-[90.3px] text-[color:var(--color\/ink,#131c15)] tracking-[-1.806px] whitespace-nowrap" data-node-id="8:596">
+            DENTAL CARE
+          </p>
+        </div>
+        <div className="content-stretch flex h-[175px] items-center overflow-clip pl-[313px] relative shrink-0 w-full" data-node-id="8:597" data-name="Line — WITH TECHNOLOGY">
+          <p className="[word-break:break-word] font-['Unbounded:ExtraLight'] font-extralight leading-[175px] relative shrink-0 text-[90.3px] text-[color:var(--color\/ink,#131c15)] tracking-[-1.806px] whitespace-nowrap" data-node-id="8:598">
+            WITH TECHNOLOGY
+          </p>
+        </div>
+      </div>
+      <CtaCircle className="-translate-x-1/2 absolute bottom-[57px] h-[134px] left-1/2 w-[116px]" />
+    </div>
+  );
+}

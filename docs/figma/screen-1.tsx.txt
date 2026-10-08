@@ -1,0 +1,203 @@
+const assetPathPrefix = "https://www.figma.com/api/mcp/asset/af46d5e9-d7f0-4078-b057-ae78638f0085";
+const imgIcon = `${assetPathPrefix}/26f89.svg`;
+const imgIcon1 = `${assetPathPrefix}/ef68b.svg`;
+const imgIcon2 = `${assetPathPrefix}/344c7.svg`;
+const imgIcon3 = `${assetPathPrefix}/b4625.svg`;
+const imgImgAdvantagesPortrait = `${assetPathPrefix}/b6765.png`;
+const imgImgAdvantagesPortrait1 = `${assetPathPrefix}/95e62.png`;
+const imgImgAdvantagesPortrait2 = `${assetPathPrefix}/72961.png`;
+const imgPhotoCard2 = `${assetPathPrefix}/8442c.png`;
+const imgPhotoCard1Front = `${assetPathPrefix}/3e2c5.png`;
+const imgIcon4 = `${assetPathPrefix}/8e6b4.svg`;
+const imgIcon5 = `${assetPathPrefix}/56fd4.svg`;
+const imgIcon6 = `${assetPathPrefix}/30bc9.svg`;
+
+function SocialFacebook({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="8:364" data-name="Social / facebook">
+      <div className="absolute left-0 size-[24px] top-0" data-node-id="8:365" data-name="Icon">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon} />
+      </div>
+    </div>
+  );
+}
+
+function SocialYoutube({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="8:360" data-name="Social / youtube">
+      <div className="absolute left-0 size-[24px] top-0" data-node-id="8:361" data-name="Icon">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon1} />
+      </div>
+    </div>
+  );
+}
+
+function SocialInstagram({ className }: { className?: string }) {
+  return (
+    <div className={className || "relative size-[24px]"} data-node-id="8:355" data-name="Social / instagram">
+      <div className="absolute left-0 size-[24px] top-0" data-node-id="8:356" data-name="Icon">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon2} />
+      </div>
+    </div>
+  );
+}
+
+type IconButtonProps = {
+  className?: string;
+  type?: "Menu";
+};
+
+function IconButton({ className, type = "Menu" }: IconButtonProps) {
+  return (
+    <div className={className || "bg-[var(--color\\/surface,white)] border border-[var(--color\\/ink,#131c15)] border-solid relative rounded-[999px] size-[36px]"} data-node-id="8:316">
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[20px] top-1/2" data-node-id="8:317" data-name="Icon">
+        <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon3} />
+      </div>
+    </div>
+  );
+}
+
+export default function Viewport1440X900() {
+  return (
+    <div className="bg-[var(--color\/surface,white)] overflow-clip relative rounded-[32px] shadow-[0px_20px_60px_0px_rgba(19,28,21,0.07)] size-full" data-node-id="8:704" data-name="Viewport / 1440x900">
+      <div className="absolute content-stretch flex h-[36px] items-center justify-between left-[56px] right-[56px] top-[40px]" data-node-id="8:705" data-name="Header">
+        <div className="content-stretch flex gap-[6px] items-center overflow-clip relative shrink-0" data-node-id="I8:705;8:510" data-name="Nav Left">
+          <div className="bg-[var(--color\/surface,white)] border border-[var(--color\/ink,#131c15)] border-solid content-stretch flex h-[36px] items-center justify-center px-[18px] relative rounded-[999px] shrink-0" data-node-id="I8:705;8:511" data-name="Menu">
+            <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[13px] text-[color:var(--color\/ink,#131c15)] whitespace-nowrap" data-node-id="I8:705;8:511;8:287">
+              Menu
+            </p>
+          </div>
+          <IconButton className="bg-[var(--color\/surface,white)] border border-[var(--color\/ink,#131c15)] border-solid relative rounded-[999px] shrink-0 size-[36px]" />
+        </div>
+        <div className="content-stretch flex gap-[10px] items-center relative shrink-0" data-node-id="I8:705;8:516" data-name="Logo">
+          <div className="bg-[var(--color\/accent,#a9eaf7)] overflow-clip relative rounded-[999px] shrink-0 size-[28px]" data-node-id="I8:705;8:516;8:276" data-name="Mark">
+            <div className="absolute left-[5.5px] size-[17px] top-[5.5px]" data-node-id="I8:705;8:516;8:277" data-name="Icon">
+              <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon4} />
+            </div>
+          </div>
+          <p className="[word-break:break-word] font-['Unbounded:Medium'] font-medium leading-[normal] relative shrink-0 text-[16px] text-[color:var(--color\/ink,#131c15)] tracking-[1.92px] whitespace-nowrap" data-node-id="I8:705;8:516;8:280">
+            COMTEMPORARY DENTAL CARE
+          </p>
+        </div>
+        <div className="content-stretch flex gap-[6px] items-center justify-end overflow-clip relative shrink-0" data-node-id="I8:705;8:522" data-name="Nav Right">
+          <div className="bg-[var(--color\/surface,white)] border border-[var(--color\/ink,#131c15)] border-solid content-stretch flex h-[36px] items-center justify-center px-[18px] relative rounded-[999px] shrink-0" data-node-id="I8:705;8:523" data-name="Log In">
+            <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[13px] text-[color:var(--color\/ink,#131c15)] whitespace-nowrap" data-node-id="I8:705;8:523;8:287">
+              Log In
+            </p>
+          </div>
+          <div className="bg-[var(--color\/accent,#a9eaf7)] content-stretch flex h-[36px] items-center justify-center px-[18px] relative rounded-[999px] shrink-0" data-node-id="I8:705;8:525" data-name="Sign Up">
+            <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[13px] text-[color:var(--color\/ink,#131c15)] whitespace-nowrap" data-node-id="I8:705;8:525;8:285">
+              Sign Up
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="absolute bottom-[44px] content-stretch flex h-[44px] items-end justify-between left-[56px] right-[56px]" data-node-id="8:723" data-name="Footer Meta">
+        <div className="content-stretch flex flex-col gap-[8px] items-start justify-end overflow-clip relative shrink-0" data-node-id="I8:723;8:531" data-name="Tagline">
+          <div className="bg-[var(--color\/accent,#a9eaf7)] relative rounded-[999px] shrink-0 size-[5px]" data-node-id="I8:723;8:532" data-name="Dot" />
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[12px] text-[color:var(--color\/ink,#131c15)] whitespace-nowrap" data-node-id="I8:723;8:533">
+            Your Smile, Our Passion
+          </p>
+        </div>
+        <div className="content-stretch flex flex-col gap-[10px] items-end justify-end overflow-clip relative shrink-0" data-node-id="I8:723;8:534" data-name="Award">
+          <div className="content-stretch flex gap-[20px] items-center overflow-clip relative shrink-0" data-node-id="I8:723;8:535" data-name="Social">
+            <SocialInstagram className="relative shrink-0 size-[24px]" />
+            <SocialYoutube className="relative shrink-0 size-[24px]" />
+            <SocialFacebook className="relative shrink-0 size-[24px]" />
+          </div>
+          <p className="[word-break:break-word] font-['Inter:Regular'] font-normal leading-[normal] not-italic relative shrink-0 text-[12px] text-[color:var(--color\/ink,#131c15)] text-right whitespace-nowrap" data-node-id="I8:723;8:549">
+            Best Start Up of 2023
+          </p>
+        </div>
+      </div>
+      <div className="-translate-y-1/2 absolute content-stretch flex h-[160px] items-center justify-center left-0 overflow-clip right-0 top-[calc(50%+31.6px)]" data-node-id="8:743" data-name="Headline">
+        <p className="[word-break:break-word] font-['Unbounded:ExtraLight'] font-extralight leading-[160px] relative shrink-0 text-[122.5px] text-[color:var(--color\/ink,#131c15)] tracking-[-2.45px] whitespace-nowrap" data-node-id="8:744">
+          OUR ADVANTAGES
+        </p>
+      </div>
+      <div className="-translate-x-1/2 -translate-y-1/2 absolute h-[900px] left-1/2 top-1/2 w-[1440px]" data-node-id="8:745" data-name="Photo Stack">
+        <div className="absolute flex h-[527.624px] items-center justify-center left-[454.1px] top-[222.19px] w-[483.804px]" data-node-id="8:746">
+          <div className="flex-none rotate-17">
+            <div className="bg-[var(--color\/muted,#f4f5f7)] border border-[var(--color\/accent,#a9eaf7)] border-solid h-[438px] overflow-clip relative rounded-[32px] w-[372px]" data-name="Photo Card 5">
+              <div className="absolute inset-[-1px] overflow-clip" data-node-id="I8:746;8:485" data-name="IMG / Advantages / Portrait">
+                <div aria-hidden className="absolute inset-0 pointer-events-none">
+                  <div className="absolute bg-[var(--color\/muted,#f4f5f7)] inset-0" />
+                  <img alt="" className="absolute max-w-none object-cover size-full" src={imgImgAdvantagesPortrait} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex h-[519.356px] items-center justify-center left-[509.66px] top-[222.32px] w-[472.687px]" data-node-id="8:749">
+          <div className="-rotate-15 flex-none">
+            <div className="bg-[var(--color\/muted,#f4f5f7)] border border-[var(--color\/accent,#a9eaf7)] border-solid h-[438px] overflow-clip relative rounded-[32px] w-[372px]" data-name="Photo Card 4">
+              <div className="absolute inset-[-1px] overflow-clip" data-node-id="I8:749;8:485" data-name="IMG / Advantages / Portrait">
+                <div aria-hidden className="absolute inset-0 pointer-events-none">
+                  <div className="absolute bg-[var(--color\/muted,#f4f5f7)] inset-0" />
+                  <img alt="" className="absolute max-w-none object-cover size-full" src={imgImgAdvantagesPortrait1} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex h-[496.804px] items-center justify-center left-[489.68px] top-[229.6px] w-[440.632px]" data-node-id="8:752">
+          <div className="flex-none rotate-8">
+            <div className="bg-[var(--color\/muted,#f4f5f7)] border border-[var(--color\/accent,#a9eaf7)] border-solid h-[448px] overflow-clip relative rounded-[32px] w-[382px]" data-name="Photo Card 3">
+              <div className="absolute inset-[-1px] overflow-clip" data-node-id="I8:752;8:485" data-name="IMG / Advantages / Portrait">
+                <div aria-hidden className="absolute inset-0 pointer-events-none">
+                  <div className="absolute bg-[var(--color\/muted,#f4f5f7)] inset-0" />
+                  <img alt="" className="absolute max-w-none object-cover size-full" src={imgImgAdvantagesPortrait2} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute flex h-[491.215px] items-center justify-center left-[517.12px] top-[230.39px] w-[433.75px]" data-node-id="8:755">
+          <div className="-rotate-7 flex-none">
+            <div className="border border-[var(--color\/accent,#a9eaf7)] border-solid h-[448px] overflow-clip relative rounded-[32px] w-[382px]" data-name="Photo Card 2">
+              <div aria-hidden className="absolute inset-0 pointer-events-none rounded-[32px]">
+                <div className="absolute bg-[var(--color\/muted,#f4f5f7)] inset-0 rounded-[32px]" />
+                <img alt="" className="absolute max-w-none object-cover rounded-[32px] size-full" src={imgPhotoCard2} />
+              </div>
+              <div className="absolute inset-[-1px] overflow-clip" data-node-id="I8:755;8:485" data-name="IMG / Advantages / Portrait">
+                <div aria-hidden className="absolute inset-0 pointer-events-none">
+                  <div className="absolute bg-[var(--color\/muted,#f4f5f7)] inset-0" />
+                  <img alt="" className="absolute max-w-none object-cover size-full" src={imgPhotoCard2} />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="absolute border border-[var(--color\/accent,#a9eaf7)] border-solid h-[460px] left-[526.5px] overflow-clip rounded-[32px] top-[246px] w-[391px]" data-node-id="8:758" data-name="Photo Card 1 — Front">
+          <div aria-hidden className="absolute inset-0 pointer-events-none rounded-[32px]">
+            <div className="absolute bg-[var(--color\/muted,#f4f5f7)] inset-0 rounded-[32px]" />
+            <img alt="" className="absolute max-w-none object-cover rounded-[32px] size-full" src={imgPhotoCard1Front} />
+          </div>
+          <div className="absolute inset-[-1px] overflow-clip" data-node-id="I8:758;8:485" data-name="IMG / Advantages / Portrait">
+            <div aria-hidden className="absolute inset-0 pointer-events-none">
+              <div className="absolute bg-[var(--color\/muted,#f4f5f7)] inset-0" />
+              <img alt="" className="absolute max-w-none object-cover size-full" src={imgPhotoCard1Front} />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="absolute h-[56px] left-[563px] top-[582px] w-[347px]" data-node-id="8:761" data-name="Label — Advanced Technology">
+        <div className="absolute bg-[var(--color\/surface,white)] content-stretch flex h-[48px] items-center left-[42px] overflow-clip pl-[32px] pr-[24px] rounded-[999px] top-[4px] w-[305px]" data-node-id="8:762" data-name="Pill">
+          <p className="[word-break:break-word] font-['Inter:Medium'] font-medium leading-[normal] not-italic relative shrink-0 text-[17px] text-[color:var(--color\/ink,#131c15)] whitespace-nowrap" data-node-id="8:763">
+            Advanced Technology
+          </p>
+        </div>
+        <div className="absolute bg-[var(--color\/accent,#a9eaf7)] left-0 overflow-clip rounded-[999px] size-[56px] top-0" data-node-id="8:764" data-name="Icon Disc">
+          <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[32px] top-1/2" data-node-id="8:765" data-name="Icon">
+            <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon5} />
+          </div>
+        </div>
+      </div>
+      <div className="-translate-x-1/2 absolute bg-[var(--color\/surface,white)] border border-[var(--color\/ink,#131c15)] border-solid bottom-[-35px] left-1/2 overflow-clip rounded-[999px] size-[96px]" data-node-id="8:768" data-name="Scroll Down">
+        <div className="-translate-x-1/2 -translate-y-1/2 absolute left-1/2 size-[40px] top-1/2" data-node-id="8:769" data-name="Icon">
+          <img alt="" className="absolute block inset-0 max-w-none size-full" src={imgIcon6} />
+        </div>
+      </div>
+    </div>
+  );
+}
