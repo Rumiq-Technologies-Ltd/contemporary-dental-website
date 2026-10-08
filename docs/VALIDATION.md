@@ -4,6 +4,8 @@ The source passes `npm run lint`, `npm run typecheck`, `npm run build`, and all 
 
 ## Browser coverage
 
+The Vercel CSP build fix adds four Node regression tests (`npm run test:build`) covering standard and adapter-scoped HTML, exact inline-script hashing, CDN and function-manifest header propagation, and rejection of builds without hashes. The production policy continues to block arbitrary inline JavaScript.
+
 Validated at widths 360, 390, 768, 1024 and 1520px. The 1520px viewport produces the source design's 1440 × 900 panels inside 40px gutters. Screenshots were reviewed against the Figma renders for typography, white rounded panels, cyan badges, portrait stack, service card imagery and placement. Downloaded source assets are unchanged; their sizes and SHA-256 hashes are recorded in `asset-manifest.json`.
 
 The passing suite checks menu navigation, section CTA destinations, service detail dialogs, modal focus wrapping, Escape dismissal/focus restoration, persisted heart preferences, malformed browser storage, image loading, missing resources/console errors, mobile overflow, reduced motion, the clean hero, and a usable 404. It also verifies production security headers and confirms that arbitrary injected inline JavaScript is blocked by CSP.

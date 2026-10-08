@@ -6,6 +6,7 @@ process.env.PLAYWRIGHT_BROWSERS_PATH ??= join(process.cwd(), '.playwright-browse
 
 export default defineConfig({
   testDir: './tests',
+  testMatch: '**/*.spec.ts',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,

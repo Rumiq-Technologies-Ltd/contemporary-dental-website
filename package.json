@@ -9,6 +9,7 @@
     "lint": "eslint . --max-warnings 0",
     "typecheck": "tsc --noEmit",
     "test": "playwright test",
+    "test:build": "node --test tests/build-csp.test.mjs",
     "test:report": "playwright show-report",
     "assets:fetch": "node scripts/fetch-assets.mjs"
   },

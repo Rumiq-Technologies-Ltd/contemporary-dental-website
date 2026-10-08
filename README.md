@@ -49,6 +49,7 @@ Set verified HTTPS destination URLs in `src/content/site.ts` to activate portal/
 ```sh
 npm run lint
 npm run typecheck
+npm run test:build
 npm run build
 npm audit
 ```
@@ -72,6 +73,8 @@ Optional Firefox tests: install Firefox with Playwright and set `CDC_TEST_FIREFO
 Pages are prerendered. Images receive responsive AVIF/WebP optimization and lazy loading; visible hero images load eagerly, and the mobile LCP image receives high fetch priority. Inter and Unbounded are local variable fonts. No third-party scripts, animation libraries, runtime Figma requests or font-host requests are required.
 
 Use a Node-compatible Next.js host with HTTPS. Forward the headers configured in `next.config.ts`, and retain the generated `.next/csp-hashes.json` and `.next/routes-manifest.json` build artifacts. Configure HSTS at the HTTPS host once the final domain is known. Run `npm run build` before each deployment.
+
+Vercel: select the Next.js framework preset and use `npm run build` with the default output directory. The CSP step scans both ordinary Next.js HTML and the adapter's scoped `server/route-cache` artifacts. It also updates the generated `.vercel/output/config.json` CDN headers and copied function manifests after Vercel's `onBuildComplete` hook. Do not remove the CSP step or bypass its empty-output check. `npm run test:build` covers both output layouts, moved HTML, header propagation, and failure without hashes.
 
 The script CSP permits same-origin bundles and the hashes of prerendered inline scripts, while blocking arbitrary inline JavaScript and evaluation. It also restricts outgoing resources, framing, forms, base URLs and object content. Inline styles remain permitted for Next Image and layout styles. If future work adds dynamically rendered routes or external integrations, update and test the CSP deliberately; current hashes are designed for these static routes.
 
