@@ -6,6 +6,7 @@
 .logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: 1.92px; white-space: nowrap; }
 .logoMark { display: grid; place-items: center; width: 28px; height: 28px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
 .auth { display: flex; justify-content: flex-end; gap: 6px; }
+.phone { white-space: nowrap; }
 .menu { position: relative; width: max-content; }
 .menuTrigger { list-style: none; display: flex; align-items: center; gap: 6px; cursor: pointer; border-radius: 999px; }
 .menuTrigger::-webkit-details-marker { display: none; }
@@ -15,25 +16,48 @@
 .menuPanel a { display: flex; gap: 12px; align-items: center; padding: 16px 0; border-bottom: 1px solid #131c151a; font-size: 16px; }
 .menuPanel a span:first-child { font-size: 10px; color: #66746a; }
 .menuPanel a span:last-child { margin-left: auto; }
-.menuPanel .previewLink { border-bottom: 0; padding-bottom: 0; font-size: 12px; }
+.menuPanel a:last-child { border-bottom: 0; }
+.menuPanel a[aria-current='page'] { font-weight: 600; }
+.menuPanel a[aria-current='page'] span:first-child { color: var(--ink); }
 .footer { position: absolute; left: 3.8889cqw; right: 3.8889cqw; bottom: 3.0556cqw; height: 44px; display: flex; align-items: flex-end; justify-content: space-between; z-index: 2; font-size: 12px; }
 .tagline { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
 .tagline span { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
 .award { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-.social { display: flex; gap: 8px; }
-.socialButton { display: grid; place-items: center; width: 44px; height: 32px; border: 0; background: transparent; border-radius: 8px; }
-.socialButton:hover { background: var(--accent); }
+.footerLink { white-space: nowrap; padding: 2px 0; border-bottom: 1px solid var(--ink); }
+.footerLink:hover { background: var(--accent); }
 .narrow { right: auto; width: 45.3472cqw; }
-@media (min-width: 900px) and (max-width: 1230px) { .logo { font-size: 12px; letter-spacing: 1px; } .header { gap: 10px; } .footer { font-size: 10px; } }
+@media (min-width: 900px) and (max-width: 1230px) { .logo { font-size: 12px; letter-spacing: 1px; } .header { gap: 10px; grid-template-columns: auto 1fr auto; } .logo { justify-self: center; } .footer { font-size: 10px; } .auth :global(.pill) { padding: 0 12px; font-size: 12px; } }
 @media (max-width: 899px) {
   .screen { aspect-ratio: auto; }
   .header { position: relative; top: auto; left: auto; right: auto; padding: 24px; height: auto; grid-template-columns: 1fr auto; row-gap: 22px; }
   .logo { grid-column: 1 / -1; grid-row: 1; justify-self: center; font-size: clamp(10px, 2.4vw, 16px); letter-spacing: .08em; gap: 8px; }
   .menu { grid-row: 2; }
   .auth { grid-row: 2; }
+  .auth :global(.pill) { padding: 0 12px; font-size: 12px; }
+  .auth .phone { display: none; }
   .footer, .narrow { position: relative; inset: auto; width: auto; height: auto; padding: 30px 24px 26px; gap: 12px; font-size: 10px; }
-  .social { gap: 0; } .socialButton { width: 38px; height: 38px; }
   .menuPanel { width: min(320px, calc(100vw - 80px)); }
 }
 @media (prefers-reduced-motion: no-preference) { .menuPanel { animation: menu-in .18s ease-out; } }
 @keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Inner pages reuse the homepage header in a container of its own. */
+.top { position: relative; container-type: inline-size; min-height: calc(5.5556cqw + 36px); }
+@media (max-width: 899px) { .top { min-height: 0; } }
+
+/* Full footer: a soft panel in the same rounded language as the dialogs. */
+.siteFooter { display: grid; gap: 28px; margin: 48px clamp(16px, 3.8889%, 56px) 32px; padding: clamp(24px, 3.5vw, 48px); background: var(--muted); border-radius: 28px; font-size: 14px; line-height: 1.7; }
+.legalName { font-family: var(--font-display); font-size: clamp(14px, 1.4vw, 18px); font-weight: 300; line-height: 1.5; }
+.footerGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px; }
+.footerGrid address { font-style: normal; }
+.footerGrid strong { display: block; font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #546057; margin-bottom: 6px; }
+.footerGrid a, .legalLinks a { border-bottom: 1px solid #131c1540; }
+.footerGrid a:hover, .legalLinks a:hover { background: var(--accent); }
+.legalLinks { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 13px; }
+
+/* Sticky call button for phones. The body gains matching bottom space. */
+a.callBar { display: none; }
+@media (max-width: 899px) { .siteFooter { margin-inline: 24px; } } /* element + class outranks the global .pill display */
+@media (max-width: 899px) {
+  a.callBar { display: inline-flex; position: fixed; z-index: 30; left: 16px; right: 16px; bottom: 16px; box-shadow: 0 6px 24px #131c1540; }
+}

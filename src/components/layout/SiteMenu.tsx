@@ -2,13 +2,19 @@
 
 import { useRef } from 'react';
 import Link from 'next/link';
-import { navigation } from '@/content/site';
+import { usePathname } from 'next/navigation';
+import { navigation, site } from '@/content/site';
 import { Icon } from '@/components/ui/Icon';
 import styles from './layout.module.css';
 
+// The insurance and payment pages share one navigation entry.
+const sections: Readonly<Record<string, readonly string[]>> = { '/insurance': ['/insurance', '/payment-financing'] };
+
 export function SiteMenu() {
   const details = useRef<HTMLDetailsElement>(null);
+  const pathname = usePathname();
   const close = () => { if (details.current) details.current.open = false; };
+  const isCurrent = (href: string) => (sections[href] ?? [href]).some(path => pathname === path || pathname.startsWith(`${path}/`));
   return <details ref={details} className={styles.menu} onKeyDown={event => {
     if (event.key === 'Escape') { close(); details.current?.querySelector('summary')?.focus(); }
   }}>
@@ -16,9 +22,8 @@ export function SiteMenu() {
       <span className="pill pill-outline">Menu</span><span className={styles.menuIcon}><Icon name="menu" /></span>
     </summary>
     <nav className={styles.menuPanel} aria-label="Main navigation">
-      <p>YOUR SMILE STARTS HERE</p>
-      {navigation.map(item => <Link key={item.href} href={item.href} onClick={close}><span>{item.number}</span>{item.label}<span aria-hidden="true">↗</span></Link>)}
-      <Link href="/hero-clean" onClick={close} className={styles.previewLink}>View clean hero design <span aria-hidden="true">↗</span></Link>
+      <p>{site.tagline}</p>
+      {navigation.map(item => <Link key={item.href} href={item.href} onClick={close} aria-current={isCurrent(item.href) ? 'page' : undefined}><span>{item.number}</span>{item.label}<span aria-hidden="true">↗</span></Link>)}
     </nav>
   </details>;
 }

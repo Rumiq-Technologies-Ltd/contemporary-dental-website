@@ -1,9 +1,12 @@
 .services { overflow: clip; }
-.copy { position: absolute; left: 3.8889cqw; top: 16.5278cqw; width: 40cqw; }
-.trio { display: flex; gap: .5556cqw; margin-bottom: 3.2639cqw; }
+.copy { position: absolute; left: 3.8889cqw; top: 10.2cqw; width: 40cqw; }
+.trio { display: flex; gap: .5556cqw; margin-bottom: 2.2cqw; }
 .trio > span { width: 2.7778cqw; height: 2.7778cqw; border-radius: 50%; display: grid; place-items: center; background: var(--accent); }
-.copy h2 { font-family: var(--font-display); font-weight: 200; font-size: 3.6389cqw; line-height: 5cqw; letter-spacing: -.0364cqw; }
-.actions { display: flex; gap: 16px; margin-top: 5.5556cqw; }
+.copy h2 { font-family: var(--font-display); font-weight: 200; font-size: 3.6389cqw; line-height: 5cqw; letter-spacing: -.0364cqw; text-transform: uppercase; }
+.list { margin: 1.4cqw 0 0; padding: 0; list-style: none; font-size: 1.1cqw; line-height: 1.8; color: #445047; }
+.list a { border-bottom: 1px solid transparent; }
+.list a:hover { border-bottom-color: var(--ink); background: var(--accent); color: var(--ink); }
+.actions { display: flex; gap: 16px; margin-top: 2.4cqw; }
 .galleryFrame { position: absolute; left: 52.6389cqw; top: 0; bottom: 0; width: 43.4722cqw; }
 .gallery { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: none; border-radius: 20px; }
 .gallery::-webkit-scrollbar { display: none; }
@@ -52,13 +55,15 @@
 .cardButton:hover, .cardButton[aria-pressed='true'] { background: var(--accent); }
 .cardButton[aria-pressed='true'] { box-shadow: inset 0 0 0 2px var(--ink); }
 /* A darker glass pill keeps the Figma cyan text readable on bright photos. */
+.cardLabel a { display: inline-flex; align-items: center; }
 .cardLabel { position: absolute; left: 1.5278cqw; bottom: 1.5278cqw; max-width: calc(100% - 3.0556cqw); font-size: .9722cqw; font-weight: 500; }
-.cardLabel button { padding: 0 1.3889cqw; min-height: 2.7778cqw; border: 0; border-radius: 999px; color: var(--accent); background: #131c15ba; backdrop-filter: blur(8px); white-space: nowrap; }
-@media (min-width: 900px) and (max-width: 1230px) { .actions { gap: 8px; } .actions a, .actions button { padding: 0 16px; font-size: 12px; } .cardLabel { font-size: 10px; } .cardLabel button { padding: 0 10px; min-height: 32px; } }
+.cardLabel a { padding: 0 1.3889cqw; min-height: 2.7778cqw; border: 0; border-radius: 999px; color: var(--accent); background: #131c15ba; backdrop-filter: blur(8px); white-space: nowrap; }
+@media (min-width: 900px) and (max-width: 1230px) { .actions { gap: 8px; } .actions a, .actions button { padding: 0 16px; font-size: 12px; } .list { font-size: 11px; } .cardLabel { font-size: 10px; } .cardLabel a { padding: 0 10px; min-height: 32px; } }
 @media (max-width: 899px) {
   .copy { position: relative; inset: auto; width: auto; padding: 38px 24px; }
   .trio { gap: 8px; margin-bottom: 28px; } .trio > span { width: 40px; height: 40px; }
   .copy h2 { font-size: clamp(25px, 5.8vw, 48px); line-height: 1.45; letter-spacing: -.04em; }
+  .list { font-size: 15px; line-height: 1.9; margin-top: 18px; }
   .actions { gap: 12px; margin-top: 32px; flex-wrap: wrap; }
   .galleryFrame { position: relative; inset: auto; width: auto; height: 660px; margin: 0 24px; }
   .gallery { border-radius: 20px; }
@@ -67,7 +72,7 @@
   .card { border-radius: 20px; height: 330px; }
   .cardActions { top: 12px; right: 12px; gap: 8px; } .cardButton { width: 40px; height: 40px; }
   .cardLabel { left: 14px; bottom: 18px; max-width: calc(100% - 28px); font-size: 11px; }
-  .cardLabel button { padding: 8px 16px; min-height: 38px; white-space: normal; text-align: left; }
+  .cardLabel a { padding: 8px 16px; min-height: 38px; white-space: normal; text-align: left; }
 }
 @media (max-width: 600px) {
   .galleryFrame { margin: 0 16px; height: 560px; }
@@ -76,7 +81,7 @@
   .card { height: 250px; } .cardActions { top: 8px; right: 8px; gap: 6px; }
   .cardButton { width: 36px; height: 36px; }
   .cardLabel { left: 8px; bottom: 12px; max-width: calc(100% - 16px); font-size: 10px; }
-  .cardLabel button { padding: 8px 10px; }
+  .cardLabel a { padding: 8px 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .column { animation: none; will-change: auto; }

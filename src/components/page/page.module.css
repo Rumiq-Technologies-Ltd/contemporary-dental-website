@@ -1,0 +1,78 @@
+/* Inner pages reuse the homepage language: Unbounded display type at weight 200,
+   Inter body copy, cyan pills, soft grey panels and 20px photo frames. */
+.main { display: flex; flex-direction: column; gap: clamp(40px, 6vw, 88px); padding: 0 clamp(16px, 3.8889%, 56px); }
+
+.intro { display: grid; gap: 20px; max-width: 980px; padding-top: clamp(16px, 3vw, 40px); }
+.trio { display: flex; gap: 8px; margin-bottom: 4px; }
+.trio > span { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--accent); }
+.intro h1 { font-family: var(--font-display); font-weight: 200; font-size: clamp(30px, 4.6vw, 66px); line-height: 1.25; letter-spacing: -.035em; text-transform: uppercase; overflow-wrap: anywhere; }
+.lead { max-width: 62ch; font-size: clamp(16px, 1.4vw, 19px); line-height: 1.7; color: #445047; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
+
+.section { display: grid; gap: 20px; max-width: 980px; }
+.wide { max-width: none; }
+.section h2 { font-family: var(--font-display); font-weight: 300; font-size: clamp(22px, 2.6vw, 38px); line-height: 1.3; letter-spacing: -.02em; }
+.section h3 { font-size: 17px; font-weight: 600; line-height: 1.4; }
+.prose { display: grid; gap: 16px; max-width: 66ch; font-size: 16px; line-height: 1.75; color: #445047; }
+.prose strong { color: var(--ink); font-weight: 600; }
+.prose a:not(:global(.pill)), .link { border-bottom: 1px solid var(--ink); color: var(--ink); }
+.prose a:not(:global(.pill)):hover, .link:hover { background: var(--accent); }
+.list { display: grid; gap: 10px; max-width: 66ch; margin: 0; padding: 0; list-style: none; font-size: 16px; line-height: 1.65; color: #445047; }
+.list li { position: relative; padding-left: 20px; }
+.list li::before { content: ''; position: absolute; left: 0; top: .7em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 1px var(--ink); }
+.list strong { color: var(--ink); font-weight: 600; }
+
+/* A text column beside a framed photo; stacks on narrow screens. */
+.split { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: clamp(24px, 4vw, 64px); align-items: start; }
+.photo { position: relative; aspect-ratio: 4 / 5; border: 1px solid var(--accent); border-radius: 24px; overflow: hidden; background: var(--muted); }
+.photo img { object-fit: cover; }
+.photoWide { aspect-ratio: 3 / 2; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+.card { display: grid; align-content: start; gap: 10px; padding: 28px; border-radius: 20px; background: var(--muted); font-size: 15px; line-height: 1.7; color: #445047; }
+.card h3 { color: var(--ink); }
+.card p + p { margin-top: -2px; }
+.cardLink { transition: background .16s, transform .16s; }
+.cardLink:hover { background: #dcf6fb; transform: translateY(-3px); }
+.cardLink span[aria-hidden='true'] { font-size: 13px; color: var(--ink); }
+.eyebrow { font-size: 10px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #546057; }
+.meta { font-size: 14px; color: #546057; }
+
+/* Safety and notice panels use ink borders so meaning never relies on colour alone. */
+.safety { display: grid; max-width: 66ch; padding: 24px 28px; border: 2px solid var(--ink); border-radius: 20px; background: #dcf6fb; font-size: 16px; line-height: 1.65; }
+.notice { max-width: 66ch; padding: 20px 24px; border: 1px solid #131c1533; border-radius: 16px; background: var(--muted); font-size: 15px; line-height: 1.65; color: #445047; }
+
+.faq { display: grid; gap: 12px; max-width: 800px; }
+.faq details { border-radius: 16px; background: var(--muted); }
+.faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 24px; font-size: 16px; font-weight: 600; line-height: 1.5; border-radius: 16px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: '+'; display: grid; place-items: center; flex-shrink: 0; width: 32px; height: 32px; border: 1px solid var(--ink); border-radius: 50%; background: var(--surface); font-size: 18px; font-weight: 400; }
+.faq details[open] summary::after { content: '\2212'; background: var(--accent); }
+.faq details p { padding: 0 24px 22px; max-width: 66ch; font-size: 15px; line-height: 1.7; color: #445047; }
+
+.band { display: grid; gap: 20px; justify-items: start; padding: clamp(28px, 5vw, 64px); border-radius: 28px; background: var(--muted); }
+.band h2 { font-family: var(--font-display); font-weight: 200; font-size: clamp(26px, 3.6vw, 52px); line-height: 1.25; letter-spacing: -.03em; text-transform: uppercase; }
+.band p { max-width: 56ch; font-size: 16px; line-height: 1.7; color: #445047; }
+
+.office { display: grid; align-content: start; gap: 6px; padding: 28px; border-radius: 20px; background: var(--muted); font-size: 15px; line-height: 1.7; color: #445047; }
+.office h3 { font-family: var(--font-display); font-weight: 300; font-size: 22px; color: var(--ink); margin-bottom: 4px; }
+.office address { font-style: normal; }
+.office .actions { margin-top: 12px; }
+
+.team { list-style: none; margin: 0; padding: 0; align-items: start; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 16px; }
+.member { display: grid; align-content: start; gap: 8px; padding: 28px; border-radius: 20px; background: var(--muted); font-size: 15px; line-height: 1.7; color: #445047; }
+.member h2 { color: var(--ink); font-family: var(--font-display); font-weight: 300; font-size: 19px; line-height: 1.35; }
+
+.table { width: 100%; max-width: 800px; border-collapse: collapse; font-size: 15px; line-height: 1.6; }
+.table th, .table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #131c1526; vertical-align: top; }
+.table th { width: 34%; font-weight: 600; }
+.table td, .table th { overflow-wrap: anywhere; }
+
+@media (max-width: 899px) {
+  .main { padding: 0 24px; }
+  .split { grid-template-columns: 1fr; }
+  .photo { aspect-ratio: 4 / 3; max-height: 420px; }
+  .trio > span { width: 36px; height: 36px; }
+  .card, .office, .member { padding: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .cardLink { transition: none; } .cardLink:hover { transform: none; } }
