@@ -7,23 +7,31 @@ async function ready(page: Page, path = '/') {
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 }
 
+// Entrance animations fade text in; contrast must be measured once they have finished.
+async function settle(page: Page) {
+  await page.waitForFunction(() => document.getAnimations()
+    .every(animation => animation.playState !== 'running' || animation.effect?.getComputedTiming().iterations === Infinity));
+}
+
 test('Figma screens, local images and desktop geometry render without runtime errors', async ({ page }, testInfo) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
   await ready(page);
-  await expect(page.locator('main > section')).toHaveCount(3);
+  // Hero, same-day, services, about teaser, locations and new patients.
+  await expect(page.locator('main > section')).toHaveCount(6);
   await expect(page.locator('header')).toHaveCount(1);
   await expect(page.getByLabel('Menu — open navigation')).toHaveCount(1);
-  await expect(page.getByRole('button', { name: 'Log In — coming soon' })).toHaveCount(1);
-  await expect(page.getByRole('button', { name: 'Sign Up — coming soon' })).toHaveCount(1);
+  await expect(page.locator('#home').getByRole('link', { name: 'Orlando 321-522-8577' })).toHaveAttribute('href', 'tel:+13215228577');
+  await expect(page.locator('#home').getByRole('link', { name: 'Request an appointment' })).toHaveAttribute('href', '/contact#request-appointment');
   const panel = await page.locator('#home').boundingBox();
   expect(panel?.width).toBe(1440);
   expect(panel?.height).toBe(900);
-  await expect(page.getByRole('heading', { name: 'OUR ADVANTAGES' })).toBeAttached();
-  await expect(page.locator('#services').getByRole('article')).toHaveCount(6);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Honest, patient-focused\s*dental\s*care\s*in Orlando/);
+  await expect(page.getByRole('heading', { name: 'About us' })).toBeAttached();
+  await expect(page.locator('#services').getByRole('article')).toHaveCount(10);
   // Scroll each region so lazy-loaded photos really load before checking them.
-  for (const id of ['home', 'advantages', 'services']) {
+  for (const id of ['home', 'services', 'advantages', 'new-patients']) {
     await page.locator(`#${id}`).scrollIntoViewIfNeeded();
     if (id === 'services') {
       await page.getByRole('region', { name: 'Dental services gallery' }).focus();
@@ -40,52 +48,42 @@ test('Figma screens, local images and desktop geometry render without runtime er
   expect(errors).toEqual([]);
 });
 
-test('navigation and calls to action reach the intended sections', async ({ page }) => {
+test('navigation and calls to action reach the intended pages', async ({ page }) => {
   await ready(page);
   const menu = page.locator('#home').getByLabel('Menu — open navigation');
   await menu.click();
-  await expect(page.locator('#home nav')).toBeVisible();
-  await page.locator('#home nav').getByRole('link', { name: /Our services/ }).click();
-  await expect(page).toHaveURL(/#services$/);
-  await expect(page.locator('#home details')).not.toHaveAttribute('open', '');
-  await page.getByRole('link', { name: 'Meet The Team' }).click();
-  await expect(page).toHaveURL(/#advantages$/);
+  const nav = page.locator('#home nav');
+  await expect(nav).toBeVisible();
+  await expect(nav.getByRole('link')).toHaveText([/Services/, /Emergency/, /Locations/, /New patients/, /Insurance and payment/, /About/, /Contact/]);
+  await nav.getByRole('link', { name: /Emergency/ }).click();
+  await expect(page).toHaveURL(/\/emergency$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Emergency dental care');
+  await page.getByLabel('Menu — open navigation').click();
+  await expect(page.locator('nav[aria-label="Main navigation"] a[aria-current="page"]')).toHaveText(/Emergency/);
   await page.goto('/');
-  await page.getByRole('link', { name: 'GET STARTED' }).click();
-  await expect(page).toHaveURL(/#services$/);
+  await page.getByRole('link', { name: 'REQUEST APPOINTMENT' }).click();
+  await expect(page).toHaveURL(/\/contact#request-appointment$/);
+  await expect(page.getByRole('heading', { name: 'Request an appointment' })).toBeVisible();
+  await page.goto('/');
+  await page.locator('#services').getByRole('link', { name: 'All services' }).click();
+  await expect(page).toHaveURL(/\/services$/);
+  await page.goto('/');
+  await page.locator('#advantages').getByRole('link', { name: 'Meet Dr. Khan and our team' }).click();
+  await expect(page).toHaveURL(/\/about\/team$/);
 });
 
-test('coming-soon dialog traps keyboard focus, closes with Escape and restores focus', async ({ page }) => {
-  await ready(page);
-  const trigger = page.locator('#home').getByRole('button', { name: 'Log In — coming soon' });
-  await trigger.click();
-  const dialog = page.getByRole('dialog');
-  await expect(dialog).toBeVisible();
-  await expect(dialog).toContainText('Coming soon');
-  for (let index = 0; index < 6; index++) {
-    await page.keyboard.press('Tab');
-    expect(await dialog.evaluate(element => element.contains(document.activeElement))).toBe(true);
-  }
-  await page.keyboard.press('Escape');
-  await expect(dialog).not.toBeVisible();
-  await expect(trigger).toBeFocused();
-  await page.getByRole('button', { name: 'Get The App — coming soon' }).click();
-  await expect(dialog.getByRole('heading')).toHaveText('The dental care app');
-  await dialog.getByRole('button', { name: 'Back to exploring' }).click();
-  await expect(dialog).not.toBeVisible();
-});
-
-test('service details open and saved preferences survive a reload', async ({ page }) => {
+test('service cards link to their pages and saved preferences survive a reload', async ({ page }) => {
   await ready(page);
   await page.getByRole('region', { name: 'Dental services gallery' }).focus();
-  await page.getByRole('button', { name: 'Explore Oral Health Assessment', exact: true }).click();
-  await expect(page.getByRole('dialog').getByRole('heading')).toHaveText('Oral Health Assessment');
-  await expect(page.getByRole('dialog')).toContainText('Coming soon');
-  await page.keyboard.press('Escape');
-  const heart = page.getByRole('button', { name: 'Save Oral Health Assessment', exact: true });
+  await page.getByRole('link', { name: 'Explore Cleanings and check-ups', exact: true }).click();
+  await expect(page).toHaveURL(/\/services\/cleanings-checkups$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Cleanings and check-ups');
+  await page.goBack();
+  await page.getByRole('region', { name: 'Dental services gallery' }).focus();
+  const heart = page.getByRole('button', { name: 'Save Cleanings and check-ups', exact: true });
   await heart.click();
   await expect(heart).toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByRole('status').filter({ hasText: 'Oral Health Assessment saved' })).toHaveCount(1);
+  await expect(page.getByRole('status').filter({ hasText: 'Cleanings and check-ups saved' })).toHaveCount(1);
   await page.reload();
   await page.getByRole('region', { name: 'Dental services gallery' }).focus();
   await expect(heart).toHaveAttribute('aria-pressed', 'true');
@@ -99,7 +97,7 @@ test('malformed stored preferences do not crash the website', async ({ page }) =
   page.on('pageerror', error => errors.push(error.message));
   await ready(page);
   await page.getByRole('region', { name: 'Dental services gallery' }).focus();
-  const heart = page.getByRole('button', { name: 'Save Oral Health Assessment', exact: true });
+  const heart = page.getByRole('button', { name: 'Save Cleanings and check-ups', exact: true });
   await expect(heart).toHaveAttribute('aria-pressed', 'false');
   await heart.click();
   await expect(heart).toHaveAttribute('aria-pressed', 'true');
@@ -117,27 +115,30 @@ test('mobile and tablet reflow, keep every card reachable and have no horizontal
       expect(box!.x + box!.width).toBeLessThanOrEqual(width + 1);
     }
     await page.getByRole('region', { name: 'Dental services gallery' }).focus();
-    const card = page.getByRole('button', { name: 'Explore Medication Tracking', exact: true });
+    const card = page.getByRole('link', { name: 'Explore Cosmetic dentistry', exact: true });
     await card.click();
-    await expect(page.getByRole('dialog').getByRole('heading')).toHaveText('Medication Tracking');
-    await page.keyboard.press('Escape');
+    await expect(page).toHaveURL(/\/services\/cosmetic$/);
     if (width === 390) {
+      await page.goto('/');
       await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
       await page.screenshot({ path: testInfo.outputPath('mobile-home.png'), fullPage: true });
     }
   }
 });
 
-test('homepage and open dialogs pass WCAG accessibility checks', async ({ page }) => {
+test('homepage passes WCAG accessibility checks on desktop and mobile', async ({ page }) => {
   await ready(page);
-  const homepage = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+  await settle(page);
+  const tags = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
+  const homepage = await new AxeBuilder({ page }).withTags(tags).analyze();
   expect(homepage.violations).toEqual([]);
-  await page.locator('#home').getByRole('button', { name: 'Sign Up — coming soon' }).click();
-  const dialog = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
-  expect(dialog.violations).toEqual([]);
-  await page.keyboard.press('Escape');
+  await page.getByLabel('Menu — open navigation').first().click();
+  await settle(page);
+  const withMenu = await new AxeBuilder({ page }).withTags(tags).analyze();
+  expect(withMenu.violations).toEqual([]);
   await page.setViewportSize({ width: 390, height: 844 });
-  const mobile = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
+  await settle(page);
+  const mobile = await new AxeBuilder({ page }).withTags(tags).analyze();
   expect(mobile.violations).toEqual([]);
 });
 
@@ -164,14 +165,14 @@ test('production headers restrict framing, external resources and untrusted inli
 test('clean hero variant and not-found routes are usable', async ({ page, request }) => {
   await ready(page, '/hero-clean');
   await expect(page.locator('#home')).toBeVisible();
-  await expect(page.getByLabel('Discover our smile story — coming soon')).toHaveCount(0);
-  await page.getByRole('link', { name: 'GET STARTED' }).click();
-  await expect(page).toHaveURL(/\/#services$/);
-  await expect(page.locator('#services')).toBeVisible();
+  await page.getByRole('link', { name: 'REQUEST APPOINTMENT' }).click();
+  await expect(page).toHaveURL(/\/contact#request-appointment$/);
   const missing = await request.get('/does-not-exist');
   expect(missing.status()).toBe(404);
   await page.goto('/does-not-exist');
-  await page.getByRole('link', { name: 'Back to home' }).click();
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText('Page not found');
+  await expect(page).toHaveTitle('Page Not Found | Contemporary Dental Care');
+  await page.getByRole('link', { name: 'Back to home page' }).click();
   await expect(page).toHaveURL('http://127.0.0.1:3000/');
 });
 
@@ -240,16 +241,17 @@ test('section entrances run once and card loops pause outside the viewport', asy
   await expect(page.getByRole('button', { name: 'Resume cards', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByRole('button', { name: 'Resume cards', exact: true }).click();
   await page.mouse.move(0, 0);
-  await page.locator('#advantages').getByRole('button', { name: 'Instagram — coming soon' }).click();
+  // Keyboard focus inside the stack pauses it, and blurring lets it run again.
+  await page.getByRole('button', { name: 'Pause cards', exact: true }).focus();
   await expect(frontCard).toHaveCSS('animation-play-state', 'paused');
-  await page.keyboard.press('Escape');
+  await page.getByRole('button', { name: 'Pause cards', exact: true }).blur();
   await page.locator('#home').scrollIntoViewIfNeeded();
   await expect(page.locator('#advantages')).toHaveAttribute('data-active', 'false');
   await expect(frontCard).toHaveCSS('animation-play-state', 'paused');
   await expect(page.locator('#advantages')).toHaveAttribute('data-entered', 'true');
 });
 
-test('continuous page keeps the complete services arrow visible and clickable at every breakpoint', async ({ page }) => {
+test('continuous page keeps the locations arrow visible and clickable at every breakpoint', async ({ page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' });
   for (const width of [360, 390, 768, 900, 1024, 1520]) {
     await page.setViewportSize({ width, height: 844 });
@@ -265,7 +267,7 @@ test('continuous page keeps the complete services arrow visible and clickable at
       if (index) expect(Math.abs(sections[index].top - sections[index - 1].bottom)).toBeLessThan(1);
     }
     await expect(page.locator('body')).toHaveCSS('background-color', 'rgb(255, 255, 255)');
-    const arrow = page.getByRole('link', { name: 'Explore our services', exact: true });
+    const arrow = page.getByRole('link', { name: 'Our locations', exact: true });
     await arrow.scrollIntoViewIfNeeded();
     const geometry = await arrow.evaluate(element => {
       const rect = element.getBoundingClientRect();
@@ -275,7 +277,7 @@ test('continuous page keeps the complete services arrow visible and clickable at
     });
     expect(geometry).toEqual({ contained: true, hit: true });
     await arrow.click();
-    await expect(page).toHaveURL(/#services$/);
+    await expect(page).toHaveURL(/#offices$/);
   }
 });
 
@@ -283,7 +285,7 @@ test('reduced motion can be enabled during an entrance without leaving hidden co
   await ready(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(page.locator('#home')).toHaveAttribute('data-motion', 'reduced');
-  await expect(page.getByRole('link', { name: 'GET STARTED' })).toHaveCSS('opacity', '1');
+  await expect(page.getByRole('link', { name: 'REQUEST APPOINTMENT' })).toHaveCSS('opacity', '1');
   await expect(page.locator('#home h1')).toBeVisible();
   await page.locator('#advantages').scrollIntoViewIfNeeded();
   await expect(page.getByRole('button', { name: 'Pause cards', exact: true })).not.toBeVisible();
@@ -295,9 +297,9 @@ test('server-rendered content stays readable without JavaScript', async ({ brows
   const page = await context.newPage();
   await page.goto('http://127.0.0.1:3000/');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'GET STARTED' })).toHaveCSS('opacity', '1');
+  await expect(page.getByRole('link', { name: 'REQUEST APPOINTMENT' })).toHaveCSS('opacity', '1');
   await page.locator('#advantages').scrollIntoViewIfNeeded();
-  await expect(page.getByRole('heading', { name: 'OUR ADVANTAGES' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'About us' })).toBeVisible();
   await page.locator('#services').scrollIntoViewIfNeeded();
   await expect(page.getByRole('region', { name: 'Dental services gallery' })).toHaveCSS('overflow-y', 'auto');
   await expect(page.locator('#services [data-duplicate="true"]').first()).not.toBeVisible();
@@ -323,11 +325,12 @@ test('gallery pauses on hover, supports pause/resume and repeated cards stay int
     animation.currentTime = Number(animation.effect!.getTiming().duration) - 1;
   });
   const copy = page.locator('#services [data-duplicate="true"]').first();
-  await copy.locator('button[aria-label="Explore Oral Health Assessment"]').click();
-  await expect(page.getByRole('dialog').getByRole('heading')).toHaveText('Oral Health Assessment');
-  await page.keyboard.press('Escape');
-  await copy.locator('button[aria-label="Save Oral Health Assessment"]').click();
-  await expect(copy.locator('button[aria-label="Save Oral Health Assessment"]')).toHaveAttribute('aria-pressed', 'true');
+  await copy.locator('button[aria-label="Save Cleanings and check-ups"]').click();
+  await expect(copy.locator('button[aria-label="Save Cleanings and check-ups"]')).toHaveAttribute('aria-pressed', 'true');
+  await copy.locator('a[aria-label="Explore Cleanings and check-ups"]').click();
+  await expect(page).toHaveURL(/\/services\/cleanings-checkups$/);
+  // The repeated card saved the same service as the original one.
+  await page.goBack();
   await gallery.focus();
-  await expect(page.getByRole('button', { name: 'Save Oral Health Assessment', exact: true })).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.getByRole('button', { name: 'Save Cleanings and check-ups', exact: true })).toHaveAttribute('aria-pressed', 'true');
 });

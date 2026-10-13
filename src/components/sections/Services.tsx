@@ -2,10 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 import { photos } from '@/content/assets';
-import { services, type Service } from '@/content/services';
+import { listLabel, services, type Service } from '@/content/services';
+import { routes } from '@/content/site';
 import { Screen } from '@/components/layout/Screen';
 import { SectionFooter } from '@/components/layout/SectionFooter';
-import { Action, DestinationAction } from '@/components/ui/Interactions';
 import { SaveService } from '@/components/ui/SaveService';
 import { Icon } from '@/components/ui/Icon';
 import { ServiceGallery } from './ServiceGallery';
@@ -25,20 +25,24 @@ function ServiceCard({ service, duplicate = false }: { service: Service; duplica
     <Image src={photos[service.image]} alt="" fill sizes="(max-width: 899px) 40vw, 305px" placeholder="blur" />
     <div className={styles.cardActions}>
       <SaveService id={service.id} title={service.title} className={styles.cardButton} tabIndex={tabIndex} />
-      <Action content={{ kind: 'service', id: service.id }} className={styles.cardButton} label={`Explore ${service.title}`} tabIndex={tabIndex}><Icon name="arrow" /></Action>
+      <Link href={service.href} className={styles.cardButton} aria-label={`Explore ${service.title}`} tabIndex={tabIndex}><Icon name="arrow" /></Link>
     </div>
-    <h3 className={styles.cardLabel}><Action content={{ kind: 'service', id: service.id }} tabIndex={tabIndex}>{service.title}</Action></h3>
+    <h3 className={styles.cardLabel}><Link href={service.href} tabIndex={tabIndex}>{service.title}</Link></h3>
   </article>;
 }
 
+// "What we treat": every item links to its service page, both in the list and on its card.
 export function Services() {
   return <Screen id="services" labelledBy="services-title" className={styles.services}>
     <div className={styles.copy}>
       <div className={styles.trio} aria-hidden="true">{[0, 1, 2].map(index => <span key={index}><Icon name="tooth" /></span>)}</div>
-      <h2 id="services-title"><RevealText>EXPLORE OUR</RevealText><RevealText delay={70}>SERVICE, MAKE</RevealText><RevealText delay={140}>YOUR SMILE SHINE</RevealText></h2>
+      <h2 id="services-title"><RevealText>What we treat</RevealText></h2>
+      <ul className={styles.list}>
+        {services.map(service => <li key={service.id}><Link href={service.href}>{listLabel(service)}</Link></li>)}
+      </ul>
       <div className={styles.actions}>
-        <DestinationAction destination="app" className="pill pill-accent pill-large" label="Get The App — coming soon">Get The App</DestinationAction>
-        <Link href="/#advantages" className="pill pill-outline pill-large">Meet The Team</Link>
+        <Link href={routes.requestAppointment} className="pill pill-accent pill-large">Request an appointment</Link>
+        <Link href={routes.services} className="pill pill-outline pill-large">All services</Link>
       </div>
     </div>
     <ServiceGallery>

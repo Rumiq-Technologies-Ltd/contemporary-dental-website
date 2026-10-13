@@ -1,6 +1,6 @@
 # Contemporary Dental Care
 
-A modular Next.js App Router implementation of the supplied Contemporary Dental Design Figma file. The homepage combines the decorated hero, advantages, and services screens. `/hero-clean` preserves the alternate hero composition.
+A modular Next.js App Router implementation of the supplied Contemporary Dental Design Figma file, with the practice's content from `contemporary-dental-website-content.md` (v1.0 draft, 13 October 2026). The homepage keeps the designed hero, services and about screens and adds the same-day, locations and new-patients sections. Inner pages (about, services, emergency, locations, new patients, insurance, payment, FAQ, contact, legal) reuse the same design language. `/hero-clean` preserves the alternate hero composition.
 
 ## Start locally
 
@@ -23,11 +23,13 @@ Always use `npm run build`; its final step creates script hashes for the product
 ## Organization and editing
 
 ```text
-src/app/                  Routes, local fonts, metadata, global CSS tokens
-src/components/layout/    Shared screen, header, navigation, section footer
-src/components/sections/  Hero, advantages, services and their CSS Modules
-src/components/ui/        Dialog actions, icons and saved-service controls
-src/content/              Typed service data, image mappings, destination config
+src/app/                  Routes, local fonts, metadata, sitemap, robots, global CSS tokens
+src/components/layout/    Shared screen, header, menu, section footer, full footer, mobile call bar
+src/components/sections/  Hero, services, about teaser, homepage bands and their CSS Modules
+src/components/page/      Inner-page shell, intro, sections, cards, FAQ list, action buttons, JSON-LD
+src/components/ui/        Icons, reveal text and saved-service controls
+src/content/              Practice facts and flags (site.ts), services, team, FAQ, insurance, images
+src/lib/                  Page metadata helper and structured data
 public/images/figma/      Exact downloaded Figma source assets
 scripts/                  Asset download and production CSP generation
 tests/                    Production browser and accessibility tests
@@ -40,13 +42,21 @@ The reference-video choreography runs when each section enters view: masked head
 
 The advantage stack advances every 1.6 seconds through an 8-second cycle. Service columns move in opposite directions, with eased steps and holds in a seamless 4.8-second cycle. Their step distances follow the actual card heights. Hover, keyboard focus and open dialogs pause movement; both galleries have pause/resume controls. Keyboard focus keeps an original, manually scrollable service set stable when switching to the mouse. Reduced-motion preferences restore the static composition immediately and hide repeat copies. Timing lives in the respective section CSS Modules.
 
-Add/edit services in `src/content/services.ts`; cards and details derive from the same data. Image imports in `src/content/assets.ts` supply dimensions and blur placeholders to `next/image`. The SVG exports keep their intrinsic dimensions and are served locally. Components contain comments explaining layout, accessibility, storage and security decisions rather than repeating obvious markup.
+Add/edit services in `src/content/services.ts`; homepage cards, the homepage list, the services hub and `/services/[slug]` pages derive from the same data. Image imports in `src/content/assets.ts` supply dimensions and blur placeholders to `next/image`. The SVG exports keep their intrinsic dimensions and are served locally. Components contain comments explaining layout, accessibility, storage and security decisions rather than repeating obvious markup.
 
-## Integrations
+## Content and holds
 
-Portal log in/sign up, app downloads, social destinations and the smile-story video are **coming soon**. They open clear informational dialogs. No authentication, appointment submission, patient database, email delivery, or medical data collection is implemented. Service hearts store only service IDs in localStorage, with a safe fallback if storage is unavailable.
+`docs/content-holds.md` lists what the content file holds back, the flags that control it, and what is still needed before launch. Practice facts (name, phones, addresses, hours, navigation) live in `src/content/site.ts`; change a fact there once.
 
-Set verified HTTPS destination URLs in `src/content/site.ts` to activate portal/app/social links. Remove the “coming soon” suffix from their accessible labels when activating them. The video preview currently uses the same static smile image as Figma; no video was supplied.
+Three flags in `src/content/site.ts` apply the content file's holds:
+
+- `ocoeeEnabled` (default `false`): `false` uses the Orlando-only wording everywhere and returns 404 for `/locations/ocoee`; `true` adds the Ocoee office, page, cards and hours.
+- `indexable` (default `false`): keeps search engines out (`robots` meta, `robots.txt`) until the owner approves publication.
+- `appointmentFormEnabled` (default `false`): the website request form is not built until the C15 decision on form data handling. The contact page asks visitors to call.
+
+Not built, on purpose: the membership page, any offer or price list, before-and-after images, testimonials, Spanish and Portuguese versions, and analytics or advertising tags. Booking happens by phone. No authentication, patient data, email delivery or medical data collection is implemented. Service hearts store only service IDs in localStorage, with a safe fallback if storage is unavailable.
+
+Set `NEXT_PUBLIC_SITE_URL` (see `.env.example`) so canonical links, Open Graph tags, the sitemap and structured data use the real domain.
 
 ## Verification
 
@@ -68,7 +78,7 @@ npm test
 
 On macOS/Linux, use `PLAYWRIGHT_BROWSERS_PATH="$PWD/.playwright-browsers" npx playwright install chromium`.
 
-Tests start a production server if one is not already running. They cover desktop panel geometry, images, console errors, responsive widths (360, 390, 768, 1024, 1520px), menu navigation, keyboard focus and Escape handling, service details, saved preferences, malformed storage, loop directions and seams, card departure/wrap, visibility pause, reduced motion (including preference changes), rendering without JavaScript, the clean hero, 404s, WCAG checks via axe, and production security headers/CSP enforcement. `npm run test:report` opens the detailed report.
+Tests start a production server if one is not already running. They cover desktop panel geometry, images, console errors, responsive widths (360, 390, 768, 1024, 1520px), menu navigation, service links, saved preferences, malformed storage, loop directions and seams, card departure/wrap, visibility pause, reduced motion (including preference changes), rendering without JavaScript, the clean hero, 404s, WCAG checks via axe on every page, production security headers/CSP enforcement, and the content file's rules (title tags, one h1 per page, no held or forbidden wording, the Ocoee hold, noindex, no tracking requests, phone and policy facts). `npm run test:report` opens the detailed report.
 
 Optional Firefox tests: install Firefox with Playwright and set `CDC_TEST_FIREFOX=1` before `npm test`. Firefox startup did not complete on this host; the completed browser suite uses Chromium. Automated accessibility checks are useful evidence, not a substitute for a complete human accessibility audit.
 
