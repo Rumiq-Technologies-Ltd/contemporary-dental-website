@@ -48,15 +48,16 @@ Add/edit services in `src/content/services.ts`; homepage cards, the homepage lis
 
 `docs/content-holds.md` lists what the content file holds back, the flags that control it, and what is still needed before launch. Practice facts (name, phones, addresses, hours, navigation) live in `src/content/site.ts`; change a fact there once.
 
-Three flags in `src/content/site.ts` apply the content file's holds:
+Two flags in `src/content/site.ts` apply the content file's holds:
 
 - `ocoeeEnabled` (default `false`): `false` uses the Orlando-only wording everywhere and returns 404 for `/locations/ocoee`; `true` adds the Ocoee office, page, cards and hours.
-- `indexable` (default `false`): keeps search engines out (`robots` meta, `robots.txt`) until the owner approves publication.
 - `appointmentFormEnabled` (default `false`): the website request form is not built until the C15 decision on form data handling. The contact page asks visitors to call.
 
 Not built, on purpose: the membership page, any offer or price list, before-and-after images, testimonials, Spanish and Portuguese versions, and analytics or advertising tags. Booking happens by phone. No authentication, patient data, email delivery or medical data collection is implemented. Service hearts store only service IDs in localStorage, with a safe fallback if storage is unavailable.
 
-Set `NEXT_PUBLIC_SITE_URL` (see `.env.example`) so canonical links, Open Graph tags, the sitemap and structured data use the real domain.
+Search engines and AI crawlers: production builds are indexable, with `robots.txt` allowing every crawler and listing the sitemap. Nothing is blocked by name. Vercel preview deployments are `noindex` and disallowed. The privacy policy, Notice of Privacy Practices and terms stay `noindex` until counsel has reviewed them.
+
+`NEXT_PUBLIC_SITE_URL` must be set in the Vercel **Production** environment (for example `https://www.contemporarydentalcare.com`). Canonical links, Open Graph tags, the sitemap, `robots.txt` and structured data all read it through `src/lib/siteUrl.ts`. A Vercel production build fails without it, so a localhost address can never ship. The value is inlined at build time: redeploy after changing it. Local builds fall back to `http://127.0.0.1:3000`.
 
 ## Verification
 

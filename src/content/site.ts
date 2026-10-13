@@ -20,9 +20,6 @@ export interface Office {
  */
 export const ocoeeEnabled = false;
 
-/** Search engines are kept out until the owner approves publication. */
-export const indexable = false;
-
 /**
  * HOLD: the website request form waits for the C15 decision on form data
  * handling. Until then the contact page asks visitors to call.
@@ -36,7 +33,6 @@ export const site = {
   email: 'info@contemporarydentalcare.com',
   afterHoursPhone: '407-625-5440',
   afterHoursHref: 'tel:+14076255440',
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? 'http://127.0.0.1:3000',
 } as const;
 
 const orlando: Office = {

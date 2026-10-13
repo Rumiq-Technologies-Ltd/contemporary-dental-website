@@ -17,16 +17,18 @@ export function Hero({ variant = 'decorated' }: { variant?: 'decorated' | 'clean
   const clean = variant === 'clean';
   return <Screen id="home" labelledBy="hero-title" className={`${styles.hero} ${clean ? styles.clean : ''}`}>
     <SiteHeader />
+    {/* The {' '} text nodes keep the words apart for crawlers that read textContent;
+        the lines are absolutely positioned or flex items, so the spaces never render. */}
     <h1 id="hero-title" className={styles.headline}>
-      <span className={styles.lineOne}><RevealText>Honest, patient-focused</RevealText></span>
+      <span className={styles.lineOne}><RevealText>Honest, patient-focused</RevealText></span>{' '}
       <span className={styles.lineTwo}>
-        <RevealText delay={70}>dental</RevealText>
+        <RevealText delay={70}>dental</RevealText>{' '}
         {!clean && <span className={styles.inlineDecor} aria-hidden="true">
           <span className={styles.portrait}><Image src={photos.smile} alt="" fill sizes="(max-width: 899px) 64px, 100px" loading="eager" /></span>
           <span className={styles.flower}><Icon name="flower" /></span>
         </span>}
         <RevealText delay={70}>care</RevealText>
-      </span>
+      </span>{' '}
       <span className={styles.lineThree}><RevealText delay={140}>{lineThree}</RevealText></span>
     </h1>
     <p className={styles.support}>Routine care, emergency visits, implants, cosmetic treatment and clear aligners. Members of our team speak English, Spanish and Portuguese. Call ahead to confirm who is in.</p>

@@ -1,4 +1,5 @@
 import { formatAddress, offices, site, type Office } from '@/content/site';
+import { siteUrl } from '@/lib/siteUrl';
 
 const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
@@ -13,9 +14,9 @@ function dentist(office: Office): Record<string, unknown> {
   const hours = openingHours[office.id];
   return {
     '@type': 'Dentist',
-    '@id': `${site.url}${office.path}#dentist`,
+    '@id': `${siteUrl}${office.path}#dentist`,
     name: site.name,
-    url: `${site.url}${office.path}`,
+    url: `${siteUrl}${office.path}`,
     telephone: `+1-${office.phone}`,
     email: site.email,
     address: {
@@ -38,10 +39,10 @@ export function practiceStructuredData(): Record<string, unknown> {
     '@graph': [
       {
         '@type': 'Organization',
-        '@id': `${site.url}/#organization`,
+        '@id': `${siteUrl}/#organization`,
         name: site.name,
         legalName: 'Pearl Valley Dental Inc.',
-        url: site.url,
+        url: siteUrl,
         email: site.email,
         founder: { '@type': 'Person', name: 'Dr. Sheryar Khan', jobTitle: 'General Dentist' },
         foundingDate: '2023',

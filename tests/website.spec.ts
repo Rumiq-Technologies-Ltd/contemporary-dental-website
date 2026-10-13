@@ -27,7 +27,7 @@ test('Figma screens, local images and desktop geometry render without runtime er
   const panel = await page.locator('#home').boundingBox();
   expect(panel?.width).toBe(1440);
   expect(panel?.height).toBe(900);
-  await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Honest, patient-focused\s*dental\s*care\s*in Orlando/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Honest, patient-focused dental care in Orlando/);
   await expect(page.getByRole('heading', { name: 'About us' })).toBeAttached();
   await expect(page.locator('#services').getByRole('article')).toHaveCount(10);
   // Scroll each region so lazy-loaded photos really load before checking them.
