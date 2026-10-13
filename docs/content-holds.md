@@ -1,0 +1,59 @@
+# Content holds and launch checklist
+
+Source: `contemporary-dental-website-content.md` v1.0 draft (13 October 2026, not approved for publication).
+Re-check every fact against the current Drive masters before publishing. The owner (Mohammed Khan, Rumiq) approves before anything goes live.
+
+## Flags (`src/content/site.ts`)
+
+| Flag | Default | Effect |
+|---|---|---|
+| `ocoeeEnabled` | `false` | `false`: Orlando-only wording on every page, `/locations/ocoee` returns 404, Ocoee is left out of the sitemap, footer, cards, FAQ and structured data. `true`: both offices. |
+| `indexable` | `false` | `false`: `noindex` meta tag and a `robots.txt` that disallows everything. |
+| `appointmentFormEnabled` | `false` | `false`: no request form. The contact page, FAQ, About and New patients pages point visitors to the phone. `true` switches the wording back to the form; the form itself still has to be built (fields: Name, Phone, Email, Office, Preferred language, Reason, Message, with the form note and confirmation message from content file section 5.26). |
+
+## Built with a hold applied
+
+- Contact form (C15 decision pending).
+- Ocoee office page and every Ocoee reference.
+- Offer list on Pricing: new-patient exam, October 2026 special, $2,999 implant offer. None is shown.
+- Implants: no offer, no full-arch or All-on-4 wording.
+- Dentures: no partial dentures.
+- Clear aligners and braces: no orthobrain wording and no vendor product names.
+- Technology: no speed claims and no CEREC, LANAP or 3D-printed restorations.
+- Notice of Privacy Practices: placeholder until the approved text is supplied. The privacy policy and terms follow the content file's outline only, are marked as drafts and are set to `noindex`.
+- New patients: no sedation or nitrous oxide wording; no "what to bring" list.
+- Payment and financing: no payment-methods line and no in-house plan terms.
+- Dr. Khan: no photo, no licence number, no advanced-training claims.
+- Team: no photos. Jessica Salazar and Tyrese Brown show name and role only.
+- Home: no Google reviews link (no URL supplied) and no testimonials.
+
+## Not built
+
+Membership page (C18 draft), Spanish and Portuguese versions, Haitian Creole or French pages, language selector, analytics and advertising tags, before-and-after gallery, the Altamonte Springs location, LANAP, CEREC, same-day crowns, nitrous oxide, facial aesthetics, the referral promotion, Crunch Fitness content.
+
+## Added beyond the content file
+
+- Orlando-only alternatives for sentences that mention "both offices" or Ocoee (derived from the content file's own build notes). Review them before launch.
+- Short meta descriptions for each page (the content file gives title tags only).
+- The five advantage-card labels on the homepage reuse headings from the About, Home and New patients copy.
+- A privacy-policy line that no analytics, advertising tags or session replay are used, and a line about the saved-service hearts (browser storage only).
+- Generic stock photographs (see `image-credits.md`) with generic alt text. They do not show the practice.
+- Removed from the old design because the content file has no equivalent: Log In and Sign Up buttons, "Get The App", social icons and the "Best Start Up of 2023" line (a superlative claim), the smile-story video dialog, and the "coming soon" dialogs.
+
+## Still needed before launch
+
+1. The Ocoee decision and Ocoee's actual operating days.
+2. Dr. Khan's Florida licence number and status, the residency completion year, his professional photo, and team photos with written consent.
+3. Jessica Salazar's bio and Tyrese Brown's credential if one is shown.
+4. The complete Insurance List (26 PPO plans plus discount and Medicare lists), then remove "and more".
+5. Directions, parking, accessibility and holiday hours for both offices; map embed.
+6. The what-to-bring list and accepted payment methods; in-house payment plan terms.
+7. Dr. Khan's approval of the emergency safety wording and of any personal paragraph.
+8. The verbatim Financial Policy, HIPAA Notice of Privacy Practices and consent wording from the intake pack.
+9. The C15 decision on website forms and data handling, then build the request form.
+10. A named privacy contact, and counsel for the privacy policy and terms.
+11. Counsel review of the items in C14 section 4; the offer decision tree; written terms for each offer.
+12. Confirmation of partial dentures at Orlando, and of card capture at booking or on arrival.
+13. The Google reviews URL.
+14. The legacy sitemap for URL mapping, and the real domain in `NEXT_PUBLIC_SITE_URL`.
+15. The practice's own photographs, to replace the stock images.
