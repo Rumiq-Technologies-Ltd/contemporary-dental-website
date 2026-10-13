@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { servicePages } from '@/content/services';
-import { ocoeeEnabled, routes, site } from '@/content/site';
+import { ocoeeEnabled, routes } from '@/content/site';
+import { siteUrl } from '@/lib/siteUrl';
 
 // Public pages only. The Ocoee page joins when the Ocoee hold is lifted; membership
 // is not built, and the legal pages wait for counsel review.
@@ -13,5 +14,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     routes.newPatients, routes.insurance, routes.payment, routes.pricing, routes.faq,
     routes.contact, routes.accessibility,
   ];
-  return paths.map(path => ({ url: `${site.url}${path === '/' ? '' : path}` }));
+  return paths.map(path => ({ url: `${siteUrl}${path === '/' ? '' : path}` }));
 }

@@ -1,9 +1,11 @@
 import type { MetadataRoute } from 'next';
-import { indexable, site } from '@/content/site';
+import { isIndexable, siteUrl } from '@/lib/siteUrl';
 
-// Keeps staging and draft builds out of search indexes (see `indexable` in content/site.ts).
+// Search and AI crawlers are welcome in production. Nothing is blocked by name, because
+// GPTBot, Google-Extended and Bingbot also decide AI search visibility. Vercel previews
+// stay out of search indexes (see isIndexable in lib/siteUrl.ts).
 export default function robots(): MetadataRoute.Robots {
-  return indexable
-    ? { rules: { userAgent: '*', allow: '/' }, sitemap: `${site.url}/sitemap.xml` }
+  return isIndexable(process.env)
+    ? { rules: { userAgent: '*', allow: '/' }, sitemap: `${siteUrl}/sitemap.xml` }
     : { rules: { userAgent: '*', disallow: '/' } };
 }

@@ -61,14 +61,19 @@ test.describe('page content', () => {
   }
 
   test('every page passes WCAG 2.1 AA checks', async ({ page }) => {
+    test.setTimeout(180_000); // one axe scan per page, 27 pages
     for (const { path } of pages) {
       await page.goto(path);
+      // Entrance animations fade text in; measure contrast once they have finished.
+      await page.waitForFunction(() => document.getAnimations()
+        .every(animation => animation.playState !== 'running' || animation.effect?.getComputedTiming().iterations === Infinity));
       const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
       expect(results.violations, path).toEqual([]);
     }
   });
 
   test('no page overflows horizontally on phones, tablets or laptops', async ({ page }) => {
+    test.setTimeout(180_000); // 27 pages at three widths
     for (const width of [360, 768, 1024]) {
       await page.setViewportSize({ width, height: 800 });
       for (const { path } of pages) {
@@ -93,10 +98,51 @@ test.describe('held items', () => {
     expect(sitemap).not.toMatch(/ocoee|membership|privacy|terms|hero-clean/i);
   });
 
-  test('the draft stays out of search engines until publication is approved', async ({ page, request }) => {
+  test('public pages are indexable and robots.txt welcomes crawlers', async ({ page, request }) => {
+    for (const { path } of pages.filter(item => !/^\/privacy|^\/terms/.test(item.path))) {
+      await page.goto(path);
+      await expect(page.locator('meta[name="robots"]'), path).toHaveAttribute('content', 'index, follow');
+    }
+    const robots = await (await request.get('/robots.txt')).text();
+    expect(robots).toMatch(/User-Agent: \*\s+Allow: \//i);
+    expect(robots).not.toMatch(/Disallow: \//i);
+    expect(robots).toMatch(/Sitemap: https?:\/\/\S+\/sitemap\.xml/i);
+    // Nothing is blocked by name: GPTBot, Google-Extended and Bingbot also drive AI search visibility.
+    expect(robots).not.toMatch(/GPTBot|CCBot|Google-Extended|ClaudeBot|PerplexityBot/i);
+    const headers = (await request.get('/')).headers();
+    expect(headers['x-robots-tag']).toBeUndefined();
+  });
+
+  test('draft legal pages stay out of the index until counsel has reviewed them', async ({ page }) => {
+    for (const path of ['/privacy', '/privacy/notice-of-privacy-practices', '/terms']) {
+      await page.goto(path);
+      await expect(page.locator('meta[name="robots"]'), path).toHaveAttribute('content', /noindex/);
+    }
+  });
+
+  test('canonical, Open Graph, sitemap and structured data share one absolute origin', async ({ page, request }) => {
     await page.goto('/');
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
-    expect(await (await request.get('/robots.txt')).text()).toContain('Disallow: /');
+    const origin = new URL((await page.locator('link[rel="canonical"]').getAttribute('href'))!).origin;
+    for (const { path } of pages) {
+      await page.goto(path);
+      const expected = `${origin}${path === '/' ? '' : path}`;
+      await expect(page.locator('link[rel="canonical"]'), path).toHaveAttribute('href', expected);
+      await expect(page.locator('meta[property="og:url"]'), path).toHaveAttribute('content', expected);
+    }
+    const sitemap = await (await request.get('/sitemap.xml')).text();
+    const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map(match => match[1]);
+    expect(locations.length).toBeGreaterThan(20);
+    for (const location of locations) expect(location.startsWith(`${origin}`), location).toBe(true);
+    await page.goto('/');
+    const data = await page.locator('script[type="application/ld+json"]').first().innerText();
+    expect(data).toContain(`${origin}/#organization`);
+    expect([...data.matchAll(/"(?:@id|url)":"(https?:[^"]+)"/g)].every(match => match[1].startsWith(origin))).toBe(true);
+  });
+
+  test('the homepage headline keeps its words apart for crawlers that strip tags', async ({ page }) => {
+    await page.goto('/');
+    const text = await page.locator('h1').evaluate(element => element.textContent);
+    expect(text).toBe('Honest, patient-focused dental care in Orlando');
   });
 
   test('no analytics, advertising or tracking requests are made', async ({ page }) => {

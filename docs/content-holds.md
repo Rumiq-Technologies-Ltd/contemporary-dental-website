@@ -8,8 +8,11 @@ Re-check every fact against the current Drive masters before publishing. The own
 | Flag | Default | Effect |
 |---|---|---|
 | `ocoeeEnabled` | `false` | `false`: Orlando-only wording on every page, `/locations/ocoee` returns 404, Ocoee is left out of the sitemap, footer, cards, FAQ and structured data. `true`: both offices. |
-| `indexable` | `false` | `false`: `noindex` meta tag and a `robots.txt` that disallows everything. |
 | `appointmentFormEnabled` | `false` | `false`: no request form. The contact page, FAQ, About and New patients pages point visitors to the phone. `true` switches the wording back to the form; the form itself still has to be built (fields: Name, Phone, Email, Office, Preferred language, Reason, Message, with the form note and confirmation message from content file section 5.26). |
+
+## Search indexing
+
+Production builds are indexable and `robots.txt` welcomes all crawlers (it is no longer disallow-all). Vercel previews stay `noindex`. The privacy policy, Notice of Privacy Practices and terms stay `noindex` until counsel has reviewed them. Because production is now indexable, check the items under "Still needed before launch" first: unverified credentials, the "and more" insurance list and the draft legal pages are visible to search engines.
 
 ## Built with a hold applied
 
@@ -55,5 +58,5 @@ Membership page (C18 draft), Spanish and Portuguese versions, Haitian Creole or 
 11. Counsel review of the items in C14 section 4; the offer decision tree; written terms for each offer.
 12. Confirmation of partial dentures at Orlando, and of card capture at booking or on arrival.
 13. The Google reviews URL.
-14. The legacy sitemap for URL mapping, and the real domain in `NEXT_PUBLIC_SITE_URL`.
+14. The legacy sitemap for URL mapping. Confirm the preferred host (`www` or the apex domain) and set `NEXT_PUBLIC_SITE_URL` in the Vercel Production environment.
 15. The practice's own photographs, to replace the stock images.

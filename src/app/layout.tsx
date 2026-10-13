@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import { MobileCallBar } from '@/components/layout/MobileCallBar';
-import { indexable, site, whenOcoee } from '@/content/site';
+import { site, whenOcoee } from '@/content/site';
+import { isIndexable, siteUrl } from '@/lib/siteUrl';
 import './globals.css';
 
 const inter = localFont({ src: '../../node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2', variable: '--font-body', display: 'swap', preload: false });
@@ -13,12 +14,12 @@ const defaultDescription = whenOcoee(
 );
 
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(siteUrl),
   title: { default: site.name, template: `%s | ${site.name}` },
   description: defaultDescription,
   applicationName: site.name,
-  // Stays off search engines until the owner approves publication (content file, status line).
-  robots: indexable ? { index: true, follow: true } : { index: false, follow: false },
+  // Production and local builds are indexable. Vercel previews stay out of search indexes.
+  robots: isIndexable(process.env) ? { index: true, follow: true } : { index: false, follow: false },
   icons: { icon: '/images/figma/8e6b4.svg' },
   openGraph: { siteName: site.name, type: 'website', locale: 'en_US' },
   twitter: { card: 'summary' },
