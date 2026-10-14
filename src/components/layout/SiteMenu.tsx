@@ -5,16 +5,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { navigation, site } from '@/content/site';
 import { Icon } from '@/components/ui/Icon';
+import { isNavCurrent } from './isNavCurrent';
 import styles from './layout.module.css';
 
-// The insurance and payment pages share one navigation entry.
-const sections: Readonly<Record<string, readonly string[]>> = { '/insurance': ['/insurance', '/payment-financing'] };
-
+// Small screens and tablets. Large screens show SiteNav instead.
 export function SiteMenu() {
   const details = useRef<HTMLDetailsElement>(null);
   const pathname = usePathname();
   const close = () => { if (details.current) details.current.open = false; };
-  const isCurrent = (href: string) => (sections[href] ?? [href]).some(path => pathname === path || pathname.startsWith(`${path}/`));
   return <details ref={details} className={styles.menu} onKeyDown={event => {
     if (event.key === 'Escape') { close(); details.current?.querySelector('summary')?.focus(); }
   }}>
@@ -23,7 +21,7 @@ export function SiteMenu() {
     </summary>
     <nav className={styles.menuPanel} aria-label="Main navigation">
       <p>{site.tagline}</p>
-      {navigation.map(item => <Link key={item.href} href={item.href} onClick={close} aria-current={isCurrent(item.href) ? 'page' : undefined}><span>{item.number}</span>{item.label}<span aria-hidden="true">↗</span></Link>)}
+      {navigation.map(item => <Link key={item.href} href={item.href} onClick={close} aria-current={isNavCurrent(pathname, item.href) ? 'page' : undefined}><span>{item.number}</span>{item.label}<span aria-hidden="true">↗</span></Link>)}
     </nav>
   </details>;
 }
