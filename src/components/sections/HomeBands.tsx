@@ -28,7 +28,7 @@ export function NewPatientsBand() {
       <h2 id="new-patients-title">New to us? Here is what to expect</h2>
       <Link href={routes.newPatients} className="pill pill-accent pill-large">New patients</Link>
     </div>
-    <PagePhoto photo="roomBlue" alt="A dental treatment room" wide />
+    <PagePhoto photo="roomTeal" alt="A treatment room at Contemporary Dental Care" wide />
   </section>;
 }
 

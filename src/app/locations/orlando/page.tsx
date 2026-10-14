@@ -1,6 +1,7 @@
 import { CallButton, RequestAppointmentButton } from '@/components/page/Actions';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
+import { PagePhoto } from '@/components/page/PagePhoto';
 import { formatAddress, primaryOffice, site } from '@/content/site';
 import { pageMetadata } from '@/lib/metadata';
 import styles from '@/components/page/page.module.css';
@@ -17,6 +18,7 @@ export default function OrlandoOfficePage() {
   const office = primaryOffice;
   return <PageLayout>
     <PageIntro title="Orlando office" actions={<><RequestAppointmentButton /><CallButton office={office} withName={false} /></>} />
+    <PagePhoto photo="orlandoFront" alt="The Contemporary Dental Care office at 5330 S John Young Parkway, Orlando" wide />
     <table className={styles.table}>
       <caption className="sr-only">Orlando office details</caption>
       <tbody>

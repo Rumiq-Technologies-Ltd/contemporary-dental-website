@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { CardGrid, InfoCard } from '@/components/page/Cards';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
+import { PagePhoto } from '@/components/page/PagePhoto';
 import { appointmentFormEnabled, routes, whenOcoee } from '@/content/site';
 import { pageMetadata } from '@/lib/metadata';
 import styles from '@/components/page/page.module.css';
@@ -41,7 +42,12 @@ export default function AboutPage() {
         <p>Our team speaks English. Members of our team also speak Spanish and Portuguese. Tell us your language when you call, and we&apos;ll confirm who is in.</p>
       </InfoCard>
     </CardGrid>
-    <p><Link href={routes.team} className="pill pill-accent pill-large">Meet Dr. Khan and our team</Link></p>
-    <p className={styles.meta}>Read more about <Link className={styles.link} href={routes.doctor}>Dr. Sheryar Khan</Link>.</p>
+    <div className={styles.split}>
+      <PagePhoto photo="teamAtWork" alt="A member of our team working in a treatment room" />
+      <div>
+        <p><Link href={routes.team} className="pill pill-accent pill-large">Meet Dr. Khan and our team</Link></p>
+        <p className={styles.meta}>Read more about <Link className={styles.link} href={routes.doctor}>Dr. Sheryar Khan</Link>.</p>
+      </div>
+    </div>
   </PageLayout>;
 }

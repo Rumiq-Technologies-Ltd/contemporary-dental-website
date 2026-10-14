@@ -3,9 +3,11 @@ import { CallButton } from '@/components/page/Actions';
 import { OfficeCard } from '@/components/page/OfficeCard';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
+import { PagePhoto } from '@/components/page/PagePhoto';
 import { Prose, Section } from '@/components/page/Section';
 import { appointmentFormEnabled, offices, routes, site } from '@/content/site';
 import { pageMetadata } from '@/lib/metadata';
+import styles from '@/components/page/page.module.css';
 
 export const metadata = pageMetadata({
   title: 'Contact Us',
@@ -21,10 +23,13 @@ export default function ContactPage() {
   return <PageLayout>
     <PageIntro title="Contact us" />
     <CardGrid>{offices.map(office => <OfficeCard key={office.id} office={office} />)}</CardGrid>
-    <Prose>
-      <p><strong>After hours:</strong> <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></p>
-      <p><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
-    </Prose>
+    <div className={styles.split}>
+      <Prose>
+        <p><strong>After hours:</strong> <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></p>
+        <p><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
+      </Prose>
+      <PagePhoto photo="frontDesk" alt="Our front desk team answering calls at Contemporary Dental Care" />
+    </div>
     <Section id="request-appointment" title="Request an appointment">
       <Prose>
         {appointmentFormEnabled

@@ -28,7 +28,7 @@ export default function TechnologyPage() {
         <li>Digital intraoral scanner (3Shape TRIOS 5)</li>
         <li>Intraoral camera</li>
       </BulletList>
-      <PagePhoto photo="roomLight" alt="A dental treatment room" wide />
+      <PagePhoto photo="xrayTeamPortrait" alt="A team member beside our digital X-ray unit" />
     </div>
     <ClosingBand />
   </PageLayout>;
