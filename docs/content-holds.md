@@ -7,7 +7,7 @@ Re-check every fact against the current Drive masters before publishing. The own
 
 | Flag | Default | Effect |
 |---|---|---|
-| `ocoeeEnabled` | `false` | `false`: Orlando-only wording on every page, `/locations/ocoee` returns 404, Ocoee is left out of the sitemap, footer, cards, FAQ and structured data. `true`: both offices. |
+| `ocoeeEnabled` | `true` | `true`: both offices on every page (hero, footer, contact, locations, FAQ, sitemap, structured data) and `/locations/ocoee` is live. Enabled 14 October 2026 at the owner's request. `false` returns the Orlando-only wording and 404 for the Ocoee page. |
 | `appointmentFormEnabled` | `false` | `false`: no request form. The contact page, FAQ, About and New patients pages point visitors to the phone. `true` switches the wording back to the form; the form itself still has to be built (fields: Name, Phone, Email, Office, Preferred language, Reason, Message, with the form note and confirmation message from content file section 5.26). |
 
 ## Search indexing
@@ -17,7 +17,7 @@ Production builds are indexable and `robots.txt` welcomes all crawlers (it is no
 ## Built with a hold applied
 
 - Contact form (C15 decision pending).
-- Ocoee office page and every Ocoee reference.
+- Ocoee is enabled (14 October 2026). Its Monday hours still need checking against Curve before launch.
 - Offer list on Pricing: new-patient exam, October 2026 special, $2,999 implant offer. None is shown.
 - Implants: no offer, no full-arch or All-on-4 wording.
 - Dentures: no partial dentures.
@@ -45,7 +45,7 @@ Membership page (C18 draft), Spanish and Portuguese versions, Haitian Creole or 
 
 ## Still needed before launch
 
-1. The Ocoee decision and Ocoee's actual operating days.
+1. Ocoee's actual Monday operating days, checked against Curve (operating days fell from 74 a quarter to 11). Ocoee is enabled, so this must be confirmed before launch.
 2. Dr. Khan's Florida licence number and status, the residency completion year, his professional photo, and team photos with written consent.
 3. Jessica Salazar's bio and Tyrese Brown's credential if one is shown.
 4. The complete Insurance List (26 PPO plans plus discount and Medicare lists), then remove "and more".

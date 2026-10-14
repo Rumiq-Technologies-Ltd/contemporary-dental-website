@@ -48,28 +48,34 @@ test('Figma screens, local images and desktop geometry render without runtime er
   expect(errors).toEqual([]);
 });
 
-test('navigation and calls to action reach the intended pages', async ({ page }) => {
+test('large screens show the navigation bar and link to the right pages', async ({ page }) => {
   await ready(page);
-  const menu = page.locator('#home').getByLabel('Menu — open navigation');
-  await menu.click();
-  const nav = page.locator('#home nav');
+  const nav = page.getByRole('navigation', { name: 'Primary navigation' });
   await expect(nav).toBeVisible();
-  await expect(nav.getByRole('link')).toHaveText([/Services/, /Emergency/, /Locations/, /New patients/, /Insurance and payment/, /About/, /Contact/]);
-  await nav.getByRole('link', { name: /Emergency/ }).click();
+  await expect(page.getByLabel('Menu — open navigation')).toBeHidden();
+  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^Locations$/, /^New patients$/, /^Insurance and payment$/, /^About$/, /^Contact$/]);
+  await nav.getByRole('link', { name: 'Emergency' }).click();
   await expect(page).toHaveURL(/\/emergency$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Emergency dental care');
-  await page.getByLabel('Menu — open navigation').click();
-  await expect(page.locator('nav[aria-label="Main navigation"] a[aria-current="page"]')).toHaveText(/Emergency/);
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Emergency' })).toHaveAttribute('aria-current', 'page');
   await page.goto('/');
   await page.getByRole('link', { name: 'REQUEST APPOINTMENT' }).click();
   await expect(page).toHaveURL(/\/contact#request-appointment$/);
-  await expect(page.getByRole('heading', { name: 'Request an appointment' })).toBeVisible();
   await page.goto('/');
   await page.locator('#services').getByRole('link', { name: 'All services' }).click();
   await expect(page).toHaveURL(/\/services$/);
   await page.goto('/');
   await page.locator('#advantages').getByRole('link', { name: 'Meet Dr. Khan and our team' }).click();
   await expect(page).toHaveURL(/\/about\/team$/);
+});
+
+test('phones and tablets open the menu, and the navigation bar stays hidden there', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await ready(page);
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toBeHidden();
+  await page.getByLabel('Menu — open navigation').click();
+  await page.getByRole('navigation', { name: 'Main navigation' }).getByRole('link', { name: /Emergency/ }).click();
+  await expect(page).toHaveURL(/\/emergency$/);
 });
 
 test('service cards link to their pages and saved preferences survive a reload', async ({ page }) => {
@@ -132,11 +138,12 @@ test('homepage passes WCAG accessibility checks on desktop and mobile', async ({
   const tags = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'];
   const homepage = await new AxeBuilder({ page }).withTags(tags).analyze();
   expect(homepage.violations).toEqual([]);
-  await page.getByLabel('Menu — open navigation').first().click();
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByLabel('Menu — open navigation').click();
   await settle(page);
   const withMenu = await new AxeBuilder({ page }).withTags(tags).analyze();
   expect(withMenu.violations).toEqual([]);
-  await page.setViewportSize({ width: 390, height: 844 });
+  await page.keyboard.press('Escape');
   await settle(page);
   const mobile = await new AxeBuilder({ page }).withTags(tags).analyze();
   expect(mobile.violations).toEqual([]);

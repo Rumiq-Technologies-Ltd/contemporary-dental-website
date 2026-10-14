@@ -1,9 +1,14 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { ocoeeEnabled } from '../src/content/site';
 
 // Routes and title tags from the content file's site map (Ocoee and Membership are held).
 const pages: readonly { path: string; title: string; heading: string }[] = [
-  { path: '/', title: 'Dental Care in Orlando | Contemporary Dental Care', heading: 'Honest, patient-focused dental care in Orlando' },
+  {
+    path: '/',
+    title: ocoeeEnabled ? 'Dental Care in Orlando and Ocoee | Contemporary Dental Care' : 'Dental Care in Orlando | Contemporary Dental Care',
+    heading: ocoeeEnabled ? 'Honest, patient-focused dental care in Orlando and Ocoee' : 'Honest, patient-focused dental care in Orlando',
+  },
   { path: '/about', title: 'About Us | Contemporary Dental Care', heading: 'About Contemporary Dental Care' },
   { path: '/about/dr-sheryar-khan', title: 'Dr. Sheryar Khan, DDS | Contemporary Dental Care', heading: 'Dr. Sheryar Khan, DDS' },
   { path: '/about/team', title: 'Our Team | Contemporary Dental Care', heading: 'Meet the team' },
@@ -55,8 +60,6 @@ test.describe('page content', () => {
       await expect(page.locator('link[rel="canonical"]')).toHaveCount(1);
       const text = await page.locator('body').innerText();
       for (const pattern of forbidden) expect(text, `${path} must not match ${pattern}`).not.toMatch(pattern);
-      // The Ocoee hold: no Ocoee address, phone or wording anywhere while it is paused.
-      expect(text).not.toMatch(/Ocoee|689-407-3015|Maguire/i);
     });
   }
 
@@ -85,8 +88,8 @@ test.describe('page content', () => {
 });
 
 test.describe('held items', () => {
-  test('the Ocoee page, the membership page and the unbuilt pages return 404', async ({ request }) => {
-    for (const path of ['/locations/ocoee', '/membership', '/hero-clean-missing', '/services/lanap', '/services/cerec', '/services/nitrous-oxide']) {
+  test('the membership page and the unbuilt pages return 404', async ({ request }) => {
+    for (const path of ['/membership', '/hero-clean-missing', '/services/lanap', '/services/cerec', '/services/nitrous-oxide']) {
       expect((await request.get(path)).status(), path).toBe(404);
     }
   });
@@ -95,7 +98,8 @@ test.describe('held items', () => {
     const sitemap = await (await request.get('/sitemap.xml')).text();
     expect(sitemap).toContain('/services/implants');
     expect(sitemap).toContain('/locations/orlando');
-    expect(sitemap).not.toMatch(/ocoee|membership|privacy|terms|hero-clean/i);
+    expect(sitemap).not.toMatch(/membership|privacy|terms|hero-clean/i);
+    expect(sitemap.includes('/locations/ocoee')).toBe(ocoeeEnabled);
   });
 
   test('public pages are indexable and robots.txt welcomes crawlers', async ({ page, request }) => {
@@ -142,7 +146,7 @@ test.describe('held items', () => {
   test('the homepage headline keeps its words apart for crawlers that strip tags', async ({ page }) => {
     await page.goto('/');
     const text = await page.locator('h1').evaluate(element => element.textContent);
-    expect(text).toBe('Honest, patient-focused dental care in Orlando');
+    expect(text).toBe(ocoeeEnabled ? 'Honest, patient-focused dental care in Orlando and Ocoee' : 'Honest, patient-focused dental care in Orlando');
   });
 
   test('no analytics, advertising or tracking requests are made', async ({ page }) => {
@@ -211,7 +215,7 @@ test.describe('facts', () => {
     const data = JSON.parse(await page.locator('script[type="application/ld+json"]').first().innerText());
     const names = data['@graph'].map((node: { name: string }) => node.name);
     expect(names).toContain('Contemporary Dental Care');
-    expect(JSON.stringify(data)).not.toMatch(/Ocoee/);
+    expect(JSON.stringify(data).includes('Ocoee')).toBe(ocoeeEnabled);
   });
 });
 
@@ -225,5 +229,28 @@ test.describe('phone call bar', () => {
     await expect(bar).toHaveAttribute('href', 'tel:+13215228577');
     await page.setViewportSize({ width: 1440, height: 900 });
     await expect(page.locator('a[href="tel:+13215228577"]').last()).toBeHidden();
+  });
+});
+
+test.describe('Ocoee office', () => {
+  test('Ocoee is listed in the footer, the hero, the contact page and the locations page', async ({ page }) => {
+    test.skip(!ocoeeEnabled, 'Ocoee is paused in content/site.ts');
+    await page.goto('/');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText('Ocoee');
+    await expect(page.locator('footer').last().getByText('2910 Maguire Rd, Suite 1005, Ocoee, FL 34761')).toBeVisible();
+    await page.goto('/contact');
+    await expect(page.locator('main').getByRole('link', { name: '689-407-3015' })).toHaveAttribute('href', 'tel:+16894073015');
+    await expect(page.locator('main').getByText('2910 Maguire Rd, Suite 1005, Ocoee, FL 34761')).toBeVisible();
+    await page.goto('/locations');
+    await expect(page.locator('main').getByRole('link', { name: '689-407-3015' })).toBeVisible();
+  });
+
+  test('the Ocoee office page is live with its own address, hours and phone', async ({ page }) => {
+    test.skip(!ocoeeEnabled, 'Ocoee is paused in content/site.ts');
+    const response = await page.goto('/locations/ocoee');
+    expect(response?.status()).toBe(200);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Ocoee office');
+    await expect(page.locator('main')).toContainText('Monday, 9:00am to 5:00pm');
+    await expect(page.getByRole('link', { name: 'Call 689-407-3015' })).toHaveAttribute('href', 'tel:+16894073015');
   });
 });

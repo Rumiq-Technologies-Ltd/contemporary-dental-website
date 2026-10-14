@@ -14,11 +14,11 @@ export interface Office {
 }
 
 /**
- * HOLD: Ocoee. Its operating days fell from 74 a quarter to 11, and the content
- * file holds every Ocoee reference until the practice records a decision.
- * false = the Orlando-only wording; true = both offices. Nothing else changes.
+ * Ocoee. Enabled at the owner's request on 14 October 2026. The content file asks for
+ * the Monday hours to be checked against Curve first, because Ocoee's operating days
+ * fell from 74 a quarter to 11. false returns the Orlando-only wording everywhere.
  */
-export const ocoeeEnabled = false;
+export const ocoeeEnabled = true;
 
 /**
  * HOLD: the website request form waits for the C15 decision on form data
@@ -29,7 +29,7 @@ export const appointmentFormEnabled = false;
 export const site = {
   name: 'Contemporary Dental Care',
   legalName: 'Pearl Valley Dental Inc., doing business as Contemporary Dental Care',
-  tagline: 'Your smile. Your health. Our priority.',
+  tagline: 'Your smile is our priority',
   email: 'info@contemporarydentalcare.com',
   afterHoursPhone: '407-625-5440',
   afterHoursHref: 'tel:+14076255440',
