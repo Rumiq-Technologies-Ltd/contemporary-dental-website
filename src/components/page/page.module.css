@@ -27,6 +27,7 @@
 .photo { position: relative; aspect-ratio: 4 / 5; border: 1px solid var(--accent); border-radius: 24px; overflow: hidden; background: var(--muted); }
 .photo img { object-fit: cover; }
 .photoWide { aspect-ratio: 3 / 2; }
+.photoSquare { aspect-ratio: 1 / 1; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; }
 .card { display: grid; align-content: start; gap: 10px; padding: 28px; border-radius: 20px; background: var(--muted); font-size: 15px; line-height: 1.7; color: #445047; }

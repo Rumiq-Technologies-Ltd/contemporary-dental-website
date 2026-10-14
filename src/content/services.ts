@@ -31,7 +31,7 @@ const bothOffices = whenOcoee('both offices', 'our Orlando office');
 export const services: readonly Service[] = [
   {
     id: 'cleanings-checkups', title: 'Cleanings and check-ups', heading: 'Cleanings and check-ups', titleTag: 'Cleanings and Check-Ups', summary: 'routine preventive care',
-    href: `${routes.services}/cleanings-checkups`, image: 'dentalExam', height: 355, column: 'a',
+    href: `${routes.services}/cleanings-checkups`, image: 'xrayTeamLandscape', height: 355, column: 'a',
     description: 'Regular cleanings and check-ups every six months help us catch problems early.',
     paragraphs: [
       `Regular cleanings and check-ups every six months help us catch problems early. X-rays are taken when Dr. Khan decides they're needed. Our hygienist, Jessica Salazar, provides cleanings at ${bothOffices}.`,
@@ -53,7 +53,7 @@ export const services: readonly Service[] = [
   },
   {
     id: 'restorative', title: 'Fillings and restorative care', heading: 'Fillings and restorative care', titleTag: 'Fillings and Restorative Care', summary: '',
-    href: `${routes.services}/restorative`, image: 'roomLight', height: 343, column: 'b',
+    href: `${routes.services}/restorative`, image: 'roomTeal', height: 343, column: 'b',
     description: 'Fillings and other restorative treatment repair teeth damaged by decay, cracks or breakage.',
     paragraphs: [
       `Fillings and other restorative treatment repair teeth damaged by decay, cracks or breakage. Available at ${bothOffices}.`,
@@ -88,7 +88,7 @@ export const services: readonly Service[] = [
   },
   {
     id: 'dentures', title: 'Dentures', heading: 'Dentures', titleTag: 'Dentures', summary: '',
-    href: `${routes.services}/dentures`, image: 'roomWhite', height: 330, column: 'b',
+    href: `${routes.services}/dentures`, image: 'roomCream', height: 330, column: 'b',
     description: 'Dentures replace missing teeth. Dr. Khan will walk you through the options and the process.',
     paragraphs: [
       `Dentures replace missing teeth and are available at ${bothOffices}. Dr. Khan will walk you through the options and the process at your visit.`,

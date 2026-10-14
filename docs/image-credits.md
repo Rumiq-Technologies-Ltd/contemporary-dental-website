@@ -1,19 +1,45 @@
 # Image credits
 
-Stock photographs in `public/images/stock/` come from Pexels and are used under the
-[Pexels License](https://www.pexels.com/license/) (free for commercial use, no attribution required).
-They are generic illustrations. They do not show the practice, its offices or its team, and their alt text
-must stay generic. Replace them with the practice's own photographs when those are supplied with written consent.
+## Practice photographs (`public/images/practice/`)
 
-| File | Pexels page |
-|---|---|
-| `treatment-room-light.jpg` | https://www.pexels.com/photo/modern-dental-office-with-dental-chair-equipment-35438269/ |
-| `treatment-room-white.jpg` | https://www.pexels.com/photo/back-view-of-a-dental-chair-in-a-clinic-4269276/ |
-| `treatment-room-blue.jpg` | https://www.pexels.com/photo/modern-dental-office-interior-with-equipment-30902075/ |
-| `tooth-model.jpg` | https://www.pexels.com/photo/close-up-photo-of-an-implant-tooth-6502340/ |
-| `clear-aligner.jpg` | https://www.pexels.com/photo/a-clear-retainer-on-a-person-s-hands-wearing-gloves-10896051/ |
-| `teeth-model.jpg` | https://www.pexels.com/photo/a-person-holding-a-teeth-model-and-a-dental-scaler-4269698/ |
-| `dental-exam.jpg` | https://www.pexels.com/photo/a-person-wearing-blue-latex-gloves-holding-a-mirror-in-a-woman-s-mouth-4269694/ |
+Supplied by Contemporary Dental Care. They show the Orlando office, the team, the front desk, the treatment rooms and Dr. Khan. They were resized to 1600px on the longest side and saved as JPEG for the web. Next.js serves them in optimised formats. The original files are kept outside the website, in `D:\Projects\cd-website\practice-photos`, and are not part of the repository.
 
-The photographs in `public/images/figma/` come from the supplied Figma design (see `asset-manifest.json`).
-Confirm their usage rights with the design supplier before launch.
+| File | Shows | Used on |
+|---|---|---|
+| `dr-sheryar-khan.jpg` | Dr. Sheryar Khan, portrait | Dr. Khan page |
+| `team-group.jpg` | The team in front of the office sign | Team page |
+| `orlando-office-front.jpg` | Orlando office exterior | Orlando office page |
+| `orlando-office-entrance.jpg` | Orlando office entrance, portrait | Not yet placed |
+| `front-desk.jpg` | Front desk team on the phone | Contact page |
+| `team-at-work.jpg` | Team member at a computer | About page |
+| `xray-team-landscape.jpg` | Team member beside the X-ray unit | Cleanings and check-ups |
+| `xray-team-portrait.jpg` | Team member beside the X-ray unit, portrait | Technology page |
+| `treatment-room-teal.jpg` | Treatment room | Home (new patients), fillings and restorative care |
+| `treatment-room-cream.jpg` | Treatment room | New patients page, dentures |
+
+Before launch:
+- Written consent from each person pictured (content file C03 section 8). This applies to the team photos and the front desk photo.
+- Dr. Khan's approval of his portrait.
+- The Orlando entrance photo is supplied but not yet placed.
+
+A photo that showed a patient in treatment was deleted at the owner's request. Patients may appear on the website only with documented written consent.
+
+## Stock photographs (`public/images/stock/`)
+
+Used under the [Pexels License](https://www.pexels.com/license/) (free for commercial use, no attribution required). They are generic illustrations and do not show the practice, its offices or its team. Their alt text stays generic.
+
+| File | Pexels page | Used on |
+|---|---|---|
+| `tooth-model.jpg` | https://www.pexels.com/photo/close-up-photo-of-an-implant-tooth-6502340/ | Dental implants |
+| `clear-aligner.jpg` | https://www.pexels.com/photo/a-clear-retainer-on-a-person-s-hands-wearing-gloves-10896051/ | Clear aligners and braces |
+| `teeth-model.jpg` | https://www.pexels.com/photo/a-person-holding-a-teeth-model-and-a-dental-scaler-4269698/ | Root canal treatment |
+| `treatment-room-light.jpg` | https://www.pexels.com/photo/modern-dental-office-with-dental-chair-equipment-35438269/ | Not used since the practice photographs were supplied |
+| `treatment-room-white.jpg` | https://www.pexels.com/photo/back-view-of-a-dental-chair-in-a-clinic-4269276/ | Not used since the practice photographs were supplied |
+| `treatment-room-blue.jpg` | https://www.pexels.com/photo/modern-dental-office-interior-with-equipment-30902075/ | Not used since the practice photographs were supplied |
+| `dental-exam.jpg` | https://www.pexels.com/photo/a-person-wearing-blue-latex-gloves-holding-a-mirror-in-a-woman-s-mouth-4269694/ | Not used since the practice photographs were supplied |
+
+The three unused stock files can be removed once the owner confirms.
+
+## Figma photographs (`public/images/figma/`)
+
+Come from the supplied Figma design (see `asset-manifest.json`). Confirm their usage rights with the design supplier before launch.

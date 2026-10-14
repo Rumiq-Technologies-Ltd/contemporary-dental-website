@@ -1,4 +1,4 @@
-:root { --ink: #131c15; --surface: #fff; --accent: #a9eaf7; --muted: #f4f5f7; --ease-out: cubic-bezier(.23, 1, .32, 1); --ease-in-out: cubic-bezier(.77, 0, .175, 1); color-scheme: light; }
+:root { --ink: #131c15; --surface: #fff; --accent: #a9eaf7; --muted: #f4f5f7; --ease-out: cubic-bezier(.23, 1, .32, 1); --ease-in-out: cubic-bezier(.77, 0, .175, 1); color-scheme: light; /* Capital E from Inter; every other letter from Unbounded (see layout.tsx). */ --font-display: var(--font-display-e), var(--font-unbounded), sans-serif; }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 body { margin: 0; background: var(--surface); color: var(--ink); font-family: var(--font-body), sans-serif; -webkit-font-smoothing: antialiased; }

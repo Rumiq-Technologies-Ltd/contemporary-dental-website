@@ -30,7 +30,7 @@ export default function NewPatientsPage() {
         <p><strong>Language.</strong> Tell us your language when you book, and we&apos;ll confirm who is in.</p>
         <p><strong>Feeling nervous?</strong> If dental visits make you nervous, tell us when you book, so we can plan your visit around what helps.</p>
       </Prose>
-      <PagePhoto photo="roomBlue" alt="A dental treatment room" />
+      <PagePhoto photo="roomCream" alt="A treatment room at Contemporary Dental Care" />
     </div>
   </PageLayout>;
 }

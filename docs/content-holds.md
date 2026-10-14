@@ -26,8 +26,8 @@ Production builds are indexable and `robots.txt` welcomes all crawlers (it is no
 - Notice of Privacy Practices: placeholder until the approved text is supplied. The privacy policy and terms follow the content file's outline only, are marked as drafts and are set to `noindex`.
 - New patients: no sedation or nitrous oxide wording; no "what to bring" list.
 - Payment and financing: no payment-methods line and no in-house plan terms.
-- Dr. Khan: no photo, no licence number, no advanced-training claims.
-- Team: no photos. Jessica Salazar and Tyrese Brown show name and role only.
+- Dr. Khan: practice portrait placed. Still no licence number and no advanced-training claims.
+- Team: practice group photo placed. Jessica Salazar and Tyrese Brown show name and role only.
 - Home: no Google reviews link (no URL supplied) and no testimonials.
 
 ## Not built
@@ -46,7 +46,7 @@ Membership page (C18 draft), Spanish and Portuguese versions, Haitian Creole or 
 ## Still needed before launch
 
 1. Ocoee's actual Monday operating days, checked against Curve (operating days fell from 74 a quarter to 11). Ocoee is enabled, so this must be confirmed before launch.
-2. Dr. Khan's Florida licence number and status, the residency completion year, his professional photo, and team photos with written consent.
+2. Dr. Khan's Florida licence number and status and the residency completion year. Written consent from everyone in the practice photographs, and Dr. Khan's approval of his portrait.
 3. Jessica Salazar's bio and Tyrese Brown's credential if one is shown.
 4. The complete Insurance List (26 PPO plans plus discount and Medicare lists), then remove "and more".
 5. Directions, parking, accessibility and holiday hours for both offices; map embed.
