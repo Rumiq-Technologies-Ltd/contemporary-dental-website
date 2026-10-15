@@ -1,27 +1,213 @@
-:root { --ink: #131c15; --surface: #fff; --accent: #a9eaf7; --muted: #f4f5f7; --ease-out: cubic-bezier(.23, 1, .32, 1); --ease-in-out: cubic-bezier(.77, 0, .175, 1); color-scheme: light; /* Capital E from Inter; every other letter from Unbounded (see layout.tsx). */ --font-display: var(--font-display-e), var(--font-unbounded), sans-serif; }
+/* Design tokens. Every colour, radius, easing and font the site uses is set here, so a
+   re-theme only edits this block. The palette is the practice's original brand: ink, cyan and
+   soft grey. Contrast: ink on cyan is above 12:1, muted text is above 6:1 on every surface, and
+   accent-ink text is above 5:1 on white, grey and both cyan tints. */
+:root {
+  /* Surfaces. */
+  --color-bg: #ffffff;
+  --color-off: #f4f5f7;
+  --color-tint-soft: #eaf9fc;
+  --color-tint: #d4f4fa;
+  --color-highlight: #a9eaf7;
+  --color-tint-alt: #e2e8ec;
+
+  /* Text and lines. */
+  --color-ink: #131c15;
+  --color-text: #1f2a22;
+  --color-muted: #445047;
+  --color-line: rgb(0 0 0 / 0.14);
+
+  /* Brand. Cyan is the primary action, with ink text. Accent-ink is a teal dark enough for text. */
+  --color-accent: #a9eaf7;
+  --color-accent-hover: #8fdff0;
+  --color-accent-ink: #1d6a7b;
+
+  --radius-panel: 16px;
+  --radius-card: 8px;
+  --radius-button: 4px;
+  --container: 1280px;
+  --gutter: clamp(20px, 4vw, 80px);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Headings: Archivo at a condensed width, uppercase. Body text: Inter. */
+  --font-display: var(--font-archivo), 'Arial Narrow', sans-serif;
+  color-scheme: light;
+}
+
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { margin: 0; background: var(--surface); color: var(--ink); font-family: var(--font-body), sans-serif; -webkit-font-smoothing: antialiased; }
+html { background: var(--color-bg); scroll-behavior: smooth; }
+body {
+  margin: 0;
+  min-height: 100dvh;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body), system-ui, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 button, a, summary { -webkit-tap-highlight-color: transparent; }
 button { font: inherit; color: inherit; cursor: pointer; }
 a { color: inherit; text-decoration: none; }
 h1, h2, h3, p { margin: 0; }
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-stretch: 62.5%;
+  font-variation-settings: 'wdth' 62;
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: var(--color-ink);
+  text-wrap: balance;
+}
+h3 { font-weight: 600; line-height: 1; }
 img { display: block; }
-::selection { background: var(--accent); color: var(--ink); }
-:focus-visible { outline: 3px solid #217487; outline-offset: 4px; }
-.page-shell { display: flex; flex-direction: column; width: 100%; max-width: 1440px; margin: 0 auto; }
-.pill { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; min-height: 36px; padding: 0 18px; border-radius: 999px; font-size: 13px; font-weight: 500; line-height: 1.3; transition: background .16s, transform .16s; }
-.pill-outline { border: 1px solid var(--ink); background: white; }
-.pill-accent { border: 1px solid transparent; background: var(--accent); }
-.pill-large { min-height: 44px; padding: 0 24px; font-size: 15px; }
-.pill:hover { background: #dcf6fb; }
+[id] { scroll-margin-top: 96px; } /* keep anchored headings clear of the sticky header */
+::selection { background: var(--color-tint); color: var(--color-ink); }
+:focus-visible { outline: 3px solid var(--color-ink); outline-offset: 3px; }
+
+.page-shell { display: flex; flex-direction: column; width: 100%; }
+
+/* Buttons: cyan is the primary action, ink is the strong secondary, outline is the quiet one. */
+.pill {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px; flex-shrink: 0;
+  min-height: 50px; padding: 0 26px; border: 1px solid transparent; border-radius: var(--radius-button);
+  font-size: 16px; font-weight: 600; line-height: 1.2; white-space: nowrap; text-align: center;
+  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+}
+.pill-accent { background: var(--color-accent); color: var(--color-ink); }
+.pill-accent:hover { background: var(--color-accent-hover); }
+.pill-dark { background: var(--color-ink); color: #ffffff; }
+.pill-dark:hover { background: #2b372e; }
+.pill-outline { background: transparent; color: var(--color-ink); border-color: var(--color-ink); }
+.pill-outline:hover { background: var(--color-ink); color: #ffffff; }
+.pill-large { min-height: 56px; padding: 0 32px; font-size: 17px; }
+
+/* Eyebrow: a small condensed label above a heading. */
+.eyebrow {
+  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: 18px; font-weight: 700; line-height: 1; letter-spacing: 0.01em; text-transform: uppercase; color: var(--color-ink);
+}
+
+/* Badge: an ink block with a condensed label, used for short promises. */
+.badge {
+  display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: var(--radius-button);
+  background: var(--color-ink); color: #ffffff;
+  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: 19px; font-weight: 700; line-height: 1; text-transform: uppercase;
+}
+.badge svg { flex-shrink: 0; font-size: 22px; }
+
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-.skip-link { position: fixed; top: 12px; left: 12px; padding: 12px 20px; background: var(--ink); color: white; z-index: 100; border-radius: 999px; transform: translateY(-150%); }
+.skip-link {
+  position: fixed; top: 12px; left: 12px; z-index: 100; padding: 12px 20px;
+  border-radius: var(--radius-button); background: var(--color-ink); color: #ffffff;
+  transform: translateY(-150%); transition: transform 0.2s;
+}
 .skip-link:focus { transform: translateY(0); }
-.message-page { min-height: 100dvh; max-width: 800px; margin: auto; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 26px; padding: 32px; }
-.message-page h1 { font-family: var(--font-display); font-size: clamp(30px, 6vw, 58px); font-weight: 200; }
-@media (max-width: 899px) { .pill { min-height: 40px; } body { padding-bottom: 76px; } /* room for the sticky call button */ }
-/* Loops sleep outside the viewport and in background tabs. One-shot entrances
-   retain their final frame, so scrolling back never hides readable content. */
+
+.message-page {
+  min-height: 70dvh; max-width: 760px; margin: auto; padding: 48px 32px;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 24px;
+}
+.message-page h1 { font-size: clamp(3rem, 8vw, 5.5rem); }
+.message-page p { color: var(--color-muted); }
+
+@media (max-width: 899px) { body { padding-bottom: 88px; } } /* room for the sticky call button */
+
+/* Looping decoration sleeps outside the viewport and in background tabs. */
 [data-active='false'] [data-loop], body:has(dialog[open]) [data-loop] { animation-play-state: paused !important; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { animation: none !important; transition: none !important; } }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+}
+
+/* ───────────────────────── Motion ─────────────────────────
+   CSS does the animating; PageEffects (components/motion) only sets data-in and the tilt
+   variables. Content starts hidden only when JavaScript has marked the page (html.js) and the
+   visitor has not asked for reduced motion, so the server-rendered page is always readable.
+   If hydration never finishes (no html.ready), a failsafe shows everything after 4 seconds. */
+
+/* Scroll reveals: fade, lift and un-blur. Stagger a list with --i, offset with --d. Variants:
+   "mask" wipes a heading up out of a clip, "zoom" grows a block in, "left"/"right" slide in. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal] {
+    --reveal-delay: calc(var(--d, 0ms) + var(--i, 0) * 90ms);
+    transition: opacity 0.8s ease var(--reveal-delay), translate 1s var(--ease-out) var(--reveal-delay),
+      scale 1s var(--ease-out) var(--reveal-delay), filter 0.8s ease var(--reveal-delay), clip-path 1.1s var(--ease-out) var(--reveal-delay);
+  }
+  html.js [data-reveal]:not([data-in]) { opacity: 0; translate: 0 36px; filter: blur(6px); }
+  html.js [data-reveal='mask']:not([data-in]) { opacity: 1; filter: none; translate: 0 0.4em; clip-path: inset(0 0 100% 0); }
+  html.js [data-reveal='mask'][data-in] { clip-path: inset(-10% -5% -25% -5%); }
+  html.js [data-reveal='zoom']:not([data-in]) { scale: 0.92; translate: 0 24px; }
+  /* Sideways slides only on wide screens, where the travel stays inside the page gutters. */
+  @media (min-width: 1200px) {
+    html.js [data-reveal='left']:not([data-in]) { translate: -32px 0; }
+    html.js [data-reveal='right']:not([data-in]) { translate: 32px 0; }
+  }
+  /* With GSAP loaded (html.gsap), GSAP animates reveals, so CSS transitions on them are switched off.
+     Cards still get their smooth tilt transition. */
+  html.js.gsap [data-reveal] { transition: none; }
+  html.js.gsap [data-reveal][data-tilt] { transition: transform 0.6s var(--ease-out); }
+  /* A card that reveals and tilts: the tilt follows the pointer with no reveal delay. */
+  html.js [data-reveal][data-tilt] {
+    transition-property: opacity, translate, scale, filter, transform;
+    transition-duration: 0.8s, 1s, 1s, 0.8s, 0.6s;
+    transition-delay: var(--reveal-delay), var(--reveal-delay), var(--reveal-delay), var(--reveal-delay), 0s;
+  }
+  html.js:not(.ready) [data-reveal]:not([data-in]), html.js:not(.ready) [data-split] .split-unit { animation: reveal-failsafe 0s 4s forwards; }
+}
+@keyframes reveal-failsafe { to { opacity: 1; translate: none; scale: none; filter: none; clip-path: none; transform: none; } }
+
+/* Words rise out of a mask at first paint (SplitWords). Pure CSS, so the headline never waits for JavaScript. */
+.split-mask { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.split-unit { display: inline-block; }
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-split] .split-unit { animation: split-rise 0.9s var(--ease-out) both; animation-delay: calc(var(--d, 0ms) + var(--i, 0) * 45ms); }
+  html.js [data-load] { animation: load-fade 1s var(--ease-out) both; animation-delay: var(--d, 0ms); }
+}
+@keyframes split-rise { from { transform: translateY(110%) rotate(4deg); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes load-fade { from { opacity: 0; transform: translateY(24px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+
+/* 3D cards: tilt toward the pointer, with a soft light that follows it. Mouse only (PageEffects). */
+[data-tilt] {
+  --rx: 0deg; --ry: 0deg;
+  position: relative; transform: perspective(1100px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d; transition: transform 0.6s var(--ease-out);
+}
+[data-tilt]::after {
+  content: ''; position: absolute; inset: 0; z-index: 3; border-radius: inherit; pointer-events: none;
+  background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(255 255 255 / 0.32), transparent 60%);
+  opacity: 0; transition: opacity 0.35s ease;
+}
+@media (hover: hover) and (pointer: fine) {
+  [data-tilt]:hover { z-index: 1; }
+  [data-tilt]:hover::after { opacity: 1; }
+}
+
+/* Image zoom follows the scroll position with a CSS scroll timeline: it runs off the main thread,
+   and browsers without support show the still image. Parallax, numerals and the footer wordmark use GSAP. */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    [data-scroll-zoom] { animation: scroll-zoom linear both; animation-timeline: view(); animation-range: entry 0% cover 55%; }
+  }
+}
+@keyframes scroll-zoom { from { transform: scale(1.18); } to { transform: scale(1); } }
+
+/* Native accordions open with a height animation where supported; elsewhere they toggle instantly. */
+@media (prefers-reduced-motion: no-preference) {
+  details { interpolate-size: allow-keywords; }
+  details::details-content { block-size: 0; overflow: clip; transition: block-size 0.45s var(--ease-out), content-visibility 0.45s allow-discrete; }
+  details[open]::details-content { block-size: auto; }
+}
+
+/* Grids and lists marked data-stagger reveal their children one after another. */
+[data-stagger] > :nth-child(2) { --i: 1; }
+[data-stagger] > :nth-child(3) { --i: 2; }
+[data-stagger] > :nth-child(4) { --i: 3; }
+[data-stagger] > :nth-child(5) { --i: 4; }
+[data-stagger] > :nth-child(6) { --i: 5; }
+[data-stagger] > :nth-child(7) { --i: 6; }
+[data-stagger] > :nth-child(n + 8) { --i: 7; }

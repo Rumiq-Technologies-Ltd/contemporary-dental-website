@@ -1,0 +1,49 @@
+import { faqs } from '@/content/faq';
+import { services } from '@/content/services';
+import { formatAddress, offices, routes, site, whenOcoee } from '@/content/site';
+import { siteUrl } from '@/lib/siteUrl';
+
+// llms.txt (llmstxt.org): a plain Markdown summary that AI assistants and answer engines can
+// read and cite. Every line comes from the content files, so it stays in step with the pages
+// and follows the same holds (Ocoee switch, no offers, no prices).
+export const dynamic = 'force-static';
+
+const url = (path: string) => `${siteUrl}${path === '/' ? '' : path}`;
+
+export function GET(): Response {
+  const lines = [
+    `# ${site.name}`,
+    '',
+    `> ${whenOcoee(
+      'General dental practice in Orlando and Ocoee, Florida, founded in 2023 by Dr. Sheryar Khan, a general dentist. Routine care, emergency visits, implants, cosmetic treatment and clear aligners. Members of the team speak English, Spanish and Portuguese.',
+      'General dental practice in Orlando, Florida, founded in 2023 by Dr. Sheryar Khan, a general dentist. Routine care, emergency visits, implants, cosmetic treatment and clear aligners. Members of the team speak English, Spanish and Portuguese.',
+    )}`,
+    '',
+    'Appointments are booked by phone. New patients are welcome, and emergency visits are open to new patients.',
+    '',
+    '## Offices',
+    '',
+    ...offices.map(office => `- [${office.name} office](${url(office.path)}): ${formatAddress(office)}. Phone ${office.phone}. Hours: ${office.hours}.`),
+    `- After-hours line: ${site.afterHoursPhone}`,
+    `- Email: ${site.email}`,
+    '',
+    '## Services',
+    '',
+    ...services.map(service => `- [${service.title}](${url(service.href)}): ${service.description}`),
+    '',
+    '## Key pages',
+    '',
+    `- [New patients](${url(routes.newPatients)})`,
+    `- [Insurance](${url(routes.insurance)})`,
+    `- [Payment and financing](${url(routes.payment)})`,
+    `- [About Dr. Khan](${url(routes.doctor)})`,
+    `- [Our team](${url(routes.team)})`,
+    `- [Contact](${url(routes.contact)})`,
+    `- [Frequently asked questions](${url(routes.faq)})`,
+    '',
+    '## Frequently asked questions',
+    '',
+    ...faqs.flatMap(item => [`### ${item.question}`, '', item.answer, '']),
+  ];
+  return new Response(lines.join('\n'), { headers: { 'Content-Type': 'text/markdown; charset=utf-8' } });
+}

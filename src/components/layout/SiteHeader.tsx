@@ -1,23 +1,21 @@
 import Link from 'next/link';
-import { primaryOffice, routes, site } from '@/content/site';
+import { routes, site } from '@/content/site';
 import { Icon } from '@/components/ui/Icon';
 import { SiteMenu } from './SiteMenu';
 import { SiteNav } from './SiteNav';
 import styles from './layout.module.css';
 
-// Small screens: menu, logo, buttons in one row. Large screens: the menu is hidden and
-// the navigation bar sits under the logo (see layout.module.css).
+// Sticky header for every page, rendered once by the root layout. The wordmark on the left,
+// the navigation in the middle and one cyan request button on the right. The CSS decides which
+// parts show at each breakpoint: the menu on small screens, the navigation bar on large ones.
 export function SiteHeader() {
   return <header className={styles.header}>
-    <SiteMenu />
     <Link href={routes.home} className={styles.logo} aria-label={`${site.name} home`}>
-      <span className={styles.logoMark}><Icon name="logo" /></span>
-      <span>CONTEMPORARY DENTAL CARE</span>
+      <span className={styles.logoMark}><Icon name="tooth" /></span>
+      <span className={styles.wordmark}>Contemporary{' '}<br />Dental Care</span>
     </Link>
-    <div className={styles.auth}>
-      <a href={primaryOffice.phoneHref} className={`pill pill-outline ${styles.phone}`}>{primaryOffice.name} {primaryOffice.phone}</a>
-      <Link href={routes.requestAppointment} className="pill pill-accent">Request an appointment</Link>
-    </div>
+    <Link href={routes.requestAppointment} className={`pill pill-accent ${styles.request}`}>Request an appointment</Link>
+    <SiteMenu />
     <SiteNav />
   </header>;
 }

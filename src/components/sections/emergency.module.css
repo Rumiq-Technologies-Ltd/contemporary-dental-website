@@ -1,0 +1,22 @@
+/* Emergency and same-day band: ink with white text and a cyan call button. */
+.emergency {
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr); align-items: end; gap: 40px clamp(32px, 6vw, 96px);
+  background: var(--color-ink); color: #ffffff;
+}
+.copy { display: grid; gap: 20px; min-width: 0; }
+.eyebrow {
+  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: 22px; font-weight: 700; line-height: 1; text-transform: uppercase; color: var(--color-accent);
+}
+.copy h2 { font-size: clamp(2.8rem, 6vw, 5.5rem); color: #ffffff; }
+.copy > p:last-child { max-width: 42rem; line-height: 1.7; color: #e8e8e8; }
+
+.actions { display: grid; justify-items: start; gap: 16px; }
+.call { width: 100%; max-width: 420px; }
+@media (max-width: 419px) { .call { gap: 8px; padding: 0 14px; font-size: 15px; } }
+.afterHours { color: #e8e8e8; }
+.afterHours a { font-weight: 700; color: #ffffff; text-decoration: underline; text-underline-offset: 3px; }
+.guidance { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: #ffffff; text-decoration: underline; text-underline-offset: 4px; }
+.guidance svg { font-size: 18px; }
+
+@media (max-width: 899px) { .emergency { grid-template-columns: minmax(0, 1fr); } }

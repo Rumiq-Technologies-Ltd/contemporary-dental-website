@@ -1,91 +1,30 @@
-.services { overflow: clip; }
-.copy { position: absolute; left: 3.8889cqw; top: 10.2cqw; width: 40cqw; }
-.trio { display: flex; gap: .5556cqw; margin-bottom: 2.2cqw; }
-.trio > span { width: 2.7778cqw; height: 2.7778cqw; border-radius: 50%; display: grid; place-items: center; background: var(--accent); }
-.copy h2 { font-family: var(--font-display); font-weight: 200; font-size: 3.6389cqw; line-height: 5cqw; letter-spacing: -.0364cqw; text-transform: uppercase; }
-.list { margin: 1.4cqw 0 0; padding: 0; list-style: none; font-size: 1.1cqw; line-height: 1.8; color: #445047; }
-.list a { border-bottom: 1px solid transparent; }
-.list a:hover { border-bottom-color: var(--ink); background: var(--accent); color: var(--ink); }
-.actions { display: flex; gap: 16px; margin-top: 2.4cqw; }
-.galleryFrame { position: absolute; left: 52.6389cqw; top: 0; bottom: 0; width: 43.4722cqw; }
-.gallery { position: absolute; inset: 0; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-width: none; border-radius: 20px; }
-.gallery::-webkit-scrollbar { display: none; }
-.grid { display: grid; grid-template-columns: 1fr 1fr; align-items: start; gap: 1.1111cqw; padding-top: .4167cqw; }
-.column { display: flex; flex-direction: column; }
-.column:nth-child(2) { margin-top: -1.0417cqw; }
-.cardGroup { display: flex; flex-direction: column; gap: 1.1111cqw; padding-bottom: 1.1111cqw; }
-.cardGroup[data-duplicate='true'] { display: none; }
-/* Each track is two equal groups. At -50%, the copy exactly replaces the
-   original, so resetting the animation introduces no blank frame or jump. */
-@keyframes cards-up {
-  0%, 20% { transform: translateY(0); }
-  33.3333%, 53.3333% { transform: translateY(var(--step-one)); }
-  66.6667%, 86.6667% { transform: translateY(var(--step-two)); }
-  100% { transform: translateY(-50%); }
+/* "Everything we treat": photo cards with condensed titles. Each card is one link; the save button sits above it. */
+.services { grid-template-columns: minmax(0, 1fr); row-gap: 40px; background: var(--color-bg); }
+.heading { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
+.headingText { display: grid; justify-items: start; gap: 14px; }
+.headingText h2 { font-size: clamp(2.8rem, 5.4vw, 4.8rem); }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 32px 20px; margin: 0; padding: 0; list-style: none; }
+.card { position: relative; display: flex; flex-direction: column; height: 100%; }
+.media { position: relative; aspect-ratio: 4 / 3; overflow: hidden; border-radius: var(--radius-card); background: var(--color-off); }
+.media img { object-fit: cover; transition: transform 0.6s var(--ease-out); }
+.card:hover .media img { transform: scale(1.04); }
+.save {
+  position: absolute; top: 10px; right: 10px; z-index: 2;
+  display: grid; place-items: center; width: 44px; height: 44px; border: 1px solid var(--color-ink); border-radius: var(--radius-button);
+  background: #ffffff; color: var(--color-ink); font-size: 20px; transition: background-color 0.2s, color 0.2s;
 }
-@keyframes detail-in { from { opacity: 0; transform: translateY(20px) scale(.94); } to { opacity: 1; transform: none; } }
-.galleryFrame:active .column,
-.galleryFrame[data-paused='true'] .column, .gallery:focus-within .column,
-:global(body:has(dialog[open])) .column { animation-play-state: paused; }
-@media (hover: hover) and (pointer: fine) { .galleryFrame:hover .column { animation-play-state: paused; } }
-@media (prefers-reduced-motion: no-preference) {
-  /* Keep a complete static gallery before hydration or when JS is unavailable. */
-  .services:global([data-motion='ready']) .column { animation-name: cards-up; animation-duration: 4.8s; animation-timing-function: var(--ease-in-out); animation-iteration-count: infinite; will-change: transform; }
-  .services:global([data-motion='ready']) .column:nth-child(2) { animation-direction: reverse; }
-  .services:global([data-motion='ready']) .galleryFrame[data-manual='false'] .gallery { overflow-y: hidden; }
-  .services:global([data-motion='ready']) .galleryFrame[data-manual='false'] [data-duplicate='true'] { display: flex; }
-  .services:global([data-motion='ready'][data-entered='false']) .galleryFrame,
-  .services:global([data-motion='ready'][data-entered='false']) .actions,
-  .services:global([data-motion='ready'][data-entered='false']) .trio > span { opacity: 0; }
-  .services:global([data-motion='ready'][data-entered='true']) .galleryFrame { animation: detail-in 800ms var(--ease-out) 180ms both; }
-  .services:global([data-motion='ready'][data-entered='true']) .actions { animation: detail-in 600ms var(--ease-out) 300ms both; }
-  .services:global([data-motion='ready'][data-entered='true']) .trio > span { animation: detail-in 500ms var(--ease-out) both; }
-  .trio > span:nth-child(2) { animation-delay: 60ms !important; } .trio > span:nth-child(3) { animation-delay: 120ms !important; }
-}
-/* Keyboard users get a stable, manually scrollable original set of cards. */
-.galleryFrame[data-manual='true'] .gallery { overflow-y: auto; }
-.galleryFrame[data-manual='true'] .column { animation: none; transform: none; }
-.galleryFrame[data-manual='true'] [data-duplicate='true'] { display: none; }
-.motionControl { position: absolute; z-index: 4; bottom: 14px; right: 14px; min-height: 36px; padding: 0 14px; background: white; border: 1px solid #131c1533; border-radius: 999px; font-size: 11px; box-shadow: 0 3px 16px #131c1526; }
-.motionControl:hover { background: var(--accent); }
-.card { position: relative; height: var(--card-height); min-height: 140px; border-radius: 1.3889cqw; overflow: hidden; background: var(--muted); flex-shrink: 0; }
-.card > img { object-fit: cover; }
-.cardActions { position: absolute; top: .8333cqw; right: .8333cqw; display: flex; gap: .5556cqw; }
-.cardButton { display: grid; place-items: center; width: max(40px, 2.7778cqw); height: max(40px, 2.7778cqw); border-radius: 50%; border: 0; background: white; }
-.cardButton:hover, .cardButton[aria-pressed='true'] { background: var(--accent); }
-.cardButton[aria-pressed='true'] { box-shadow: inset 0 0 0 2px var(--ink); }
-/* A darker glass pill keeps the Figma cyan text readable on bright photos. */
-.cardLabel a { display: inline-flex; align-items: center; }
-.cardLabel { position: absolute; left: 1.5278cqw; bottom: 1.5278cqw; max-width: calc(100% - 3.0556cqw); font-size: .9722cqw; font-weight: 500; }
-.cardLabel a { padding: 0 1.3889cqw; min-height: 2.7778cqw; border: 0; border-radius: 999px; color: var(--accent); background: #131c15ba; backdrop-filter: blur(8px); white-space: nowrap; }
-@media (min-width: 900px) and (max-width: 1230px) { .actions { gap: 8px; } .actions a, .actions button { padding: 0 16px; font-size: 12px; } .list { font-size: 11px; } .cardLabel { font-size: 10px; } .cardLabel a { padding: 0 10px; min-height: 32px; } }
-@media (max-width: 899px) {
-  .copy { position: relative; inset: auto; width: auto; padding: 38px 24px; }
-  .trio { gap: 8px; margin-bottom: 28px; } .trio > span { width: 40px; height: 40px; }
-  .copy h2 { font-size: clamp(25px, 5.8vw, 48px); line-height: 1.45; letter-spacing: -.04em; }
-  .list { font-size: 15px; line-height: 1.9; margin-top: 18px; }
-  .actions { gap: 12px; margin-top: 32px; flex-wrap: wrap; }
-  .galleryFrame { position: relative; inset: auto; width: auto; height: 660px; margin: 0 24px; }
-  .gallery { border-radius: 20px; }
-  .grid { gap: 16px; padding: 0; } .column, .column:nth-child(2) { padding: 0; margin: 0; --step-one: -346px !important; --step-two: -692px !important; }
-  .cardGroup { gap: 16px; padding-bottom: 16px; }
-  .card { border-radius: 20px; height: 330px; }
-  .cardActions { top: 12px; right: 12px; gap: 8px; } .cardButton { width: 40px; height: 40px; }
-  .cardLabel { left: 14px; bottom: 18px; max-width: calc(100% - 28px); font-size: 11px; }
-  .cardLabel a { padding: 8px 16px; min-height: 38px; white-space: normal; text-align: left; }
-}
-@media (max-width: 600px) {
-  .galleryFrame { margin: 0 16px; height: 560px; }
-  .grid { gap: 10px; } .cardGroup { gap: 10px; padding-bottom: 10px; }
-  .column, .column:nth-child(2) { --step-one: -260px !important; --step-two: -520px !important; }
-  .card { height: 250px; } .cardActions { top: 8px; right: 8px; gap: 6px; }
-  .cardButton { width: 36px; height: 36px; }
-  .cardLabel { left: 8px; bottom: 12px; max-width: calc(100% - 16px); font-size: 10px; }
-  .cardLabel a { padding: 8px 10px; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .column { animation: none; will-change: auto; }
-  .cardGroup[data-duplicate='true'] { display: none; }
-  .gallery { overflow-y: auto; }
-  .motionControl { display: none; }
-}
+.save:hover { background: var(--color-tint-soft); }
+.save[aria-pressed='true'] { background: var(--color-accent); }
+
+.body { display: grid; flex: 1; align-content: start; gap: 8px; padding-top: 16px; }
+.title { font-size: 1.75rem; line-height: 0.95; color: var(--color-ink); }
+/* Stretched link: the title's link covers the whole card, and the save button stays above it. */
+.title::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+.title:focus-visible { outline: none; }
+.card:has(.title:focus-visible) { outline: 3px solid var(--color-ink); outline-offset: 4px; border-radius: var(--radius-card); }
+.body p { font-size: 15px; line-height: 1.55; color: var(--color-muted); }
+.more { display: inline-flex; align-items: center; gap: 8px; margin-top: 2px; font-weight: 600; color: var(--color-accent-ink); }
+.more svg { font-size: 18px; transition: transform 0.25s var(--ease-out); }
+.card:hover .more svg { transform: translateX(4px); }
+@media (prefers-reduced-motion: reduce) { .card:hover .media img, .card:hover .more svg { transform: none; } }

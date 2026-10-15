@@ -69,7 +69,8 @@ test.describe('page content', () => {
       await page.goto(path);
       // Entrance animations fade text in; measure contrast once they have finished.
       await page.waitForFunction(() => document.getAnimations()
-        .every(animation => animation.playState !== 'running' || animation.effect?.getComputedTiming().iterations === Infinity));
+        .every(animation => animation.playState !== 'running' || animation.effect?.getComputedTiming().iterations === Infinity
+          || !(animation.timeline instanceof DocumentTimeline)));
       const results = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa']).analyze();
       expect(results.violations, path).toEqual([]);
     }
@@ -151,7 +152,8 @@ test.describe('held items', () => {
 
   test('no analytics, advertising or tracking requests are made', async ({ page }) => {
     const external: string[] = [];
-    page.on('request', request => { if (!request.url().startsWith('http://127.0.0.1:3000')) external.push(request.url()); });
+    const origin = new URL('/', test.info().project.use.baseURL).origin;
+    page.on('request', request => { if (!request.url().startsWith(origin)) external.push(request.url()); });
     await page.goto('/');
     await page.goto('/contact');
     expect(external).toEqual([]);
@@ -172,7 +174,7 @@ test.describe('facts', () => {
     await page.goto('/emergency');
     await expect(page.getByRole('complementary', { name: 'When to call 911' })).toContainText('call 911 or go to the nearest emergency room now');
     await expect(page.getByText('We are not open 24 hours')).toBeVisible();
-    await expect(page.getByRole('link', { name: 'Call Orlando: 321-522-8577' })).toHaveAttribute('href', 'tel:+13215228577');
+    await expect(page.locator('#main-content').getByRole('link', { name: 'Call Orlando: 321-522-8577' })).toHaveAttribute('href', 'tel:+13215228577');
   });
 
   test('crowns are never described as same-day', async ({ page }) => {

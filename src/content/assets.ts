@@ -30,17 +30,3 @@ export const photos = {
   xrayTeamLandscape, xrayTeamPortrait, roomTeal, roomCream,
 };
 export type PhotoName = keyof typeof photos;
-export const icons = {
-  tooth: { file: '2f79d.svg', width: 22, height: 22 },
-  logo: { file: '8e6b4.svg', width: 17, height: 17 },
-  toothBadge: { file: '5b20a.svg', width: 30, height: 30 },
-  technology: { file: '56fd4.svg', width: 32, height: 32 },
-  flower: { file: 'e281e.svg', width: 54, height: 54 },
-  plus: { file: 'c0a77.svg', width: 18, height: 18 },
-  play: { file: 'd4d77.svg', width: 20, height: 20 },
-  menu: { file: 'b4625.svg', width: 20, height: 20 },
-  heart: { file: 'e2549.svg', width: 22, height: 22 },
-  arrow: { file: '8cf4e.svg', width: 22, height: 22 },
-  down: { file: '30bc9.svg', width: 40, height: 40 },
-} as const;
-export type IconName = keyof typeof icons;

@@ -13,7 +13,7 @@ interface PagePhotoProps {
 
 export function PagePhoto({ photo, alt = '', wide = false, square = false, priority = false }: PagePhotoProps) {
   const shape = wide ? styles.photoWide : square ? styles.photoSquare : '';
-  return <div className={`${styles.photo} ${shape}`}>
-    <Image src={photos[photo]} alt={alt} fill sizes="(max-width: 899px) 100vw, 40vw" placeholder="blur" priority={priority} />
+  return <div className={`${styles.photo} ${shape}`} data-reveal="zoom">
+    <Image src={photos[photo]} alt={alt} fill sizes="(max-width: 899px) 100vw, 40vw" placeholder="blur" priority={priority} data-scroll-zoom="" />
   </div>;
 }
