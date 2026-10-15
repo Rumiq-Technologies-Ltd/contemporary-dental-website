@@ -252,7 +252,7 @@ test.describe('Ocoee office', () => {
     const response = await page.goto('/locations/ocoee');
     expect(response?.status()).toBe(200);
     await expect(page.getByRole('heading', { level: 1 })).toHaveText('Ocoee office');
-    await expect(page.locator('main')).toContainText('Monday, 9:00am to 5:00pm');
+    await expect(page.locator('main')).toContainText('Open Mondays, 9:00am to 5:00pm');
     await expect(page.getByRole('link', { name: 'Call 689-407-3015' })).toHaveAttribute('href', 'tel:+16894073015');
   });
 });

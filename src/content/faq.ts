@@ -1,88 +1,58 @@
 import { appointmentFormEnabled, formatAddress, offices, site, whenOcoee } from './site';
 import type { Office } from './site';
+import { getMessages } from '@/i18n/dictionaries';
+import { fill } from '@/i18n/fill';
+import type { Locale } from '@/i18n/locales';
+
+/** Fixed codes, so a page can pick questions (for example the homepage) without matching text. */
+export type FaqId =
+  | 'offices' | 'hours' | 'open24Hours' | 'afterHoursEmergency' | 'bookOnline' | 'emergencyNewPatients'
+  | 'sameDayExtraction' | 'sameDayCrowns' | 'insurance' | 'medicaid' | 'financing' | 'rootCanal'
+  | 'orthodontist' | 'weekend' | 'spanishPortuguese' | 'haitianCreoleFrench' | 'cancellation' | 'nervous';
 
 export interface FaqItem {
+  id: FaqId;
   question: string;
   answer: string;
 }
 
-const officeLine = (office: Office) => `${office.name}: ${formatAddress(office)}.`;
-const hoursAnswer = whenOcoee(
-  'Orlando is open Monday to Friday, 8:00am to 5:00pm, and one Saturday a month. The Saturday changes, so please call to check. Ocoee is open Monday, 9:00am to 5:00pm.',
-  'Orlando is open Monday to Friday, 8:00am to 5:00pm, and one Saturday a month. The Saturday changes, so please call to check.',
-);
-
-// Answers are verbatim from the content file. Every answer that mentions Ocoee
-// switches with the Ocoee hold. The Haitian Creole and French answer must stay
-// as written until a qualified interpretation route exists.
-export const faqs: readonly FaqItem[] = [
-  { question: 'Where are your offices?', answer: offices.map(officeLine).join(' ') },
-  { question: 'What are your hours?', answer: hoursAnswer },
-  {
-    question: 'Are you open 24 hours?',
-    answer: "No. Calls outside office hours are answered and passed to our team, who will call you back. Same-day emergency care is often available, but after-hours treatment depends on availability and can't be promised.",
-  },
-  {
-    question: 'What if I have a dental emergency after hours?',
-    answer: `Call ${site.afterHoursPhone}. Your call is answered and passed to our team, who will call you back. For trouble breathing or swallowing, or a serious injury to your head or face, call 911.`,
-  },
-  {
-    question: 'Can I book an appointment online?',
-    // The request form is on hold (see appointmentFormEnabled), so the answer points to the phone.
-    answer: appointmentFormEnabled
-      ? 'Not at the moment. Request an appointment through our form, or call your office.'
-      : 'Not at the moment. Please call your office to request an appointment.',
-  },
-  { question: 'Are emergency visits open to new patients?', answer: 'Yes.' },
-  {
-    question: 'Can I have a tooth removed on the same day?',
-    answer: 'Extractions are one of our same-day services, subject to clinical suitability and availability.',
-  },
-  {
-    question: 'Do you offer same-day crowns?',
-    answer: 'No. Crowns need a dental laboratory case, so they are not completed on the same day. Our same-day services are extractions and implant placement, plus emergency first-stage treatment.',
-  },
-  {
-    question: 'Do you accept my insurance?',
-    answer: "See our insurance list. Insurance is always an estimate, so call us and we'll verify your benefits before treatment.",
-  },
-  { question: 'Do you accept Medicaid?', answer: 'No.' },
-  {
-    question: 'Do you offer payment plans or financing?',
-    answer: "Yes. We work with Alphaeon, CareCredit, Sunbit, Afterpay and Klarna, and we offer in-house payment plans. Financing is subject to approval and the lender's terms.",
-  },
-  {
-    question: 'Do you do root canal treatment?',
-    answer: whenOcoee(
-      'Yes, at our Orlando office. Ocoee patients who need root canal treatment are scheduled at Orlando.',
-      'Yes, at our Orlando office.',
-    ),
-  },
-  {
-    question: 'Is Dr. Khan an orthodontist?',
-    answer: whenOcoee(
-      'No. Dr. Khan is a general dentist, and no orthodontist works in either office.',
-      'No. Dr. Khan is a general dentist, and no orthodontist works in our office.',
-    ),
-  },
-  {
-    question: 'What if I need an appointment on a weekend?',
-    answer: "We are open one Saturday a month. Weekend and after-hours emergency appointments are often available. Call us, and we'll tell you what we can do.",
-  },
-  {
-    question: 'Do you speak Spanish or Portuguese?',
-    answer: 'Members of our team speak Spanish and Portuguese, but availability depends on who is in. Please call ahead.',
-  },
-  {
-    question: 'Do you speak Haitian Creole or French?',
-    answer: 'Please call our office and tell us about your language needs.',
-  },
-  {
-    question: 'What is your cancellation policy?',
-    answer: 'Please give 48 hours’ notice. A late cancellation or missed appointment is $50 on a weekday and $100 on a weekend. Our full financial policy is on the Payment and financing page.',
-  },
-  {
-    question: "I'm nervous about dental visits. What can I do?",
-    answer: "Tell us when you book, and we'll plan your visit around what helps.",
-  },
-];
+// Questions and answers live in src/i18n/messages/visit.ts. They are verbatim from the content
+// file. Every answer that mentions Ocoee switches with the Ocoee hold. The Haitian Creole
+// and French answer must stay as written, in every language, until a qualified
+// interpretation route exists.
+export function getFaqs(lang: Locale): readonly FaqItem[] {
+  const t = getMessages(lang).visit.faq;
+  const items = t.items;
+  const officeLine = (office: Office): string => fill(t.officeLine, { name: office.name, address: formatAddress(office) });
+  return [
+    { id: 'offices', question: items.offices.question, answer: offices.map(officeLine).join(' ') },
+    { id: 'hours', question: items.hours.question, answer: whenOcoee(items.hours.answer.withOcoee, items.hours.answer.orlandoOnly) },
+    { id: 'open24Hours', question: items.open24Hours.question, answer: items.open24Hours.answer },
+    {
+      id: 'afterHoursEmergency',
+      question: items.afterHoursEmergency.question,
+      answer: fill(items.afterHoursEmergency.answer, { phone: site.afterHoursPhone }),
+    },
+    {
+      id: 'bookOnline',
+      question: items.bookOnline.question,
+      // The request form is on hold (see appointmentFormEnabled), so the answer points to the phone.
+      answer: appointmentFormEnabled ? items.bookOnline.answer.withForm : items.bookOnline.answer.callOnly,
+    },
+    { id: 'emergencyNewPatients', question: items.emergencyNewPatients.question, answer: items.emergencyNewPatients.answer },
+    { id: 'sameDayExtraction', question: items.sameDayExtraction.question, answer: items.sameDayExtraction.answer },
+    { id: 'sameDayCrowns', question: items.sameDayCrowns.question, answer: items.sameDayCrowns.answer },
+    { id: 'insurance', question: items.insurance.question, answer: items.insurance.answer },
+    { id: 'medicaid', question: items.medicaid.question, answer: items.medicaid.answer },
+    { id: 'financing', question: items.financing.question, answer: items.financing.answer },
+    { id: 'rootCanal', question: items.rootCanal.question, answer: whenOcoee(items.rootCanal.answer.withOcoee, items.rootCanal.answer.orlandoOnly) },
+    { id: 'orthodontist', question: items.orthodontist.question, answer: whenOcoee(items.orthodontist.answer.withOcoee, items.orthodontist.answer.orlandoOnly) },
+    { id: 'weekend', question: items.weekend.question, answer: items.weekend.answer },
+    { id: 'spanishPortuguese', question: items.spanishPortuguese.question, answer: items.spanishPortuguese.answer },
+    // Review: the answer must stay as written until a qualified interpretation route exists. The owner
+    // checks its translation in src/i18n/messages/visit.ts.
+    { id: 'haitianCreoleFrench', question: items.haitianCreoleFrench.question, answer: items.haitianCreoleFrench.answer },
+    { id: 'cancellation', question: items.cancellation.question, answer: items.cancellation.answer },
+    { id: 'nervous', question: items.nervous.question, answer: items.nervous.answer },
+  ];
+}

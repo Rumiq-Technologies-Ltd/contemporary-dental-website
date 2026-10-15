@@ -11,7 +11,7 @@ Supplied by Contemporary Dental Care. They show the Orlando office, the team, th
 | `orlando-office-front.jpg` | Orlando office exterior | Orlando office page |
 | `orlando-office-entrance.jpg` | Orlando office entrance, portrait | Not yet placed |
 | `front-desk.jpg` | Front desk team on the phone | Contact page |
-| `team-at-work.jpg` | Team member at a computer | About page |
+| `team-at-work.jpg` | Team member at a computer | Not used. Removed from the About page because no written photo consent is on file. Delete only with owner approval. |
 | `xray-team-landscape.jpg` | Team member beside the X-ray unit | Cleanings and check-ups |
 | `xray-team-portrait.jpg` | Team member beside the X-ray unit, portrait | Technology page |
 | `treatment-room-teal.jpg` | Treatment room | Home (new patients), fillings and restorative care |

@@ -1,17 +1,19 @@
-import { services, type Service } from '@/content/services';
+import { getServices, type Service } from '@/content/services';
 import { formatAddress, offices, routes, site, type Office } from '@/content/site';
+import { getMessages } from '@/i18n/dictionaries';
+import { localeTags, type Locale } from '@/i18n/locales';
 import { siteUrl } from '@/lib/siteUrl';
 
 const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
-// Opening hours per office, mirrored from the content file. Orlando's monthly
-// Saturday changes, so it is not encoded. Keep in step with Office.hours.
+// Opening hours per office, mirrored from the content messages. Orlando's monthly
+// Saturday changes, so it is not encoded. Keep in step with common.hours.
 const openingHours: Record<Office['id'], { days: string[]; opens: string; closes: string }> = {
   orlando: { days: WEEKDAYS, opens: '08:00', closes: '17:00' },
   ocoee: { days: ['Monday'], opens: '09:00', closes: '17:00' },
 };
 
-function dentist(office: Office): Record<string, unknown> {
+function dentist(office: Office, lang: Locale): Record<string, unknown> {
   const hours = openingHours[office.id];
   return {
     '@type': 'Dentist',
@@ -29,12 +31,13 @@ function dentist(office: Office): Record<string, unknown> {
       addressCountry: 'US',
     },
     openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: hours.days, opens: hours.opens, closes: hours.closes }],
+    inLanguage: localeTags[lang],
     description: `${site.name}, ${formatAddress(office)}.`,
   };
 }
 
 /** Organization plus one Dentist entry per active office (Ocoee follows the Ocoee hold). */
-export function practiceStructuredData(): Record<string, unknown> {
+export function practiceStructuredData(lang: Locale): Record<string, unknown> {
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -53,7 +56,7 @@ export function practiceStructuredData(): Record<string, unknown> {
         hasOfferCatalog: {
           '@type': 'OfferCatalog',
           name: 'Dental services',
-          itemListElement: services.map(service => ({
+          itemListElement: getServices(lang).map(service => ({
             '@type': 'Offer',
             itemOffered: { '@type': 'Service', name: service.title, description: service.description, url: `${siteUrl}${service.href}` },
           })),
@@ -64,17 +67,18 @@ export function practiceStructuredData(): Record<string, unknown> {
         '@id': `${siteUrl}/#website`,
         name: site.name,
         url: siteUrl,
-        inLanguage: 'en-US',
+        inLanguage: localeTags[lang],
         publisher: { '@id': `${siteUrl}/#organization` },
       },
-      ...offices.map(dentist),
+      ...offices.map(office => dentist(office, lang)),
     ],
   };
 }
 
 /** One service page: the service itself, provided by the practice, and its breadcrumb trail. */
-export function serviceStructuredData(service: Service): Record<string, unknown> {
+export function serviceStructuredData(service: Service, lang: Locale): Record<string, unknown> {
   const url = `${siteUrl}${service.href}`;
+  const { breadcrumb } = getMessages(lang).common;
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -87,12 +91,13 @@ export function serviceStructuredData(service: Service): Record<string, unknown>
         serviceType: service.title,
         provider: { '@id': `${siteUrl}/#organization` },
         areaServed: offices.map(office => ({ '@type': 'City', name: office.locality.split(',')[0] })),
+        inLanguage: localeTags[lang],
       },
       {
         '@type': 'BreadcrumbList',
         itemListElement: [
-          { '@type': 'ListItem', position: 1, name: 'Home', item: siteUrl },
-          { '@type': 'ListItem', position: 2, name: 'Services', item: `${siteUrl}${routes.services}` },
+          { '@type': 'ListItem', position: 1, name: breadcrumb.home, item: siteUrl },
+          { '@type': 'ListItem', position: 2, name: breadcrumb.services, item: `${siteUrl}${routes.services}` },
           { '@type': 'ListItem', position: 3, name: service.heading, item: url },
         ],
       },

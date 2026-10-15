@@ -1,0 +1,474 @@
+import type { Locale } from '../locales';
+
+// Copy for the home page and its sections. Where the English wording changes with the Ocoee
+// hold, the key has two forms, withOcoee and orlandoOnly. Placeholders such as {phone} are
+// filled by fill(). Shared chrome (call buttons, "Request an appointment") lives in common.ts.
+const en = {
+  meta: {
+    title: 'Dental Care',
+    absoluteTitle: {
+      withOcoee: 'Dental Care in Orlando and Ocoee | Contemporary Dental Care',
+      orlandoOnly: 'Dental Care in Orlando | Contemporary Dental Care',
+    },
+    description: {
+      withOcoee: 'Honest, patient-focused dental care in Orlando and Ocoee. Routine care, emergency visits, implants, cosmetic treatment and clear aligners.',
+      orlandoOnly: 'Honest, patient-focused dental care in Orlando. Routine care, emergency visits, implants, cosmetic treatment and clear aligners.',
+    },
+  },
+  hero: {
+    headline: {
+      withOcoee: 'Honest, patient-focused dental care in Orlando and Ocoee',
+      orlandoOnly: 'Honest, patient-focused dental care in Orlando',
+    },
+    trustNewPatients: 'New patients welcome',
+    trustLanguages: 'English, Spanish and Portuguese',
+    intro: 'Routine care, emergency visits, implants, cosmetic treatment and clear aligners. We explain your options clearly and plan treatment in sensible stages.',
+  },
+  steps: {
+    heading: 'Getting good care is simple',
+    whatToExpect: 'What to expect',
+    highlights: {
+      label: 'Practice highlights',
+      newPatients: 'New patients welcome',
+      sameDayEmergency: 'Emergency appointments often available the same day',
+      offices: {
+        withOcoee: 'Offices in Orlando and Ocoee',
+        orlandoOnly: 'Office in Orlando',
+      },
+      languages: 'English, Spanish and Portuguese spoken',
+      afterHours: 'After-hours line: {phone}',
+    },
+    call: {
+      badge: 'New patients welcome',
+      title: 'Call your office',
+      text: {
+        withOcoee: 'Call Orlando or Ocoee to book. Tell us your language when you call.',
+        orlandoOnly: 'Call our Orlando office to book. Tell us your language when you call.',
+      },
+    },
+    plan: {
+      badge: 'Honest treatment planning',
+      title: 'Get an honest plan',
+      text: 'We explain your options in plain language and recommend treatment in stages that suit your health.',
+    },
+    care: {
+      badge: 'Care in your language',
+      title: 'Care that puts your health first',
+      text: 'Care in English, Spanish and Portuguese. Please ask about language support when you call. Your health comes ahead of the size of a treatment plan.',
+    },
+  },
+  problems: {
+    label: 'Common problems',
+    heading: 'Common problems, clear solutions',
+    allServices: 'All services',
+    items: {
+      emergency: {
+        tab: 'Tooth pain',
+        headline: 'Got tooth pain?',
+        big: 'Same day',
+        bigText: 'Emergency appointments are often available the same day, including for new patients.',
+        linkLabel: 'About emergency care',
+      },
+      implants: {
+        tab: 'Missing teeth',
+        headline: 'Missing a tooth?',
+        big: 'Two ways',
+        bigText: 'Implants and dentures both replace missing teeth.',
+        linkLabel: 'About dental implants',
+      },
+      alignersBraces: {
+        tab: 'Crooked teeth',
+        headline: 'Want straighter teeth?',
+        big: 'Aligners or braces',
+        bigText: 'Clear aligners and traditional braces, both from Dr. Khan.',
+        linkLabel: 'About clear aligners and braces',
+      },
+      checkups: {
+        tab: 'Check-up due',
+        headline: 'Due a check-up?',
+        big: 'Every 6 months',
+        bigText: 'Regular visits help us catch problems early.',
+        linkLabel: 'About cleanings and check-ups',
+      },
+      cosmetic: {
+        tab: 'Smile makeover',
+        headline: 'Want a new smile?',
+        big: 'Your goals',
+        bigText: 'Cosmetic treatment planned around what you want.',
+        linkLabel: 'About cosmetic dentistry',
+      },
+    },
+  },
+  services: {
+    eyebrow: 'Our services',
+    heading: 'Everything we treat',
+    allServices: 'All services',
+    learnMore: 'Learn more',
+  },
+  advantages: {
+    eyebrow: 'About us',
+    heading: 'A practice built on honest care',
+    teaser: {
+      withOcoee: 'Dr. Sheryar Khan, a general dentist, founded Contemporary Dental Care in 2023. We see patients at our Orlando office, and at our Ocoee office on Mondays. We explain your options clearly, plan treatment in sensible stages and put your health first.',
+      orlandoOnly: 'Dr. Sheryar Khan, a general dentist, founded Contemporary Dental Care in 2023. We see patients at our Orlando office. We explain your options clearly, plan treatment in sensible stages and put your health first.',
+    },
+    cta: 'Meet Dr. Khan and our team',
+    photoAlt: 'A treatment room at Contemporary Dental Care',
+    commitments: ['Honest treatment planning', 'Easy to reach', 'Care in your language'],
+  },
+  whyUs: {
+    heading: 'What you can expect from us',
+    tableLabel: 'What we offer',
+    yes: 'Yes',
+    promises: [
+      'Options explained in plain language',
+      'Treatment recommended in stages that suit your health',
+      'Emergency visits open to new patients',
+      'Emergency appointments often available the same day',
+      'Same-day extraction when clinically suitable',
+      'Team members who speak Spanish and Portuguese',
+    ],
+    phoneLines: {
+      withOcoee: 'Phone lines at both offices and an after-hours line',
+      orlandoOnly: 'An office phone line and an after-hours line',
+    },
+  },
+  emergency: {
+    eyebrow: 'Dental emergency?',
+    heading: 'Same-day care when you need it',
+    body: 'Tooth extractions and implant placement can often be done the same day, subject to clinical suitability and availability. Emergency appointments are often available the same day, including for new patients. Same-day emergency care also includes assessment and first-stage treatment for abscesses and swelling, and for broken or fractured teeth.',
+    guidance: 'Dental emergency guidance',
+  },
+  team: {
+    heading: 'The people who look after you',
+    intro: 'Dr. Sheryar Khan leads a team that includes speakers of English, Spanish and Portuguese.',
+    cta: 'Meet the team',
+  },
+  offices: {
+    eyebrow: 'Where to find us',
+    heading: 'Call the office nearest you to book',
+    allLocations: 'All locations',
+    photoAlt: 'The {name} office',
+    details: 'Office details',
+  },
+  faq: {
+    heading: 'Frequently asked questions',
+    allQuestions: 'All questions',
+  },
+};
+
+export type HomeMessages = typeof en;
+
+export const home: Record<Locale, HomeMessages> = {
+  en,
+  es: {
+    meta: {
+      title: 'Atención dental',
+      absoluteTitle: {
+        withOcoee: 'Atención dental en Orlando y Ocoee | Contemporary Dental Care',
+        orlandoOnly: 'Atención dental en Orlando | Contemporary Dental Care',
+      },
+      description: {
+        withOcoee: 'Atención dental honesta y centrada en el paciente en Orlando y Ocoee. Atención de rutina, visitas de urgencia, implantes, tratamiento estético y alineadores transparentes.',
+        orlandoOnly: 'Atención dental honesta y centrada en el paciente en Orlando. Atención de rutina, visitas de urgencia, implantes, tratamiento estético y alineadores transparentes.',
+      },
+    },
+    hero: {
+      headline: {
+        withOcoee: 'Atención dental honesta y centrada en el paciente en Orlando y Ocoee',
+        orlandoOnly: 'Atención dental honesta y centrada en el paciente en Orlando',
+      },
+      trustNewPatients: 'Aceptamos pacientes nuevos',
+      trustLanguages: 'Inglés, español y portugués',
+      intro: 'Atención de rutina, visitas de urgencia, implantes, tratamiento estético y alineadores transparentes. Le explicamos sus opciones con claridad y planificamos el tratamiento en etapas razonables.',
+    },
+    steps: {
+      heading: 'Recibir buena atención es sencillo',
+      whatToExpect: 'Qué esperar',
+      highlights: {
+        label: 'Aspectos destacados del consultorio',
+        newPatients: 'Aceptamos pacientes nuevos',
+        sameDayEmergency: 'Citas de urgencia con frecuencia disponibles el mismo día',
+        offices: {
+          withOcoee: 'Consultorios en Orlando y Ocoee',
+          orlandoOnly: 'Consultorio en Orlando',
+        },
+        languages: 'Se habla inglés, español y portugués',
+        afterHours: 'Línea fuera del horario de atención: {phone}',
+      },
+      call: {
+        badge: 'Aceptamos pacientes nuevos',
+        title: 'Llame a su consultorio',
+        text: {
+          withOcoee: 'Llame a Orlando o a Ocoee para reservar su cita. Díganos su idioma cuando llame.',
+          orlandoOnly: 'Llame a nuestro consultorio de Orlando para reservar su cita. Díganos su idioma cuando llame.',
+        },
+      },
+      plan: {
+        badge: 'Planificación honesta del tratamiento',
+        title: 'Reciba un plan honesto',
+        text: 'Le explicamos sus opciones en un lenguaje sencillo y recomendamos el tratamiento por etapas que se adapten a su salud.',
+      },
+      care: {
+        badge: 'Atención en su idioma',
+        title: 'Atención que pone su salud primero',
+        text: 'Atención en inglés, español y portugués. Pregunte por el apoyo en su idioma al llamar. Su salud va antes que el tamaño de un plan de tratamiento.',
+      },
+    },
+    problems: {
+      label: 'Problemas frecuentes',
+      heading: 'Problemas frecuentes, soluciones claras',
+      allServices: 'Todos los servicios',
+      items: {
+        emergency: {
+          tab: 'Dolor de dientes',
+          headline: '¿Tiene dolor de dientes?',
+          big: 'El mismo día',
+          bigText: 'Citas de urgencia con frecuencia disponibles el mismo día, también para pacientes nuevos.',
+          linkLabel: 'Acerca de la atención de urgencia',
+        },
+        implants: {
+          tab: 'Dientes faltantes',
+          headline: '¿Le falta un diente?',
+          big: 'Dos opciones',
+          bigText: 'Los implantes y las prótesis dentales reemplazan los dientes faltantes.',
+          linkLabel: 'Acerca de los implantes dentales',
+        },
+        alignersBraces: {
+          tab: 'Dientes torcidos',
+          headline: '¿Desea tener dientes más rectos?',
+          big: 'Alineadores o brackets',
+          bigText: 'Alineadores transparentes y brackets tradicionales, ambos a cargo del Dr. Khan.',
+          linkLabel: 'Acerca de los alineadores transparentes y los brackets',
+        },
+        checkups: {
+          tab: 'Revisión pendiente',
+          headline: '¿Le toca una revisión?',
+          big: 'Cada 6 meses',
+          bigText: 'Las visitas periódicas nos ayudan a detectar los problemas a tiempo.',
+          linkLabel: 'Acerca de las limpiezas y revisiones',
+        },
+        cosmetic: {
+          tab: 'Transformación de sonrisa',
+          headline: '¿Desea una sonrisa nueva?',
+          big: 'Sus objetivos',
+          bigText: 'Tratamiento estético planificado según lo que usted desea.',
+          linkLabel: 'Acerca de la odontología estética',
+        },
+      },
+    },
+    services: {
+      eyebrow: 'Nuestros servicios',
+      heading: 'Todo lo que tratamos',
+      allServices: 'Todos los servicios',
+      learnMore: 'Más información',
+    },
+    advantages: {
+      eyebrow: 'Sobre nosotros',
+      heading: 'Un consultorio basado en la atención honesta',
+      teaser: {
+        withOcoee: 'El Dr. Sheryar Khan, odontólogo general, fundó Contemporary Dental Care en 2023. Atendemos a pacientes en nuestro consultorio de Orlando y, los lunes, en nuestro consultorio de Ocoee. Le explicamos sus opciones con claridad, planificamos el tratamiento en etapas razonables y ponemos su salud primero.',
+        orlandoOnly: 'El Dr. Sheryar Khan, odontólogo general, fundó Contemporary Dental Care en 2023. Atendemos a pacientes en nuestro consultorio de Orlando. Le explicamos sus opciones con claridad, planificamos el tratamiento en etapas razonables y ponemos su salud primero.',
+      },
+      cta: 'Conozca al Dr. Khan y a nuestro equipo',
+      photoAlt: 'Una sala de tratamiento en Contemporary Dental Care',
+      commitments: ['Planificación honesta del tratamiento', 'Fácil de contactar', 'Atención en su idioma'],
+    },
+    whyUs: {
+      heading: 'Qué puede esperar de nosotros',
+      tableLabel: 'Lo que ofrecemos',
+      yes: 'Sí',
+      promises: [
+        'Opciones explicadas en un lenguaje sencillo',
+        'Tratamiento recomendado por etapas que se adaptan a su salud',
+        'Visitas de urgencia abiertas a pacientes nuevos',
+        'Citas de urgencia con frecuencia disponibles el mismo día',
+        // Review: clinical qualifier ("when clinically suitable"); confirm it reads the same to a dentist.
+        'Extracción el mismo día cuando es clínicamente adecuada',
+        'Miembros del equipo que hablan español y portugués',
+      ],
+      phoneLines: {
+        withOcoee: 'Líneas telefónicas en ambos consultorios y una línea fuera del horario de atención',
+        orlandoOnly: 'Una línea telefónica del consultorio y una línea fuera del horario de atención',
+      },
+    },
+    emergency: {
+      eyebrow: '¿Tiene una urgencia dental?',
+      heading: 'Atención el mismo día cuando la necesita',
+      // Review: clinical qualifier ("subject to clinical suitability and availability"); confirm it reads the same to a dentist.
+      body: 'Las extracciones dentales y la colocación de implantes pueden realizarse el mismo día, sujetas a la idoneidad clínica y a la disponibilidad. Con frecuencia hay citas de urgencia el mismo día, también para pacientes nuevos. La atención de urgencia el mismo día también incluye la evaluación y el tratamiento de primera etapa de abscesos e hinchazón, y de dientes rotos o fracturados.',
+      guidance: 'Orientación para urgencias dentales',
+    },
+    team: {
+      heading: 'Las personas que cuidan de usted',
+      intro: 'El Dr. Sheryar Khan dirige un equipo que incluye personas que hablan inglés, español y portugués.',
+      cta: 'Conozca al equipo',
+    },
+    offices: {
+      eyebrow: 'Dónde encontrarnos',
+      heading: 'Llame al consultorio más cercano para reservar su cita',
+      allLocations: 'Todas las ubicaciones',
+      photoAlt: 'El consultorio de {name}',
+      details: 'Detalles del consultorio',
+    },
+    faq: {
+      heading: 'Preguntas frecuentes',
+      allQuestions: 'Todas las preguntas',
+    },
+  },
+  pt: {
+    meta: {
+      title: 'Atendimento odontológico',
+      absoluteTitle: {
+        withOcoee: 'Atendimento odontológico em Orlando e Ocoee | Contemporary Dental Care',
+        orlandoOnly: 'Atendimento odontológico em Orlando | Contemporary Dental Care',
+      },
+      description: {
+        withOcoee: 'Atendimento odontológico honesto e centrado no paciente em Orlando e Ocoee. Atendimento de rotina, emergências, implantes, tratamentos estéticos e alinhadores transparentes.',
+        orlandoOnly: 'Atendimento odontológico honesto e centrado no paciente em Orlando. Atendimento de rotina, emergências, implantes, tratamentos estéticos e alinhadores transparentes.',
+      },
+    },
+    hero: {
+      headline: {
+        withOcoee: 'Atendimento odontológico honesto e centrado no paciente em Orlando e Ocoee',
+        orlandoOnly: 'Atendimento odontológico honesto e centrado no paciente em Orlando',
+      },
+      trustNewPatients: 'Recebemos novos pacientes',
+      trustLanguages: 'Inglês, espanhol e português',
+      intro: 'Atendimento de rotina, emergências, implantes, tratamentos estéticos e alinhadores transparentes. Explicamos suas opções com clareza e planejamos o tratamento em etapas sensatas.',
+    },
+    steps: {
+      heading: 'Receber um bom atendimento é simples',
+      whatToExpect: 'O que esperar',
+      highlights: {
+        label: 'Destaques do consultório',
+        newPatients: 'Recebemos novos pacientes',
+        sameDayEmergency: 'Consultas de emergência costumam estar disponíveis no mesmo dia',
+        offices: {
+          withOcoee: 'Consultórios em Orlando e Ocoee',
+          orlandoOnly: 'Consultório em Orlando',
+        },
+        languages: 'Falamos inglês, espanhol e português',
+        afterHours: 'Linha fora do horário: {phone}',
+      },
+      call: {
+        badge: 'Recebemos novos pacientes',
+        title: 'Ligue para o seu consultório',
+        text: {
+          withOcoee: 'Ligue para Orlando ou Ocoee para agendar sua consulta. Informe-nos seu idioma ao ligar.',
+          orlandoOnly: 'Ligue para o nosso consultório de Orlando para agendar sua consulta. Informe-nos seu idioma ao ligar.',
+        },
+      },
+      plan: {
+        badge: 'Planejamento de tratamento honesto',
+        title: 'Receba um plano honesto',
+        text: 'Explicamos suas opções em linguagem simples e recomendamos o tratamento em etapas adequadas à sua saúde.',
+      },
+      care: {
+        badge: 'Atendimento no seu idioma',
+        title: 'Atendimento que coloca a sua saúde em primeiro lugar',
+        text: 'Atendimento em inglês, espanhol e português. Pergunte sobre o apoio no seu idioma ao ligar. Sua saúde vem antes do tamanho de um plano de tratamento.',
+      },
+    },
+    problems: {
+      label: 'Problemas comuns',
+      heading: 'Problemas comuns, soluções claras',
+      allServices: 'Todos os serviços',
+      items: {
+        emergency: {
+          tab: 'Dor de dente',
+          headline: 'Está com dor de dente?',
+          big: 'No mesmo dia',
+          bigText: 'Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes.',
+          linkLabel: 'Sobre o atendimento de emergência',
+        },
+        implants: {
+          tab: 'Dentes ausentes',
+          headline: 'Falta algum dente?',
+          big: 'Duas opções',
+          bigText: 'Implantes e próteses dentárias substituem dentes ausentes.',
+          linkLabel: 'Sobre implantes dentários',
+        },
+        alignersBraces: {
+          tab: 'Dentes tortos',
+          headline: 'Quer dentes mais alinhados?',
+          big: 'Alinhadores ou aparelho fixo',
+          bigText: 'Alinhadores transparentes e aparelho fixo tradicional, ambos com o Dr. Khan.',
+          linkLabel: 'Sobre alinhadores transparentes e aparelho fixo',
+        },
+        checkups: {
+          tab: 'Revisão pendente',
+          headline: 'Está na hora da revisão?',
+          big: 'A cada 6 meses',
+          bigText: 'Visitas regulares nos ajudam a identificar problemas cedo.',
+          linkLabel: 'Sobre limpezas e revisões',
+        },
+        cosmetic: {
+          tab: 'Transformação do sorriso',
+          headline: 'Quer um novo sorriso?',
+          big: 'Seus objetivos',
+          bigText: 'Tratamento estético planejado de acordo com o que você deseja.',
+          linkLabel: 'Sobre odontologia estética',
+        },
+      },
+    },
+    services: {
+      eyebrow: 'Nossos serviços',
+      heading: 'Tudo o que tratamos',
+      allServices: 'Todos os serviços',
+      learnMore: 'Saiba mais',
+    },
+    advantages: {
+      eyebrow: 'Sobre nós',
+      heading: 'Um consultório construído sobre o atendimento honesto',
+      teaser: {
+        withOcoee: 'O Dr. Sheryar Khan, clínico geral, fundou a Contemporary Dental Care em 2023. Atendemos pacientes no nosso consultório de Orlando e, às segundas-feiras, no nosso consultório de Ocoee. Explicamos suas opções com clareza, planejamos o tratamento em etapas sensatas e colocamos a sua saúde em primeiro lugar.',
+        orlandoOnly: 'O Dr. Sheryar Khan, clínico geral, fundou a Contemporary Dental Care em 2023. Atendemos pacientes no nosso consultório de Orlando. Explicamos suas opções com clareza, planejamos o tratamento em etapas sensatas e colocamos a sua saúde em primeiro lugar.',
+      },
+      cta: 'Conheça o Dr. Khan e a nossa equipe',
+      photoAlt: 'Uma sala de tratamento na Contemporary Dental Care',
+      commitments: ['Planejamento de tratamento honesto', 'Fácil de contatar', 'Atendimento no seu idioma'],
+    },
+    whyUs: {
+      heading: 'O que você pode esperar de nós',
+      tableLabel: 'O que oferecemos',
+      yes: 'Sim',
+      promises: [
+        'Opções explicadas em linguagem simples',
+        'Tratamento recomendado em etapas adequadas à sua saúde',
+        'Atendimentos de emergência abertos a novos pacientes',
+        'Consultas de emergência costumam estar disponíveis no mesmo dia',
+        // Review: clinical qualifier ("when clinically suitable"); confirm it reads the same to a dentist.
+        'Extração no mesmo dia quando clinicamente adequada',
+        'Membros da equipe que falam espanhol e português',
+      ],
+      phoneLines: {
+        withOcoee: 'Linhas telefônicas nos dois consultórios e uma linha fora do horário',
+        orlandoOnly: 'Uma linha telefônica do consultório e uma linha fora do horário',
+      },
+    },
+    emergency: {
+      eyebrow: 'Emergência odontológica?',
+      heading: 'Atendimento no mesmo dia quando você precisa',
+      // Review: clinical qualifier ("subject to clinical suitability and availability"); confirm it reads the same to a dentist.
+      body: 'Extrações dentárias e a colocação de implantes podem ser feitas no mesmo dia, sujeitas à adequação clínica e à disponibilidade. Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes. O atendimento de emergência no mesmo dia também inclui avaliação e tratamento de primeira etapa de abscessos e inchaço, e de dentes quebrados ou fraturados.',
+      guidance: 'Orientações para emergências odontológicas',
+    },
+    team: {
+      heading: 'As pessoas que cuidam de você',
+      intro: 'O Dr. Sheryar Khan lidera uma equipe que inclui pessoas que falam inglês, espanhol e português.',
+      cta: 'Conheça a equipe',
+    },
+    offices: {
+      eyebrow: 'Onde nos encontrar',
+      heading: 'Ligue para o consultório mais próximo de você para agendar',
+      allLocations: 'Todas as unidades',
+      photoAlt: 'O consultório de {name}',
+      details: 'Detalhes do consultório',
+    },
+    faq: {
+      heading: 'Perguntas frequentes',
+      allQuestions: 'Todas as perguntas',
+    },
+  },
+};

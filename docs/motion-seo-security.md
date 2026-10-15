@@ -54,12 +54,13 @@ Response headers are set in `next.config.ts`:
 ## SEO
 
 - Every page: unique title and description, canonical URL, Open Graph and a large Twitter card (`src/lib/metadata.ts`).
+- Each page lists its English, Spanish, French and Portuguese versions as hreflang alternates, plus `x-default`. See `docs/internationalization.md`.
 - Share image: `src/app/opengraph-image.tsx` (1200×630, brand colours, built at build time) and `twitter-image.tsx`.
 - Structured data (`src/lib/structuredData.ts`): Organization (founder, languages, areas served, a catalogue of services without prices), WebSite, one Dentist per office with opening hours, FAQPage on `/faq`, and Service plus BreadcrumbList on each service page.
 - `sitemap.xml`, `robots.txt` (crawlers welcome in production, previews `noindex`) and `manifest.webmanifest`.
 
 ## GEO (generative engine optimisation)
 
-- `/llms.txt` (llmstxt.org) is a Markdown summary for AI assistants: practice summary, offices with addresses, phones and hours, every service with its description and link, key pages, and every FAQ verbatim. It is generated from `src/content/*`, so it follows the same holds as the pages (the Ocoee switch, no offers, no prices).
+- `/llms.txt` (llmstxt.org) is English only, because the English pages are the reference version. It is a Markdown summary for AI assistants: practice summary, offices with addresses, phones and hours, every service with its description and link, key pages, and every FAQ verbatim. It is generated from `src/content/*`, so it follows the same holds as the pages (the Ocoee switch, no offers, no prices).
 - `robots.txt` does not block AI crawlers by name; GPTBot, Google-Extended and Bingbot decide AI-search visibility.
 - Structured data and the FAQ give answer engines short, citable facts that match the visible page.

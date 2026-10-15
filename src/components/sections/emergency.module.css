@@ -20,3 +20,6 @@
 .guidance svg { font-size: 18px; }
 
 @media (max-width: 899px) { .emergency { grid-template-columns: minmax(0, 1fr); } }
+
+/* Touch: keep the layout, but give the links a 44px-plus tap area on phones (WCAG 2.5.5). */
+@media (pointer: coarse) { .afterHours a, .guidance { padding-block: 12px; margin-block: -12px; } }

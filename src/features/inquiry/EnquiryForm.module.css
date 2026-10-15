@@ -1,0 +1,12 @@
+/* Enquiry form. Fields are at least 48px tall and labelled above the input (Landing Page Brief, tap targets). */
+.form { display: grid; gap: 18px; max-width: 520px; }
+.field { display: grid; gap: 6px; margin: 0; padding: 0; border: 0; }
+.field > label,
+.field > legend { font-weight: 600; }
+.field input[type='text'],
+.field input[type='tel'],
+.field select { min-height: 48px; padding: 0 14px; border: 1px solid var(--color-ink); border-radius: 8px; font: inherit; font-size: 16px; background: var(--color-bg); color: var(--color-ink); }
+.option { display: inline-flex; align-items: center; gap: 10px; min-height: 48px; font-size: 16px; }
+.option input { width: 20px; height: 20px; }
+.error { margin: 0; color: #9a1b1b; font-size: 15px; }
+.honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }

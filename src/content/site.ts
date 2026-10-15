@@ -1,5 +1,6 @@
-// Single source of truth for practice facts. Page copy lives in the other
-// src/content modules and reads from here, so a fact changes in one place.
+// Single source of truth for practice facts. Page copy lives in src/i18n/messages and reads
+// from here, so a fact changes in one place. Facts that are not translated (names, addresses,
+// phone numbers, routes) stay in English in every language.
 
 export interface Office {
   id: 'orlando' | 'ocoee';
@@ -9,7 +10,6 @@ export interface Office {
   postalCode: string;
   phone: string;
   phoneHref: string;
-  hours: string;
   path: string;
 }
 
@@ -29,7 +29,6 @@ export const appointmentFormEnabled = false;
 export const site = {
   name: 'Contemporary Dental Care',
   legalName: 'Pearl Valley Dental Inc., doing business as Contemporary Dental Care',
-  tagline: 'Your smile is our priority',
   email: 'info@contemporarydentalcare.com',
   afterHoursPhone: '407-625-5440',
   afterHoursHref: 'tel:+14076255440',
@@ -43,7 +42,6 @@ const orlando: Office = {
   postalCode: '32839',
   phone: '321-522-8577',
   phoneHref: 'tel:+13215228577',
-  hours: 'Monday to Friday, 8:00am to 5:00pm',
   path: '/locations/orlando',
 };
 
@@ -55,7 +53,6 @@ const ocoee: Office = {
   postalCode: '34761',
   phone: '689-407-3015',
   phoneHref: 'tel:+16894073015',
-  hours: 'Monday, 9:00am to 5:00pm',
   path: '/locations/ocoee',
 };
 
@@ -71,6 +68,7 @@ export function whenOcoee<T>(withOcoee: T, withoutOcoee: T): T {
   return ocoeeEnabled ? withOcoee : withoutOcoee;
 }
 
+/** Paths are English and unprefixed. Use localePath() to link to another language. */
 export const routes = {
   home: '/',
   requestAppointment: '/contact#request-appointment',
@@ -93,19 +91,21 @@ export const routes = {
   accessibility: '/accessibility',
 } as const;
 
+/** Main navigation. Labels come from messages.common.nav[key]; numbers are fixed. */
 export const navigation = [
-  { label: 'Services', href: routes.services, number: '01' },
-  { label: 'Emergency', href: routes.emergency, number: '02' },
-  { label: 'Locations', href: routes.locations, number: '03' },
-  { label: 'New patients', href: routes.newPatients, number: '04' },
-  { label: 'Insurance and payment', href: routes.insurance, number: '05' },
-  { label: 'About', href: routes.about, number: '06' },
-  { label: 'Contact', href: routes.contact, number: '07' },
+  { key: 'services', href: routes.services, number: '01' },
+  { key: 'emergency', href: routes.emergency, number: '02' },
+  { key: 'locations', href: routes.locations, number: '03' },
+  { key: 'newPatients', href: routes.newPatients, number: '04' },
+  { key: 'insurance', href: routes.insurance, number: '05' },
+  { key: 'about', href: routes.about, number: '06' },
+  { key: 'contact', href: routes.contact, number: '07' },
 ] as const;
 
+/** Legal pages are English only, so these links always point at the English URLs. */
 export const legalLinks = [
-  { label: 'Privacy policy', href: routes.privacy },
-  { label: 'Terms of use', href: routes.terms },
-  { label: 'Notice of Privacy Practices', href: routes.noticeOfPrivacyPractices },
-  { label: 'Accessibility statement', href: routes.accessibility },
+  { key: 'privacyPolicy', href: routes.privacy },
+  { key: 'termsOfUse', href: routes.terms },
+  { key: 'noticeOfPrivacyPractices', href: routes.noticeOfPrivacyPractices },
+  { key: 'accessibilityStatement', href: routes.accessibility },
 ] as const;

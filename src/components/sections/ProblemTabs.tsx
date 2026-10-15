@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';
 import Image, { type StaticImageData } from 'next/image';
 import Link from 'next/link';
-import { routes } from '@/content/site';
 import styles from './problems.module.css';
 
 export interface Problem {
@@ -18,8 +17,18 @@ export interface Problem {
   photo: StaticImageData;
 }
 
+interface ProblemTabsProps {
+  problems: readonly Problem[];
+  /** Accessible name of the tab list. */
+  label: string;
+  /** Text and (already localised) address of the appointment button in every panel. */
+  requestLabel: string;
+  requestHref: string;
+}
+
 // ARIA tabs: arrow keys, Home and End move between tabs; only the active tab is in the tab order.
-export function ProblemTabs({ problems }: { problems: readonly Problem[] }) {
+// Every string and address arrives as a prop from the server parent, already translated.
+export function ProblemTabs({ problems, label, requestLabel, requestHref }: ProblemTabsProps) {
   const [active, setActive] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const panels = useRef<(HTMLDivElement | null)[]>([]);
@@ -56,7 +65,7 @@ export function ProblemTabs({ problems }: { problems: readonly Problem[] }) {
   }
 
   return <div className={styles.tabsRoot} data-reveal="">
-    <div role="tablist" aria-label="Common problems" className={styles.tabs}>
+    <div role="tablist" aria-label={label} className={styles.tabs}>
       {problems.map((problem, index) => <button key={problem.id} type="button" role="tab"
         ref={element => { tabs.current[index] = element; }}
         id={`problem-tab-${problem.id}`} aria-controls={`problem-panel-${problem.id}`}
@@ -77,7 +86,7 @@ export function ProblemTabs({ problems }: { problems: readonly Problem[] }) {
         <p data-fact="">{problem.text}</p>
         <div className={styles.actions} data-fact="">
           <Link href={problem.href} className="pill pill-dark">{problem.linkLabel}</Link>
-          <Link href={routes.requestAppointment} className="pill pill-outline">Request an appointment</Link>
+          <Link href={requestHref} className="pill pill-outline">{requestLabel}</Link>
         </div>
       </div>
     </div>)}

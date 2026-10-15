@@ -21,6 +21,6 @@ export function Notice({ children }: { children: ReactNode }) {
 }
 
 /** Emergency safety wording. Dr. Khan must approve it before publication. */
-export function SafetyNotice({ children }: { children: ReactNode }) {
-  return <aside className={styles.safety} aria-label="When to call 911"><p>{children}</p></aside>;
+export function SafetyNotice({ children, label }: { children: ReactNode; label: string }) {
+  return <aside className={styles.safety} aria-label={label}><p>{children}</p></aside>;
 }

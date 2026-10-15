@@ -1,12 +1,17 @@
-import { faqs } from '@/content/faq';
-import { services } from '@/content/services';
+import { getFaqs } from '@/content/faq';
+import { getServices } from '@/content/services';
 import { formatAddress, offices, routes, site, whenOcoee } from '@/content/site';
+import { getMessages } from '@/i18n/dictionaries';
+import { defaultLocale } from '@/i18n/locales';
 import { siteUrl } from '@/lib/siteUrl';
 
 // llms.txt (llmstxt.org): a plain Markdown summary that AI assistants and answer engines can
-// read and cite. Every line comes from the content files, so it stays in step with the pages
-// and follows the same holds (Ocoee switch, no offers, no prices).
+// read and cite. It is English only, because the English pages are the reference version.
+// Every line comes from the content files, so it stays in step with the pages and follows
+// the same holds (Ocoee switch, no offers, no prices).
 export const dynamic = 'force-static';
+
+const english = getMessages(defaultLocale);
 
 const url = (path: string) => `${siteUrl}${path === '/' ? '' : path}`;
 
@@ -23,13 +28,13 @@ export function GET(): Response {
     '',
     '## Offices',
     '',
-    ...offices.map(office => `- [${office.name} office](${url(office.path)}): ${formatAddress(office)}. Phone ${office.phone}. Hours: ${office.hours}.`),
+    ...offices.map(office => `- [${office.name} office](${url(office.path)}): ${formatAddress(office)}. Phone ${office.phone}. Hours: ${english.common.hours[office.id]}.`),
     `- After-hours line: ${site.afterHoursPhone}`,
     `- Email: ${site.email}`,
     '',
     '## Services',
     '',
-    ...services.map(service => `- [${service.title}](${url(service.href)}): ${service.description}`),
+    ...getServices(defaultLocale).map(service => `- [${service.title}](${url(service.href)}): ${service.description}`),
     '',
     '## Key pages',
     '',
@@ -43,7 +48,7 @@ export function GET(): Response {
     '',
     '## Frequently asked questions',
     '',
-    ...faqs.flatMap(item => [`### ${item.question}`, '', item.answer, '']),
+    ...getFaqs(defaultLocale).flatMap(item => [`### ${item.question}`, '', item.answer, '']),
   ];
   return new Response(lines.join('\n'), { headers: { 'Content-Type': 'text/markdown; charset=utf-8' } });
 }

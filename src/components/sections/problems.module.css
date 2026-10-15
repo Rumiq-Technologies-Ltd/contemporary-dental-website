@@ -33,3 +33,6 @@
   .panel { grid-template-columns: minmax(0, 1fr); }
   .tabs { gap: 4px 20px; }
 }
+
+/* Touch: problem tabs are at least 44px tall on phones (WCAG 2.5.5). */
+@media (pointer: coarse) { .tab { min-height: 44px; display: inline-flex; align-items: center; } }

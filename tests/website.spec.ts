@@ -18,7 +18,11 @@ async function settle(page: Page) {
 test('homepage shows one primary action, both offices and the page structure', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
-  page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
+  // Next.js prefetches unprefixed links as ?_rsc requests. The English pages are served from the internal
+  // /en path, so those prefetches can return 404 and Chrome logs them. Only those are ignored.
+  page.on('console', message => {
+    if (message.type() === 'error' && !message.location().url.includes('_rsc=')) errors.push(message.text());
+  });
   await ready(page);
   // Hero, steps, problems, services, about, what to expect, emergency, team, offices and questions.
   await expect(page.locator('main > section')).toHaveCount(10);
@@ -65,17 +69,26 @@ test('problem tabs switch panels with the mouse and the arrow keys', async ({ pa
   await expect(page.getByRole('tabpanel').getByRole('link', { name: 'About emergency care' })).toHaveAttribute('href', '/emergency');
 });
 
-test('the highlights strip can be paused and stays readable', async ({ page }) => {
+test('the highlights strip pauses on hover and on keyboard focus, and stays readable', async ({ page }) => {
   await ready(page);
   await expect(page.getByRole('list', { name: 'Practice highlights' }).getByRole('listitem')).toHaveCount(5);
-  const pause = page.getByRole('button', { name: 'Pause highlights' });
-  await pause.click();
-  await expect(page.getByRole('button', { name: 'Play highlights' })).toHaveAttribute('aria-pressed', 'true');
-  // GSAP moves the track; once paused, its transform must stop changing.
+  // There is no pause button: hovering or focusing the strip is what stops it.
+  await expect(page.getByRole('button', { name: /highlights/i })).toHaveCount(0);
+  const strip = page.getByRole('region', { name: 'Practice highlights' });
   const track = page.locator('[data-loop="highlights"]');
-  const first = await track.evaluate(element => getComputedStyle(element).transform);
+
+  // GSAP moves the track; while the pointer is over the strip, its transform must stop changing.
+  await strip.hover();
+  const hovered = await track.evaluate(element => getComputedStyle(element).transform);
   await page.waitForTimeout(400);
-  expect(await track.evaluate(element => getComputedStyle(element).transform)).toBe(first);
+  expect(await track.evaluate(element => getComputedStyle(element).transform)).toBe(hovered);
+
+  // Keyboard focus on the strip also stops it.
+  await page.mouse.move(0, 0);
+  await strip.focus();
+  const focused = await track.evaluate(element => getComputedStyle(element).transform);
+  await page.waitForTimeout(400);
+  expect(await track.evaluate(element => getComputedStyle(element).transform)).toBe(focused);
 });
 
 test('the header stays on screen while the page scrolls', async ({ page }) => {

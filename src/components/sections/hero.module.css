@@ -30,3 +30,6 @@
   .trust { flex-direction: column; }
   .trust span + span::before { display: none; }
 }
+
+/* Touch: keep the layout, but give the call link a 44px-plus tap area on phones (WCAG 2.5.5). */
+@media (pointer: coarse) { .call { padding-block: 12px; margin-block: -12px; } }
