@@ -32,7 +32,17 @@ Production builds are indexable and `robots.txt` welcomes all crawlers (it is no
 
 ## Not built
 
-Membership page (C18 draft), Spanish and Portuguese versions, Haitian Creole or French pages, language selector, analytics and advertising tags, before-and-after gallery, the Altamonte Springs location, LANAP, CEREC, same-day crowns, nitrous oxide, facial aesthetics, the referral promotion, Crunch Fitness content.
+Membership page (C18 draft), Haitian Creole pages, analytics and advertising tags, before-and-after gallery, the Altamonte Springs location, LANAP, CEREC, same-day crowns, nitrous oxide, facial aesthetics, the referral promotion, Crunch Fitness content.
+
+## Translations
+
+Spanish (`/es`) and Portuguese (`/pt`) versions of the customer-facing pages are built, with the language selector in the top bar. French is not offered (C17 §9; decision 15 Oct 2026). The Spanish and Portuguese versions are machine drafts written from the English and are not yet approved; they launch with English on 29 October only after Franchesca and Jessica (Spanish) and Bruno (Portuguese) have reviewed them and the owners have approved them:
+
+- A qualified native speaker must review every page, especially the clinical, insurance, financial and emergency wording. Each one is marked `// Review:` in `src/i18n/messages/`.
+- Dr. Khan (and the owner, Mohammed Khan) must approve the translated emergency safety notice, the financial policy summary and the after-hours 911 answer before launch.
+- The FAQ answer about Haitian Creole and French must stay as written until a qualified interpretation route exists. Its translations keep the same meaning and need owner sign-off.
+- Legal pages (privacy, terms, notice of privacy practices, accessibility) are English only and return the not-found page in other languages.
+- Haitian Creole is not built. See `docs/internationalization.md`.
 
 ## Added beyond the content file
 

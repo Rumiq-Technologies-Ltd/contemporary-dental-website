@@ -12,6 +12,10 @@
 .topBarContacts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 22px; }
 .topBarContacts a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .topBarPhone { font-weight: 700; }
+.languages { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 12px; font-size: 13px; }
+.languageLink,
+.languageCurrent { display: inline-flex; align-items: center; min-height: 28px; padding: 0 4px; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.languageCurrent { font-weight: 700; text-decoration: none; }
 @media (max-width: 899px) { .topBarText { display: none; } }
 
 /* Sticky header: white, with a condensed wordmark, the navigation and one cyan action. */
@@ -128,4 +132,12 @@
 a.callBar { display: none; }
 @media (max-width: 899px) {
   a.callBar { display: inline-flex; position: fixed; z-index: 40; left: 16px; right: 16px; bottom: 16px; justify-content: center; box-shadow: 0 14px 30px -12px rgb(0 0 0 / 0.5); }
+}
+
+/* Touch: keep the layout, but give the header, top bar, language and footer links a 44px-plus tap area on phones (WCAG 2.5.5). */
+@media (pointer: coarse) {
+  .logo { min-height: 44px; }
+  .topBarContacts a, .languageLink, .languageCurrent { padding-block: 12px; margin-block: -12px; }
+  .languageLink, .languageCurrent { min-height: 44px; }
+  .siteFooter a { padding-block: 12px; margin-block: -12px; }
 }

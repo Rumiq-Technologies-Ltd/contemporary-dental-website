@@ -10,12 +10,7 @@ section.steps { grid-template-columns: minmax(0, 1fr); row-gap: 20px; padding-to
   font-size: clamp(22px, 2.4vw, 34px); font-weight: 700; line-height: 1; text-transform: uppercase; color: var(--color-ink);
 }
 .group li svg { color: var(--color-accent-ink); font-size: 0.9em; }
-.pause {
-  position: absolute; right: 10px; top: 50%; transform: translateY(-50%); min-height: 36px; padding: 0 12px;
-  border: 1px solid var(--color-ink); border-radius: var(--radius-button); background: var(--color-tint-soft); font-size: 13px; font-weight: 600;
-}
-.pause:hover { background: var(--color-ink); color: #ffffff; }
-@media (prefers-reduced-motion: reduce) { .pause { display: none; } }
+.strip:focus-visible { outline: 3px solid var(--color-ink); outline-offset: 3px; }
 
 .panel {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px clamp(32px, 6vw, 96px); align-items: start;

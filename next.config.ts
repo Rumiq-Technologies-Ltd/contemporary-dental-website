@@ -31,6 +31,9 @@ const csp = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
+  // The root layout is the dynamic [lang] segment, which cannot compose a not-found page on its
+  // own, so unmatched URLs and notFound() use app/global-not-found.tsx (documented in Next.js 16).
+  experimental: { globalNotFound: true },
   images: { formats: ['image/avif', 'image/webp'], qualities: [75, 85] },
   async headers() {
     return [{ source: '/:path*', headers: [
