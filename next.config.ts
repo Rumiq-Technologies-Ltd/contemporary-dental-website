@@ -18,6 +18,10 @@ const csp = [
   "img-src 'self' data: blob:",
   "font-src 'self'",
   `connect-src 'self'${production ? '' : ' ws: wss:'}`,
+  "manifest-src 'self'",
+  "media-src 'self'",
+  "worker-src 'self'",
+  "frame-src 'none'",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -31,10 +35,15 @@ const nextConfig: NextConfig = {
   async headers() {
     return [{ source: '/:path*', headers: [
       { key: 'Content-Security-Policy', value: csp },
+      // Browsers only honour HSTS over HTTPS, so it is inert on local http. No includeSubDomains
+      // or preload: those commit every subdomain to HTTPS and are hard to undo.
+      { key: 'Strict-Transport-Security', value: 'max-age=31536000' },
       { key: 'X-Content-Type-Options', value: 'nosniff' },
       { key: 'X-Frame-Options', value: 'DENY' },
       { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+      { key: 'Cross-Origin-Opener-Policy', value: 'same-origin' },
+      { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), bluetooth=(), hid=(), browsing-topics=(), interest-cohort=()' },
     ] }];
   },
 };

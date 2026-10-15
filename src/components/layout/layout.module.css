@@ -1,82 +1,131 @@
-/* One container unit equals 14.4px on the Figma desktop artboard.
-   Content reflows below 900px; decorative geometry alone uses canvas ratios. */
-/* Sections keep their responsive composition on one continuous page surface. */
-.screen { position: relative; width: 100%; container-type: inline-size; aspect-ratio: 1440 / 900; scroll-margin-top: 24px; }
-.header { position: absolute; z-index: 20; top: 2.7778cqw; left: 3.8889cqw; right: 3.8889cqw; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 16px; height: 36px; }
-.logo { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-size: 16px; font-weight: 500; letter-spacing: 1.92px; white-space: nowrap; }
-.logoMark { display: grid; place-items: center; width: 28px; height: 28px; background: var(--accent); border-radius: 50%; flex-shrink: 0; }
-.auth { display: flex; justify-content: flex-end; gap: 6px; }
-.phone { white-space: nowrap; }
-.menu { position: relative; width: max-content; }
-.menuTrigger { list-style: none; display: flex; align-items: center; gap: 6px; cursor: pointer; border-radius: 999px; }
+/* Shared chrome: the announcement bar, the sticky header, the section frame, the footer and the
+   phone button. Header breakpoints: below 640px it shows the logo and the menu; from 640px it
+   adds the request button; from 1280px the navigation bar replaces the menu. */
+
+/* Announcement bar: a cyan strip inset from the page edges. Scrolls away with the page. */
+.topBar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 28px;
+  margin: 12px clamp(12px, 1.5vw, 20px) 0; padding: 10px 16px; border-radius: var(--radius-card);
+  background: var(--color-highlight); color: var(--color-ink); font-size: 14px; line-height: 1.4; text-align: center;
+}
+.topBarText { font-weight: 500; }
+.topBarContacts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 22px; }
+.topBarContacts a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
+.topBarPhone { font-weight: 700; }
+@media (max-width: 899px) { .topBarText { display: none; } }
+
+/* Sticky header: white, with a condensed wordmark, the navigation and one cyan action. */
+.header {
+  position: sticky; top: 0; z-index: 50;
+  display: grid; grid-template-columns: 1fr auto; grid-template-areas: 'logo menu';
+  align-items: center; gap: 16px; min-height: 76px; padding: 12px var(--gutter);
+  background: var(--color-bg); border-bottom: 1px solid var(--color-line);
+}
+.logo { grid-area: logo; display: inline-flex; align-items: center; gap: 12px; min-width: 0; color: var(--color-ink); }
+.logoMark {
+  display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--radius-button);
+  background: var(--color-accent); color: var(--color-ink); font-size: 24px;
+}
+.wordmark {
+  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: 22px; font-weight: 800; line-height: 0.88; letter-spacing: -0.01em; text-transform: uppercase; white-space: nowrap;
+}
+.request { grid-area: auth; min-height: 46px; padding: 0 20px; font-size: 15px; }
+.header .request { display: none; }
+.menu { grid-area: menu; position: relative; }
+.menuTrigger { list-style: none; cursor: pointer; min-height: 46px; padding: 0 18px; }
 .menuTrigger::-webkit-details-marker { display: none; }
-.menuIcon { width: 36px; height: 36px; border: 1px solid var(--ink); border-radius: 50%; display: grid; place-items: center; background: var(--surface); }
-.menuPanel { position: absolute; left: 0; top: 52px; width: 320px; padding: 28px; border: 1px solid #131c1526; border-radius: 20px; background: var(--surface); box-shadow: 0 15px 50px #131c1522; }
-.menuPanel p { font-size: 10px; letter-spacing: .12em; color: #546057; margin-bottom: 18px; }
-.menuPanel a { display: flex; gap: 12px; align-items: center; padding: 16px 0; border-bottom: 1px solid #131c151a; font-size: 16px; }
-.menuPanel a span:first-child { font-size: 10px; color: #66746a; }
-.menuPanel a span:last-child { margin-left: auto; }
-.menuPanel a:last-child { border-bottom: 0; }
-.menuPanel a[aria-current='page'] { font-weight: 600; }
-.menuPanel a[aria-current='page'] span:first-child { color: var(--ink); }
-.footer { position: absolute; left: 3.8889cqw; right: 3.8889cqw; bottom: 3.0556cqw; height: 44px; display: flex; align-items: flex-end; justify-content: space-between; z-index: 2; font-size: 12px; }
-.tagline { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; font-size: clamp(14px, 1.3cqw, 20px); line-height: 1.3; }
-.tagline span { width: 5px; height: 5px; background: var(--accent); border-radius: 50%; }
-.award { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; }
-.footerLink { white-space: nowrap; padding: 2px 0; border-bottom: 1px solid var(--ink); }
-.footerLink:hover { background: var(--accent); }
-.narrow { right: auto; width: 45.3472cqw; }
-@media (min-width: 900px) and (max-width: 1230px) { .logo { font-size: 12px; letter-spacing: 1px; } .header { gap: 10px; grid-template-columns: auto 1fr auto; } .logo { justify-self: center; } .footer { font-size: 10px; } .auth :global(.pill) { padding: 0 12px; font-size: 12px; } }
-@media (max-width: 899px) {
-  .screen { aspect-ratio: auto; }
-  .header { position: relative; top: auto; left: auto; right: auto; padding: 24px; height: auto; grid-template-columns: 1fr auto; row-gap: 22px; }
-  .logo { grid-column: 1 / -1; grid-row: 1; justify-self: center; font-size: clamp(10px, 2.4vw, 16px); letter-spacing: .08em; gap: 8px; }
-  .menu { grid-row: 2; }
-  .auth { grid-row: 2; }
-  .auth :global(.pill) { padding: 0 12px; font-size: 12px; }
-  .auth .phone { display: none; }
-  .footer, .narrow { position: relative; inset: auto; width: auto; height: auto; padding: 30px 24px 26px; gap: 12px; font-size: 10px; }
-  .menuPanel { width: min(320px, calc(100vw - 80px)); }
+.menuPanel {
+  position: absolute; right: 0; top: calc(100% + 12px); z-index: 60;
+  width: min(400px, calc(100vw - 32px)); max-height: calc(100dvh - 120px); overflow-y: auto;
+  padding: 16px; border: 1px solid var(--color-ink); border-radius: var(--radius-card); background: var(--color-bg);
+  box-shadow: 0 24px 50px -20px rgb(0 0 0 / 0.35);
 }
-@media (prefers-reduced-motion: no-preference) { .menuPanel { animation: menu-in .18s ease-out; } }
-@keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+.menuPanel nav { display: grid; }
+.menuPanel nav a {
+  display: flex; align-items: center; gap: 14px; min-height: 54px; padding: 0 10px; border-bottom: 1px solid var(--color-line);
+  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: 24px; font-weight: 700; text-transform: uppercase; color: var(--color-ink);
+}
+.menuPanel nav a:hover { background: var(--color-tint-soft); }
+.menuPanel nav a span:first-child { min-width: 26px; font-family: var(--font-body), sans-serif; font-variation-settings: normal; font-size: 13px; font-weight: 500; color: var(--color-muted); }
+.menuPanel nav a span:last-child { margin-left: auto; font-size: 20px; }
+.menuPanel nav a[aria-current='page'] { color: var(--color-accent-ink); }
+.menuActions { display: grid; gap: 10px; padding: 16px 4px 4px; }
+.menuActions :global(.pill) { width: 100%; }
+.menuAfterHours { font-size: 15px; color: var(--color-muted); text-align: center; }
+.menuAfterHours a { font-weight: 700; color: var(--color-ink); }
+@media (prefers-reduced-motion: no-preference) { .menuPanel { animation: menu-in 0.2s var(--ease-out); } }
+@keyframes menu-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
 
-/* Navigation bar: visible from 1100px, where the menu is hidden. Logo sits centre,
-   phone on the left, request button on the right, and the bar spans the second row. */
-.nav { display: none; }
-.navLink { padding: 9px 12px; border-radius: 999px; font-size: 14px; font-weight: 500; line-height: 1; white-space: nowrap; transition: background .16s; }
-.navLink:hover, .navLink[aria-current='page'] { background: var(--accent); }
-@media (min-width: 1100px) {
-  .header { height: auto; row-gap: 18px; grid-template-columns: 1fr auto 1fr; }
-  .logo { grid-column: 2; grid-row: 1; justify-self: center; font-size: clamp(18px, 1.7cqw, 26px); letter-spacing: .08em; gap: 12px; }
-  .logoMark { width: 34px; height: 34px; }
-  .menu { display: none; }
-  .auth { display: contents; }
-  .auth .phone { display: inline-flex; grid-column: 1; grid-row: 1; justify-self: start; }
-  .auth :global(.pill-accent) { grid-column: 3; grid-row: 1; justify-self: end; }
-  .nav { display: flex; grid-column: 1 / -1; grid-row: 2; justify-content: center; align-items: center; gap: clamp(4px, .6cqw, 10px); }
+/* Reading progress: a thin teal line under the header that fills as the page scrolls.
+   Uses a CSS scroll timeline, so it costs nothing on the main thread; hidden where unsupported. */
+.header::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--color-accent-ink); transform: scaleX(0); transform-origin: left; pointer-events: none; }
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .header::after { animation: read-progress linear both; animation-timeline: scroll(root); }
+  }
+}
+@keyframes read-progress { to { transform: scaleX(1); } }
+
+/* Desktop navigation. Hidden until the menu is replaced. */
+.nav { display: none; grid-area: nav; align-items: center; justify-content: center; gap: 4px; }
+.navLink {
+  position: relative; padding: 10px 10px; font-size: 15px; font-weight: 600; line-height: 1; white-space: nowrap; color: var(--color-ink);
+}
+.navLink::after {
+  content: ''; position: absolute; left: 10px; right: 10px; bottom: 2px; height: 2px; background: var(--color-accent);
+  transform: scaleX(0); transform-origin: left; transition: transform 0.25s var(--ease-out);
+}
+.navLink:hover::after, .navLink[aria-current='page']::after { transform: scaleX(1); }
+.navLink[aria-current='page'] { color: var(--color-accent-ink); }
+
+@media (min-width: 640px) {
+  .header { grid-template-columns: 1fr auto auto; grid-template-areas: 'logo auth menu'; }
+  .header .request { display: inline-flex; }
+}
+@media (min-width: 1280px) {
+  .header { grid-template-columns: auto 1fr auto; grid-template-areas: 'logo nav auth'; }
+  .header .menu { display: none; }
+  .header .nav { display: flex; }
+}
+/* Between 1280px and 1440px the bar is tight, so links sit closer together. */
+@media (min-width: 1280px) and (max-width: 1439px) { .header { gap: 24px; } .navLink { padding-inline: 7px; font-size: 14.5px; } .navLink::after { left: 7px; right: 7px; } }
+@media (max-width: 639px) { .wordmark { font-size: 20px; } .logoMark { width: 36px; height: 36px; font-size: 21px; } }
+
+/* Every section is a full-width band whose content stays inside the container width. */
+.screen {
+  position: relative; display: grid; width: 100%;
+  padding: clamp(64px, 8vw, 120px) max(var(--gutter), calc((100% - var(--container)) / 2));
+  overflow: clip; scroll-margin-top: 96px;
 }
 
-/* Inner pages reuse the homepage header in a container of its own. */
-.top { position: relative; container-type: inline-size; min-height: calc(5.5556cqw + 36px); }
-@media (max-width: 899px) { .top { min-height: 0; } }
-@media (min-width: 1100px) { .top { min-height: calc(2.7778cqw + 96px); } }
-
-/* Full footer: a soft panel in the same rounded language as the dialogs. */
-.siteFooter { display: grid; gap: 28px; margin: 48px clamp(16px, 3.8889%, 56px) 32px; padding: clamp(24px, 3.5vw, 48px); background: var(--muted); border-radius: 28px; font-size: 14px; line-height: 1.7; }
-.siteTagline { display: flex; align-items: center; gap: 14px; font-family: var(--font-display); font-size: clamp(22px, 2.6vw, 38px); font-weight: 200; line-height: 1.25; }
-.siteTagline span { width: 10px; height: 10px; flex-shrink: 0; background: var(--accent); border-radius: 50%; }
-.legalName { padding-top: 18px; border-top: 1px solid #131c1526; font-size: 11px; line-height: 1.5; color: #546057; }
-.footerGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 24px; }
+/* Footer: a cyan band with the navigation as outlined buttons, a giant wordmark and the contact details. */
+.siteFooter {
+  display: grid; gap: clamp(32px, 4vw, 48px);
+  padding: clamp(48px, 6vw, 80px) max(var(--gutter), calc((100% - var(--container)) / 2)) 32px;
+  background: var(--color-accent); color: var(--color-ink); font-size: 15px; line-height: 1.6;
+}
+.footerTop { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
+.footerNav { display: flex; flex-wrap: wrap; gap: 8px; }
+.footerNav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border: 1px solid var(--color-ink); border-radius: var(--radius-button); font-weight: 500; transition: background-color 0.2s, color 0.2s; }
+.footerNav a:hover { background: var(--color-ink); color: #ffffff; }
+.footerWordmark {
+  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: clamp(48px, 12.5vw, 190px); font-weight: 800; line-height: 0.84; letter-spacing: -0.02em; text-transform: uppercase;
+  color: var(--color-ink); white-space: nowrap;
+}
+.footerGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; padding-top: 24px; border-top: 1px solid var(--color-ink); }
 .footerGrid address { font-style: normal; }
-.footerGrid strong { display: block; font-size: 10px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: #546057; margin-bottom: 6px; }
-.footerGrid a, .legalLinks a { border-bottom: 1px solid #131c1540; }
-.footerGrid a:hover, .legalLinks a:hover { background: var(--accent); }
-.legalLinks { display: flex; flex-wrap: wrap; gap: 8px 24px; font-size: 13px; }
+.footerGrid strong { display: block; margin-bottom: 4px; font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62; font-size: 20px; font-weight: 700; text-transform: uppercase; }
+.footerGrid a, .legalLinks a { text-decoration: underline; text-underline-offset: 3px; }
+.footerBottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
+.siteTagline { font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62; font-size: 24px; font-weight: 700; text-transform: uppercase; }
+.legalLinks { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; }
+.legalName { font-size: 13px; line-height: 1.5; color: var(--color-muted); }
 
-/* Sticky call button for phones. The body gains matching bottom space. */
+/* Sticky call button for phones. The body gains matching bottom space (globals.css). */
 a.callBar { display: none; }
-@media (max-width: 899px) { .siteFooter { margin-inline: 24px; } } /* element + class outranks the global .pill display */
 @media (max-width: 899px) {
-  a.callBar { display: inline-flex; position: fixed; z-index: 30; left: 16px; right: 16px; bottom: 16px; box-shadow: 0 6px 24px #131c1540; }
+  a.callBar { display: inline-flex; position: fixed; z-index: 40; left: 16px; right: 16px; bottom: 16px; justify-content: center; box-shadow: 0 14px 30px -12px rgb(0 0 0 / 0.5); }
 }

@@ -8,6 +8,8 @@ import { PagePhoto } from '@/components/page/PagePhoto';
 import { Prose, Section } from '@/components/page/Section';
 import { findService, servicePages } from '@/content/services';
 import { pageMetadata } from '@/lib/metadata';
+import { serviceStructuredData } from '@/lib/structuredData';
+import { JsonLd } from '@/components/page/JsonLd';
 import styles from '@/components/page/page.module.css';
 
 interface ServicePageProps {
@@ -48,5 +50,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
         {related.map(item => <LinkCard key={item.id} title={item.title} href={item.href} />)}
       </CardGrid>
     </Section>
+    <JsonLd data={serviceStructuredData(service)} />
   </PageLayout>;
 }

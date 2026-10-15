@@ -4,7 +4,7 @@ import styles from './page.module.css';
 
 /** Address, phone and hours for one office, linking to its page. */
 export function OfficeCard({ office }: { office: Office }) {
-  return <article className={styles.office}>
+  return <article className={styles.office} data-reveal="" data-tilt="">
     <h3>{office.name}</h3>
     <address>{formatAddress(office)}</address>
     <p><a className={styles.link} href={office.phoneHref}>{office.phone}</a></p>
