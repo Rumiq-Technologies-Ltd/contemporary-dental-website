@@ -11,7 +11,7 @@ function initials(name: string): string {
   return (words[0][0] + (words.length > 1 ? words[words.length - 1][0] : '')).toUpperCase();
 }
 
-/** The team: a tile or portrait, the name and role, and the bio where one is approved. */
+/** The team: a tile or portrait, then the name and role. */
 export async function TeamGrid() {
   const lang = await getLocale();
   return <ul className={styles.grid} data-stagger="">
@@ -23,7 +23,6 @@ export async function TeamGrid() {
       </span>
       <h3 className={styles.name}>{member.name}</h3>
       <p className={styles.role}>{member.role}</p>
-      {member.bio && <p className={styles.bio}>{member.bio}</p>}
     </li>)}
   </ul>;
 }
