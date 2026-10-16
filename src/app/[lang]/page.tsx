@@ -3,7 +3,6 @@ import { Hero } from '@/components/sections/Hero';
 import { Steps } from '@/components/sections/Steps';
 import { Problems } from '@/components/sections/Problems';
 import { Services } from '@/components/sections/Services';
-import { BeforeAfter } from '@/components/sections/BeforeAfter';
 import { Advantages } from '@/components/sections/Advantages';
 import { WhyUs } from '@/components/sections/WhyUs';
 import { Team } from '@/components/sections/Team';
@@ -42,7 +41,6 @@ export default async function HomePage() {
       <Steps />
       <Problems />
       <Services />
-      <BeforeAfter />
       <Advantages />
       <WhyUs />
       <Team />

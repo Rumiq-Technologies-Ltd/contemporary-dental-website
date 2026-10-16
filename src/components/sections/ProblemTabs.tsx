@@ -82,8 +82,8 @@ export function ProblemTabs({ problems, label, requestLabel, requestHref }: Prob
       </div>
       <div className={styles.fact}>
         <p className={styles.big} data-fact="">{problem.big}</p>
-        {problem.bigText && <p className={styles.bigText} data-fact="">{problem.bigText}</p>}
         <p data-fact="">{problem.text}</p>
+        {problem.bigText && <p className={styles.bigText} data-fact="">{problem.bigText}</p>}
         <div className={styles.actions} data-fact="">
           <Link href={problem.href} className="pill pill-dark">{problem.linkLabel}</Link>
           <Link href={requestHref} className="pill pill-outline">{requestLabel}</Link>

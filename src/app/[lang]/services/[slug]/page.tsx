@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CardGrid, LinkCard } from '@/components/page/Cards';
-import { CallButton, RequestAppointmentButton } from '@/components/page/Actions';
+import { CallButton } from '@/components/page/Actions';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { PagePhoto } from '@/components/page/PagePhoto';
@@ -48,7 +48,6 @@ export default async function ServicePage({ params }: ServicePageProps) {
       <Prose>
         {service.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
         <div className={styles.actions}>
-          <RequestAppointmentButton />
           {offices.map(office => <CallButton key={office.id} office={office} />)}
         </div>
       </Prose>
