@@ -146,7 +146,6 @@ const en = {
       description: 'Cleanings, emergency care, extractions, fillings, crowns, root canal treatment, implants, dentures, clear aligners and braces, and cosmetic dentistry.',
     },
     title: 'Our services',
-    officesHeading: 'Our offices',
     lead: {
       withOcoee: 'Dr. Sheryar Khan provides our treatment at both offices, and our hygienist provides cleanings and check-ups. Some treatment is referred to another provider, including root canal retreatment and some types of oral surgery. Each service below has its own page.',
       orlandoOnly: 'Dr. Sheryar Khan provides our treatment at our office, and our hygienist provides cleanings and check-ups. Some treatment is referred to another provider, including root canal retreatment and some types of oral surgery. Each service below has its own page.',
@@ -173,7 +172,6 @@ export const services: Record<Locale, ServicesMessages> = {
         description: 'Limpiezas, atención de urgencia, extracciones, empastes, coronas, endodoncia, implantes, prótesis dentales, alineadores transparentes y brackets, y odontología estética.',
       },
       title: 'Nuestros servicios',
-      officesHeading: 'Nuestros consultorios',
       lead: {
         withOcoee: 'El Dr. Sheryar Khan realiza nuestros tratamientos en ambos consultorios, y nuestra higienista dental realiza las limpiezas y revisiones. Algunos tratamientos se derivan a otro profesional, entre ellos el retratamiento de endodoncia y algunos tipos de cirugía oral. Cada servicio que aparece a continuación tiene su propia página.',
         orlandoOnly: 'El Dr. Sheryar Khan realiza nuestros tratamientos en nuestro consultorio, y nuestra higienista dental realiza las limpiezas y revisiones. Algunos tratamientos se derivan a otro profesional, entre ellos el retratamiento de endodoncia y algunos tipos de cirugía oral. Cada servicio que aparece a continuación tiene su propia página.',
@@ -310,7 +308,6 @@ export const services: Record<Locale, ServicesMessages> = {
         description: 'Limpezas, atendimento de emergência, extrações, restaurações, coroas, tratamento de canal, implantes, prótese dentária, alinhadores transparentes e aparelho fixo, e odontologia estética.',
       },
       title: 'Nossos serviços',
-      officesHeading: 'Nossos consultórios',
       lead: {
         withOcoee: 'O Dr. Sheryar Khan realiza nossos tratamentos em ambos os consultórios, e nossa higienista odontológica realiza as limpezas e revisões. Alguns tratamentos são encaminhados a outro profissional, incluindo o retratamento de canal e alguns tipos de cirurgia oral. Cada serviço abaixo tem a sua própria página.',
         orlandoOnly: 'O Dr. Sheryar Khan realiza nossos tratamentos no nosso consultório, e nossa higienista odontológica realiza as limpezas e revisões. Alguns tratamentos são encaminhados a outro profissional, incluindo o retratamento de canal e alguns tipos de cirurgia oral. Cada serviço abaixo tem a sua própria página.',

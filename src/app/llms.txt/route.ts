@@ -41,7 +41,6 @@ export function GET(): Response {
     `- [New patients](${url(routes.newPatients)})`,
     `- [Insurance](${url(routes.insurance)})`,
     `- [About Dr. Khan](${url(routes.doctor)})`,
-    `- [Our team](${url(routes.team)})`,
     `- [Contact](${url(routes.contact)})`,
     `- [Frequently asked questions](${url(routes.faq)})`,
     '',

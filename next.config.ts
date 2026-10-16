@@ -57,6 +57,7 @@ const nextConfig: NextConfig = {
       { source: '/locations', destination: '/contact', permanent: true },
       { source: '/locations/:office', destination: '/contact', permanent: true },
       { source: '/payment-financing', destination: '/insurance', permanent: true },
+      { source: '/about/team', destination: '/about', permanent: true },
     ];
   },
 };

@@ -33,7 +33,6 @@ const en = {
       title: 'Care in your language',
       body: "Care in English, Spanish and Portuguese. Please ask about language support when you call.",
     },
-    teamLink: 'Meet Dr. Khan and our team',
     doctorLink: {
       before: 'Read more about',
       link: 'Dr. Sheryar Khan',
@@ -132,7 +131,6 @@ export const about: Record<Locale, AboutMessages> = {
         title: 'Atención en su idioma',
         body: 'Atención en inglés, español y portugués. Pregunte por el apoyo en su idioma al llamar.',
       },
-      teamLink: 'Conozca al Dr. Khan y a nuestro equipo',
       doctorLink: {
         before: 'Más información sobre',
         link: 'el Dr. Sheryar Khan',
@@ -231,7 +229,6 @@ export const about: Record<Locale, AboutMessages> = {
         title: 'Atendimento no seu idioma',
         body: 'Atendimento em inglês, espanhol e português. Pergunte sobre o apoio no seu idioma ao ligar.',
       },
-      teamLink: 'Conheça o Dr. Khan e a nossa equipe',
       doctorLink: {
         before: 'Saiba mais sobre',
         link: 'o Dr. Sheryar Khan',

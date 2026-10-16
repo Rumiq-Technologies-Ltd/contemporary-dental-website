@@ -1,15 +1,10 @@
 import type { Metadata } from 'next';
-import { CardGrid, LinkCard } from '@/components/page/Cards';
 import { ClosingBand } from '@/components/page/ClosingBand';
-import { OfficeCard } from '@/components/page/OfficeCard';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
-import { Section } from '@/components/page/Section';
-import { TreatmentIllustrations } from '@/components/sections/TreatmentIllustrations';
-import { getServices } from '@/content/services';
-import { offices, routes, whenOcoee } from '@/content/site';
+import { Services } from '@/components/sections/Services';
+import { routes, whenOcoee } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
-import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
 import { pageMetadata } from '@/lib/metadata';
 
@@ -19,20 +14,15 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({ lang, title: t.title, description: t.description, path: routes.services });
 }
 
+// Each service links to its own page, which carries its treatment illustrations and office details.
 export default async function ServicesPage() {
   const lang = await getLocale();
   const t = getMessages(lang).services.index;
   return <PageLayout>
     <PageIntro title={t.title} lead={whenOcoee(t.lead.withOcoee, t.lead.orlandoOnly)} />
-    <CardGrid>
-      {getServices(lang).map(service => <LinkCard key={service.id} title={service.title} href={localePath(lang, service.href)} />)}
-    </CardGrid>
-    <TreatmentIllustrations />
-    <Section id="offices" title={t.officesHeading}>
-      <CardGrid>
-        {offices.map(office => <OfficeCard key={office.id} office={office} />)}
-      </CardGrid>
-    </Section>
+    <div id="services">
+      <Services />
+    </div>
     <ClosingBand />
   </PageLayout>;
 }

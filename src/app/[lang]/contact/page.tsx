@@ -29,6 +29,7 @@ export default async function ContactPage() {
   const { labels, orlando, ocoee } = messages.locations;
   const ocoeeOffice = offices.find(office => office.id === 'ocoee');
   const directionsLabel = messages.home.offices.directions;
+  const mapTitle = messages.home.offices.mapTitle;
   return <PageLayout>
     <PageIntro title={t.title} />
     <OfficeDetails
@@ -39,6 +40,7 @@ export default async function ContactPage() {
       hours={`${messages.common.hours.orlando}. ${orlando.hoursNote}`}
       services={orlando.services}
       directionsLabel={directionsLabel}
+      mapTitle={mapTitle}
       photo={{ name: 'orlandoFront', alt: orlando.photoAlt }}
     />
     {ocoeeOffice && <OfficeDetails
@@ -49,6 +51,7 @@ export default async function ContactPage() {
       hours={messages.common.hours.ocoee}
       services={ocoee.services}
       directionsLabel={directionsLabel}
+      mapTitle={mapTitle}
     />}
     <div className={styles.split}>
       <Prose>
