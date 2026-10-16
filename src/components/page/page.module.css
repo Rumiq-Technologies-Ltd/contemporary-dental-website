@@ -38,6 +38,9 @@
 .split { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 80px); align-items: center; }
 /* Text and photo start at the same line, for a split whose text is shorter than the photo. */
 .splitTop { align-items: start; }
+/* Two offices side by side on wide screens; stacked on tablets and phones. */
+.offices { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(56px, 6vw, 80px); align-items: start; }
+@media (min-width: 900px) { .offices { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 64px); } }
 .photo { position: relative; aspect-ratio: 4 / 5; overflow: hidden; border-radius: var(--radius-card); background: var(--color-off); }
 .photo img { object-fit: cover; }
 .photoWide { aspect-ratio: 3 / 2; }
