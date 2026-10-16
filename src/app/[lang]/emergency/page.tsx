@@ -32,15 +32,15 @@ export default async function EmergencyPage() {
           <p>{t.lead}</p>
           <p>{t.sameDayCare}</p>
         </Prose>
+        <Section id="after-hours" title={t.afterHours.title}>
+          <Prose>
+            <p>{t.afterHours.body}</p>
+            <p>{messages.common.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></p>
+          </Prose>
+        </Section>
       </div>
       <PagePhoto photo="guides" />
     </div>
-    <Section id="after-hours" title={t.afterHours.title}>
-      <Prose>
-        <p>{t.afterHours.body}</p>
-        <p>{messages.common.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></p>
-      </Prose>
-    </Section>
     <EnquiryPanel source="/emergency" />
   </PageLayout>;
 }

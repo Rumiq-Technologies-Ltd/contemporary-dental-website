@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { ClosingBand } from '@/components/page/ClosingBand';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { Services } from '@/components/sections/Services';
@@ -23,6 +22,5 @@ export default async function ServicesPage() {
     <div id="services">
       <Services />
     </div>
-    <ClosingBand />
   </PageLayout>;
 }
