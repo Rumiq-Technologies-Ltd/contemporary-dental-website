@@ -18,7 +18,8 @@ export async function SiteHeader() {
   const items = localizedNavigation(lang, t.nav);
   return <header className={styles.header}>
     <Link href={localePath(lang, routes.home)} className={styles.logo} aria-label={fill(t.homeLabel, { name: site.name })}>
-      <Image src={brand.logo} alt="" className={styles.logoImage} priority />
+      <Image src={brand.logoIcon} alt="" className={styles.logoIcon} priority />
+      <Image src={brand.logoWordmark} alt="" className={styles.logoWordmark} priority />
     </Link>
     <SiteNav items={items} label={t.primaryNavigation} />
   </header>;
