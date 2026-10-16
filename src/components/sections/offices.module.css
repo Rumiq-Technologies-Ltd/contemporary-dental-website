@@ -18,8 +18,9 @@
 .hours { font-size: 15px; color: var(--color-muted); }
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 24px; margin-top: 8px; }
 @media (max-width: 419px) { .call { width: 100%; gap: 8px; padding: 0 14px; font-size: 15px; } }
-.details { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--color-ink); text-decoration: underline; text-underline-offset: 4px; }
-.details svg { font-size: 18px; }
+.details, .directions { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--color-ink); text-decoration: underline; text-underline-offset: 4px; }
+.details svg, .directions svg { font-size: 18px; }
+.directions { justify-self: start; }
 
-/* Touch: keep the layout, but give the details link a 44px-plus tap area on phones (WCAG 2.5.5). */
-@media (pointer: coarse) { .details { padding-block: 12px; margin-block: -12px; } }
+/* Touch: keep the layout, but give the details and directions links a 44px-plus tap area on phones (WCAG 2.5.5). */
+@media (pointer: coarse) { .details, .directions { padding-block: 12px; margin-block: -12px; } }

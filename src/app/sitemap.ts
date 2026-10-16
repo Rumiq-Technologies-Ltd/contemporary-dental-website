@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getServicePages } from '@/content/services';
-import { ocoeeEnabled, routes } from '@/content/site';
+import { routes } from '@/content/site';
 import { defaultLocale, isEnglishOnlyPath, localePath, localeTags, publicLocales } from '@/i18n/locales';
 import { siteUrl } from '@/lib/siteUrl';
 
@@ -17,15 +17,14 @@ function entriesFor(path: string): MetadataRoute.Sitemap {
   }));
 }
 
-// Public pages only. The Ocoee page joins when the Ocoee hold is lifted; membership
-// is not built, and the legal pages wait for counsel review.
+// Public pages only. Both offices are on the contact page. Membership is not built, and the
+// legal pages wait for counsel review.
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths: string[] = [
     routes.home, routes.about, routes.doctor, routes.team, routes.services,
     ...getServicePages(defaultLocale).map(service => service.href),
-    routes.emergency, routes.technology, routes.locations, '/locations/orlando',
-    ...(ocoeeEnabled ? ['/locations/ocoee'] : []),
-    routes.newPatients, routes.insurance, routes.payment, routes.pricing, routes.faq,
+    routes.emergency, routes.technology,
+    routes.newPatients, routes.insurance, routes.pricing, routes.faq,
     routes.contact, routes.accessibility,
   ];
   return paths.flatMap(entriesFor);

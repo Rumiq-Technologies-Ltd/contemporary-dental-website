@@ -2,9 +2,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import type { CSSProperties } from 'react';
 import { photos } from '@/content/assets';
-import { formatAddress, offices, routes } from '@/content/site';
+import { directionsHref, formatAddress, mapEmbedHref, officeAnchor, offices, routes } from '@/content/site';
 import { Screen } from '@/components/layout/Screen';
 import { Icon } from '@/components/ui/Icon';
+import { MapEmbed } from '@/components/ui/MapEmbed';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
 import { localePath } from '@/i18n/locales';
@@ -27,7 +28,7 @@ export async function Offices() {
         <p className="eyebrow">{t.eyebrow}</p>
         <h2 id="offices-title">{t.heading}</h2>
       </div>
-      <Link href={localePath(lang, routes.locations)} className="pill pill-outline pill-large">{t.allLocations}</Link>
+      <Link href={localePath(lang, routes.contact)} className="pill pill-outline pill-large">{t.allLocations}</Link>
     </div>
     <div className={styles.grid}>
       {offices.map((office, index) => {
@@ -41,11 +42,13 @@ export async function Offices() {
           <h3>{office.name}</h3>
           <address>{formatAddress(office)}</address>
           <p className={styles.hours}>{common.hours[office.id]}</p>
+          <MapEmbed src={mapEmbedHref(office)} title={fill(t.mapTitle, { name: office.name })} showLabel={t.showMap} note={t.mapNote} />
+          <a href={directionsHref(office)} className={styles.directions}>{t.directions}<Icon name="arrow" /></a>
           <div className={styles.actions}>
             <a href={office.phoneHref} className={`pill pill-accent pill-large ${styles.call}`}>
               <Icon name="phone" />{fill(common.callOffice, { name: office.name, phone: office.phone })}
             </a>
-            <Link href={localePath(lang, office.path)} className={styles.details}>{t.details}<Icon name="arrow" /></Link>
+            <Link href={localePath(lang, officeAnchor(office))} className={styles.details}>{t.details}<Icon name="arrow" /></Link>
           </div>
         </article>;
       })}

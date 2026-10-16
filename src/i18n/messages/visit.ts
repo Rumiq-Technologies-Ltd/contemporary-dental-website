@@ -20,7 +20,7 @@ const en = {
     sameDayCare: 'Same-day emergency care includes assessment and first-stage treatment for abscesses and swelling, broken or fractured teeth, and dental trauma. It can also include extraction when needed, and starting a crown preparation.',
     afterHours: {
       title: 'After hours',
-      body: "Calls outside opening hours are answered by our answering service, who pass your details to our team for a call-back. After-hours number: 407-625-5440. We are not open 24 hours, and after-hours treatment depends on availability, so we can't promise it. After-hours emergencies are handled at our Orlando office.",
+      body: 'Calls outside opening hours are answered by our answering service, which passes your details to our team for a call-back. We are not open 24 hours, but weekend and after-hours emergency appointments are often available, subject to availability. After-hours emergencies are handled at our Orlando office.',
     },
   },
   technology: {
@@ -48,8 +48,8 @@ const en = {
     lead: 'Welcome. Here is how your first visit works.',
     booking: {
       label: 'Booking.',
-      withForm: 'Request an appointment through our form, or call your office.',
-      callOnly: 'Call your office to request an appointment.',
+      withForm: 'Request an appointment through our form, or call our office.',
+      callOnly: 'Call our office to request an appointment.',
     },
     emergencies: {
       label: 'Emergencies.',
@@ -88,7 +88,7 @@ const en = {
     photoAlt: 'Our front desk team answering calls at Contemporary Dental Care',
     request: {
       withForm: "Please don't include health details in this form. For a dental emergency, call the office.",
-      callOnly: 'To request an appointment, call your office. For a dental emergency, call now. After hours, call {phone}.',
+      callOnly: 'To request an appointment, call our office. For a dental emergency, call now. After hours, call {phone}.',
     },
   },
   faq: {
@@ -126,8 +126,8 @@ const en = {
         question: 'Can I book an appointment online?',
         // The request form is on hold (see appointmentFormEnabled), so the answer points to the phone.
         answer: {
-          withForm: 'Not at the moment. Request an appointment through our form, or call your office.',
-          callOnly: 'Not at the moment. Please call your office to request an appointment.',
+          withForm: 'Not at the moment. Request an appointment through our form, or call our office.',
+          callOnly: 'Not at the moment. Please call our office to request an appointment.',
         },
       },
       emergencyNewPatients: {
@@ -147,6 +147,7 @@ const en = {
       insurance: {
         question: 'Do you accept my insurance?',
         answer: "See our insurance list. Insurance is always an estimate, so call us and we'll verify your benefits before treatment.",
+        linkLabel: 'insurance list',
       },
       // Review: insurance wording.
       medicaid: {
@@ -178,7 +179,7 @@ const en = {
       },
       spanishPortuguese: {
         question: 'Do you speak Spanish or Portuguese?',
-        answer: 'Care in English, Spanish and Portuguese. Please ask about language support when you call.',
+        answer: 'Care is available in English, Spanish and Portuguese. Please ask about language support when you call.',
       },
       // Review: this answer must stay as written until a qualified interpretation route exists. Do not add any
       // promise of interpretation or language support in any language.
@@ -218,7 +219,7 @@ export const visit: Record<Locale, VisitMessages> = {
       sameDayCare: 'La atención de urgencia el mismo día incluye la evaluación y el tratamiento de primera etapa de abscesos e hinchazón, dientes rotos o fracturados y traumatismos dentales. También puede incluir la extracción cuando sea necesaria y el inicio de la preparación de una corona.',
       afterHours: {
         title: 'Fuera del horario de atención',
-        body: 'Las llamadas fuera del horario de atención las responde nuestro servicio de atención telefónica, que transmite sus datos a nuestro equipo para que le devuelvan la llamada. Número fuera de horario: 407-625-5440. No abrimos las 24 horas, y el tratamiento fuera del horario depende de la disponibilidad, por lo que no podemos prometerlo. Las urgencias fuera del horario se atienden en nuestro consultorio de Orlando.',
+        body: 'Las llamadas fuera del horario de atención las responde nuestro servicio de atención telefónica, que transmite sus datos a nuestro equipo para que le devuelvan la llamada. No abrimos las 24 horas, pero con frecuencia hay citas de urgencia en fin de semana y fuera del horario, sujetas a disponibilidad. Las urgencias fuera del horario se atienden en nuestro consultorio de Orlando.',
       },
     },
     technology: {
@@ -337,6 +338,7 @@ export const visit: Record<Locale, VisitMessages> = {
         insurance: {
           question: '¿Aceptan mi seguro?',
           answer: 'Consulte nuestra lista de seguros. Lo que cubre el seguro siempre es una estimación, así que llámenos y verificaremos sus beneficios antes del tratamiento.',
+          linkLabel: 'lista de seguros',
         },
         // Review: insurance wording.
         medicaid: {
@@ -401,7 +403,7 @@ export const visit: Record<Locale, VisitMessages> = {
       sameDayCare: 'O atendimento de emergência no mesmo dia inclui avaliação e tratamento de primeira etapa para abscessos e inchaço, dentes quebrados ou fraturados e traumatismo dentário. Também pode incluir extração, quando necessária, e o início do preparo de uma coroa.',
       afterHours: {
         title: 'Fora do horário',
-        body: 'As ligações fora do horário de atendimento são atendidas pelo nosso serviço de atendimento telefônico, que repassa os seus dados à nossa equipe para retorno da ligação. Número fora do horário: 407-625-5440. Não funcionamos 24 horas e o tratamento fora do horário depende da disponibilidade, por isso não podemos prometê-lo. As emergências fora do horário são atendidas no nosso consultório de Orlando.',
+        body: 'As ligações fora do horário de atendimento são atendidas pelo nosso serviço de atendimento telefônico, que repassa os seus dados à nossa equipe para retorno da ligação. Não funcionamos 24 horas, mas consultas de emergência nos fins de semana e fora do horário costumam estar disponíveis, sujeitas à disponibilidade. As emergências fora do horário são atendidas no nosso consultório de Orlando.',
       },
     },
     technology: {
@@ -520,6 +522,7 @@ export const visit: Record<Locale, VisitMessages> = {
         insurance: {
           question: 'Vocês aceitam o meu convênio?',
           answer: 'Veja a nossa lista de convênios. A cobertura do convênio é sempre uma estimativa, então ligue para nós e verificaremos os seus benefícios antes do tratamento.',
+          linkLabel: 'lista de convênios',
         },
         // Review: insurance wording.
         medicaid: {

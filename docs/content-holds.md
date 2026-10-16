@@ -7,7 +7,7 @@ Re-check every fact against the current Drive masters before publishing. The own
 
 | Flag | Default | Effect |
 |---|---|---|
-| `ocoeeEnabled` | `true` | `true`: both offices on every page (hero, footer, contact, locations, FAQ, sitemap, structured data) and `/locations/ocoee` is live. Enabled 14 October 2026 at the owner's request. `false` returns the Orlando-only wording and 404 for the Ocoee page. |
+| `ocoeeEnabled` | `true` | `true`: both offices on every page (hero, footer, contact, FAQ, sitemap, structured data). The Ocoee details are on `/contact`; the old `/locations/*` addresses redirect there. Enabled 14 October 2026 at the owner's request. `false` returns the Orlando-only wording and hides the Ocoee details. |
 | `appointmentFormEnabled` | `false` | `false`: no request form. The contact page, FAQ, About and New patients pages point visitors to the phone. `true` switches the wording back to the form; the form itself still has to be built (fields: Name, Phone, Email, Office, Preferred language, Reason, Message, with the form note and confirmation message from content file section 5.26). |
 
 ## Search indexing
@@ -18,6 +18,7 @@ Production builds are indexable and `robots.txt` welcomes all crawlers (it is no
 
 - Contact form (C15 decision pending).
 - Ocoee is enabled (14 October 2026). Its Monday hours still need checking against Curve before launch.
+- Office map: each office card has a click-to-load Google Map (`components/ui/MapEmbed.tsx`) and a "Get directions" link. No map request is made until a visitor chooses "Show map". The CSP allows frames only from `https://www.google.com`.
 - Offer list on Pricing: new-patient exam, October 2026 special, $2,999 implant offer. None is shown.
 - Implants: no offer, no full-arch or All-on-4 wording.
 - Dentures: no partial dentures.
@@ -60,7 +61,7 @@ Spanish (`/es`) and Portuguese (`/pt`) versions of the customer-facing pages are
 2. Dr. Khan's Florida licence number and status and the residency completion year. Written consent from everyone in the practice photographs, and Dr. Khan's approval of his portrait.
 3. Jessica Salazar's bio and Tyrese Brown's credential if one is shown.
 4. The complete Insurance List (26 PPO plans plus discount and Medicare lists), then remove "and more".
-5. Directions, parking, accessibility and holiday hours for both offices; map embed.
+5. Parking, accessibility and holiday hours for both offices. Directions and the office map are built (see "Built with a hold applied"); confirm the map shows each office correctly before launch.
 6. The what-to-bring list and accepted payment methods; in-house payment plan terms.
 7. Dr. Khan's approval of the emergency safety wording and of any personal paragraph.
 8. The verbatim Financial Policy, HIPAA Notice of Privacy Practices and consent wording from the intake pack.

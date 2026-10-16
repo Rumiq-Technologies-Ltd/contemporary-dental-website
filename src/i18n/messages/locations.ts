@@ -4,13 +4,6 @@ import type { Locale } from '../locales';
 // opening hours are facts: addresses and contact details come from content/site.ts and the hours
 // from messages.common.hours. {address} and {hours} are filled in the page.
 const en = {
-  index: {
-    meta: {
-      title: 'Our Locations',
-      description: 'Addresses, phone numbers and hours for Contemporary Dental Care.',
-    },
-    title: 'Our locations',
-  },
   labels: {
     address: 'Address',
     phone: 'Phone',
@@ -19,10 +12,6 @@ const en = {
     services: 'Services',
   },
   orlando: {
-    meta: {
-      title: 'Orlando Office',
-      description: 'Contemporary Dental Care Orlando: {address}. {hours}.',
-    },
     title: 'Orlando office',
     photoAlt: 'The Contemporary Dental Care office at 5330 S John Young Parkway, Orlando',
     tableCaption: 'Orlando office details',
@@ -30,10 +19,6 @@ const en = {
     services: 'All of our services, including root canal treatment and after-hours emergency care.',
   },
   ocoee: {
-    meta: {
-      title: 'Ocoee Office',
-      description: 'Contemporary Dental Care Ocoee: {address}. {hours}.',
-    },
     title: 'Ocoee office',
     tableCaption: 'Ocoee office details',
     services: 'New-patient exams, cleanings, crowns and dentures at our Ocoee office, open Mondays. Root canal treatment is performed at our Orlando office, and Ocoee patients who need it are scheduled there.',
@@ -45,13 +30,6 @@ export type LocationsMessages = typeof en;
 export const locations: Record<Locale, LocationsMessages> = {
   en,
   es: {
-    index: {
-      meta: {
-        title: 'Nuestras ubicaciones',
-        description: 'Direcciones, números de teléfono y horarios de Contemporary Dental Care.',
-      },
-      title: 'Nuestras ubicaciones',
-    },
     labels: {
       address: 'Dirección',
       phone: 'Teléfono',
@@ -60,10 +38,6 @@ export const locations: Record<Locale, LocationsMessages> = {
       services: 'Servicios',
     },
     orlando: {
-      meta: {
-        title: 'Consultorio de Orlando',
-        description: 'Contemporary Dental Care Orlando: {address}. {hours}.',
-      },
       title: 'Consultorio de Orlando',
       photoAlt: 'El consultorio de Contemporary Dental Care en 5330 S John Young Parkway, Orlando',
       tableCaption: 'Datos del consultorio de Orlando',
@@ -71,23 +45,12 @@ export const locations: Record<Locale, LocationsMessages> = {
       services: 'Todos nuestros servicios, incluida la endodoncia y la atención de urgencias fuera del horario de atención.',
     },
     ocoee: {
-      meta: {
-        title: 'Consultorio de Ocoee',
-        description: 'Contemporary Dental Care Ocoee: {address}. {hours}.',
-      },
       title: 'Consultorio de Ocoee',
       tableCaption: 'Datos del consultorio de Ocoee',
       services: 'Exámenes para nuevos pacientes, limpiezas, coronas y prótesis en nuestro consultorio de Ocoee, abierto los lunes. La endodoncia se realiza en nuestro consultorio de Orlando, y a los pacientes de Ocoee que la necesitan se les programa allí.',
     },
   },
   pt: {
-    index: {
-      meta: {
-        title: 'Nossas unidades',
-        description: 'Endereços, telefones e horários da Contemporary Dental Care.',
-      },
-      title: 'Nossas unidades',
-    },
     labels: {
       address: 'Endereço',
       phone: 'Telefone',
@@ -96,10 +59,6 @@ export const locations: Record<Locale, LocationsMessages> = {
       services: 'Serviços',
     },
     orlando: {
-      meta: {
-        title: 'Consultório de Orlando',
-        description: 'Contemporary Dental Care Orlando: {address}. {hours}.',
-      },
       title: 'Consultório de Orlando',
       photoAlt: 'O consultório da Contemporary Dental Care na 5330 S John Young Parkway, Orlando',
       tableCaption: 'Informações do consultório de Orlando',
@@ -107,10 +66,6 @@ export const locations: Record<Locale, LocationsMessages> = {
       services: 'Todos os nossos serviços, incluindo tratamento de canal e atendimento de emergência fora do horário.',
     },
     ocoee: {
-      meta: {
-        title: 'Consultório de Ocoee',
-        description: 'Contemporary Dental Care Ocoee: {address}. {hours}.',
-      },
       title: 'Consultório de Ocoee',
       tableCaption: 'Informações do consultório de Ocoee',
       services: 'Consultas para novos pacientes, limpezas, coroas e dentaduras no nosso consultório de Ocoee, aberto às segundas-feiras. O tratamento de canal é realizado em nosso consultório de Orlando, e os pacientes de Ocoee que precisam dele são agendados lá.',

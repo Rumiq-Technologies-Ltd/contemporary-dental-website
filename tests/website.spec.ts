@@ -49,7 +49,7 @@ test('homepage shows one primary action, both offices and the page structure', a
 
 test('the primary action is a solid, high-contrast cyan button', async ({ page }) => {
   await ready(page);
-  const primary = page.locator('#home').getByRole('link', { name: 'Request an appointment' });
+  const primary = page.getByRole('banner').getByRole('link', { name: 'Request an appointment' });
   await expect(primary).toHaveCSS('background-color', 'rgb(169, 234, 247)');
   await expect(primary).toHaveCSS('color', 'rgb(19, 28, 21)');
 });
@@ -58,7 +58,7 @@ test('problem tabs switch panels with the mouse and the arrow keys', async ({ pa
   await ready(page);
   const tabs = page.getByRole('tablist', { name: 'Common problems' });
   await expect(page.getByRole('tabpanel')).toHaveCount(1);
-  await expect(page.getByRole('tabpanel').getByRole('heading')).toHaveText('Got tooth pain?');
+  await expect(page.getByRole('tabpanel').getByRole('heading')).toHaveText('Same day treatment');
   await tabs.getByRole('tab', { name: 'Crooked teeth' }).click();
   await expect(page.getByRole('tabpanel').getByRole('heading')).toHaveText('Want straighter teeth?');
   await page.keyboard.press('ArrowRight');
@@ -105,16 +105,16 @@ test('large screens show the navigation bar and link to the right pages', async 
   const nav = page.getByRole('navigation', { name: 'Primary navigation' });
   await expect(nav).toBeVisible();
   await expect(page.getByLabel('Menu — open navigation')).toBeHidden();
-  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^Locations$/, /^New patients$/, /^Insurance and payment$/, /^About$/, /^Contact$/]);
+  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance and payment$/, /^About$/, /^Contact us$/]);
   await nav.getByRole('link', { name: 'Emergency' }).click();
   await expect(page).toHaveURL(/\/emergency$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Emergency dental care');
   await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Emergency' })).toHaveAttribute('aria-current', 'page');
   await page.goto('/');
-  await page.locator('#home').getByRole('link', { name: 'Request an appointment' }).click();
+  await page.getByRole('banner').getByRole('link', { name: 'Request an appointment' }).click();
   await expect(page).toHaveURL(/\/contact#request-appointment$/);
   await page.goto('/');
-  await page.locator('#services').getByRole('link', { name: 'All services' }).click();
+  await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Services' }).click();
   await expect(page).toHaveURL(/\/services$/);
   await page.goto('/');
   await page.locator('#advantages').getByRole('link', { name: 'Meet Dr. Khan and our team' }).click();
@@ -265,7 +265,7 @@ test('reduced motion can be enabled during an entrance without leaving hidden co
   await ready(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(page.locator('#home')).toHaveAttribute('data-motion', 'reduced');
-  await expect(page.locator('#home').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
+  await expect(page.getByRole('banner').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
   await expect(page.locator('#home h1')).toBeVisible();
   await page.locator('#offices').scrollIntoViewIfNeeded();
   await expect(page.locator('#offices').getByRole('link', { name: /^Call Orlando/ })).toBeVisible();
@@ -288,7 +288,7 @@ test('server-rendered content stays readable without JavaScript', async ({ brows
   const page = await context.newPage();
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  await expect(page.locator('#home').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
+  await expect(page.getByRole('banner').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
   await page.locator('#offices').scrollIntoViewIfNeeded();
   await expect(page.locator('#offices').getByRole('link', { name: /^Call Orlando/ })).toBeVisible();
   await page.locator('#services').scrollIntoViewIfNeeded();
@@ -332,7 +332,7 @@ test('security headers, security.txt and the share image are served', async ({ r
   expect(headers['strict-transport-security']).toContain('max-age=31536000');
   expect(headers['cross-origin-opener-policy']).toBe('same-origin');
   expect(headers['permissions-policy']).toContain('payment=()');
-  expect(headers['content-security-policy']).toContain("frame-src 'none'");
+  expect(headers['content-security-policy']).toContain('frame-src https://www.google.com');
   const security = await request.get('/.well-known/security.txt');
   expect(security.status()).toBe(200);
   const text = await security.text();

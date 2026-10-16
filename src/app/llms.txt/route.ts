@@ -1,6 +1,6 @@
 import { getFaqs } from '@/content/faq';
 import { getServices } from '@/content/services';
-import { formatAddress, offices, routes, site, whenOcoee } from '@/content/site';
+import { formatAddress, officeAnchor, offices, routes, site, whenOcoee } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { defaultLocale } from '@/i18n/locales';
 import { siteUrl } from '@/lib/siteUrl';
@@ -28,7 +28,7 @@ export function GET(): Response {
     '',
     '## Offices',
     '',
-    ...offices.map(office => `- [${office.name} office](${url(office.path)}): ${formatAddress(office)}. Phone ${office.phone}. Hours: ${english.common.hours[office.id]}.`),
+    ...offices.map(office => `- [${office.name} office](${url(officeAnchor(office))}):${formatAddress(office)}. Phone ${office.phone}. Hours: ${english.common.hours[office.id]}.`),
     `- After-hours line: ${site.afterHoursPhone}`,
     `- Email: ${site.email}`,
     '',
@@ -40,7 +40,6 @@ export function GET(): Response {
     '',
     `- [New patients](${url(routes.newPatients)})`,
     `- [Insurance](${url(routes.insurance)})`,
-    `- [Payment and financing](${url(routes.payment)})`,
     `- [About Dr. Khan](${url(routes.doctor)})`,
     `- [Our team](${url(routes.team)})`,
     `- [Contact](${url(routes.contact)})`,

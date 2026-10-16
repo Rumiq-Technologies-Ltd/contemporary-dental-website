@@ -20,11 +20,10 @@ const en = {
   nav: {
     services: 'Services',
     emergency: 'Emergency',
-    locations: 'Locations',
     newPatients: 'New patients',
     insurance: 'Insurance and payment',
     about: 'About',
-    contact: 'Contact',
+    contact: 'Contact us',
   },
   legal: {
     privacyPolicy: 'Privacy policy',
@@ -41,7 +40,6 @@ const en = {
     orlando: 'Monday to Friday, 8:00am to 5:00pm. We also open one Saturday a month; please call for the date.',
     ocoee: 'Open Mondays, 9:00am to 5:00pm',
   },
-  officeButton: '{name} office',
   learnMore: 'Learn more ↗',
   breadcrumb: { home: 'Home', services: 'Services' },
   siteDescription: {
@@ -94,7 +92,6 @@ export const common: Record<Locale, CommonMessages> = {
     nav: {
       services: 'Servicios',
       emergency: 'Urgencias',
-      locations: 'Ubicaciones',
       newPatients: 'Pacientes nuevos',
       insurance: 'Seguros y pagos',
       about: 'Acerca de',
@@ -115,7 +112,6 @@ export const common: Record<Locale, CommonMessages> = {
       orlando: 'De lunes a viernes, de 8:00 a. m. a 5:00 p. m. Abrimos también un sábado al mes; llame para confirmar la fecha.',
       ocoee: 'Abierto los lunes, de 9:00 a. m. a 5:00 p. m.',
     },
-    officeButton: 'Consultorio de {name}',
     learnMore: 'Más información ↗',
     breadcrumb: { home: 'Inicio', services: 'Servicios' },
     siteDescription: {
@@ -163,7 +159,6 @@ export const common: Record<Locale, CommonMessages> = {
     nav: {
       services: 'Serviços',
       emergency: 'Emergência',
-      locations: 'Unidades',
       newPatients: 'Novos pacientes',
       insurance: 'Convênios e pagamento',
       about: 'Sobre',
@@ -184,7 +179,6 @@ export const common: Record<Locale, CommonMessages> = {
       orlando: 'De segunda a sexta, das 8h às 17h. Também abrimos um sábado por mês; ligue para saber a data.',
       ocoee: 'Aberto às segundas-feiras, das 9h às 17h',
     },
-    officeButton: 'Consultório de {name}',
     learnMore: 'Saiba mais ↗',
     breadcrumb: { home: 'Início', services: 'Serviços' },
     siteDescription: {

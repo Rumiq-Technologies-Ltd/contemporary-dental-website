@@ -3,7 +3,6 @@ import Link from 'next/link';
 import type { CSSProperties } from 'react';
 import { photos } from '@/content/assets';
 import { getServices } from '@/content/services';
-import { routes } from '@/content/site';
 import { Screen } from '@/components/layout/Screen';
 import { Icon } from '@/components/ui/Icon';
 import { SaveService } from '@/components/ui/SaveService';
@@ -26,7 +25,6 @@ export async function Services() {
         <p className="eyebrow">{t.eyebrow}</p>
         <h2 id="services-title" data-reveal="mask">{t.heading}</h2>
       </div>
-      <div data-reveal=""><Link href={localePath(lang, routes.services)} className="pill pill-dark pill-large">{t.allServices}</Link></div>
     </div>
     <ul className={styles.grid}>
       {services.map((service, index) => <li key={service.id} data-reveal="flip" style={{ '--i': index % 4 } as CSSProperties}>
@@ -37,7 +35,6 @@ export async function Services() {
           </div>
           <div className={styles.body}>
             <h3><Link href={localePath(lang, service.href)} className={styles.title}>{service.title}</Link></h3>
-            <p>{service.description}</p>
             <span className={styles.more} aria-hidden="true">{t.learnMore}<Icon name="arrow" /></span>
           </div>
         </article>

@@ -10,7 +10,7 @@ export interface Problem {
   tab: string;
   headline: string;
   big: string;
-  bigText: string;
+  bigText?: string;
   text: string;
   href: string;
   linkLabel: string;
@@ -82,7 +82,7 @@ export function ProblemTabs({ problems, label, requestLabel, requestHref }: Prob
       </div>
       <div className={styles.fact}>
         <p className={styles.big} data-fact="">{problem.big}</p>
-        <p className={styles.bigText} data-fact="">{problem.bigText}</p>
+        {problem.bigText && <p className={styles.bigText} data-fact="">{problem.bigText}</p>}
         <p data-fact="">{problem.text}</p>
         <div className={styles.actions} data-fact="">
           <Link href={problem.href} className="pill pill-dark">{problem.linkLabel}</Link>

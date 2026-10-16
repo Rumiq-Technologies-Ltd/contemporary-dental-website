@@ -40,7 +40,7 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     titleTag: 'Emergency Dental Care',
     summary: 'urgent treatment for pain, swelling and broken teeth',
     listLabel: 'Emergency care: urgent treatment for pain, swelling and broken teeth',
-    description: 'Urgent treatment for pain, swelling and broken teeth. Emergency visits are open to new patients.',
+    description: 'Urgent treatment for pain, swelling and broken teeth.',
     paragraphs: [],
   },
   extractions: {
@@ -51,7 +51,7 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     listLabel: 'Tooth extractions, including same-day when suitable',
     description: 'Extraction may be the right option when a tooth cannot be saved. Same-day extraction is subject to clinical suitability and availability.',
     paragraphs: [
-      'When a tooth cannot be saved, extraction may be the right option. Extractions are one of our same-day services, subject to clinical suitability and availability. Dr. Khan explains your options before any treatment starts. Some oral surgery is referred to another provider.',
+      'When a tooth cannot be saved, extraction may be the right option. Extractions are one of our same-day services, subject to clinical suitability and availability. Dr. Khan explains your options before any treatment starts. Some types of oral surgery are referred to another provider.',
     ],
   },
   restorative: {
@@ -85,10 +85,10 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     description: 'Root canal treatment is performed at our Orlando office.',
     paragraphs: {
       withOcoee: [
-        'Root canal treatment is performed at our Orlando office. If you are an Ocoee patient who needs root canal treatment, we will schedule you at Orlando. Root canal retreatment is referred to another provider.',
+        'A root canal treats the soft tissue inside a tooth, called the pulp, when it is infected or damaged. The infected tissue is removed, the inside of the tooth is cleaned and sealed, and the tooth is then restored. Root canal treatment is performed at our Orlando office. If you are an Ocoee patient who needs root canal treatment, we will schedule you at Orlando. Root canal retreatment is referred to another provider.',
       ],
       orlandoOnly: [
-        'Root canal treatment is performed at our Orlando office. Root canal retreatment is referred to another provider.',
+        'A root canal treats the soft tissue inside a tooth, called the pulp, when it is infected or damaged. The infected tissue is removed, the inside of the tooth is cleaned and sealed, and the tooth is then restored. Root canal treatment is performed at our Orlando office. Root canal retreatment is referred to another provider.',
       ],
     },
   },
@@ -120,9 +120,9 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     titleTag: 'Clear Aligners and Braces',
     summary: '',
     listLabel: 'Clear aligners and braces',
-    description: 'Dr. Khan provides clear aligners and traditional braces. He is a general dentist and your treating dentist.',
+    description: 'Dr. Khan provides clear aligners and traditional braces.',
     paragraphs: [
-      'Dr. Khan provides clear aligners and traditional braces {atOffices}. Most of our orthodontic cases are traditional braces. Dr. Khan, a general dentist, is your treating dentist.',
+      'Dr. Khan provides clear aligners and traditional braces {atOffices}. Clear aligners are a series of removable, clear trays that gradually move teeth. Traditional braces use brackets and wires. Most of our orthodontic cases are traditional braces.',
     ],
   },
   cosmetic: {
@@ -134,7 +134,7 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     description: 'Veneers, smile design and other cosmetic treatment, planned around your goals and your oral health.',
     paragraphs: [
       // Review: financing wording ("subject to approval"). Check against the financing partners' terms.
-      'Veneers, smile design and other cosmetic treatment, planned around your goals and your oral health. Cosmetic treatment can be paid for through our financing partners, subject to approval.',
+      'Cosmetic treatment is planned around your goals and your oral health. Veneers are thin, custom-made shells bonded to the front of teeth to change their shape, color or alignment. Smile design plans the overall look of your smile with you. Cosmetic treatment can be paid for through our financing partners, subject to approval.',
     ],
   },
 };
@@ -146,9 +146,10 @@ const en = {
       description: 'Cleanings, emergency care, extractions, fillings, crowns, root canal treatment, implants, dentures, clear aligners and braces, and cosmetic dentistry.',
     },
     title: 'Our services',
+    officesHeading: 'Our offices',
     lead: {
-      withOcoee: 'Dr. Sheryar Khan provides our treatment at both offices, and our hygienist provides cleanings and check-ups. Some treatment is referred to another provider, including root canal retreatment and some oral surgery. Each service below has its own page.',
-      orlandoOnly: 'Dr. Sheryar Khan provides our treatment at our office, and our hygienist provides cleanings and check-ups. Some treatment is referred to another provider, including root canal retreatment and some oral surgery. Each service below has its own page.',
+      withOcoee: 'Dr. Sheryar Khan provides our treatment at both offices, and our hygienist provides cleanings and check-ups. Some treatment is referred to another provider, including root canal retreatment and some types of oral surgery. Each service below has its own page.',
+      orlandoOnly: 'Dr. Sheryar Khan provides our treatment at our office, and our hygienist provides cleanings and check-ups. Some treatment is referred to another provider, including root canal retreatment and some types of oral surgery. Each service below has its own page.',
     },
   },
   detail: {
@@ -172,9 +173,10 @@ export const services: Record<Locale, ServicesMessages> = {
         description: 'Limpiezas, atención de urgencia, extracciones, empastes, coronas, endodoncia, implantes, prótesis dentales, alineadores transparentes y brackets, y odontología estética.',
       },
       title: 'Nuestros servicios',
+      officesHeading: 'Nuestros consultorios',
       lead: {
-        withOcoee: 'El Dr. Sheryar Khan realiza nuestros tratamientos en ambos consultorios, y nuestra higienista dental realiza las limpiezas y revisiones. Algunos tratamientos se derivan a otro profesional, entre ellos el retratamiento de endodoncia y algunas cirugías orales. Cada servicio que aparece a continuación tiene su propia página.',
-        orlandoOnly: 'El Dr. Sheryar Khan realiza nuestros tratamientos en nuestro consultorio, y nuestra higienista dental realiza las limpiezas y revisiones. Algunos tratamientos se derivan a otro profesional, entre ellos el retratamiento de endodoncia y algunas cirugías orales. Cada servicio que aparece a continuación tiene su propia página.',
+        withOcoee: 'El Dr. Sheryar Khan realiza nuestros tratamientos en ambos consultorios, y nuestra higienista dental realiza las limpiezas y revisiones. Algunos tratamientos se derivan a otro profesional, entre ellos el retratamiento de endodoncia y algunos tipos de cirugía oral. Cada servicio que aparece a continuación tiene su propia página.',
+        orlandoOnly: 'El Dr. Sheryar Khan realiza nuestros tratamientos en nuestro consultorio, y nuestra higienista dental realiza las limpiezas y revisiones. Algunos tratamientos se derivan a otro profesional, entre ellos el retratamiento de endodoncia y algunos tipos de cirugía oral. Cada servicio que aparece a continuación tiene su propia página.',
       },
     },
     detail: {
@@ -202,7 +204,7 @@ export const services: Record<Locale, ServicesMessages> = {
         titleTag: 'Atención dental de urgencia',
         summary: 'tratamiento urgente para el dolor, la hinchazón y los dientes rotos',
         listLabel: 'Atención de urgencia: tratamiento urgente para el dolor, la hinchazón y los dientes rotos',
-        description: 'Tratamiento urgente para el dolor, la hinchazón y los dientes rotos. Las visitas de urgencia están abiertas a pacientes nuevos.',
+        description: 'Tratamiento urgente para el dolor, la hinchazón y los dientes rotos.',
         paragraphs: [],
       },
       extractions: {
@@ -213,7 +215,7 @@ export const services: Record<Locale, ServicesMessages> = {
         listLabel: 'Extracciones dentales, incluidas las del mismo día cuando resulte adecuado',
         description: 'La extracción puede ser la mejor opción cuando no es posible salvar un diente. La extracción el mismo día está sujeta a la idoneidad clínica y a la disponibilidad.',
         paragraphs: [
-          'Cuando no es posible salvar un diente, la extracción puede ser la mejor opción. Las extracciones son uno de nuestros servicios del mismo día, sujetas a la idoneidad clínica y a la disponibilidad. El Dr. Khan le explica sus opciones antes de que comience cualquier tratamiento. Algunas cirugías orales se derivan a otro profesional.',
+          'Cuando no es posible salvar un diente, la extracción puede ser la mejor opción. Las extracciones son uno de nuestros servicios del mismo día, sujetas a la idoneidad clínica y a la disponibilidad. El Dr. Khan le explica sus opciones antes de que comience cualquier tratamiento. Algunos tipos de cirugía oral se derivan a otro profesional.',
         ],
       },
       restorative: {
@@ -247,10 +249,10 @@ export const services: Record<Locale, ServicesMessages> = {
         description: 'La endodoncia se realiza en nuestro consultorio de Orlando.',
         paragraphs: {
           withOcoee: [
-            'La endodoncia se realiza en nuestro consultorio de Orlando. Si usted es paciente de Ocoee y necesita una endodoncia, le programaremos la cita en Orlando. El retratamiento de endodoncia se deriva a otro profesional.',
+            'Una endodoncia trata el tejido blando del interior de un diente, llamado pulpa, cuando está infectado o dañado. Se retira el tejido infectado, se limpia y sella el interior del diente y luego se restaura el diente. La endodoncia se realiza en nuestro consultorio de Orlando. Si usted es paciente de Ocoee y necesita una endodoncia, le programaremos la cita en Orlando. El retratamiento de endodoncia se deriva a otro profesional.',
           ],
           orlandoOnly: [
-            'La endodoncia se realiza en nuestro consultorio de Orlando. El retratamiento de endodoncia se deriva a otro profesional.',
+            'Una endodoncia trata el tejido blando del interior de un diente, llamado pulpa, cuando está infectado o dañado. Se retira el tejido infectado, se limpia y sella el interior del diente y luego se restaura el diente. La endodoncia se realiza en nuestro consultorio de Orlando. El retratamiento de endodoncia se deriva a otro profesional.',
           ],
         },
       },
@@ -282,9 +284,9 @@ export const services: Record<Locale, ServicesMessages> = {
         titleTag: 'Alineadores transparentes y brackets',
         summary: '',
         listLabel: 'Alineadores transparentes y brackets',
-        description: 'El Dr. Khan ofrece alineadores transparentes y brackets tradicionales. Es odontólogo general y es su dentista tratante.',
+        description: 'El Dr. Khan ofrece alineadores transparentes y brackets tradicionales.',
         paragraphs: [
-          'El Dr. Khan ofrece alineadores transparentes y brackets tradicionales {atOffices}. La mayoría de nuestros casos de ortodoncia son con brackets tradicionales. El Dr. Khan, odontólogo general, es su dentista tratante.',
+          'El Dr. Khan ofrece alineadores transparentes y brackets tradicionales {atOffices}. Los alineadores transparentes son una serie de bandejas transparentes y removibles que mueven los dientes de forma gradual. Los brackets tradicionales usan soportes y alambres. La mayoría de nuestros casos de ortodoncia son con brackets tradicionales.',
         ],
       },
       cosmetic: {
@@ -296,7 +298,7 @@ export const services: Record<Locale, ServicesMessages> = {
         description: 'Carillas, diseño de sonrisa y otros tratamientos estéticos, planificados según sus objetivos y su salud bucal.',
         paragraphs: [
           // Review: financing wording ("subject to approval"). Check against the financing partners' terms.
-          'Carillas, diseño de sonrisa y otros tratamientos estéticos, planificados según sus objetivos y su salud bucal. El tratamiento estético se puede pagar a través de nuestros socios de financiamiento, sujeto a aprobación.',
+          'El tratamiento estético se planifica según sus objetivos y su salud bucal. Las carillas son láminas finas hechas a medida que se adhieren a la superficie frontal de los dientes para cambiar su forma, color o alineación. El diseño de sonrisa planifica con usted el aspecto general de su sonrisa. El tratamiento estético se puede pagar a través de nuestros socios de financiamiento, sujeto a aprobación.',
         ],
       },
     },
@@ -308,9 +310,10 @@ export const services: Record<Locale, ServicesMessages> = {
         description: 'Limpezas, atendimento de emergência, extrações, restaurações, coroas, tratamento de canal, implantes, prótese dentária, alinhadores transparentes e aparelho fixo, e odontologia estética.',
       },
       title: 'Nossos serviços',
+      officesHeading: 'Nossos consultórios',
       lead: {
-        withOcoee: 'O Dr. Sheryar Khan realiza nossos tratamentos em ambos os consultórios, e nossa higienista odontológica realiza as limpezas e revisões. Alguns tratamentos são encaminhados a outro profissional, incluindo o retratamento de canal e algumas cirurgias orais. Cada serviço abaixo tem a sua própria página.',
-        orlandoOnly: 'O Dr. Sheryar Khan realiza nossos tratamentos no nosso consultório, e nossa higienista odontológica realiza as limpezas e revisões. Alguns tratamentos são encaminhados a outro profissional, incluindo o retratamento de canal e algumas cirurgias orais. Cada serviço abaixo tem a sua própria página.',
+        withOcoee: 'O Dr. Sheryar Khan realiza nossos tratamentos em ambos os consultórios, e nossa higienista odontológica realiza as limpezas e revisões. Alguns tratamentos são encaminhados a outro profissional, incluindo o retratamento de canal e alguns tipos de cirurgia oral. Cada serviço abaixo tem a sua própria página.',
+        orlandoOnly: 'O Dr. Sheryar Khan realiza nossos tratamentos no nosso consultório, e nossa higienista odontológica realiza as limpezas e revisões. Alguns tratamentos são encaminhados a outro profissional, incluindo o retratamento de canal e alguns tipos de cirurgia oral. Cada serviço abaixo tem a sua própria página.',
       },
     },
     detail: {
@@ -338,7 +341,7 @@ export const services: Record<Locale, ServicesMessages> = {
         titleTag: 'Atendimento odontológico de emergência',
         summary: 'tratamento urgente para dor, inchaço e dentes quebrados',
         listLabel: 'Atendimento de emergência: tratamento urgente para dor, inchaço e dentes quebrados',
-        description: 'Tratamento urgente para dor, inchaço e dentes quebrados. Os atendimentos de emergência estão abertos a novos pacientes.',
+        description: 'Tratamento urgente para dor, inchaço e dentes quebrados.',
         paragraphs: [],
       },
       extractions: {
@@ -349,7 +352,7 @@ export const services: Record<Locale, ServicesMessages> = {
         listLabel: 'Extrações dentárias, inclusive no mesmo dia, quando adequado',
         description: 'A extração pode ser a melhor opção quando um dente não pode ser salvo. A extração no mesmo dia está sujeita à adequação clínica e à disponibilidade.',
         paragraphs: [
-          'Quando um dente não pode ser salvo, a extração pode ser a melhor opção. As extrações são um dos nossos serviços no mesmo dia, sujeitas à adequação clínica e à disponibilidade. O Dr. Khan explica as suas opções antes de qualquer tratamento começar. Algumas cirurgias orais são encaminhadas a outro profissional.',
+          'Quando um dente não pode ser salvo, a extração pode ser a melhor opção. As extrações são um dos nossos serviços no mesmo dia, sujeitas à adequação clínica e à disponibilidade. O Dr. Khan explica as suas opções antes de qualquer tratamento começar. Alguns tipos de cirurgia oral são encaminhados a outro profissional.',
         ],
       },
       restorative: {
@@ -383,10 +386,10 @@ export const services: Record<Locale, ServicesMessages> = {
         description: 'O tratamento de canal é realizado no nosso consultório de Orlando.',
         paragraphs: {
           withOcoee: [
-            'O tratamento de canal é realizado no nosso consultório de Orlando. Se você é paciente de Ocoee e precisa de tratamento de canal, agendaremos a sua consulta em Orlando. O retratamento de canal é encaminhado a outro profissional.',
+            'Um tratamento de canal trata o tecido mole interno do dente, chamado polpa, quando ele está infectado ou danificado. O tecido infectado é removido, o interior do dente é limpo e selado, e depois o dente é restaurado. O tratamento de canal é realizado no nosso consultório de Orlando. Se você é paciente de Ocoee e precisa de tratamento de canal, agendaremos a sua consulta em Orlando. O retratamento de canal é encaminhado a outro profissional.',
           ],
           orlandoOnly: [
-            'O tratamento de canal é realizado no nosso consultório de Orlando. O retratamento de canal é encaminhado a outro profissional.',
+            'Um tratamento de canal trata o tecido mole interno do dente, chamado polpa, quando ele está infectado ou danificado. O tecido infectado é removido, o interior do dente é limpo e selado, e depois o dente é restaurado. O tratamento de canal é realizado no nosso consultório de Orlando. O retratamento de canal é encaminhado a outro profissional.',
           ],
         },
       },
@@ -418,9 +421,9 @@ export const services: Record<Locale, ServicesMessages> = {
         titleTag: 'Alinhadores transparentes e aparelho fixo',
         summary: '',
         listLabel: 'Alinhadores transparentes e aparelho fixo',
-        description: 'O Dr. Khan oferece alinhadores transparentes e aparelho fixo tradicional. Ele é clínico geral e é o dentista responsável pelo seu tratamento.',
+        description: 'O Dr. Khan oferece alinhadores transparentes e aparelho fixo tradicional.',
         paragraphs: [
-          'O Dr. Khan oferece alinhadores transparentes e aparelho fixo tradicional {atOffices}. A maioria dos nossos casos de ortodontia é de aparelho fixo tradicional. O Dr. Khan, clínico geral, é o dentista responsável pelo seu tratamento.',
+          'O Dr. Khan oferece alinhadores transparentes e aparelho fixo tradicional {atOffices}. Os alinhadores transparentes são uma série de moldeiras transparentes e removíveis que movem os dentes gradualmente. O aparelho fixo tradicional usa braquetes e fios. A maioria dos nossos casos de ortodontia é de aparelho fixo tradicional.',
         ],
       },
       cosmetic: {
@@ -432,7 +435,7 @@ export const services: Record<Locale, ServicesMessages> = {
         description: 'Lentes de contato dental, design do sorriso e outros tratamentos estéticos, planejados de acordo com os seus objetivos e a sua saúde bucal.',
         paragraphs: [
           // Review: financing wording ("subject to approval"). Check against the financing partners' terms.
-          'Lentes de contato dental, design do sorriso e outros tratamentos estéticos, planejados de acordo com os seus objetivos e a sua saúde bucal. O tratamento estético pode ser pago por meio dos nossos parceiros de financiamento, sujeito a aprovação.',
+          'O tratamento estético é planejado de acordo com os seus objetivos e a sua saúde bucal. Lentes de contato dental são lâminas finas feitas sob medida, coladas à face frontal dos dentes para mudar a forma, a cor ou o alinhamento. O design do sorriso planeja com você a aparência geral do seu sorriso. O tratamento estético pode ser pago por meio dos nossos parceiros de financiamento, sujeito a aprovação.',
         ],
       },
     },

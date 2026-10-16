@@ -6,7 +6,6 @@ import { Services } from '@/components/sections/Services';
 import { BeforeAfter } from '@/components/sections/BeforeAfter';
 import { Advantages } from '@/components/sections/Advantages';
 import { WhyUs } from '@/components/sections/WhyUs';
-import { Emergency } from '@/components/sections/Emergency';
 import { Team } from '@/components/sections/Team';
 import { Offices } from '@/components/sections/Offices';
 import { FaqBand } from '@/components/sections/HomeBands';
@@ -46,7 +45,6 @@ export default async function HomePage() {
       <BeforeAfter />
       <Advantages />
       <WhyUs />
-      <Emergency />
       <Team />
       <Offices />
       <EnquiryPanel source="/" />

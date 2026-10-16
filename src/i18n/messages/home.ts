@@ -40,7 +40,7 @@ const en = {
     },
     call: {
       badge: 'New patients welcome',
-      title: 'Call your office',
+      title: 'Call our office',
       text: {
         withOcoee: 'Call Orlando or Ocoee to book. Tell us your language when you call.',
         orlandoOnly: 'Call our Orlando office to book. Tell us your language when you call.',
@@ -79,7 +79,7 @@ const en = {
     items: {
       emergency: {
         tab: 'Tooth pain',
-        headline: 'Got tooth pain?',
+        headline: 'Same day treatment',
         big: 'Same day',
         bigText: 'Emergency appointments are often available the same day, including for new patients.',
         linkLabel: 'About emergency care',
@@ -88,28 +88,25 @@ const en = {
         tab: 'Missing teeth',
         headline: 'Missing a tooth?',
         big: 'Two ways',
-        bigText: 'Implants and dentures both replace missing teeth.',
+        text: 'An implant replaces a missing tooth root and supports a crown or another replacement tooth. Dentures replace missing teeth with a removable replacement.',
         linkLabel: 'About dental implants',
       },
       alignersBraces: {
         tab: 'Crooked teeth',
         headline: 'Want straighter teeth?',
         big: 'Aligners or braces',
-        bigText: 'Clear aligners and traditional braces, both from Dr. Khan.',
         linkLabel: 'About clear aligners and braces',
       },
       checkups: {
         tab: 'Check-up due',
         headline: 'Due a check-up?',
         big: 'Every 6 months',
-        bigText: 'Regular visits help us catch problems early.',
         linkLabel: 'About cleanings and check-ups',
       },
       cosmetic: {
         tab: 'Smile makeover',
         headline: 'Want a new smile?',
         big: 'Your goals',
-        bigText: 'Cosmetic treatment planned around what you want.',
         linkLabel: 'About cosmetic dentistry',
       },
     },
@@ -117,7 +114,6 @@ const en = {
   services: {
     eyebrow: 'Our services',
     heading: 'Everything we treat',
-    allServices: 'All services',
     learnMore: 'Learn more',
   },
   advantages: {
@@ -138,37 +134,35 @@ const en = {
     promises: [
       'Options explained in plain language',
       'Treatment recommended in stages that suit your health',
-      'Emergency visits open to new patients',
       'Emergency appointments often available the same day',
+      'Emergency visits open to new patients',
       'Same-day extraction when clinically suitable',
-      'Team members who speak Spanish and Portuguese',
+      'Team members who speak English, Spanish and Portuguese',
     ],
     phoneLines: {
       withOcoee: 'Phone lines at both offices and an after-hours line',
       orlandoOnly: 'An office phone line and an after-hours line',
     },
   },
-  emergency: {
-    eyebrow: 'Dental emergency?',
-    heading: 'Same-day care when you need it',
-    body: 'Tooth extractions and implant placement can often be done the same day, subject to clinical suitability and availability. Emergency appointments are often available the same day, including for new patients. Same-day emergency care also includes assessment and first-stage treatment for abscesses and swelling, and for broken or fractured teeth.',
-    guidance: 'Dental emergency guidance',
-  },
   team: {
     heading: 'The people who look after you',
-    intro: 'Dr. Sheryar Khan leads a team that includes speakers of English, Spanish and Portuguese.',
+    intro: 'Dr. Sheryar Khan leads a diverse team of caregivers.',
     cta: 'Meet the team',
   },
   offices: {
     eyebrow: 'Where to find us',
     heading: 'Call the office nearest you to book',
-    allLocations: 'All locations',
+    allLocations: 'Contact us',
     photoAlt: 'The {name} office',
     details: 'Office details',
+    directions: 'Get directions',
+    showMap: 'Show map',
+    mapNote: 'Loads Google Maps only when you choose to show it.',
+    mapTitle: 'Map of the {name} office',
   },
   faq: {
-    heading: 'Frequently asked questions',
-    allQuestions: 'All questions',
+    heading: 'Frequently Asked Questions',
+    allQuestions: 'All FAQs',
   },
 };
 
@@ -253,7 +247,7 @@ export const home: Record<Locale, HomeMessages> = {
       items: {
         emergency: {
           tab: 'Dolor de dientes',
-          headline: '¿Tiene dolor de dientes?',
+          headline: 'Atención el mismo día',
           big: 'El mismo día',
           bigText: 'Citas de urgencia con frecuencia disponibles el mismo día, también para pacientes nuevos.',
           linkLabel: 'Acerca de la atención de urgencia',
@@ -262,28 +256,25 @@ export const home: Record<Locale, HomeMessages> = {
           tab: 'Dientes faltantes',
           headline: '¿Le falta un diente?',
           big: 'Dos opciones',
-          bigText: 'Los implantes y las prótesis dentales reemplazan los dientes faltantes.',
+          text: 'Un implante reemplaza la raíz de un diente que falta y sostiene una corona u otro diente de reemplazo. Las prótesis dentales reemplazan los dientes faltantes con un aparato removible.',
           linkLabel: 'Acerca de los implantes dentales',
         },
         alignersBraces: {
           tab: 'Dientes torcidos',
           headline: '¿Desea tener dientes más rectos?',
           big: 'Alineadores o brackets',
-          bigText: 'Alineadores transparentes y brackets tradicionales, ambos a cargo del Dr. Khan.',
           linkLabel: 'Acerca de los alineadores transparentes y los brackets',
         },
         checkups: {
           tab: 'Revisión pendiente',
           headline: '¿Le toca una revisión?',
           big: 'Cada 6 meses',
-          bigText: 'Las visitas periódicas nos ayudan a detectar los problemas a tiempo.',
           linkLabel: 'Acerca de las limpiezas y revisiones',
         },
         cosmetic: {
           tab: 'Transformación de sonrisa',
           headline: '¿Desea una sonrisa nueva?',
           big: 'Sus objetivos',
-          bigText: 'Tratamiento estético planificado según lo que usted desea.',
           linkLabel: 'Acerca de la odontología estética',
         },
       },
@@ -291,7 +282,6 @@ export const home: Record<Locale, HomeMessages> = {
     services: {
       eyebrow: 'Nuestros servicios',
       heading: 'Todo lo que tratamos',
-      allServices: 'Todos los servicios',
       learnMore: 'Más información',
     },
     advantages: {
@@ -312,35 +302,32 @@ export const home: Record<Locale, HomeMessages> = {
       promises: [
         'Opciones explicadas en un lenguaje sencillo',
         'Tratamiento recomendado por etapas que se adaptan a su salud',
-        'Visitas de urgencia abiertas a pacientes nuevos',
         'Citas de urgencia con frecuencia disponibles el mismo día',
+        'Visitas de urgencia abiertas a pacientes nuevos',
         // Review: clinical qualifier ("when clinically suitable"); confirm it reads the same to a dentist.
         'Extracción el mismo día cuando es clínicamente adecuada',
-        'Miembros del equipo que hablan español y portugués',
+        'Miembros del equipo que hablan inglés, español y portugués',
       ],
       phoneLines: {
         withOcoee: 'Líneas telefónicas en ambos consultorios y una línea fuera del horario de atención',
         orlandoOnly: 'Una línea telefónica del consultorio y una línea fuera del horario de atención',
       },
     },
-    emergency: {
-      eyebrow: '¿Tiene una urgencia dental?',
-      heading: 'Atención el mismo día cuando la necesita',
-      // Review: clinical qualifier ("subject to clinical suitability and availability"); confirm it reads the same to a dentist.
-      body: 'Las extracciones dentales y la colocación de implantes pueden realizarse el mismo día, sujetas a la idoneidad clínica y a la disponibilidad. Con frecuencia hay citas de urgencia el mismo día, también para pacientes nuevos. La atención de urgencia el mismo día también incluye la evaluación y el tratamiento de primera etapa de abscesos e hinchazón, y de dientes rotos o fracturados.',
-      guidance: 'Orientación para urgencias dentales',
-    },
     team: {
       heading: 'Las personas que cuidan de usted',
-      intro: 'El Dr. Sheryar Khan dirige un equipo que incluye personas que hablan inglés, español y portugués.',
+      intro: 'El Dr. Sheryar Khan dirige un equipo diverso de profesionales dedicados al cuidado.',
       cta: 'Conozca al equipo',
     },
     offices: {
       eyebrow: 'Dónde encontrarnos',
       heading: 'Llame al consultorio más cercano para reservar su cita',
-      allLocations: 'Todas las ubicaciones',
+      allLocations: 'Contacto',
       photoAlt: 'El consultorio de {name}',
       details: 'Detalles del consultorio',
+      directions: 'Cómo llegar',
+      showMap: 'Mostrar mapa',
+      mapNote: 'Carga Google Maps solo cuando usted decida mostrarlo.',
+      mapTitle: 'Mapa del consultorio de {name}',
     },
     faq: {
       heading: 'Preguntas frecuentes',
@@ -424,7 +411,7 @@ export const home: Record<Locale, HomeMessages> = {
       items: {
         emergency: {
           tab: 'Dor de dente',
-          headline: 'Está com dor de dente?',
+          headline: 'Atendimento no mesmo dia',
           big: 'No mesmo dia',
           bigText: 'Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes.',
           linkLabel: 'Sobre o atendimento de emergência',
@@ -433,28 +420,25 @@ export const home: Record<Locale, HomeMessages> = {
           tab: 'Dentes ausentes',
           headline: 'Falta algum dente?',
           big: 'Duas opções',
-          bigText: 'Implantes e próteses dentárias substituem dentes ausentes.',
+          text: 'Um implante substitui a raiz de um dente ausente e sustenta uma coroa ou outro dente de substituição. As próteses dentárias substituem dentes ausentes com um aparelho removível.',
           linkLabel: 'Sobre implantes dentários',
         },
         alignersBraces: {
           tab: 'Dentes tortos',
           headline: 'Quer dentes mais alinhados?',
           big: 'Alinhadores ou aparelho fixo',
-          bigText: 'Alinhadores transparentes e aparelho fixo tradicional, ambos com o Dr. Khan.',
           linkLabel: 'Sobre alinhadores transparentes e aparelho fixo',
         },
         checkups: {
           tab: 'Revisão pendente',
           headline: 'Está na hora da revisão?',
           big: 'A cada 6 meses',
-          bigText: 'Visitas regulares nos ajudam a identificar problemas cedo.',
           linkLabel: 'Sobre limpezas e revisões',
         },
         cosmetic: {
           tab: 'Transformação do sorriso',
           headline: 'Quer um novo sorriso?',
           big: 'Seus objetivos',
-          bigText: 'Tratamento estético planejado de acordo com o que você deseja.',
           linkLabel: 'Sobre odontologia estética',
         },
       },
@@ -462,7 +446,6 @@ export const home: Record<Locale, HomeMessages> = {
     services: {
       eyebrow: 'Nossos serviços',
       heading: 'Tudo o que tratamos',
-      allServices: 'Todos os serviços',
       learnMore: 'Saiba mais',
     },
     advantages: {
@@ -483,35 +466,32 @@ export const home: Record<Locale, HomeMessages> = {
       promises: [
         'Opções explicadas em linguagem simples',
         'Tratamento recomendado em etapas adequadas à sua saúde',
-        'Atendimentos de emergência abertos a novos pacientes',
         'Consultas de emergência costumam estar disponíveis no mesmo dia',
+        'Atendimentos de emergência abertos a novos pacientes',
         // Review: clinical qualifier ("when clinically suitable"); confirm it reads the same to a dentist.
         'Extração no mesmo dia quando clinicamente adequada',
-        'Membros da equipe que falam espanhol e português',
+        'Membros da equipe que falam inglês, espanhol e português',
       ],
       phoneLines: {
         withOcoee: 'Linhas telefônicas nos dois consultórios e uma linha fora do horário',
         orlandoOnly: 'Uma linha telefônica do consultório e uma linha fora do horário',
       },
     },
-    emergency: {
-      eyebrow: 'Emergência odontológica?',
-      heading: 'Atendimento no mesmo dia quando você precisa',
-      // Review: clinical qualifier ("subject to clinical suitability and availability"); confirm it reads the same to a dentist.
-      body: 'Extrações dentárias e a colocação de implantes podem ser feitas no mesmo dia, sujeitas à adequação clínica e à disponibilidade. Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes. O atendimento de emergência no mesmo dia também inclui avaliação e tratamento de primeira etapa de abscessos e inchaço, e de dentes quebrados ou fraturados.',
-      guidance: 'Orientações para emergências odontológicas',
-    },
     team: {
       heading: 'As pessoas que cuidam de você',
-      intro: 'O Dr. Sheryar Khan lidera uma equipe que inclui pessoas que falam inglês, espanhol e português.',
+      intro: 'O Dr. Sheryar Khan lidera uma equipe diversa de profissionais dedicados ao cuidado.',
       cta: 'Conheça a equipe',
     },
     offices: {
       eyebrow: 'Onde nos encontrar',
       heading: 'Ligue para o consultório mais próximo de você para agendar',
-      allLocations: 'Todas as unidades',
+      allLocations: 'Contato',
       photoAlt: 'O consultório de {name}',
       details: 'Detalhes do consultório',
+      directions: 'Como chegar',
+      showMap: 'Mostrar mapa',
+      mapNote: 'Carrega o Google Maps somente quando você decidir mostrá-lo.',
+      mapTitle: 'Mapa do consultório de {name}',
     },
     faq: {
       heading: 'Perguntas frequentes',

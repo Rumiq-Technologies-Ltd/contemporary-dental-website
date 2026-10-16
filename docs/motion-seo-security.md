@@ -46,7 +46,7 @@ The contract:
 
 Response headers are set in `next.config.ts`:
 
-- Content-Security-Policy: scripts only from this site plus build-time hashes (`scripts/build-csp.mjs`); no frames, objects or form posts elsewhere; `frame-ancestors 'none'`.
+- Content-Security-Policy: scripts only from this site plus build-time hashes (`scripts/build-csp.mjs`); frames only from `https://www.google.com`, for the click-to-load office map (`components/ui/MapEmbed.tsx`); no objects or form posts elsewhere; `frame-ancestors 'none'`.
 - Strict-Transport-Security `max-age=31536000`. No `includeSubDomains` or `preload`: those commit every subdomain to HTTPS and are hard to undo. Add them once every subdomain serves HTTPS.
 - Cross-Origin-Opener-Policy `same-origin`, X-Frame-Options `DENY`, X-Content-Type-Options `nosniff`, Referrer-Policy, X-Permitted-Cross-Domain-Policies `none`, and a Permissions-Policy that turns off camera, microphone, location, payment, USB, serial, Bluetooth, HID and ad-topic APIs.
 - `/.well-known/security.txt` (RFC 9116) gives a reporting contact. **CONFIRM:** it uses the practice's general inbox until a dedicated address is chosen. `Expires` is one year after each build.

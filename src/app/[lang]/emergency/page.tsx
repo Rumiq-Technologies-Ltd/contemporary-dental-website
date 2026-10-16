@@ -4,7 +4,7 @@ import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { PagePhoto } from '@/components/page/PagePhoto';
 import { Prose, SafetyNotice, Section } from '@/components/page/Section';
-import { routes, site } from '@/content/site';
+import { offices, routes, site } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { getLocale } from '@/i18n/server';
 import { EnquiryPanel } from '@/features/inquiry/EnquiryPanel';
@@ -24,21 +24,25 @@ export default async function EmergencyPage() {
   const messages = getMessages(lang);
   const t = messages.visit.emergency;
   return <PageLayout>
-    <PageIntro title={t.title} lead={t.lead} actions={<CallButton />} />
+    <PageIntro title={t.title} actions={offices.map(office => <CallButton key={office.id} office={office} />)} />
     <SafetyNotice label={t.safetyLabel}>{t.safetyNotice}</SafetyNotice>
     <div className={styles.split}>
       <div className={styles.section}>
         <Prose>
+          <p>{t.lead}</p>
           <p>{t.sameDayCare}</p>
         </Prose>
-        <Section id="after-hours" title={t.afterHours.title}>
-          <Prose>
-            <p>{t.afterHours.body}</p>
-            <p>{messages.common.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></p>
-          </Prose>
-        </Section>
       </div>
       <PagePhoto photo="guides" />
+    </div>
+    <div className={styles.split}>
+      <Section id="after-hours" title={t.afterHours.title}>
+        <Prose>
+          <p>{t.afterHours.body}</p>
+          <p>{messages.common.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></p>
+        </Prose>
+      </Section>
+      <PagePhoto photo="frontDesk" alt={messages.visit.contact.photoAlt} />
     </div>
     <EnquiryPanel source="/emergency" />
   </PageLayout>;

@@ -21,7 +21,8 @@ const csp = [
   "manifest-src 'self'",
   "media-src 'self'",
   "worker-src 'self'",
-  "frame-src 'none'",
+  // Only the click-to-load office map (components/ui/MapEmbed.tsx) frames a third party: Google Maps.
+  "frame-src https://www.google.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
@@ -48,6 +49,15 @@ const nextConfig: NextConfig = {
       { key: 'X-Permitted-Cross-Domain-Policies', value: 'none' },
       { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), bluetooth=(), hid=(), browsing-topics=(), interest-cohort=()' },
     ] }];
+  },
+  // The office pages and the old locations list are now the contact page; the payment page is the
+  // insurance page. The old addresses keep working so existing links do not fail.
+  async redirects() {
+    return [
+      { source: '/locations', destination: '/contact', permanent: true },
+      { source: '/locations/:office', destination: '/contact', permanent: true },
+      { source: '/payment-financing', destination: '/insurance', permanent: true },
+    ];
   },
 };
 export default nextConfig;
