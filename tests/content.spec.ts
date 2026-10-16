@@ -9,7 +9,7 @@ const pages: readonly { path: string; title: string; heading: string }[] = [
     title: ocoeeEnabled ? 'Dental Care in Orlando and Ocoee | Contemporary Dental Care' : 'Dental Care in Orlando | Contemporary Dental Care',
     heading: ocoeeEnabled ? 'Honest, patient-focused dental care in Orlando and Ocoee' : 'Honest, patient-focused dental care in Orlando',
   },
-  { path: '/about', title: 'About Us | Contemporary Dental Care', heading: 'About Contemporary Dental Care' },
+  { path: '/about', title: 'About Us | Contemporary Dental Care', heading: 'About Us' },
   { path: '/about/dr-sheryar-khan', title: 'Dr. Sheryar Khan, DDS | Contemporary Dental Care', heading: 'Dr. Sheryar Khan, DDS' },
   { path: '/services', title: 'Dental Services | Contemporary Dental Care', heading: 'Our services' },
   { path: '/services/cleanings-checkups', title: 'Cleanings and Check-Ups | Contemporary Dental Care', heading: 'Cleanings and check-ups' },

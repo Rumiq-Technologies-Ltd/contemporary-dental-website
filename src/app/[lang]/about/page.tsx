@@ -35,7 +35,7 @@ export default async function AboutPage() {
       <InfoCard title={t.language.title}><p>{t.language.body}</p></InfoCard>
     </CardGrid>
     <Section id="team" title={messages.about.team.title}>
-      <PagePhoto photo="teamGroup" alt={messages.about.team.groupPhotoAlt} wide />
+      <PagePhoto photo="teamGroup" alt={messages.about.team.groupPhotoAlt} wide objectPosition="50% 0%" />
       <TeamGrid />
     </Section>
     <p className={styles.meta}>{t.doctorLink.before} <Link className={styles.link} href={localePath(lang, routes.doctor)}>{t.doctorLink.link}</Link>{t.doctorLink.after}</p>
