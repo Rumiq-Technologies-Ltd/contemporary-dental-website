@@ -5,7 +5,7 @@ import type { Locale } from '../locales';
 const en = {
   skipToContent: 'Skip to content',
   languageLabel: 'Language',
-  topBar: 'Emergency appointments are often available the same day, including for new patients.',
+  languageComingSoon: 'Coming soon',
   callOffice: 'Call {name}: {phone}',
   callPhone: 'Call {phone}',
   afterHours: 'After hours:',
@@ -77,7 +77,7 @@ export const common: Record<Locale, CommonMessages> = {
   es: {
     skipToContent: 'Ir al contenido',
     languageLabel: 'Idioma',
-    topBar: 'Con frecuencia hay citas de urgencia el mismo día, también para pacientes nuevos.',
+    languageComingSoon: 'Próximamente',
     callOffice: 'Llame a {name}: {phone}',
     callPhone: 'Llame al {phone}',
     afterHours: 'Fuera del horario de atención:',
@@ -144,7 +144,7 @@ export const common: Record<Locale, CommonMessages> = {
   pt: {
     skipToContent: 'Ir para o conteúdo',
     languageLabel: 'Idioma',
-    topBar: 'Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes.',
+    languageComingSoon: 'Em breve',
     callOffice: 'Ligue para {name}: {phone}',
     callPhone: 'Ligue para {phone}',
     afterHours: 'Fora do horário:',

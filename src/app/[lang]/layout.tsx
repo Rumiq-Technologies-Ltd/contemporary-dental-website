@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import { MobileCallBar } from '@/components/layout/MobileCallBar';
+import styles from '@/components/layout/layout.module.css';
 import { PageEffects } from '@/components/motion/PageEffects';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { TopBar } from '@/components/layout/TopBar';
@@ -38,8 +39,8 @@ export const viewport: Viewport = { themeColor: '#a9eaf7', width: 'device-width'
 // without a flash. Without JavaScript nothing is ever hidden. build-csp.mjs hashes this script.
 const PRE_PAINT_SCRIPT = "document.documentElement.classList.add('js')";
 
-// The top bar and header live here, outside every page, so they appear on every route
-// and the header stays sticky across the whole document.
+// The top bar and header live here, outside every page, so they appear on every route.
+// They share one sticky group, so the top bar stays above the header while the page scrolls.
 export default async function LocaleLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   const lang = await getLocale();
   const t = getMessages(lang).common;
@@ -47,8 +48,10 @@ export default async function LocaleLayout({ children }: Readonly<{ children: Re
     <head><script dangerouslySetInnerHTML={{ __html: PRE_PAINT_SCRIPT }} /></head>
     <body>
       <a className="skip-link" href="#main-content">{t.skipToContent}</a>
-      <TopBar />
-      <SiteHeader />
+      <div className={styles.stickyHead}>
+        <TopBar />
+        <SiteHeader />
+      </div>
       {children}
       <MobileCallBar />
       <PageEffects />

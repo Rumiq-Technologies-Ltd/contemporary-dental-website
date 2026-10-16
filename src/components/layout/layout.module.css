@@ -2,25 +2,27 @@
    phone button. Header breakpoints: below 640px it shows the logo and the menu; from 640px it
    adds the request button; from 1280px the navigation bar replaces the menu. */
 
-/* Announcement bar: a cyan strip inset from the page edges. Scrolls away with the page. */
+/* Top bar: a cyan strip inset from the page edges. It stays with the header at the top of the page. */
+.stickyHead { position: sticky; top: 0; z-index: 50; background: var(--color-bg); }
 .topBar {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 28px;
   margin: 12px clamp(12px, 1.5vw, 20px) 0; padding: 10px 16px; border-radius: var(--radius-card);
   background: var(--color-highlight); color: var(--color-ink); font-size: 14px; line-height: 1.4; text-align: center;
 }
-.topBarText { font-weight: 500; }
 .topBarContacts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 22px; }
 .topBarContacts a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .topBarPhone { font-weight: 700; }
+.languageGroup { display: grid; justify-items: center; gap: 2px; }
 .languages { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 12px; font-size: 13px; }
 .languageLink,
 .languageCurrent { display: inline-flex; align-items: center; min-height: 28px; padding: 0 4px; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 .languageCurrent { font-weight: 700; text-decoration: none; }
-@media (max-width: 899px) { .topBarText { display: none; } }
+.languageButton { border: 0; background: none; font: inherit; cursor: pointer; }
+.languageStatus { min-height: 1.4em; margin: 0; font-size: 13px; font-weight: 600; }
 
-/* Sticky header: white, with the practice logo, the navigation and one cyan action. */
+/* Header: white, with the practice logo, the navigation and one cyan action. Sits inside the sticky top group. */
 .header {
-  position: sticky; top: 0; z-index: 50;
+  position: relative;
   display: grid; grid-template-columns: 1fr auto; grid-template-areas: 'logo menu';
   align-items: center; gap: 16px; min-height: 76px; padding: 12px var(--gutter);
   background: var(--color-bg); border-bottom: 1px solid var(--color-line);
