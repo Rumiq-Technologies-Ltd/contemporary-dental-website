@@ -61,10 +61,15 @@ test('English is served unprefixed, and /en copies declare the unprefixed canoni
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/services$/);
 });
 
-test('the switcher lists only the published languages', async ({ page }) => {
+test('the switcher lists every offered language, and an unpublished one says coming soon', async ({ page }) => {
   await page.goto('/services');
-  await expect(page.getByRole('navigation', { name: 'Language' }).getByRole('link')).toHaveCount(publicLocales.length);
-  await expect(page.getByRole('navigation', { name: 'Language' }).getByRole('link', { name: 'Français' })).toHaveCount(0);
+  const language = page.getByRole('navigation', { name: 'Language' });
+  await expect(language.getByRole('link')).toHaveCount(publicLocales.length);
+  await expect(language.getByRole('button')).toHaveCount(locales.length - publicLocales.length);
+  await expect(language.getByRole('link', { name: 'Français' })).toHaveCount(0);
+  await language.getByRole('button', { name: localeNames.es }).click();
+  await expect(page.getByRole('status')).toHaveText('Coming soon');
+  await expect(page).toHaveURL(/\/services$/);
 });
 
 test('the language switcher keeps the visitor on the same page', async ({ page }) => {

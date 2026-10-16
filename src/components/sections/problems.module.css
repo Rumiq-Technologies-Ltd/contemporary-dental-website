@@ -1,9 +1,9 @@
 /* "Common problems, clear solutions": text tabs above a photo and a pale cyan fact panel. */
-.problems { grid-template-columns: minmax(0, 1fr); row-gap: 32px; background: var(--color-off); }
+.problems { grid-template-columns: minmax(0, 1fr); row-gap: 32px; padding-top: 0; background: var(--color-off); }
 .heading { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
 .heading h2 { max-width: 20ch; font-size: clamp(2.8rem, 5.4vw, 4.8rem); }
 
-.tabsRoot { display: grid; gap: 24px; }
+.tabsRoot { display: grid; gap: 0; }
 .tabs { display: flex; flex-wrap: wrap; gap: 4px 32px; }
 .tab {
   padding: 6px 0; border: 0; border-bottom: 3px solid transparent; background: none;
@@ -20,10 +20,10 @@
 .media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0.1) 60%); }
 .mediaTitle { position: absolute; z-index: 1; left: clamp(20px, 3vw, 36px); right: 20px; top: clamp(20px, 3vw, 36px); font-size: clamp(3rem, 6vw, 5.5rem); line-height: 0.88; color: #ffffff; }
 
-.fact { display: grid; align-content: end; justify-items: start; gap: 16px; padding: clamp(28px, 4vw, 48px); background: var(--color-tint); color: var(--color-ink); }
+.fact { display: grid; align-content: center; justify-items: start; gap: 16px; padding: clamp(28px, 4vw, 48px); background: var(--color-tint); color: var(--color-ink); }
 .big {
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
-  font-size: clamp(2.6rem, 5vw, 4.6rem); font-weight: 800; line-height: 0.85; text-transform: uppercase; color: var(--color-ink);
+  font-size: clamp(2rem, 3.6vw, 3.4rem); font-weight: 800; line-height: 0.85; text-transform: uppercase; color: var(--color-ink);
 }
 /* The second line of a panel reads like the description below it: same size and weight. */
 .fact > p:not(.big, .bigText) { max-width: 32rem; }

@@ -8,6 +8,7 @@ import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
 import { getLocale } from '@/i18n/server';
 import { pageMetadata } from '@/lib/metadata';
+import styles from '@/components/page/page.module.css';
 
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
@@ -30,29 +31,31 @@ export default async function ContactPage() {
   const mapTitle = messages.home.offices.mapTitle;
   return <PageLayout>
     <PageIntro title={t.title} />
-    <OfficeDetails
-      office={primaryOffice}
-      title={orlando.title}
-      tableCaption={orlando.tableCaption}
-      labels={labels}
-      hours={`${messages.common.hours.orlando}. ${orlando.hoursNote}`}
-      services={orlando.services}
-      directionsLabel={directionsLabel}
-      mapTitle={mapTitle}
-      photo={{ name: 'orlandoFront', alt: orlando.photoAlt }}
-      arrivalTip={{ label: labels.arrivalTip, text: orlando.arrivalTip, landmarksLabel: labels.arrivalLandmarks, landmarks: orlando.arrivalLandmarks }}
-    />
-    {ocoeeOffice && <OfficeDetails
-      office={ocoeeOffice}
-      title={ocoee.title}
-      tableCaption={ocoee.tableCaption}
-      labels={labels}
-      hours={messages.common.hours.ocoee}
-      services={ocoee.services}
-      directionsLabel={directionsLabel}
-      mapTitle={mapTitle}
-      arrivalTip={{ label: labels.arrivalTip, text: ocoee.arrivalTip, landmarksLabel: labels.arrivalLandmarks, landmarks: ocoee.arrivalLandmarks }}
-    />}
+    <div className={styles.offices}>
+      <OfficeDetails
+        office={primaryOffice}
+        title={orlando.title}
+        tableCaption={orlando.tableCaption}
+        labels={labels}
+        hours={`${messages.common.hours.orlando}. ${orlando.hoursNote}`}
+        services={orlando.services}
+        directionsLabel={directionsLabel}
+        mapTitle={mapTitle}
+        photo={{ name: 'orlandoFront', alt: orlando.photoAlt }}
+        arrivalTip={{ label: labels.arrivalTip, text: orlando.arrivalTip, landmarksLabel: labels.arrivalLandmarks, landmarks: orlando.arrivalLandmarks }}
+      />
+      {ocoeeOffice && <OfficeDetails
+        office={ocoeeOffice}
+        title={ocoee.title}
+        tableCaption={ocoee.tableCaption}
+        labels={labels}
+        hours={messages.common.hours.ocoee}
+        services={ocoee.services}
+        directionsLabel={directionsLabel}
+        mapTitle={mapTitle}
+        arrivalTip={{ label: labels.arrivalTip, text: ocoee.arrivalTip, landmarksLabel: labels.arrivalLandmarks, landmarks: ocoee.arrivalLandmarks }}
+      />}
+    </div>
     <Section id="request-appointment" title={messages.common.requestAppointment}>
       <Prose>
         {appointmentFormEnabled
