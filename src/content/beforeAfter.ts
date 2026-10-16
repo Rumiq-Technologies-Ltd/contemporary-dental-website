@@ -1,13 +1,14 @@
 import type { ServiceId } from './serviceIds';
 import type { Office } from './site';
 
-// Before-and-after cases for the "Patient results" section. C14 §4.10 holds this material until
-// authorization, permitted channels, revocation handling and a no-manipulation rule are in place,
-// so production shows nothing until each case is marked consentOnFile and the section is enabled.
-// Illustrations are never patient results and never reach production.
+// Before-and-after cases for the "How our treatments look" section on the home page. A case is
+// either an illustration (an AI-generated treatment picture, labelled on screen as not a patient
+// result) or a real patient photo. Real patient photos may only be added once the signed photo and
+// marketing authorization is on file (consentOnFile) and C14 §4.10 is closed, and they must not be
+// marked as illustrations. Production shows only illustrations and consented real cases.
 
 export interface BeforeAfterImage {
-  /** Path under public/, for example /images/before-after/case.jpg. */
+  /** Path under public/, for example /images/treatment-illustrations/crown-before.jpg. */
   src: string;
   width: number;
   height: number;
@@ -18,75 +19,65 @@ export interface BeforeAfterCase {
   service: ServiceId;
   /** Set when the treatment is offered at one office only, for example root canal (Orlando). */
   office?: Office['id'];
-  /** Initials only, as the patient authorized, for example "J. W.". */
+  /** Initials only, as the patient authorized, for example "J. W.". Empty for an illustration. */
   patient: string;
   before: BeforeAfterImage;
   after: BeforeAfterImage;
   /** The signed photo and marketing authorization is on file for this case. */
   consentOnFile: boolean;
-  /** AI-generated illustrations are labelled on screen and kept out of production. */
+  /** An AI-generated treatment illustration, labelled on screen as not a patient result. */
   isIllustration: boolean;
 }
 
-/** HOLD: flip to true only after C14 §4.10 is closed and counsel has reviewed the section copy. */
-export const beforeAfterEnabled = false;
-
-/** Real patient cases go here once consent is recorded. Empty until then. */
-const publishedCases: readonly BeforeAfterCase[] = [];
+/** Turns the section on or off. The section renders nothing when no case passes the filter below. */
+export const beforeAfterEnabled = true;
 
 const illustrationSize = { width: 760, height: 704 };
 
-/**
- * Local preview only: the AI-generated illustrations supplied for design review. Each is one
- * treatment, and the whitening illustration is left out because whitening is not in the service
- * inventory (C04 §2). They are shown only in development builds.
- */
-const previewCases: readonly BeforeAfterCase[] = [
+// Cropped from the supplied AI-generated illustrations, keeping only the two halves. The whitening
+// illustration is left out: whitening is not in the service inventory (C04 §2).
+const cases: readonly BeforeAfterCase[] = [
   {
-    id: 'preview-crown',
+    id: 'illustration-crown',
     service: 'crowns',
-    patient: 'Illustration',
-    before: { src: '/images/before-after/preview/crown-before.jpg', ...illustrationSize },
-    after: { src: '/images/before-after/preview/crown-after.jpg', ...illustrationSize },
+    patient: '',
+    before: { src: '/images/treatment-illustrations/crown-before.jpg', ...illustrationSize },
+    after: { src: '/images/treatment-illustrations/crown-after.jpg', ...illustrationSize },
     consentOnFile: false,
     isIllustration: true,
   },
   {
-    id: 'preview-veneers',
+    id: 'illustration-veneers',
     service: 'cosmetic',
-    patient: 'Illustration',
-    before: { src: '/images/before-after/preview/veneers-before.jpg', ...illustrationSize },
-    after: { src: '/images/before-after/preview/veneers-after.jpg', ...illustrationSize },
+    patient: '',
+    before: { src: '/images/treatment-illustrations/veneers-before.jpg', ...illustrationSize },
+    after: { src: '/images/treatment-illustrations/veneers-after.jpg', ...illustrationSize },
     consentOnFile: false,
     isIllustration: true,
   },
   {
-    id: 'preview-root-canal',
+    id: 'illustration-root-canal',
     service: 'root-canal',
     office: 'orlando',
-    patient: 'Illustration',
-    before: { src: '/images/before-after/preview/root-canal-before.jpg', ...illustrationSize },
-    after: { src: '/images/before-after/preview/root-canal-after.jpg', ...illustrationSize },
+    patient: '',
+    before: { src: '/images/treatment-illustrations/root-canal-before.jpg', ...illustrationSize },
+    after: { src: '/images/treatment-illustrations/root-canal-after.jpg', ...illustrationSize },
     consentOnFile: false,
     isIllustration: true,
   },
   {
-    id: 'preview-alignment',
+    id: 'illustration-alignment',
     service: 'clear-aligners-braces',
-    patient: 'Illustration',
-    before: { src: '/images/before-after/preview/alignment-before.jpg', ...illustrationSize },
-    after: { src: '/images/before-after/preview/alignment-after.jpg', ...illustrationSize },
+    patient: '',
+    before: { src: '/images/treatment-illustrations/alignment-before.jpg', ...illustrationSize },
+    after: { src: '/images/treatment-illustrations/alignment-after.jpg', ...illustrationSize },
     consentOnFile: false,
     isIllustration: true,
   },
 ];
 
-/**
- * The cases the section may show. Development builds show the illustrations so the design can be
- * reviewed. Production shows only real cases with consent on file, and only when enabled.
- */
+/** The cases the section shows: illustrations, and real patient cases that have consent on file. */
 export function beforeAfterCases(): readonly BeforeAfterCase[] {
-  if (process.env.NODE_ENV !== 'production') return previewCases;
   if (!beforeAfterEnabled) return [];
-  return publishedCases.filter(item => item.consentOnFile && !item.isIllustration);
+  return cases.filter(item => item.isIllustration || item.consentOnFile);
 }
