@@ -8,6 +8,7 @@
 .member { display: grid; align-content: start; gap: 6px; }
 @media (max-width: 899px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 .tile {
+  position: relative; overflow: hidden;
   display: grid; place-items: center; aspect-ratio: 1 / 1; margin-bottom: 10px; border-radius: var(--radius-card); background: var(--color-accent);
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
   font-size: clamp(4.5rem, 9vw, 7rem); font-weight: 800; line-height: 1; color: var(--color-ink);

@@ -7,7 +7,8 @@ import guides from '../../public/images/figma/25eac.png';
 import toothModel from '../../public/images/stock/tooth-model.jpg';
 import clearAligner from '../../public/images/stock/clear-aligner.jpg';
 import teethModel from '../../public/images/stock/teeth-model.jpg';
-import doctorPortrait from '../../public/images/practice/dr-sheryar-khan.jpg';
+// Dr. Khan's portrait with its grey background replaced by the brand colour (see docs/content-holds.md).
+import doctorPortrait from '../../public/images/practice/dr-sheryar-khan-brand.jpg';
 import teamGroup from '../../public/images/practice/team-group.jpg';
 import orlandoFront from '../../public/images/practice/orlando-office-front.jpg';
 import orlandoEntrance from '../../public/images/practice/orlando-office-entrance.jpg';
