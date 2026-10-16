@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import type { ReactNode } from 'react';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { BulletList, Prose, Section } from '@/components/page/Section';
@@ -15,6 +16,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({ lang, title: meta.title, description: meta.description, path: routes.insurance });
 }
 
+/** Wraps each **marked** phrase in strong text. Only the intro copy uses this marker. */
+function emphasize(text: string): ReactNode[] {
+  return text.split('**').map((part, index) => (index % 2 === 1 ? <strong key={index}>{part}</strong> : part));
+}
+
 // Still to do before launch: replace the lists with the complete authoritative Insurance
 // List and remove "and more". The Ocoee participation confirmation is outstanding.
 // Payment and financing sit on this page too, so the page covers both insurance and payment.
@@ -26,7 +32,7 @@ export default async function InsurancePage() {
   const lists = getInsuranceLists(lang);
   const partners = formatPartnerList(payment.financing.listAnd);
   return <PageLayout>
-    <PageIntro title={t.title} lead={whenOcoee(t.lead.withOcoee, t.lead.orlandoOnly)} />
+    <PageIntro title={t.title} lead={emphasize(whenOcoee(t.lead.withOcoee, t.lead.orlandoOnly))} />
     <Section id="ppo" title={t.sections.ppo}>
       <BulletList>{lists.ppo.map(plan => <li key={plan}>{plan}</li>)}</BulletList>
     </Section>
