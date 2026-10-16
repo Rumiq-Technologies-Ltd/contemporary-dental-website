@@ -8,7 +8,6 @@ import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
 import { getLocale } from '@/i18n/server';
 import { pageMetadata } from '@/lib/metadata';
-import styles from '@/components/page/page.module.css';
 
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
@@ -28,7 +27,6 @@ export default async function InsurancePage() {
   const partners = formatPartnerList(payment.financing.listAnd);
   return <PageLayout>
     <PageIntro title={t.title} lead={whenOcoee(t.lead.withOcoee, t.lead.orlandoOnly)} />
-    <div className={styles.notice}><strong>{t.estimate.heading}</strong> {t.estimate.body}</div>
     <Section id="ppo" title={t.sections.ppo}>
       <BulletList>{lists.ppo.map(plan => <li key={plan}>{plan}</li>)}</BulletList>
     </Section>

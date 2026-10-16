@@ -12,12 +12,8 @@ const en = {
     },
     title: 'Insurance',
     lead: {
-      withOcoee: 'We participate directly with the dental plans listed below. Our participation is the same at both offices. We do not accept Medicaid.',
-      orlandoOnly: 'We participate directly with the dental plans listed below. Our participation is the same at our office. We do not accept Medicaid.',
-    },
-    estimate: {
-      heading: 'Insurance is always an estimate.',
-      body: 'Before treatment, we verify your benefits and give you an estimate. An estimate is not a guarantee of payment.',
+      withOcoee: 'We participate directly with the dental plans listed below. Our participation is the same at both offices. Insurance is always an estimate. Before treatment, we verify your benefits and give you an estimate. An estimate is not a guarantee of payment. We do not accept Medicaid.',
+      orlandoOnly: 'We participate directly with the dental plans listed below. Our participation is the same at our office. Insurance is always an estimate. Before treatment, we verify your benefits and give you an estimate. An estimate is not a guarantee of payment. We do not accept Medicaid.',
     },
     sections: {
       ppo: 'PPO plans',
@@ -83,13 +79,8 @@ export const money: Record<Locale, MoneyMessages> = {
       title: 'Seguros',
       // Review: insurance participation claim and Medicaid exclusion; confirm against the participation list.
       lead: {
-        withOcoee: 'Participamos directamente con los planes dentales que se indican a continuación. Nuestra participación es la misma en ambos consultorios. No aceptamos Medicaid.',
-        orlandoOnly: 'Participamos directamente con los planes dentales que se indican a continuación. Nuestra participación es la misma en nuestro consultorio. No aceptamos Medicaid.',
-      },
-      // Review: guarantee-of-payment disclaimer (financial wording).
-      estimate: {
-        heading: 'El seguro siempre es una estimación.',
-        body: 'Antes del tratamiento, verificamos sus beneficios y le damos una estimación. Una estimación no es una garantía de pago.',
+        withOcoee: 'Participamos directamente con los planes dentales que se indican a continuación. Nuestra participación es la misma en ambos consultorios. El seguro siempre es una estimación. Antes del tratamiento, verificamos sus beneficios y le damos una estimación. Una estimación no es una garantía de pago. No aceptamos Medicaid.',
+        orlandoOnly: 'Participamos directamente con los planes dentales que se indican a continuación. Nuestra participación es la misma en nuestro consultorio. El seguro siempre es una estimación. Antes del tratamiento, verificamos sus beneficios y le damos una estimación. Una estimación no es una garantía de pago. No aceptamos Medicaid.',
       },
       sections: {
         ppo: 'Planes PPO',
@@ -151,13 +142,8 @@ export const money: Record<Locale, MoneyMessages> = {
       title: 'Convênios',
       // Review: insurance participation claim and Medicaid exclusion; confirm against the participation list.
       lead: {
-        withOcoee: 'Participamos diretamente dos planos odontológicos listados abaixo. Nossa participação é a mesma nos dois consultórios. Não aceitamos Medicaid.',
-        orlandoOnly: 'Participamos diretamente dos planos odontológicos listados abaixo. Nossa participação é a mesma em nosso consultório. Não aceitamos Medicaid.',
-      },
-      // Review: guarantee-of-payment disclaimer (financial wording).
-      estimate: {
-        heading: 'O convênio é sempre uma estimativa.',
-        body: 'Antes do tratamento, verificamos seus benefícios e fornecemos uma estimativa. Uma estimativa não é garantia de pagamento.',
+        withOcoee: 'Participamos diretamente dos planos odontológicos listados abaixo. Nossa participação é a mesma nos dois consultórios. O convênio é sempre uma estimativa. Antes do tratamento, verificamos seus benefícios e fornecemos uma estimativa. Uma estimativa não é garantia de pagamento. Não aceitamos Medicaid.',
+        orlandoOnly: 'Participamos diretamente dos planos odontológicos listados abaixo. Nossa participação é a mesma em nosso consultório. O convênio é sempre uma estimativa. Antes do tratamento, verificamos seus benefícios e fornecemos uma estimativa. Uma estimativa não é garantia de pagamento. Não aceitamos Medicaid.',
       },
       sections: {
         ppo: 'Planos PPO',
