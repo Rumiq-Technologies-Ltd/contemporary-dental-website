@@ -95,7 +95,7 @@ test('large screens show the navigation bar and link to the right pages', async 
   const nav = page.getByRole('navigation', { name: 'Primary navigation' });
   await expect(nav).toBeVisible();
   await expect(page.getByLabel('Menu — open navigation')).toBeHidden();
-  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance and payment$/, /^Contemporary Dental Club$/, /^About$/, /^Location$/]);
+  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance and payment$/, /^Contemporary Smile Club$/, /^About$/, /^Location$/]);
   await nav.getByRole('link', { name: 'Emergency' }).click();
   await expect(page).toHaveURL(/\/emergency$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Emergency dental care');

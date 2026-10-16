@@ -65,10 +65,10 @@ const en = {
   },
   membership: {
     meta: {
-      title: 'Contemporary Dental Club',
+      title: 'Contemporary Smile Club',
       description: 'Smile Membership Program plans for adults, perio care and children, with a monthly fee and a lifetime activation fee.',
     },
-    title: 'Contemporary Dental Club',
+    title: 'Contemporary Smile Club',
     lead: "No insurance? Our patients don't need it. Save on the care you need with our simple, affordable membership plans.",
     plansTitle: 'Membership plans',
     perMonth: '/mo.',
@@ -187,10 +187,10 @@ export const money: Record<Locale, MoneyMessages> = {
     },
     membership: {
       meta: {
-        title: 'Club Contemporary Dental',
+        title: 'Club Contemporary Smile',
         description: 'Planes del Programa de Membresía Smile para adultos, cuidado periodontal y niños: una tarifa mensual y una tarifa de activación de por vida.',
       },
-      title: 'Club Contemporary Dental',
+      title: 'Club Contemporary Smile',
       // Review: membership wording and prices are translated; confirm with the practice and counsel.
       lead: '¿Sin seguro? Nuestros pacientes no lo necesitan. Ahorre en la atención que necesita con nuestros planes de membresía sencillos y accesibles.',
       plansTitle: 'Planes de membresía',
@@ -305,10 +305,10 @@ export const money: Record<Locale, MoneyMessages> = {
     },
     membership: {
       meta: {
-        title: 'Clube Contemporary Dental',
+        title: 'Clube Contemporary Smile',
         description: 'Planos do Programa de Membresia Smile para adultos, tratamento periodontal e crianças: uma mensalidade e uma taxa de ativação vitalícia.',
       },
-      title: 'Clube Contemporary Dental',
+      title: 'Clube Contemporary Smile',
       // Review: membership wording and prices are translated; confirm with the practice and counsel.
       lead: 'Sem convênio? Nossos pacientes não precisam. Economize na atenção que você precisa com nossos planos de adesão simples e acessíveis.',
       plansTitle: 'Planos de adesão',

@@ -25,7 +25,7 @@ const pages: readonly { path: string; title: string; heading: string }[] = [
   { path: '/technology', title: 'Technology | Contemporary Dental Care', heading: 'Technology at our practice' },
   { path: '/new-patients', title: 'New Patients | Contemporary Dental Care', heading: 'New patients' },
   { path: '/insurance', title: 'Insurance | Contemporary Dental Care', heading: 'Insurance' },
-  { path: '/membership', title: 'Contemporary Dental Club | Contemporary Dental Care', heading: 'Contemporary Dental Club' },
+  { path: '/membership', title: 'Contemporary Smile Club | Contemporary Dental Care', heading: 'Contemporary Smile Club' },
   { path: '/pricing', title: 'Pricing and Offers | Contemporary Dental Care', heading: 'Pricing and offers' },
   { path: '/faq', title: 'Frequently Asked Questions | Contemporary Dental Care', heading: 'Frequently asked questions' },
   { path: '/contact', title: 'Contact Us | Contemporary Dental Care', heading: 'Location' },
