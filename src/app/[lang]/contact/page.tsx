@@ -2,14 +2,12 @@ import type { Metadata } from 'next';
 import { OfficeDetails } from '@/components/page/OfficeDetails';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
-import { PagePhoto } from '@/components/page/PagePhoto';
 import { Prose, Section } from '@/components/page/Section';
 import { appointmentFormEnabled, offices, primaryOffice, routes, site } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
 import { getLocale } from '@/i18n/server';
 import { pageMetadata } from '@/lib/metadata';
-import styles from '@/components/page/page.module.css';
 
 export async function generateMetadata(): Promise<Metadata> {
   const lang = await getLocale();
@@ -42,6 +40,7 @@ export default async function ContactPage() {
       directionsLabel={directionsLabel}
       mapTitle={mapTitle}
       photo={{ name: 'orlandoFront', alt: orlando.photoAlt }}
+      arrivalTip={{ label: labels.arrivalTip, text: orlando.arrivalTip, landmarksLabel: labels.arrivalLandmarks, landmarks: orlando.arrivalLandmarks }}
     />
     {ocoeeOffice && <OfficeDetails
       office={ocoeeOffice}
@@ -52,14 +51,8 @@ export default async function ContactPage() {
       services={ocoee.services}
       directionsLabel={directionsLabel}
       mapTitle={mapTitle}
+      arrivalTip={{ label: labels.arrivalTip, text: ocoee.arrivalTip, landmarksLabel: labels.arrivalLandmarks, landmarks: ocoee.arrivalLandmarks }}
     />}
-    <div className={styles.split}>
-      <Prose>
-        <p><strong>{messages.common.afterHours}</strong> <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></p>
-        <p><strong>{t.emailLabel}</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
-      </Prose>
-      <PagePhoto photo="frontDesk" alt={t.photoAlt} />
-    </div>
     <Section id="request-appointment" title={messages.common.requestAppointment}>
       <Prose>
         {appointmentFormEnabled
