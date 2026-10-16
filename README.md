@@ -50,7 +50,7 @@ Add/edit services in `src/content/services.ts`; homepage cards, the homepage lis
 
 Two flags in `src/content/site.ts` apply the content file's holds:
 
-- `ocoeeEnabled` (default `true`): both offices appear everywhere. `false` returns the Orlando-only wording and 404 for `/locations/ocoee`.
+- `ocoeeEnabled` (default `true`): both offices appear everywhere. `false` returns the Orlando-only wording and hides the Ocoee details on `/contact`.
 - `appointmentFormEnabled` (default `false`): the website request form is not built until the C15 decision on form data handling. The contact page asks visitors to call.
 
 Not built, on purpose: the membership page, any offer or price list, before-and-after images, testimonials, Spanish and Portuguese versions, and analytics or advertising tags. Booking happens by phone. No authentication, patient data, email delivery or medical data collection is implemented. Service hearts store only service IDs in localStorage, with a safe fallback if storage is unavailable.

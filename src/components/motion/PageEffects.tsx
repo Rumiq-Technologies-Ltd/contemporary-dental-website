@@ -7,7 +7,21 @@ import { createReveal } from './reveal';
 import { scrollEffects } from './scrollEffects';
 
 const HIDDEN = '[data-reveal]:not([data-in])';
+const MASK_HIDDEN = '[data-reveal="mask"]:not([data-in])';
 const DEFAULT_TILT_DEGREES = 6;
+
+// A mask heading is clipped to nothing until it reveals, and a clipped element has no visible area,
+// so the observer never reports it. Its container is watched instead, and the heading reveals with it.
+function observedTarget(element: HTMLElement): Element {
+  return element.dataset.reveal === 'mask' && element.parentElement ? element.parentElement : element;
+}
+
+// What reveals when an observed target enters the viewport: the target itself when it is hidden,
+// and any mask headings inside it.
+function revealsFor(target: HTMLElement): HTMLElement[] {
+  const masks = Array.from(target.querySelectorAll<HTMLElement>(MASK_HIDDEN));
+  return target.matches(HIDDEN) ? [target, ...masks] : masks;
+}
 
 function revealEverything() {
   document.querySelectorAll(HIDDEN).forEach(element => element.setAttribute('data-in', ''));
@@ -37,12 +51,12 @@ export function PageEffects() {
           for (const entry of entries) {
             if (entry.isIntersecting || entry.boundingClientRect.bottom < 0) {
               observer.unobserve(entry.target);
-              visible.push(entry.target as HTMLElement);
+              visible.push(...revealsFor(entry.target as HTMLElement));
             }
           }
           if (visible.length) reveal(visible);
         }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
-        document.querySelectorAll<HTMLElement>(HIDDEN).forEach(element => observer.observe(element));
+        document.querySelectorAll<HTMLElement>(HIDDEN).forEach(element => observer.observe(observedTarget(element)));
 
         // An observer never reports content that a jump (anchor link, Home key) skipped over,
         // so anything already above the viewport is revealed on the next scroll frame.

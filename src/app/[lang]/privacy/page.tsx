@@ -39,7 +39,7 @@ export default async function PrivacyPolicyPage() {
       </Prose>
     </Section>
     <Section id="information-you-send" title="Information you send through this website">
-      <Prose><p>Please don&apos;t send health information through this website. To request an appointment or ask about your care, call your office.</p></Prose>
+      <Prose><p>Please don&apos;t send health information through this website. To request an appointment or ask about your care, call our office.</p></Prose>
     </Section>
     <Section id="health-information" title="Health information">
       <Prose><p>Health information is protected under HIPAA. Read our <Link href={routes.noticeOfPrivacyPractices}>Notice of Privacy Practices</Link>.</p></Prose>
@@ -51,7 +51,7 @@ export default async function PrivacyPolicyPage() {
       </Prose>
     </Section>
     <Section id="your-choices" title="Your choices and requests">
-      <Prose><p>To ask about your information, email <a href={`mailto:${site.email}`}>{site.email}</a> or call your office.</p></Prose>
+      <Prose><p>To ask about your information, email <a href={`mailto:${site.email}`}>{site.email}</a> or call our office.</p></Prose>
     </Section>
     <Section id="updates" title="Updates">
       <Prose><p>Last updated: 13 October 2026.</p></Prose>

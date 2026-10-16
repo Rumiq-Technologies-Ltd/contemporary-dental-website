@@ -7,11 +7,19 @@ import { Screen } from '@/components/layout/Screen';
 import { getMessages } from '@/i18n/dictionaries';
 import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
-import type { HomeMessages } from '@/i18n/messages/home';
 import { ProblemTabs, type Problem } from './ProblemTabs';
 import styles from './problems.module.css';
 
-type ProblemText = HomeMessages['problems']['items']['emergency'];
+interface ProblemText {
+  tab: string;
+  headline: string;
+  big: string;
+  /** Left out for problems whose panel needs no second line. */
+  bigText?: string;
+  /** Panel text for problems that need more than the service description. */
+  text?: string;
+  linkLabel: string;
+}
 
 export async function Problems() {
   const lang = await getLocale();
@@ -26,7 +34,7 @@ export async function Problems() {
     if (!service) throw new Error(`Unknown service: ${id}`);
     return {
       id, tab: text.tab, headline: text.headline, big: text.big, bigText: text.bigText, photo,
-      text: service.description, href: localePath(lang, service.href), linkLabel: text.linkLabel,
+      text: text.text ?? service.description, href: localePath(lang, service.href), linkLabel: text.linkLabel,
     };
   }
 

@@ -13,9 +13,9 @@ import styles from './home.module.css';
 // order, so the same position gives the question and answer in the visitor's language.
 const featuredQuestions = [
   'Can I book an appointment online?',
-  'Do you accept my insurance?',
-  'Are emergency visits open to new patients?',
   'What if I have a dental emergency after hours?',
+  'Are emergency visits open to new patients?',
+  'Do you accept my insurance?',
   'Do you offer payment plans or financing?',
   'Do you speak Spanish or Portuguese?',
 ];

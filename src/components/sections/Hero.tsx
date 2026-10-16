@@ -1,26 +1,21 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import type { CSSProperties } from 'react';
 import { photos } from '@/content/assets';
-import { primaryOffice, routes, whenOcoee } from '@/content/site';
+import { whenOcoee } from '@/content/site';
 import { Screen } from '@/components/layout/Screen';
 import { SplitWords } from '@/components/motion/SplitWords';
-import { Icon } from '@/components/ui/Icon';
 import { getMessages } from '@/i18n/dictionaries';
-import { fill } from '@/i18n/fill';
-import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
 import styles from './hero.module.css';
 
 const delay = (ms: number) => ({ '--d': `${ms}ms` }) as CSSProperties;
 
-// Full-bleed photograph, a giant headline, and one cyan action with the phone beside it.
+// Full-bleed photograph, a giant headline, and the introduction beside it.
 // The headline words rise at first paint, the rest fades in after them, and the photo drifts
 // slower than the page as you scroll (all CSS; see "Motion" in globals.css).
 export async function Hero() {
   const lang = await getLocale();
-  const { common, home } = getMessages(lang);
-  const t = home.hero;
+  const t = getMessages(lang).home.hero;
   // Headline: "Honest, patient-focused dental care in Orlando [and Ocoee]". Plain text in the
   // DOM, so screen readers and crawlers read the sentence as written.
   const headline = whenOcoee(t.headline.withOcoee, t.headline.orlandoOnly);
@@ -35,8 +30,6 @@ export async function Hero() {
     </div>
     <div className={styles.side} data-load="" style={delay(800)}>
       <p>{t.intro}</p>
-      <Link href={localePath(lang, routes.requestAppointment)} className="pill pill-accent pill-large">{common.requestAppointment}</Link>
-      <a href={primaryOffice.phoneHref} className={styles.call}><Icon name="phone" />{fill(common.callOffice, { name: primaryOffice.name, phone: primaryOffice.phone })}</a>
     </div>
   </Screen>;
 }

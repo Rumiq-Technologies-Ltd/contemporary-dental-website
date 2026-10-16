@@ -24,11 +24,8 @@ const pages: readonly { path: string; title: string; heading: string }[] = [
   { path: '/services/clear-aligners-braces', title: 'Clear Aligners and Braces | Contemporary Dental Care', heading: 'Clear aligners and braces' },
   { path: '/services/cosmetic', title: 'Cosmetic Dentistry | Contemporary Dental Care', heading: 'Cosmetic dentistry' },
   { path: '/technology', title: 'Technology | Contemporary Dental Care', heading: 'Technology at our practice' },
-  { path: '/locations', title: 'Our Locations | Contemporary Dental Care', heading: 'Our locations' },
-  { path: '/locations/orlando', title: 'Orlando Office | Contemporary Dental Care', heading: 'Orlando office' },
   { path: '/new-patients', title: 'New Patients | Contemporary Dental Care', heading: 'New patients' },
   { path: '/insurance', title: 'Insurance | Contemporary Dental Care', heading: 'Insurance' },
-  { path: '/payment-financing', title: 'Payment and Financing | Contemporary Dental Care', heading: 'Payment and financing' },
   { path: '/pricing', title: 'Pricing and Offers | Contemporary Dental Care', heading: 'Pricing and offers' },
   { path: '/faq', title: 'Frequently Asked Questions | Contemporary Dental Care', heading: 'Frequently asked questions' },
   { path: '/contact', title: 'Contact Us | Contemporary Dental Care', heading: 'Contact us' },
@@ -98,9 +95,10 @@ test.describe('held items', () => {
   test('the sitemap lists public pages only', async ({ request }) => {
     const sitemap = await (await request.get('/sitemap.xml')).text();
     expect(sitemap).toContain('/services/implants');
-    expect(sitemap).toContain('/locations/orlando');
+    expect(sitemap).toContain('/contact');
     expect(sitemap).not.toMatch(/membership|privacy|terms|hero-clean/i);
-    expect(sitemap.includes('/locations/ocoee')).toBe(ocoeeEnabled);
+    expect(sitemap).not.toContain('/locations');
+    expect(sitemap).not.toContain('/payment-financing');
   });
 
   test('public pages are indexable and robots.txt welcomes crawlers', async ({ page, request }) => {
@@ -187,10 +185,9 @@ test.describe('facts', () => {
     await page.goto('/insurance');
     await expect(page.getByText('We do not accept Medicaid.')).toBeVisible();
     await expect(page.getByText('An estimate is not a guarantee of payment.')).toBeVisible();
-    await page.goto('/payment-financing');
     await expect(page.getByText('Alphaeon, CareCredit, Sunbit, Afterpay and Klarna')).toBeVisible();
     await expect(page.getByText('$50 on a weekday, $100 on a weekend.')).toBeVisible();
-    await expect(page.getByText('A $150 deposit reserves a treatment appointment.')).toBeVisible();
+    await expect(page.getByText('A $150 deposit is required to reserve a treatment appointment.')).toBeVisible();
   });
 
   test('the FAQ opens and closes with the keyboard', async ({ page }) => {
@@ -235,7 +232,7 @@ test.describe('phone call bar', () => {
 });
 
 test.describe('Ocoee office', () => {
-  test('Ocoee is listed in the footer, the hero, the contact page and the locations page', async ({ page }) => {
+  test('Ocoee is listed in the footer, the hero and the contact page', async ({ page }) => {
     test.skip(!ocoeeEnabled, 'Ocoee is paused in content/site.ts');
     await page.goto('/');
     await expect(page.getByRole('heading', { level: 1 })).toContainText('Ocoee');
@@ -243,16 +240,14 @@ test.describe('Ocoee office', () => {
     await page.goto('/contact');
     await expect(page.locator('main').getByRole('link', { name: '689-407-3015' })).toHaveAttribute('href', 'tel:+16894073015');
     await expect(page.locator('main').getByText('2910 Maguire Rd, Suite 1005, Ocoee, FL 34761')).toBeVisible();
-    await page.goto('/locations');
-    await expect(page.locator('main').getByRole('link', { name: '689-407-3015' })).toBeVisible();
   });
 
-  test('the Ocoee office page is live with its own address, hours and phone', async ({ page }) => {
+  test('the Ocoee details are on the contact page, and the old office address leads there', async ({ page }) => {
     test.skip(!ocoeeEnabled, 'Ocoee is paused in content/site.ts');
-    const response = await page.goto('/locations/ocoee');
-    expect(response?.status()).toBe(200);
-    await expect(page.getByRole('heading', { level: 1 })).toHaveText('Ocoee office');
-    await expect(page.locator('main')).toContainText('Open Mondays, 9:00am to 5:00pm');
-    await expect(page.getByRole('link', { name: 'Call 689-407-3015' })).toHaveAttribute('href', 'tel:+16894073015');
+    await page.goto('/locations/ocoee');
+    await expect(page).toHaveURL(/\/contact$/);
+    await expect(page.locator('#ocoee').getByRole('heading', { name: 'Ocoee office' })).toBeVisible();
+    await expect(page.locator('#ocoee')).toContainText('Open Mondays, 9:00am to 5:00pm');
+    await expect(page.locator('#ocoee').getByRole('link', { name: '689-407-3015' })).toHaveAttribute('href', 'tel:+16894073015');
   });
 });

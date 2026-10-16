@@ -6,6 +6,7 @@ import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { PagePhoto } from '@/components/page/PagePhoto';
 import { Prose, Section } from '@/components/page/Section';
+import { TreatmentIllustrations } from '@/components/sections/TreatmentIllustrations';
 import { findService, getServicePages } from '@/content/services';
 import { getMessages } from '@/i18n/dictionaries';
 import { defaultLocale, localePath } from '@/i18n/locales';
@@ -52,6 +53,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
       </Prose>
       <PagePhoto photo={service.image} priority />
     </div>
+    <TreatmentIllustrations service={service.id} />
     <Section id="more-services" title={t.detail.otherServices} wide>
       <CardGrid>
         {related.map(item => <LinkCard key={item.id} title={item.title} href={localePath(lang, item.href)} />)}

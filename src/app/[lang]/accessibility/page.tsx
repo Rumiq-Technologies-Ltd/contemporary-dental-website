@@ -25,7 +25,7 @@ export default async function AccessibilityPage() {
   return <PageLayout>
     <PageIntro title="Accessibility" />
     <Prose>
-      <p>We aim to make this website meet WCAG 2.1 Level AA. If you have trouble using any part of it, email <a href={`mailto:${site.email}`}>{site.email}</a> or call your office, and we&apos;ll help you by phone.</p>
+      <p>We aim to make this website meet WCAG 2.1 Level AA. If you have trouble using any part of it, email <a href={`mailto:${site.email}`}>{site.email}</a> or call our office, and we will help.</p>
     </Prose>
   </PageLayout>;
 }

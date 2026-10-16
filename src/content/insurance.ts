@@ -41,11 +41,11 @@ export function formatPartnerList(and: string): string {
 export function getFinancialPolicy(lang: Locale): readonly FinancialPolicyItem[] {
   const policy = money[lang].financialPolicy;
   return [
+    policy.balances,
     policy.cancellations,
     policy.lateCancellation,
     policy.weekends,
     policy.deposit,
-    policy.balances,
     policy.insurance,
     policy.questions,
   ];

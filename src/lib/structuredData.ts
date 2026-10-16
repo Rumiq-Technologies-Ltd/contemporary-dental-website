@@ -1,5 +1,5 @@
 import { getServices, type Service } from '@/content/services';
-import { formatAddress, offices, routes, site, type Office } from '@/content/site';
+import { formatAddress, officeAnchor, offices, routes, site, type Office } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { localeTags, type Locale } from '@/i18n/locales';
 import { siteUrl } from '@/lib/siteUrl';
@@ -17,9 +17,9 @@ function dentist(office: Office, lang: Locale): Record<string, unknown> {
   const hours = openingHours[office.id];
   return {
     '@type': 'Dentist',
-    '@id': `${siteUrl}${office.path}#dentist`,
+    '@id': `${siteUrl}${officeAnchor(office)}`,
     name: site.name,
-    url: `${siteUrl}${office.path}`,
+    url: `${siteUrl}${officeAnchor(office)}`,
     telephone: `+1-${office.phone}`,
     email: site.email,
     address: {

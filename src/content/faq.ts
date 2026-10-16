@@ -1,8 +1,8 @@
-import { appointmentFormEnabled, formatAddress, offices, site, whenOcoee } from './site';
+import { appointmentFormEnabled, formatAddress, offices, routes, site, whenOcoee } from './site';
 import type { Office } from './site';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
-import type { Locale } from '@/i18n/locales';
+import { localePath, type Locale } from '@/i18n/locales';
 
 /** Fixed codes, so a page can pick questions (for example the homepage) without matching text. */
 export type FaqId =
@@ -10,10 +10,17 @@ export type FaqId =
   | 'sameDayExtraction' | 'sameDayCrowns' | 'insurance' | 'medicaid' | 'financing' | 'rootCanal'
   | 'orthodontist' | 'weekend' | 'spanishPortuguese' | 'haitianCreoleFrench' | 'cancellation' | 'nervous';
 
+/** A phrase inside the answer that links to a page. The label must appear word for word in the answer. */
+export interface FaqLink {
+  label: string;
+  href: string;
+}
+
 export interface FaqItem {
   id: FaqId;
   question: string;
   answer: string;
+  link?: FaqLink;
 }
 
 // Questions and answers live in src/i18n/messages/visit.ts. They are verbatim from the content
@@ -42,7 +49,12 @@ export function getFaqs(lang: Locale): readonly FaqItem[] {
     { id: 'emergencyNewPatients', question: items.emergencyNewPatients.question, answer: items.emergencyNewPatients.answer },
     { id: 'sameDayExtraction', question: items.sameDayExtraction.question, answer: items.sameDayExtraction.answer },
     { id: 'sameDayCrowns', question: items.sameDayCrowns.question, answer: items.sameDayCrowns.answer },
-    { id: 'insurance', question: items.insurance.question, answer: items.insurance.answer },
+    {
+      id: 'insurance',
+      question: items.insurance.question,
+      answer: items.insurance.answer,
+      link: { label: items.insurance.linkLabel, href: localePath(lang, routes.insurance) },
+    },
     { id: 'medicaid', question: items.medicaid.question, answer: items.medicaid.answer },
     { id: 'financing', question: items.financing.question, answer: items.financing.answer },
     { id: 'rootCanal', question: items.rootCanal.question, answer: whenOcoee(items.rootCanal.answer.withOcoee, items.rootCanal.answer.orlandoOnly) },

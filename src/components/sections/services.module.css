@@ -2,7 +2,8 @@
 .services { grid-template-columns: minmax(0, 1fr); row-gap: 40px; background: var(--color-bg); }
 .heading { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
 .headingText { display: grid; justify-items: start; gap: 14px; }
-.headingText h2 { font-size: clamp(2.8rem, 5.4vw, 4.8rem); }
+/* Two lines, like "Common problems, clear solutions": the narrower measure makes the heading as tall as that one. */
+.headingText h2 { max-width: 5.2em; font-size: clamp(2.8rem, 5.4vw, 4.8rem); }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: 32px 20px; margin: 0; padding: 0; list-style: none; }
 .card { position: relative; display: flex; flex-direction: column; height: 100%; }

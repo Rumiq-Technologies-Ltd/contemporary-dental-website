@@ -10,7 +10,6 @@ export interface Office {
   postalCode: string;
   phone: string;
   phoneHref: string;
-  path: string;
 }
 
 /**
@@ -42,7 +41,6 @@ const orlando: Office = {
   postalCode: '32839',
   phone: '321-522-8577',
   phoneHref: 'tel:+13215228577',
-  path: '/locations/orlando',
 };
 
 const ocoee: Office = {
@@ -53,7 +51,6 @@ const ocoee: Office = {
   postalCode: '34761',
   phone: '689-407-3015',
   phoneHref: 'tel:+16894073015',
-  path: '/locations/ocoee',
 };
 
 export const offices: readonly Office[] = ocoeeEnabled ? [orlando, ocoee] : [orlando];
@@ -61,6 +58,21 @@ export const primaryOffice = orlando;
 
 export function formatAddress(office: Office): string {
   return `${office.street}, ${office.locality} ${office.postalCode}`;
+}
+
+/** Where an office's details are on the contact page. */
+export function officeAnchor(office: Office): string {
+  return `${routes.contact}#${office.id}`;
+}
+
+/** Google Maps directions to an office. A plain link, so the page loads no map or third-party frame. */
+export function directionsHref(office: Office): string {
+  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(formatAddress(office))}`;
+}
+
+/** Map of an office for an embedded frame. The frame loads only after the visitor asks for the map. */
+export function mapEmbedHref(office: Office): string {
+  return `https://www.google.com/maps?q=${encodeURIComponent(formatAddress(office))}&output=embed`;
 }
 
 /** Orlando-only alternatives swap in here when Ocoee is paused. */
@@ -75,10 +87,8 @@ export const routes = {
   contact: '/contact',
   emergency: '/emergency',
   services: '/services',
-  locations: '/locations',
   newPatients: '/new-patients',
   insurance: '/insurance',
-  payment: '/payment-financing',
   pricing: '/pricing',
   about: '/about',
   doctor: '/about/dr-sheryar-khan',
@@ -95,11 +105,10 @@ export const routes = {
 export const navigation = [
   { key: 'services', href: routes.services, number: '01' },
   { key: 'emergency', href: routes.emergency, number: '02' },
-  { key: 'locations', href: routes.locations, number: '03' },
-  { key: 'newPatients', href: routes.newPatients, number: '04' },
-  { key: 'insurance', href: routes.insurance, number: '05' },
-  { key: 'about', href: routes.about, number: '06' },
-  { key: 'contact', href: routes.contact, number: '07' },
+  { key: 'newPatients', href: routes.newPatients, number: '03' },
+  { key: 'insurance', href: routes.insurance, number: '04' },
+  { key: 'about', href: routes.about, number: '05' },
+  { key: 'contact', href: routes.contact, number: '06' },
 ] as const;
 
 /** Legal pages are English only, so these links always point at the English URLs. */

@@ -28,21 +28,11 @@ const en = {
       heading: "Don't see your plan?",
       body: "Call us, and we'll check.",
     },
-    paymentLink: {
-      before: 'Questions about payment? See',
-      link: 'Payment and financing',
-      after: '.',
-    },
   },
   insuranceLists: {
     andMore: 'and more',
   },
   payment: {
-    meta: {
-      title: 'Payment and Financing',
-      description: 'Financing partners, in-house payment plans and our financial policy for appointments and payments.',
-    },
-    title: 'Payment and financing',
     financing: {
       title: 'Financing',
       partners: 'We work with {partners}. Financing is arranged with the lender, subject to their approval and terms. Approval is not guaranteed.',
@@ -64,7 +54,7 @@ const en = {
     cancellations: { term: 'Cancellations', text: 'Please give 48 hours’ notice to cancel or reschedule.' },
     lateCancellation: { term: 'Late cancellation or missed appointment', text: '$50 on a weekday, $100 on a weekend.' },
     weekends: { term: 'Weekends', text: 'A missed weekend appointment without timely cancellation forfeits future weekend scheduling.' },
-    deposit: { term: 'Deposit', text: 'A $150 deposit reserves a treatment appointment.' },
+    deposit: { term: 'Deposit', text: 'A $150 deposit is required to reserve a treatment appointment.' },
     balances: { term: 'Balances', text: 'We send a courtesy text before charging a balance to your card on file.' },
     insurance: { term: 'Insurance', text: 'Insurance estimates and pre-determinations are not guarantees of payment.' },
     questions: { term: 'Questions', text: 'For a question or dispute about a charge, fee or deposit, call the office and speak with a team member.' },
@@ -110,21 +100,11 @@ export const money: Record<Locale, MoneyMessages> = {
         heading: '¿No ve su plan?',
         body: 'Llámenos y lo verificaremos.',
       },
-      paymentLink: {
-        before: '¿Tiene preguntas sobre el pago? Consulte',
-        link: 'Pago y financiamiento',
-        after: '.',
-      },
     },
     insuranceLists: {
       andMore: 'y más',
     },
     payment: {
-      meta: {
-        title: 'Pago y financiamiento',
-        description: 'Socios de financiamiento, planes de pago propios y nuestra política financiera para citas y pagos.',
-      },
-      title: 'Pago y financiamiento',
       financing: {
         title: 'Financiamiento',
         // Review: lender approval disclaimer (financial wording).
@@ -146,7 +126,7 @@ export const money: Record<Locale, MoneyMessages> = {
       cancellations: { term: 'Cancelaciones', text: 'Le pedimos avisar con 48 horas de anticipación para cancelar o reprogramar.' },
       lateCancellation: { term: 'Cancelación tardía o cita perdida', text: '$50 en un día de semana, $100 en fin de semana.' },
       weekends: { term: 'Fines de semana', text: 'Una cita de fin de semana perdida sin cancelación oportuna hace perder la posibilidad de programar citas de fin de semana en el futuro.' },
-      deposit: { term: 'Depósito', text: 'Un depósito de $150 reserva una cita de tratamiento.' },
+      deposit: { term: 'Depósito', text: 'Se requiere un depósito de $150 para reservar una cita de tratamiento.' },
       balances: { term: 'Saldos', text: 'Enviamos un mensaje de texto de cortesía antes de cobrar un saldo a su tarjeta registrada.' },
       insurance: { term: 'Seguro', text: 'Las estimaciones del seguro y las predeterminaciones de beneficios no son una garantía de pago.' },
       questions: { term: 'Preguntas', text: 'Si tiene una pregunta o una disputa sobre un cargo, una tarifa o un depósito, llame al consultorio y hable con un miembro de nuestro equipo.' },
@@ -188,21 +168,11 @@ export const money: Record<Locale, MoneyMessages> = {
         heading: 'Não encontrou o seu plano?',
         body: 'Ligue para nós e vamos verificar.',
       },
-      paymentLink: {
-        before: 'Dúvidas sobre pagamento? Consulte',
-        link: 'Pagamento e financiamento',
-        after: '.',
-      },
     },
     insuranceLists: {
       andMore: 'e outros',
     },
     payment: {
-      meta: {
-        title: 'Pagamento e financiamento',
-        description: 'Parceiros de financiamento, planos de pagamento próprios e nossa política financeira para consultas e pagamentos.',
-      },
-      title: 'Pagamento e financiamento',
       financing: {
         title: 'Financiamento',
         // Review: lender approval disclaimer (financial wording).
@@ -224,7 +194,7 @@ export const money: Record<Locale, MoneyMessages> = {
       cancellations: { term: 'Cancelamentos', text: 'Avise com 48 horas de antecedência para cancelar ou remarcar.' },
       lateCancellation: { term: 'Cancelamento tardio ou consulta perdida', text: '$50 em dia de semana, $100 no fim de semana.' },
       weekends: { term: 'Fins de semana', text: 'Uma consulta de fim de semana perdida, sem cancelamento a tempo, faz perder a possibilidade de agendar consultas de fim de semana no futuro.' },
-      deposit: { term: 'Depósito', text: 'Um depósito de $150 reserva uma consulta de tratamento.' },
+      deposit: { term: 'Depósito', text: 'É necessário um depósito de $150 para reservar uma consulta de tratamento.' },
       balances: { term: 'Saldos', text: 'Enviamos uma mensagem de texto de cortesia antes de cobrar um saldo no seu cartão cadastrado.' },
       insurance: { term: 'Convênio', text: 'As estimativas do convênio e as pré-determinações não são garantia de pagamento.' },
       questions: { term: 'Dúvidas', text: 'Para uma dúvida ou contestação sobre uma cobrança, taxa ou depósito, ligue para o consultório e fale com um membro da equipe.' },

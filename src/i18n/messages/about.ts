@@ -11,7 +11,7 @@ const en = {
     },
     title: 'About Contemporary Dental Care',
     intro: {
-      withOcoee: 'Contemporary Dental Care is a general dental practice founded in 2023 by Dr. Sheryar Khan. Our Ocoee office opened under our name in 2024. Our practice rests on three commitments.',
+      withOcoee: 'Contemporary Dental Care is a general dental practice founded in 2023 by Dr. Sheryar Khan. Our practice rests on three commitments.',
       orlandoOnly: 'Contemporary Dental Care is a general dental practice founded in 2023 by Dr. Sheryar Khan. Our practice rests on three commitments.',
     },
     honest: {
@@ -110,7 +110,7 @@ export const about: Record<Locale, AboutMessages> = {
       },
       title: 'Acerca de Contemporary Dental Care',
       intro: {
-        withOcoee: 'Contemporary Dental Care es una clínica dental general fundada en 2023 por el Dr. Sheryar Khan. Nuestro consultorio de Ocoee abrió con nuestro nombre en 2024. Nuestra clínica se basa en tres compromisos.',
+        withOcoee: 'Contemporary Dental Care es una clínica dental general fundada en 2023 por el Dr. Sheryar Khan. Nuestra clínica se basa en tres compromisos.',
         orlandoOnly: 'Contemporary Dental Care es una clínica dental general fundada en 2023 por el Dr. Sheryar Khan. Nuestra clínica se basa en tres compromisos.',
       },
       honest: {
@@ -209,7 +209,7 @@ export const about: Record<Locale, AboutMessages> = {
       },
       title: 'Sobre a Contemporary Dental Care',
       intro: {
-        withOcoee: 'A Contemporary Dental Care é uma clínica odontológica geral fundada em 2023 pelo Dr. Sheryar Khan. Nosso consultório de Ocoee foi aberto com o nosso nome em 2024. Nossa clínica se apoia em três compromissos.',
+        withOcoee: 'A Contemporary Dental Care é uma clínica odontológica geral fundada em 2023 pelo Dr. Sheryar Khan. Nossa clínica se apoia em três compromissos.',
         orlandoOnly: 'A Contemporary Dental Care é uma clínica odontológica geral fundada em 2023 pelo Dr. Sheryar Khan. Nossa clínica se apoia em três compromissos.',
       },
       honest: {

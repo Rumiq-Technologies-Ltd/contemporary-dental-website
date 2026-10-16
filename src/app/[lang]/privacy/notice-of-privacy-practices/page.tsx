@@ -28,6 +28,6 @@ export default async function NoticeOfPrivacyPracticesPage() {
   await requireEnglish();
   return <PageLayout>
     <PageIntro title="Notice of Privacy Practices" />
-    <Notice>The approved Notice of Privacy Practices will be published here. Until then, email <a href={`mailto:${site.email}`}>{site.email}</a> or call your office to ask for a copy.</Notice>
+    <Notice>The approved Notice of Privacy Practices will be published here. Until then, email <a href={`mailto:${site.email}`}>{site.email}</a> or call our office to ask for a copy.</Notice>
   </PageLayout>;
 }
