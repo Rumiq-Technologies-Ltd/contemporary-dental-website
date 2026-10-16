@@ -4,9 +4,9 @@ import { CardGrid, InfoCard } from '@/components/page/Cards';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { PagePhoto } from '@/components/page/PagePhoto';
+import { TeamGrid } from '@/components/page/TeamGrid';
 import { Section } from '@/components/page/Section';
 import { appointmentFormEnabled, routes, whenOcoee } from '@/content/site';
-import { getTeam } from '@/content/team';
 import { getMessages } from '@/i18n/dictionaries';
 import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
@@ -36,13 +36,7 @@ export default async function AboutPage() {
     </CardGrid>
     <Section id="team" title={messages.about.team.title}>
       <PagePhoto photo="teamGroup" alt={messages.about.team.groupPhotoAlt} wide />
-      <ul className={styles.team}>
-        {getTeam(lang).map(member => <li key={member.name} className={styles.member}>
-          <h3>{member.name}</h3>
-          <p><strong>{member.role}.</strong> {member.offices}.{member.languages ? ` ${member.languages}` : ''}</p>
-          {member.bio && <p>{member.bio}</p>}
-        </li>)}
-      </ul>
+      <TeamGrid />
     </Section>
     <p className={styles.meta}>{t.doctorLink.before} <Link className={styles.link} href={localePath(lang, routes.doctor)}>{t.doctorLink.link}</Link>{t.doctorLink.after}</p>
   </PageLayout>;
