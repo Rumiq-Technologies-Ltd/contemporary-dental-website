@@ -77,7 +77,7 @@ const en = {
       brunoConteAndre: {
         role: 'Dental Assistant',
         languages: 'Speaks Portuguese.',
-        bio: 'Bruno is a dental professional from Brazil. He graduated in 2004 and has worked in oral surgery and oral rehabilitation, his first postgraduate fields. He moved to the US with his family in 2022. At Contemporary Dental Care he supports the dentists and clinical team, assists with procedures, and helps with patient coordination. His goal is to earn his US dental license and become a licensed dentist here. He plays piano in his church\'s music ministry and enjoys traveling with his family and barbecues with family and friends.',
+        bio: 'Bruno is a dental professional from Brazil. He graduated in 2004 and has worked in oral surgery and oral rehabilitation. He moved to the US with his family in 2022. At Contemporary Dental Care he supports the dentists and clinical team, assists with procedures, and helps with patient coordination. His goal is to earn his US dental license and become a licensed dentist here. He plays piano in his church\'s music ministry and enjoys traveling with his family and barbecues with family and friends.',
       },
       tyreseBrown: {
         role: 'Dental Assistant',
