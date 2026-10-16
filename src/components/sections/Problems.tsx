@@ -23,7 +23,7 @@ interface ProblemText {
 
 export async function Problems() {
   const lang = await getLocale();
-  const { common, home } = getMessages(lang);
+  const { home } = getMessages(lang);
   const t = home.problems;
   const services = getServices(lang);
 
@@ -51,6 +51,6 @@ export async function Problems() {
       <h2 id="treatments-title" data-reveal="mask">{t.heading}</h2>
       <div data-reveal=""><Link href={localePath(lang, routes.services)} className="pill pill-outline pill-large">{t.allServices}</Link></div>
     </div>
-    <ProblemTabs problems={problems} label={t.label} requestLabel={common.requestAppointment} requestHref={localePath(lang, routes.requestAppointment)} />
+    <ProblemTabs problems={problems} label={t.label} />
   </Screen>;
 }

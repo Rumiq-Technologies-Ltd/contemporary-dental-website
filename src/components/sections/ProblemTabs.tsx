@@ -21,14 +21,11 @@ interface ProblemTabsProps {
   problems: readonly Problem[];
   /** Accessible name of the tab list. */
   label: string;
-  /** Text and (already localised) address of the appointment button in every panel. */
-  requestLabel: string;
-  requestHref: string;
 }
 
 // ARIA tabs: arrow keys, Home and End move between tabs; only the active tab is in the tab order.
 // Every string and address arrives as a prop from the server parent, already translated.
-export function ProblemTabs({ problems, label, requestLabel, requestHref }: ProblemTabsProps) {
+export function ProblemTabs({ problems, label }: ProblemTabsProps) {
   const [active, setActive] = useState(0);
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
   const panels = useRef<(HTMLDivElement | null)[]>([]);
@@ -86,7 +83,6 @@ export function ProblemTabs({ problems, label, requestLabel, requestHref }: Prob
         {problem.bigText && <p className={styles.bigText} data-fact="">{problem.bigText}</p>}
         <div className={styles.actions} data-fact="">
           <Link href={problem.href} className="pill pill-dark">{problem.linkLabel}</Link>
-          <Link href={requestHref} className="pill pill-outline">{requestLabel}</Link>
         </div>
       </div>
     </div>)}
