@@ -1,6 +1,8 @@
-import { offices, site } from '@/content/site';
+import Link from 'next/link';
+import { offices, routes, site } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
+import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import styles from './layout.module.css';
@@ -16,5 +18,6 @@ export async function TopBar() {
       <span>{t.footer.email} <a href={`mailto:${site.email}`}>{site.email}</a></span>
     </p>
     <LanguageSwitcher current={lang} label={t.languageLabel} comingSoon={t.languageComingSoon} />
+    <Link href={localePath(lang, routes.requestAppointment)} className="pill pill-dark">{t.requestAppointment}</Link>
   </div>;
 }
