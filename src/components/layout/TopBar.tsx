@@ -13,6 +13,7 @@ export async function TopBar() {
     <p className={styles.topBarContacts}>
       {offices.map(office => <a key={office.id} href={office.phoneHref} className={styles.topBarPhone}>{fill(t.callOffice, { name: office.name, phone: office.phone })}</a>)}
       <span>{t.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></span>
+      <span>{t.footer.email} <a href={`mailto:${site.email}`}>{site.email}</a></span>
     </p>
     <LanguageSwitcher current={lang} label={t.languageLabel} comingSoon={t.languageComingSoon} />
   </div>;
