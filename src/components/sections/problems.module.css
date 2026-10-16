@@ -23,7 +23,7 @@
 .fact { display: grid; align-content: end; justify-items: start; gap: 16px; padding: clamp(28px, 4vw, 48px); background: var(--color-tint); color: var(--color-ink); }
 .big {
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
-  font-size: clamp(4rem, 9vw, 8.5rem); font-weight: 800; line-height: 0.85; text-transform: uppercase; color: var(--color-ink);
+  font-size: clamp(2.6rem, 5vw, 4.6rem); font-weight: 800; line-height: 0.85; text-transform: uppercase; color: var(--color-ink);
 }
 /* The second line of a panel reads like the description below it: same size and weight. */
 .fact > p:not(.big, .bigText) { max-width: 32rem; }
