@@ -18,7 +18,7 @@ Production builds are indexable and `robots.txt` welcomes all crawlers (it is no
 
 - Contact form (C15 decision pending).
 - Ocoee is enabled (14 October 2026). Its Monday hours still need checking against Curve before launch.
-- Office map: each office card has a click-to-load Google Map (`components/ui/MapEmbed.tsx`) and a "Get directions" link. No map request is made until a visitor chooses "Show map". The CSP allows frames only from `https://www.google.com`.
+- Office map: each office card shows a Google Map (`components/ui/MapEmbed.tsx`, loaded when the page loads) and a "Get directions" link. The CSP allows frames only from `https://www.google.com`.
 - Offer list on Pricing: new-patient exam, October 2026 special, $2,999 implant offer. None is shown.
 - Implants: no offer, no full-arch or All-on-4 wording.
 - Dentures: no partial dentures.

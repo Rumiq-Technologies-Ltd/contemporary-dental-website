@@ -8,6 +8,7 @@ import { PagePhoto } from '@/components/page/PagePhoto';
 import { Prose, Section } from '@/components/page/Section';
 import { TreatmentIllustrations } from '@/components/sections/TreatmentIllustrations';
 import { findService, getServicePages } from '@/content/services';
+import { offices } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { defaultLocale, localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
@@ -48,7 +49,7 @@ export default async function ServicePage({ params }: ServicePageProps) {
         {service.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
         <div className={styles.actions}>
           <RequestAppointmentButton />
-          <CallButton />
+          {offices.map(office => <CallButton key={office.id} office={office} />)}
         </div>
       </Prose>
       <PagePhoto photo={service.image} priority />
