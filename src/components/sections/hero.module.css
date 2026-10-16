@@ -4,7 +4,7 @@
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: end; gap: 32px clamp(32px, 5vw, 96px);
   min-height: clamp(560px, 82svh, 800px); isolation: isolate; color: #ffffff; background: var(--color-ink);
 }
-.photo { z-index: -2; object-fit: cover; object-position: 50% 40%; }
+.photo { z-index: -2; object-fit: cover; object-position: 50% 55%; }
 .hero::after {
   content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   background: linear-gradient(180deg, rgb(0 0 0 / 0.25) 0%, rgb(0 0 0 / 0.35) 40%, rgb(0 0 0 / 0.78) 100%);
