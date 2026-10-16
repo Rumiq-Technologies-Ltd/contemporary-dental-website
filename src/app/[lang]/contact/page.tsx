@@ -2,10 +2,8 @@ import type { Metadata } from 'next';
 import { OfficeDetails } from '@/components/page/OfficeDetails';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
-import { Prose, Section } from '@/components/page/Section';
-import { appointmentFormEnabled, offices, primaryOffice, routes, site } from '@/content/site';
+import { offices, primaryOffice, routes } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
-import { fill } from '@/i18n/fill';
 import { getLocale } from '@/i18n/server';
 import { pageMetadata } from '@/lib/metadata';
 import styles from '@/components/page/page.module.css';
@@ -56,12 +54,5 @@ export default async function ContactPage() {
         arrivalTip={{ label: labels.arrivalTip, text: ocoee.arrivalTip, landmarksLabel: labels.arrivalLandmarks, landmarks: ocoee.arrivalLandmarks }}
       />}
     </div>
-    <Section id="request-appointment" title={messages.common.requestAppointment}>
-      <Prose>
-        {appointmentFormEnabled
-          ? <p>{t.request.withForm}</p>
-          : <p>{fill(t.request.callOnly, { phone: site.afterHoursPhone })}</p>}
-      </Prose>
-    </Section>
   </PageLayout>;
 }

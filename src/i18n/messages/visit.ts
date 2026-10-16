@@ -84,10 +84,6 @@ const en = {
       description: 'Phone numbers, addresses, hours and email for Contemporary Dental Care, and how to request an appointment.',
     },
     title: 'Location',
-    request: {
-      withForm: "Please don't include health details in this form. For a dental emergency, call the office.",
-      callOnly: 'To request an appointment, call our office. For a dental emergency, call now. After hours, call {phone}.',
-    },
   },
   faq: {
     meta: {
@@ -279,10 +275,6 @@ export const visit: Record<Locale, VisitMessages> = {
         description: 'Números de teléfono, direcciones, horarios y correo electrónico de Contemporary Dental Care, y cómo solicitar una cita.',
       },
       title: 'Ubicación',
-      request: {
-        withForm: 'Por favor, no incluya detalles de salud en este formulario. Si tiene una urgencia dental, llame al consultorio.',
-        callOnly: 'Para solicitar una cita, llame a su consultorio. Si tiene una urgencia dental, llame ahora. Fuera del horario de atención, llame al {phone}.',
-      },
     },
     faq: {
       meta: {
@@ -461,10 +453,6 @@ export const visit: Record<Locale, VisitMessages> = {
         description: 'Telefones, endereços, horários e e-mail da Contemporary Dental Care, e como solicitar uma consulta.',
       },
       title: 'Localização',
-      request: {
-        withForm: 'Por favor, não inclua dados de saúde neste formulário. Em caso de emergência odontológica, ligue para o consultório.',
-        callOnly: 'Para solicitar uma consulta, ligue para o seu consultório. Em caso de emergência odontológica, ligue agora. Fora do horário, ligue para {phone}.',
-      },
     },
     faq: {
       meta: {

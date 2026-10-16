@@ -89,6 +89,7 @@ export const routes = {
   services: '/services',
   newPatients: '/new-patients',
   insurance: '/insurance',
+  membership: '/membership',
   pricing: '/pricing',
   about: '/about',
   doctor: '/about/dr-sheryar-khan',
@@ -106,8 +107,9 @@ export const navigation = [
   { key: 'emergency', href: routes.emergency, number: '02' },
   { key: 'newPatients', href: routes.newPatients, number: '03' },
   { key: 'insurance', href: routes.insurance, number: '04' },
-  { key: 'about', href: routes.about, number: '05' },
-  { key: 'contact', href: routes.contact, number: '06' },
+  { key: 'club', href: routes.membership, number: '05' },
+  { key: 'about', href: routes.about, number: '06' },
+  { key: 'contact', href: routes.contact, number: '07' },
 ] as const;
 
 /** Legal pages are English only, so these links always point at the English URLs. */

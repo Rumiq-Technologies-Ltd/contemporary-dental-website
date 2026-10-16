@@ -24,7 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     routes.home, routes.about, routes.doctor, routes.services,
     ...getServicePages(defaultLocale).map(service => service.href),
     routes.emergency, routes.technology,
-    routes.newPatients, routes.insurance, routes.pricing, routes.faq,
+    routes.newPatients, routes.insurance, routes.membership, routes.pricing, routes.faq,
     routes.contact, routes.accessibility,
   ];
   return paths.flatMap(entriesFor);
