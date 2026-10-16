@@ -61,10 +61,10 @@ const en = {
       before: "We'll ask you to complete our new-patient forms, including our HIPAA ",
       after: ". Please don't include health details in the website form.",
     },
-    // Review: financial policy and card-on-file wording. It assumes the card is captured on arrival, not at booking.
+    // Review: the card on file is taken at booking (practice decision, 16 Oct 2026; C17 §6). Whether the financial policy is signed at booking or at the first visit is still to confirm.
     firstVisit: {
       label: 'Your first visit.',
-      before: "At your first visit, you'll review and sign our financial policy and place a payment card on file. Details are on the ",
+      before: "A valid payment card is required on file for every patient at booking. At your first visit, you'll review and sign our financial policy. Details are on the ",
       link: 'Payment and financing',
       after: ' page.',
     },
@@ -257,10 +257,10 @@ export const visit: Record<Locale, VisitMessages> = {
         before: 'Le pediremos que complete nuestros formularios para pacientes nuevos, incluido nuestro ',
         after: ' de la HIPAA. Por favor, no incluya detalles de salud en el formulario del sitio web.',
       },
-      // Review: financial policy and card-on-file wording. It assumes the card is captured on arrival, not at booking.
+      // Review: the card on file is taken at booking (practice decision, 16 Oct 2026; C17 §6). Whether the financial policy is signed at booking or at the first visit is still to confirm.
       firstVisit: {
         label: 'Su primera visita.',
-        before: 'En su primera visita, usted revisará y firmará nuestra política financiera y dejará registrada una tarjeta de pago. Encontrará los detalles en la página ',
+        before: 'Se requiere una tarjeta de pago válida registrada para cada paciente al reservar la cita. En su primera visita, usted revisará y firmará nuestra política financiera. Encontrará los detalles en la página ',
         link: 'Pago y financiamiento',
         after: '.',
       },
@@ -440,10 +440,10 @@ export const visit: Record<Locale, VisitMessages> = {
         before: 'Pediremos que você preencha os nossos formulários de novos pacientes, incluindo o nosso ',
         after: ' da HIPAA. Por favor, não inclua dados de saúde no formulário do site.',
       },
-      // Review: financial policy and card-on-file wording. It assumes the card is captured on arrival, not at booking.
+      // Review: the card on file is taken at booking (practice decision, 16 Oct 2026; C17 §6). Whether the financial policy is signed at booking or at the first visit is still to confirm.
       firstVisit: {
         label: 'Sua primeira visita.',
-        before: 'Na sua primeira visita, você vai revisar e assinar a nossa política financeira e deixar um cartão de pagamento registrado. Os detalhes estão na página ',
+        before: 'É obrigatório ter um cartão de pagamento válido cadastrado para todos os pacientes no momento da reserva. Na sua primeira visita, você vai revisar e assinar a nossa política financeira. Os detalhes estão na página ',
         link: 'Pagamento e financiamento',
         after: '.',
       },

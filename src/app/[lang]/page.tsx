@@ -3,6 +3,7 @@ import { Hero } from '@/components/sections/Hero';
 import { Steps } from '@/components/sections/Steps';
 import { Problems } from '@/components/sections/Problems';
 import { Services } from '@/components/sections/Services';
+import { BeforeAfter } from '@/components/sections/BeforeAfter';
 import { Advantages } from '@/components/sections/Advantages';
 import { WhyUs } from '@/components/sections/WhyUs';
 import { Emergency } from '@/components/sections/Emergency';
@@ -31,8 +32,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 // Order follows the visitor's decision: the promise and the action, how a visit works, the
-// problem they came with, everything we treat, why us, urgent care, the people, where we are,
-// then the answers that remove the last objections. The footer closes with the action again.
+// problem they came with, everything we treat, the results patients have shared, why us, urgent
+// care, the people, where we are, then the answers that remove the last objections. The footer
+// closes with the action again.
 export default async function HomePage() {
   const lang = await getLocale();
   return <>
@@ -41,6 +43,7 @@ export default async function HomePage() {
       <Steps />
       <Problems />
       <Services />
+      <BeforeAfter />
       <Advantages />
       <WhyUs />
       <Emergency />
