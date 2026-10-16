@@ -13,6 +13,8 @@
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
   font-size: clamp(4.5rem, 9vw, 7rem); font-weight: 800; line-height: 1; color: var(--color-ink);
 }
+/* A portrait fills the square without stretching; the crop keeps the face in the upper part. */
+.tile img { object-fit: cover; object-position: 50% 20%; }
 .member:nth-child(3n + 2) .tile { background: var(--color-tint); }
 .member:nth-child(3n + 3) .tile { background: var(--color-tint-alt); }
 .name {
