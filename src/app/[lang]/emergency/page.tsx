@@ -26,7 +26,7 @@ export default async function EmergencyPage() {
   return <PageLayout>
     <PageIntro title={t.title} actions={offices.map(office => <CallButton key={office.id} office={office} />)} />
     <SafetyNotice label={t.safetyLabel}>{t.safetyNotice}</SafetyNotice>
-    <div className={styles.split}>
+    <div className={`${styles.split} ${styles.splitTop}`}>
       <div className={styles.section}>
         <Prose>
           <p>{t.lead}</p>
@@ -35,15 +35,12 @@ export default async function EmergencyPage() {
       </div>
       <PagePhoto photo="guides" />
     </div>
-    <div className={styles.split}>
-      <Section id="after-hours" title={t.afterHours.title}>
-        <Prose>
-          <p>{t.afterHours.body}</p>
-          <p>{messages.common.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></p>
-        </Prose>
-      </Section>
-      <PagePhoto photo="frontDesk" alt={messages.visit.contact.photoAlt} />
-    </div>
+    <Section id="after-hours" title={t.afterHours.title}>
+      <Prose>
+        <p>{t.afterHours.body}</p>
+        <p>{messages.common.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></p>
+      </Prose>
+    </Section>
     <EnquiryPanel source="/emergency" />
   </PageLayout>;
 }

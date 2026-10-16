@@ -58,7 +58,7 @@ test('problem tabs switch panels with the mouse and the arrow keys', async ({ pa
   await ready(page);
   const tabs = page.getByRole('tablist', { name: 'Common problems' });
   await expect(page.getByRole('tabpanel')).toHaveCount(1);
-  await expect(page.getByRole('tabpanel').getByRole('heading')).toHaveText('Same day treatment');
+  await expect(page.getByRole('tabpanel').getByRole('heading')).toHaveText('Got tooth pain?');
   await tabs.getByRole('tab', { name: 'Crooked teeth' }).click();
   await expect(page.getByRole('tabpanel').getByRole('heading')).toHaveText('Want straighter teeth?');
   await page.keyboard.press('ArrowRight');

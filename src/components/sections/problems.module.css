@@ -25,7 +25,7 @@
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
   font-size: clamp(4rem, 9vw, 8.5rem); font-weight: 800; line-height: 0.85; text-transform: uppercase; color: var(--color-ink);
 }
-.bigText { font-size: 1.25rem; font-weight: 600; line-height: 1.35; }
+/* The second line of a panel reads like the description below it: same size and weight. */
 .fact > p:not(.big, .bigText) { max-width: 32rem; }
 .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
 

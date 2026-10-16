@@ -78,8 +78,8 @@ const en = {
     items: {
       emergency: {
         tab: 'Tooth pain',
-        headline: 'Same day treatment',
-        big: 'Same day',
+        headline: 'Got tooth pain?',
+        big: 'Same day treatment',
         bigText: 'Emergency appointments are often available the same day, including for new patients.',
         linkLabel: 'About emergency care',
       },
@@ -243,8 +243,8 @@ export const home: Record<Locale, HomeMessages> = {
       items: {
         emergency: {
           tab: 'Dolor de dientes',
-          headline: 'Atención el mismo día',
-          big: 'El mismo día',
+          headline: '¿Tiene dolor de dientes?',
+          big: 'Atención el mismo día',
           bigText: 'Citas de urgencia con frecuencia disponibles el mismo día, también para pacientes nuevos.',
           linkLabel: 'Acerca de la atención de urgencia',
         },
@@ -404,8 +404,8 @@ export const home: Record<Locale, HomeMessages> = {
       items: {
         emergency: {
           tab: 'Dor de dente',
-          headline: 'Atendimento no mesmo dia',
-          big: 'No mesmo dia',
+          headline: 'Está com dor de dente?',
+          big: 'Atendimento no mesmo dia',
           bigText: 'Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes.',
           linkLabel: 'Sobre o atendimento de emergência',
         },
