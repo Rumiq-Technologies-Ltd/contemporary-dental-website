@@ -31,6 +31,7 @@ export default async function DoctorPage() {
     <div className={styles.split}>
       <Prose>
         <p>{fill(t.education, { offices })}</p>
+        {t.bio && <p>{t.bio}</p>}
         <p>{t.clinical}</p>
         <p>{t.approach}</p>
         <p><strong>{t.tagline}</strong></p>

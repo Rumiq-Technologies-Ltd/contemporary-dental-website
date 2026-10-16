@@ -97,6 +97,7 @@ const en = {
       orlandoOnly: 'our Orlando office',
     },
     education: 'Dr. Khan is a general dentist. He earned his DDS at Howard University College of Dentistry and completed a General Practice Residency at UCLA. He has practised since 2020, founded Contemporary Dental Care in 2023, and sees patients at {offices}. He is licensed to practise dentistry in Florida.',
+    bio: 'Dr. Sheryar is originally from Utah and founded Contemporary Dental Care in Orlando. He earned his DDS from Howard University College of Dentistry. He then completed a General Practice Residency at UCLA Medical Center, where he treated medically complex patients and handled dental emergencies. He has practiced since 2020. He comes from a multigenerational family of entrepreneurs, which shaped his interest in leadership and community. He focuses on modern technology, thorough treatment planning, and making patients feel heard and confident in their choices. His long-term goal is to bring dental, medical and wellness services together under one connected approach to patient care.',
     clinical: "Dr. Khan's clinical work includes implants, extractions, veneers, crowns and smile design. Implants are a particular focus of his care.",
     approach: 'Dr. Khan believes in conservative treatment. He recommends what you need, avoids over-treatment, and sequences care for long-term results.',
     tagline: 'Your smile. Your health. Our priority.',
@@ -207,6 +208,7 @@ export const about: Record<Locale, AboutMessages> = {
       // Review: credential and licence statement. "General Practice Residency" is translated as a
       // description of the program, not a program name; verify both before launch.
       education: 'El Dr. Khan es odontólogo general. Obtuvo su título de DDS en la Howard University College of Dentistry y completó una residencia de práctica general en UCLA. Ejerce desde 2020, fundó Contemporary Dental Care en 2023 y atiende a pacientes en {offices}. Tiene licencia para ejercer la odontología en Florida.',
+      bio: '',
       clinical: 'El trabajo clínico del Dr. Khan incluye implantes, extracciones, carillas, coronas y diseño de sonrisa. Los implantes son un enfoque particular de su atención.',
       approach: 'El Dr. Khan cree en el tratamiento conservador. Recomienda lo que usted necesita, evita el sobretratamiento y organiza la atención por etapas para lograr resultados a largo plazo.',
       tagline: 'Su sonrisa. Su salud. Nuestra prioridad.',
@@ -313,6 +315,7 @@ export const about: Record<Locale, AboutMessages> = {
       // Review: credential and licence statement. "General Practice Residency" is translated as a
       // description of the program, not a program name; verify both before launch.
       education: 'O Dr. Khan é clínico geral. Obteve o título de DDS na Howard University College of Dentistry e concluiu uma residência em prática geral na UCLA. Atua desde 2020, fundou a Contemporary Dental Care em 2023 e atende pacientes em {offices}. Ele é licenciado para exercer a odontologia na Flórida.',
+      bio: '',
       clinical: 'O trabalho clínico do Dr. Khan inclui implantes, extrações, lentes de contato dental, coroas e design de sorriso. Os implantes são um foco particular do seu atendimento.',
       approach: 'O Dr. Khan acredita no tratamento conservador. Ele recomenda o que você precisa, evita o excesso de tratamento e organiza o cuidado em etapas para obter resultados duradouros.',
       tagline: 'Seu sorriso. Sua saúde. Nossa prioridade.',
