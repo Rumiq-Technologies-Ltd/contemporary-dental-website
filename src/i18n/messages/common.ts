@@ -23,7 +23,7 @@ const en = {
     newPatients: 'New patients',
     insurance: 'Insurance and payment',
     about: 'About',
-    contact: 'Contact us',
+    contact: 'Location',
   },
   legal: {
     privacyPolicy: 'Privacy policy',
@@ -95,7 +95,7 @@ export const common: Record<Locale, CommonMessages> = {
       newPatients: 'Pacientes nuevos',
       insurance: 'Seguros y pagos',
       about: 'Acerca de',
-      contact: 'Contacto',
+      contact: 'Ubicación',
     },
     legal: {
       privacyPolicy: 'Política de privacidad',
@@ -162,7 +162,7 @@ export const common: Record<Locale, CommonMessages> = {
       newPatients: 'Novos pacientes',
       insurance: 'Convênios e pagamento',
       about: 'Sobre',
-      contact: 'Contato',
+      contact: 'Localização',
     },
     legal: {
       privacyPolicy: 'Política de privacidade',
