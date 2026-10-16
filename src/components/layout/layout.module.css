@@ -1,6 +1,6 @@
 /* Shared chrome: the announcement bar, the sticky header, the section frame, the footer and the
    phone button. Header breakpoints: below 640px it shows the logo and the menu; from 640px it
-   adds the request button; from 1280px the navigation bar replaces the menu. */
+   adds the request button; from 1440px the navigation bar replaces the menu. */
 
 /* Top bar: a cyan strip inset from the page edges. It stays with the header at the top of the page. */
 .stickyHead { position: sticky; top: 0; z-index: 50; background: var(--color-bg); }
@@ -12,12 +12,13 @@
 .topBarContacts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 22px; }
 .topBarContacts a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .topBarPhone { font-weight: 700; }
-.languageGroup { display: grid; justify-items: center; gap: 2px; }
+/* The status line hangs below the language links, so the row stays on the same centre line as the other items. */
+.languageGroup { position: relative; display: grid; justify-items: center; }
 .languages { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 12px; }
 .languageLink,
 .languageCurrent { display: inline-flex; align-items: center; min-height: 28px; padding: 0 4px; color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .languageButton { border: 0; background: none; font: inherit; cursor: pointer; }
-.languageStatus { min-height: 1.4em; margin: 0; font-size: 13px; font-weight: 600; }
+.languageStatus { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin: 0; white-space: nowrap; font-size: 13px; font-weight: 600; }
 
 /* Header: white, with the practice logo, the navigation and one cyan action. Sits inside the sticky top group. */
 .header {
@@ -26,7 +27,7 @@
   align-items: center; gap: 16px; min-height: 76px; padding: 12px var(--gutter);
   background: var(--color-bg); border-bottom: 1px solid var(--color-line);
 }
-.logo { grid-area: logo; display: inline-flex; align-items: center; min-width: 0; color: var(--color-ink); }
+.logo { grid-area: logo; display: inline-flex; align-items: center; color: var(--color-ink); }
 /* The practice logo (transparent PNG). Its height sets the size; the width follows the artwork. */
 .logoImage { display: block; width: auto; height: 46px; }
 .request { grid-area: auth; min-height: 46px; padding: 0 20px; font-size: 15px; }
@@ -83,13 +84,11 @@
   .header { grid-template-columns: 1fr auto auto; grid-template-areas: 'logo auth menu'; }
   .header .request { display: inline-flex; }
 }
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
   .header { grid-template-columns: auto 1fr auto; grid-template-areas: 'logo nav auth'; }
   .header .menu { display: none; }
   .header .nav { display: flex; }
 }
-/* Between 1280px and 1440px the bar is tight, so links sit closer together. */
-@media (min-width: 1280px) and (max-width: 1439px) { .header { gap: 24px; } .navLink { padding-inline: 7px; font-size: 14.5px; } .navLink::after { left: 7px; right: 7px; } }
 @media (max-width: 639px) { .logoImage { height: 38px; } }
 
 /* Every section is a full-width band whose content stays inside the container width. */
