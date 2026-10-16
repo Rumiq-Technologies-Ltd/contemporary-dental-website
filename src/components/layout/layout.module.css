@@ -27,9 +27,11 @@
   align-items: center; gap: 16px; min-height: 76px; padding: 12px var(--gutter);
   background: var(--color-bg); border-bottom: 1px solid var(--color-line);
 }
-.logo { grid-area: logo; display: inline-flex; align-items: center; color: var(--color-ink); }
-/* The practice logo (transparent PNG). Its height sets the size; the width follows the artwork. */
-.logoImage { display: block; width: auto; height: 46px; }
+.logo { grid-area: logo; display: inline-flex; align-items: center; gap: 12px; color: var(--color-ink); }
+/* The logo is two transparent PNGs: the tooth icon and the wordmark. Each height sets its size; the width follows the artwork.
+   The icon keeps its size; the wordmark is larger. */
+.logoIcon { display: block; width: auto; height: 44px; }
+.logoWordmark { display: block; width: auto; height: 48px; }
 .request { grid-area: auth; min-height: 46px; padding: 0 20px; font-size: 15px; }
 .header .request { display: none; }
 .menu { grid-area: menu; position: relative; }
@@ -89,7 +91,7 @@
   .header .menu { display: none; }
   .header .nav { display: flex; }
 }
-@media (max-width: 639px) { .logoImage { height: 38px; } }
+@media (max-width: 639px) { .logoIcon { height: 36px; } .logoWordmark { height: 40px; } }
 
 /* Every section is a full-width band whose content stays inside the container width. */
 .screen {
