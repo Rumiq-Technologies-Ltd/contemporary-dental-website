@@ -17,6 +17,8 @@ import xrayTeamLandscape from '../../public/images/practice/xray-team-landscape.
 import xrayTeamPortrait from '../../public/images/practice/xray-team-portrait.jpg';
 import roomTeal from '../../public/images/practice/treatment-room-teal.jpg';
 import roomCream from '../../public/images/practice/treatment-room-cream.jpg';
+// The practice logo, transparent so it sits on any background (docs/image-credits.md).
+import contemporaryLogo from '../../public/images/logo/contemporary-dental-care-logo.png';
 
 // Static imports supply intrinsic dimensions and blur placeholders to Next Image.
 // The first six come from the Figma design. The practice photographs (public/images/practice)
@@ -29,3 +31,8 @@ export const photos = {
   xrayTeamLandscape, xrayTeamPortrait, roomTeal, roomCream,
 };
 export type PhotoName = keyof typeof photos;
+
+/** Brand artwork. Kept apart from photos so the photo names stay photographs only. */
+export const brand = {
+  logo: contemporaryLogo,
+};

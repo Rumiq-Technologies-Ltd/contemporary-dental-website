@@ -18,22 +18,16 @@
 .languageCurrent { font-weight: 700; text-decoration: none; }
 @media (max-width: 899px) { .topBarText { display: none; } }
 
-/* Sticky header: white, with a condensed wordmark, the navigation and one cyan action. */
+/* Sticky header: white, with the practice logo, the navigation and one cyan action. */
 .header {
   position: sticky; top: 0; z-index: 50;
   display: grid; grid-template-columns: 1fr auto; grid-template-areas: 'logo menu';
   align-items: center; gap: 16px; min-height: 76px; padding: 12px var(--gutter);
   background: var(--color-bg); border-bottom: 1px solid var(--color-line);
 }
-.logo { grid-area: logo; display: inline-flex; align-items: center; gap: 12px; min-width: 0; color: var(--color-ink); }
-.logoMark {
-  display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; border-radius: var(--radius-button);
-  background: var(--color-accent); color: var(--color-ink); font-size: 24px;
-}
-.wordmark {
-  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
-  font-size: 22px; font-weight: 800; line-height: 0.88; letter-spacing: -0.01em; text-transform: uppercase; white-space: nowrap;
-}
+.logo { grid-area: logo; display: inline-flex; align-items: center; min-width: 0; color: var(--color-ink); }
+/* The practice logo (transparent PNG). Its height sets the size; the width follows the artwork. */
+.logoImage { display: block; width: auto; height: 46px; }
 .request { grid-area: auth; min-height: 46px; padding: 0 20px; font-size: 15px; }
 .header .request { display: none; }
 .menu { grid-area: menu; position: relative; }
@@ -95,7 +89,7 @@
 }
 /* Between 1280px and 1440px the bar is tight, so links sit closer together. */
 @media (min-width: 1280px) and (max-width: 1439px) { .header { gap: 24px; } .navLink { padding-inline: 7px; font-size: 14.5px; } .navLink::after { left: 7px; right: 7px; } }
-@media (max-width: 639px) { .wordmark { font-size: 20px; } .logoMark { width: 36px; height: 36px; font-size: 21px; } }
+@media (max-width: 639px) { .logoImage { height: 38px; } }
 
 /* Every section is a full-width band whose content stays inside the container width. */
 .screen {
