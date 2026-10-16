@@ -10,7 +10,7 @@ import styles from './hero.module.css';
 
 const delay = (ms: number) => ({ '--d': `${ms}ms` }) as CSSProperties;
 
-// Full-bleed photograph, a giant headline, and the introduction beside it.
+// Full-bleed photograph, a giant headline and the trust line.
 // The headline words rise at first paint, the rest fades in after them, and the photo drifts
 // slower than the page as you scroll (all CSS; see "Motion" in globals.css).
 export async function Hero() {
@@ -27,9 +27,6 @@ export async function Hero() {
       <p className={styles.trust} data-load="" style={delay(650)}>
         <span>{t.trustNewPatients}</span><span>{t.trustLanguages}</span>
       </p>
-    </div>
-    <div className={styles.side} data-load="" style={delay(800)}>
-      <p>{t.intro}</p>
     </div>
   </Screen>;
 }

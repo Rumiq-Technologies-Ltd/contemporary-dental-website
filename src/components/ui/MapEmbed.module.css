@@ -1,11 +1,2 @@
-/* Click-to-load map: the placeholder and the frame share one small size. */
-.frame,
-.placeholder {
-  width: 100%; height: 200px; border: 1px solid var(--color-line); border-radius: var(--radius-card);
-}
-.frame { display: block; }
-.placeholder {
-  display: grid; place-content: center; justify-items: center; gap: 10px; padding: 16px;
-  background: var(--color-tint); text-align: center;
-}
-.note { font-size: 14px; line-height: 1.5; color: var(--color-muted); }
+/* The office map: a small frame at a fixed size, so the card does not shift when it loads. */
+.frame { display: block; width: 100%; height: 200px; border: 1px solid var(--color-line); border-radius: var(--radius-card); }

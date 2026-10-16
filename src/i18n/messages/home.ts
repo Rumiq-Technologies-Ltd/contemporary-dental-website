@@ -22,7 +22,6 @@ const en = {
     },
     trustNewPatients: 'New patients welcome',
     trustLanguages: 'English, Spanish and Portuguese',
-    intro: 'Routine care, emergency visits, implants, cosmetic treatment and clear aligners. We explain your options clearly and plan treatment in sensible stages.',
   },
   steps: {
     heading: 'Getting good care is simple',
@@ -156,8 +155,6 @@ const en = {
     photoAlt: 'The {name} office',
     details: 'Office details',
     directions: 'Get directions',
-    showMap: 'Show map',
-    mapNote: 'Loads Google Maps only when you choose to show it.',
     mapTitle: 'Map of the {name} office',
   },
   faq: {
@@ -189,7 +186,6 @@ export const home: Record<Locale, HomeMessages> = {
       },
       trustNewPatients: 'Aceptamos pacientes nuevos',
       trustLanguages: 'Inglés, español y portugués',
-      intro: 'Atención de rutina, visitas de urgencia, implantes, tratamiento estético y alineadores transparentes. Le explicamos sus opciones con claridad y planificamos el tratamiento en etapas razonables.',
     },
     steps: {
       heading: 'Recibir buena atención es sencillo',
@@ -325,8 +321,6 @@ export const home: Record<Locale, HomeMessages> = {
       photoAlt: 'El consultorio de {name}',
       details: 'Detalles del consultorio',
       directions: 'Cómo llegar',
-      showMap: 'Mostrar mapa',
-      mapNote: 'Carga Google Maps solo cuando usted decida mostrarlo.',
       mapTitle: 'Mapa del consultorio de {name}',
     },
     faq: {
@@ -353,7 +347,6 @@ export const home: Record<Locale, HomeMessages> = {
       },
       trustNewPatients: 'Recebemos novos pacientes',
       trustLanguages: 'Inglês, espanhol e português',
-      intro: 'Atendimento de rotina, emergências, implantes, tratamentos estéticos e alinhadores transparentes. Explicamos suas opções com clareza e planejamos o tratamento em etapas sensatas.',
     },
     steps: {
       heading: 'Receber um bom atendimento é simples',
@@ -489,8 +482,6 @@ export const home: Record<Locale, HomeMessages> = {
       photoAlt: 'O consultório de {name}',
       details: 'Detalhes do consultório',
       directions: 'Como chegar',
-      showMap: 'Mostrar mapa',
-      mapNote: 'Carrega o Google Maps somente quando você decidir mostrá-lo.',
       mapTitle: 'Mapa do consultório de {name}',
     },
     faq: {

@@ -42,7 +42,7 @@ export async function Offices() {
           <h3>{office.name}</h3>
           <address>{formatAddress(office)}</address>
           <p className={styles.hours}>{common.hours[office.id]}</p>
-          <MapEmbed src={mapEmbedHref(office)} title={fill(t.mapTitle, { name: office.name })} showLabel={t.showMap} note={t.mapNote} />
+          <MapEmbed src={mapEmbedHref(office)} title={fill(t.mapTitle, { name: office.name })} />
           <a href={directionsHref(office)} className={styles.directions}>{t.directions}<Icon name="arrow" /></a>
           <div className={styles.actions}>
             <a href={office.phoneHref} className={`pill pill-accent pill-large ${styles.call}`}>
