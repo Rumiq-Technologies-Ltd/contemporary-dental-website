@@ -19,8 +19,8 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({ lang, title: t.title, description: t.description, path: routes.newPatients });
 }
 
-// BUILD NOTE: this wording assumes the payment card is captured on arrival. If capture
-// at booking is confirmed instead, change the "Your first visit" paragraph.
+// BUILD NOTE: the payment card is taken at booking (practice decision, 16 Oct 2026). The
+// "Your first visit" paragraph reflects that; the timing of the financial policy signature is still to confirm.
 // HOLD: sedation and nitrous oxide are not mentioned until Dr. Khan confirms the scope.
 // Still to confirm: whether forms are completed before the visit or on arrival, and the what-to-bring list.
 export default async function NewPatientsPage() {

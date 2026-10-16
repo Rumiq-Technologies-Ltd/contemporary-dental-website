@@ -18,7 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
 // HOLD: "0% financing for all patients" must not appear anywhere; any 0% wording needs counsel review.
 // Still to confirm: accepted payment methods and the in-house payment plan terms.
 // BUILD NOTE: replace the policy summary with the approved Financial Policy & Appointment
-// Agreement wording, verbatim, and resolve card capture at booking versus arrival first.
+// Agreement wording, verbatim. Card capture at booking is confirmed; the policy signature timing is still open.
 export default async function PaymentFinancingPage() {
   const lang = await getLocale();
   const t = getMessages(lang).money.payment;
