@@ -34,7 +34,7 @@ Production builds are indexable and `robots.txt` welcomes all crawlers (it is no
 
 ## Not built
 
-Membership page (C18 draft), Haitian Creole pages, analytics and advertising tags, a before-and-after gallery of real patients (see above), the Altamonte Springs location, LANAP, CEREC, same-day crowns, nitrous oxide, facial aesthetics, the referral promotion, Crunch Fitness content.
+Haitian Creole pages, analytics and advertising tags, a before-and-after gallery of real patients (see above), the Altamonte Springs location, LANAP, CEREC, same-day crowns, nitrous oxide, facial aesthetics, the referral promotion, Crunch Fitness content.
 
 ## Translations
 

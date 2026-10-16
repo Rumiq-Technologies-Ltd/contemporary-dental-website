@@ -40,6 +40,7 @@ export function GET(): Response {
     '',
     `- [New patients](${url(routes.newPatients)})`,
     `- [Insurance](${url(routes.insurance)})`,
+    `- [Contemporary Dental Club](${url(routes.membership)})`,
     `- [About Dr. Khan](${url(routes.doctor)})`,
     `- [Contact](${url(routes.contact)})`,
     `- [Frequently asked questions](${url(routes.faq)})`,

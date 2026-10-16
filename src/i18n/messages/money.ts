@@ -63,6 +63,60 @@ const en = {
     title: 'Pricing and offers',
     lead: "Fees depend on your treatment, so we don't publish a fee list. Before treatment starts, we'll give you an estimate. If you have insurance, we verify your benefits and estimate your share.",
   },
+  membership: {
+    meta: {
+      title: 'Contemporary Dental Club',
+      description: 'Smile Membership Program plans for adults, perio care and children, with a monthly fee and a lifetime activation fee.',
+    },
+    title: 'Contemporary Dental Club',
+    lead: "No insurance? Our patients don't need it. Save on the care you need with our simple, affordable membership plans.",
+    plansTitle: 'Membership plans',
+    perMonth: '/mo.',
+    plans: {
+      adult: {
+        name: 'Adult membership',
+        ages: '13 years & older',
+        price: '$56.77',
+        activationFee: '$679.99 Lifetime Activation Fee',
+        features: [
+          'Professional dental cleanings (2 per year)',
+          'Doctor exams (1–2 per year)',
+          'One emergency exam per year (if needed)',
+          '15% off all other treatments (some exclusions may apply)',
+          '$69.99 Lifetime Activation Fee includes first month',
+        ],
+      },
+      perio: {
+        name: 'Perio membership',
+        ages: 'Periodontal disease',
+        price: '$82.88',
+        activationFee: '$99.99 Lifetime Activation Fee',
+        features: [
+          'Perio maintenance cleanings (3 per year)',
+          'Doctor exams (1–2 per year)',
+          'One emergency exam per year (if needed)',
+          '15% off all other treatments (some exclusions may apply)',
+          '$99.99 Lifetime Activation Fee includes first month',
+        ],
+      },
+      child: {
+        name: 'Child membership',
+        ages: '12 years & under',
+        price: '$48.07',
+        activationFee: '$89.99 Lifetime Activation Fee',
+        features: [
+          'Professional dental cleanings (2 per year)',
+          'Doctor exams (1–2 per year)',
+          'One emergency exam per year (if needed)',
+          'Fluoride treatment',
+          '15% off all other treatments (some exclusions may apply)',
+          '$89.99 Lifetime Activation Fee includes first month',
+        ],
+      },
+    },
+    benefitsTitle: 'Membership benefits',
+    benefits: ['Big savings on the care you need', 'No maximums, no deductibles, no claims', 'Affordable care for the whole family'],
+  },
 };
 
 export type MoneyMessages = typeof en;
@@ -131,6 +185,61 @@ export const money: Record<Locale, MoneyMessages> = {
       // Review: fee and estimate wording (financial); confirm it matches the practice's real process.
       lead: 'Las tarifas dependen de su tratamiento, por lo que no publicamos una lista de tarifas. Antes de que comience el tratamiento, le daremos una estimación. Si tiene seguro, verificamos sus beneficios y estimamos la parte que le corresponde.',
     },
+    membership: {
+      meta: {
+        title: 'Club Contemporary Dental',
+        description: 'Planes del Programa de Membresía Smile para adultos, cuidado periodontal y niños: una tarifa mensual y una tarifa de activación de por vida.',
+      },
+      title: 'Club Contemporary Dental',
+      // Review: membership wording and prices are translated; confirm with the practice and counsel.
+      lead: '¿Sin seguro? Nuestros pacientes no lo necesitan. Ahorre en la atención que necesita con nuestros planes de membresía sencillos y accesibles.',
+      plansTitle: 'Planes de membresía',
+      perMonth: '/mes',
+      plans: {
+        adult: {
+          name: 'Membresía para adultos',
+          ages: '13 años en adelante',
+          price: '$56.77',
+          activationFee: '$679.99 Tarifa de activación de por vida',
+          features: [
+            'Limpiezas dentales profesionales (2 al año)',
+            'Consultas con el doctor (1–2 al año)',
+            'Una consulta de urgencia al año (si es necesaria)',
+            '15% de descuento en todos los demás tratamientos (pueden aplicar algunas exclusiones)',
+            '$69.99 de tarifa de activación de por vida incluye el primer mes',
+          ],
+        },
+        perio: {
+          name: 'Membresía perio',
+          ages: 'Enfermedad periodontal',
+          price: '$82.88',
+          activationFee: '$99.99 Tarifa de activación de por vida',
+          features: [
+            'Limpiezas de mantenimiento periodontal (3 al año)',
+            'Consultas con el doctor (1–2 al año)',
+            'Una consulta de urgencia al año (si es necesaria)',
+            '15% de descuento en todos los demás tratamientos (pueden aplicar algunas exclusiones)',
+            '$99.99 de tarifa de activación de por vida incluye el primer mes',
+          ],
+        },
+        child: {
+          name: 'Membresía infantil',
+          ages: '12 años o menos',
+          price: '$48.07',
+          activationFee: '$89.99 Tarifa de activación de por vida',
+          features: [
+            'Limpiezas dentales profesionales (2 al año)',
+            'Consultas con el doctor (1–2 al año)',
+            'Una consulta de urgencia al año (si es necesaria)',
+            'Tratamiento con flúor',
+            '15% de descuento en todos los demás tratamientos (pueden aplicar algunas exclusiones)',
+            '$89.99 de tarifa de activación de por vida incluye el primer mes',
+          ],
+        },
+      },
+      benefitsTitle: 'Beneficios de la membresía',
+      benefits: ['Grandes ahorros en la atención que necesita', 'Sin máximos, sin deducibles, sin reclamaciones', 'Atención asequible para toda la familia'],
+    },
   },
   pt: {
     insurance: {
@@ -193,6 +302,61 @@ export const money: Record<Locale, MoneyMessages> = {
       title: 'Preços e ofertas',
       // Review: fee and estimate wording (financial); confirm it matches the practice's real process.
       lead: 'Os valores dependem do seu tratamento, por isso não publicamos uma tabela de preços. Antes de o tratamento começar, vamos fornecer uma estimativa. Se você tem convênio, verificamos seus benefícios e estimamos a sua parte.',
+    },
+    membership: {
+      meta: {
+        title: 'Clube Contemporary Dental',
+        description: 'Planos do Programa de Membresia Smile para adultos, tratamento periodontal e crianças: uma mensalidade e uma taxa de ativação vitalícia.',
+      },
+      title: 'Clube Contemporary Dental',
+      // Review: membership wording and prices are translated; confirm with the practice and counsel.
+      lead: 'Sem convênio? Nossos pacientes não precisam. Economize na atenção que você precisa com nossos planos de adesão simples e acessíveis.',
+      plansTitle: 'Planos de adesão',
+      perMonth: '/mês',
+      plans: {
+        adult: {
+          name: 'Adesão adulta',
+          ages: '13 anos ou mais',
+          price: '$56.77',
+          activationFee: '$679.99 Taxa de ativação vitalícia',
+          features: [
+            'Limpezas dentais profissionais (2 por ano)',
+            'Consultas com o médico (1–2 por ano)',
+            'Um exame de emergência por ano (se necessário)',
+            '15% de desconto em todos os outros tratamentos (podem ocorrer algumas exclusões)',
+            '$69.99 de taxa de ativação vitalícia inclui o primeiro mês',
+          ],
+        },
+        perio: {
+          name: 'Adesão perio',
+          ages: 'Doença periodontal',
+          price: '$82.88',
+          activationFee: '$99.99 Taxa de ativação vitalícia',
+          features: [
+            'Limpezas de manutenção periodontal (3 por ano)',
+            'Consultas com o médico (1–2 por ano)',
+            'Um exame de emergência por ano (se necessário)',
+            '15% de desconto em todos os outros tratamentos (podem ocorrer algumas exclusões)',
+            '$99.99 de taxa de ativação vitalícia inclui o primeiro mês',
+          ],
+        },
+        child: {
+          name: 'Adesão infantil',
+          ages: '12 anos ou menos',
+          price: '$48.07',
+          activationFee: '$89.99 Taxa de ativação vitalícia',
+          features: [
+            'Limpezas dentais profissionais (2 por ano)',
+            'Consultas com o médico (1–2 por ano)',
+            'Um exame de emergência por ano (se necessário)',
+            'Tratamento com flúor',
+            '15% de desconto em todos os outros tratamentos (podem ocorrer algumas exclusões)',
+            '$89.99 de taxa de ativação vitalícia inclui o primeiro mês',
+          ],
+        },
+      },
+      benefitsTitle: 'Benefícios da adesão',
+      benefits: ['Grandes economias na atenção que você precisa', 'Sem limites máximos, sem franquias, sem pedidos de reembolso', 'Atendimento acessível para toda a família'],
     },
   },
 };
