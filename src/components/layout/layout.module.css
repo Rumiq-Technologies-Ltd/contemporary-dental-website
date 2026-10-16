@@ -7,16 +7,15 @@
 .topBar {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 28px;
   margin: 12px clamp(12px, 1.5vw, 20px) 0; padding: 10px 16px; border-radius: var(--radius-card);
-  background: var(--color-highlight); color: var(--color-ink); font-size: 14px; line-height: 1.4; text-align: center;
+  background: var(--color-highlight); color: var(--color-ink); font-size: 14px; font-weight: 700; line-height: 1.4; text-align: center;
 }
 .topBarContacts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 22px; }
 .topBarContacts a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .topBarPhone { font-weight: 700; }
 .languageGroup { display: grid; justify-items: center; gap: 2px; }
-.languages { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 12px; font-size: 13px; }
+.languages { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 12px; }
 .languageLink,
-.languageCurrent { display: inline-flex; align-items: center; min-height: 28px; padding: 0 4px; color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-.languageCurrent { font-weight: 700; text-decoration: none; }
+.languageCurrent { display: inline-flex; align-items: center; min-height: 28px; padding: 0 4px; color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .languageButton { border: 0; background: none; font: inherit; cursor: pointer; }
 .languageStatus { min-height: 1.4em; margin: 0; font-size: 13px; font-weight: 600; }
 
