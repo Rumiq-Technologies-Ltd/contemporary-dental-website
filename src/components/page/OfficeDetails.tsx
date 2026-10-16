@@ -1,5 +1,5 @@
 import { PagePhoto } from '@/components/page/PagePhoto';
-import { Section } from '@/components/page/Section';
+import { Notice, Section } from '@/components/page/Section';
 import { MapEmbed } from '@/components/ui/MapEmbed';
 import type { PhotoName } from '@/content/assets';
 import { directionsHref, formatAddress, mapEmbedHref, type Office } from '@/content/site';
@@ -18,11 +18,13 @@ interface OfficeDetailsProps {
   /** Map frame title with a {name} placeholder. */
   mapTitle: string;
   photo?: { name: PhotoName; alt: string };
+  /** Shown under the directions link. Each line is left out when its text is empty. */
+  arrivalTip?: { label: string; text: string; landmarksLabel: string; landmarks: string };
 }
 
 // One office's details on the contact page: its photograph when it has one, the facts in a table,
-// the map, and a link to directions. The section id is the office id, so each office has an anchor.
-export function OfficeDetails({ office, title, tableCaption, labels, hours, services, directionsLabel, mapTitle, photo }: OfficeDetailsProps) {
+// the map, a link to directions, and the arrival tip. The section id is the office id, so each office has an anchor.
+export function OfficeDetails({ office, title, tableCaption, labels, hours, services, directionsLabel, mapTitle, photo, arrivalTip }: OfficeDetailsProps) {
   return <Section id={office.id} title={title}>
     {photo && <PagePhoto photo={photo.name} alt={photo.alt} wide />}
     <table className={styles.table}>
@@ -36,5 +38,10 @@ export function OfficeDetails({ office, title, tableCaption, labels, hours, serv
     </table>
     <MapEmbed src={mapEmbedHref(office)} title={fill(mapTitle, { name: office.name })} />
     <p><a className={styles.link} href={directionsHref(office)}>{directionsLabel}</a></p>
+    {arrivalTip && (arrivalTip.text || arrivalTip.landmarks) && <Notice>
+      {arrivalTip.text && <><strong>{arrivalTip.label}:</strong> {arrivalTip.text}</>}
+      {arrivalTip.text && arrivalTip.landmarks && <br />}
+      {arrivalTip.landmarks && <><strong>{arrivalTip.landmarksLabel}:</strong> {arrivalTip.landmarks}</>}
+    </Notice>}
   </Section>;
 }

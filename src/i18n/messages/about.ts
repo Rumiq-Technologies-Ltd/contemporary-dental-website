@@ -9,7 +9,7 @@ const en = {
       title: 'About Us',
       description: 'Contemporary Dental Care is a general dental practice founded in 2023 by Dr. Sheryar Khan. Honest treatment planning, easy access and care in your language.',
     },
-    title: 'About Contemporary Dental Care',
+    title: 'About Us',
     intro: {
       withOcoee: 'Contemporary Dental Care is a general dental practice founded in 2023 by Dr. Sheryar Khan. Our practice rests on three commitments.',
       orlandoOnly: 'Contemporary Dental Care is a general dental practice founded in 2023 by Dr. Sheryar Khan. Our practice rests on three commitments.',
@@ -73,9 +73,9 @@ const en = {
         bio: 'Amanda was born and raised in Tampa, Florida, and has a bachelor\'s degree from the University of Florida. Her interest in dentistry began through dental organizations serving underserved communities. Outside work she enjoys traveling and spending time with friends and family.',
       },
       nestorUgalde: {
-        role: 'Expanded Functions Dental Assistant',
+        role: 'Dental Assistant',
         languages: 'Speaks Spanish.',
-        bio: 'Néstor was born in Costa Rica and grew up in the country\'s northern region, inspired by the tropical rainforest. He started in dentistry in 1999, so he has 27 years of experience. He moved to the US nearly five years ago and now works as an Expanded Functions Dental Assistant. He is a native Spanish speaker and especially enjoys caring for Spanish-speaking and Latino patients. He puts weight on making patients feel comfortable, respected and cared for.',
+        bio: 'Néstor was born in Costa Rica and grew up in the country\'s northern region, inspired by the tropical rainforest. He started in dentistry in 1999, so he has 27 years of experience. He moved to the US nearly five years ago and now works as a Dental Assistant. He is a native Spanish speaker and especially enjoys caring for Spanish-speaking and Latino patients. He puts weight on making patients feel comfortable, respected and cared for.',
       },
       brunoConteAndre: {
         role: 'Dental Assistant',
@@ -117,7 +117,7 @@ export const about: Record<Locale, AboutMessages> = {
         title: 'Sobre nosotros',
         description: 'Contemporary Dental Care es una clínica dental general fundada en 2023 por el Dr. Sheryar Khan. Planificación honesta del tratamiento, fácil acceso y atención en su idioma.',
       },
-      title: 'Acerca de Contemporary Dental Care',
+      title: 'Sobre nosotros',
       intro: {
         withOcoee: 'Contemporary Dental Care es una clínica dental general fundada en 2023 por el Dr. Sheryar Khan. Nuestra clínica se basa en tres compromisos.',
         orlandoOnly: 'Contemporary Dental Care es una clínica dental general fundada en 2023 por el Dr. Sheryar Khan. Nuestra clínica se basa en tres compromisos.',
@@ -183,7 +183,7 @@ export const about: Record<Locale, AboutMessages> = {
           bio: '',
         },
         nestorUgalde: {
-          role: 'Asistente dental de funciones ampliadas',
+          role: 'Asistente dental',
           languages: 'Habla español.',
           bio: '',
         },
@@ -225,7 +225,7 @@ export const about: Record<Locale, AboutMessages> = {
         title: 'Sobre nós',
         description: 'A Contemporary Dental Care é uma clínica odontológica geral fundada em 2023 pelo Dr. Sheryar Khan. Planejamento de tratamento honesto, fácil acesso e atendimento no seu idioma.',
       },
-      title: 'Sobre a Contemporary Dental Care',
+      title: 'Sobre nós',
       intro: {
         withOcoee: 'A Contemporary Dental Care é uma clínica odontológica geral fundada em 2023 pelo Dr. Sheryar Khan. Nossa clínica se apoia em três compromissos.',
         orlandoOnly: 'A Contemporary Dental Care é uma clínica odontológica geral fundada em 2023 pelo Dr. Sheryar Khan. Nossa clínica se apoia em três compromissos.',
@@ -292,7 +292,7 @@ export const about: Record<Locale, AboutMessages> = {
           bio: '',
         },
         nestorUgalde: {
-          role: 'Assistente odontológico de funções ampliadas',
+          role: 'Assistente odontológico',
           languages: 'Fala espanhol.',
           bio: '',
         },

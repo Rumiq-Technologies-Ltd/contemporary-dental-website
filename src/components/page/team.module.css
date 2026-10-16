@@ -21,5 +21,5 @@
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
   font-size: 24px; font-weight: 700; line-height: 1; text-transform: uppercase; color: var(--color-ink);
 }
-.role { font-size: 15px; color: var(--color-muted); }
+.role { font-size: 15px; color: var(--color-accent-ink); }
 .bio { font-size: 15px; line-height: 1.55; color: var(--color-muted); }
