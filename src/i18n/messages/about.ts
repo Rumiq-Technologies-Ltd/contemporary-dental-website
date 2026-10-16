@@ -59,23 +59,30 @@ const en = {
       jessicaSalazar: { role: 'Dental Hygienist', languages: 'Speaks Spanish.' },
       brittiniBlankenship: {
         role: 'Regional Dental Manager',
-        bio: 'Brittini started in dentistry after high school. She trained as a dental assistant and moved through assistant manager and office manager roles to regional management. She leads team development, patient experience, scheduling, billing and collections, marketing, community outreach and practice systems.',
+        bio: 'Brittini started in dentistry right after high school and graduated from dental assisting school on the Dean\'s List with high honors as an Expanded Functions Dental Assistant. She moved from chairside work to Assistant Manager, then Office Manager, and later into regional management. In that role she worked with Dr. Khan to open and develop practices across Orlando. Today she oversees team development, patient experience, scheduling, billing and collections, marketing, community outreach, and operational systems. Because she started chairside, she understands the roles of the teams she manages. She believes good practices are built on strong teams, real patient relationships, accountability, and a place where patients and staff feel valued. Outside work she is a mom of three and spends much of her time at her kids\' sporting events.',
       },
       franchescaAvila: {
         role: 'Office Manager and Insurance Coordinator',
-        bio: 'Franchesca has about five years in dentistry and is fluent in English and Spanish. She helps patients understand treatment plans, insurance benefits and financing options.',
+        bio: 'Franchesca was born in Sanford, Florida, and raised in a Hispanic household. She has nearly five years in dentistry and helps patients with treatment plans, insurance benefits and financial options. She is fluent in English and Spanish and focuses on making every patient feel heard. Outside work she spends time with family and collects artisan turtles from the places she visits.',
       },
       amandaNguyen: {
         role: 'Office Manager',
-        bio: "Amanda holds a bachelor's degree from the University of Florida.",
+        bio: 'Amanda was born and raised in Tampa, Florida, and has a bachelor\'s degree from the University of Florida. Her interest in dentistry began through dental organizations serving underserved communities. Outside work she enjoys traveling and spending time with friends and family.',
       },
-      nestorUgalde: { role: 'Expanded Functions Dental Assistant', languages: 'Speaks Spanish.' },
+      nestorUgalde: {
+        role: 'Expanded Functions Dental Assistant',
+        languages: 'Speaks Spanish.',
+        bio: 'Néstor was born in Costa Rica and grew up in the country\'s northern region, inspired by the tropical rainforest. He started in dentistry in 1999, so he has 27 years of experience. He moved to the US nearly five years ago and now works as an Expanded Functions Dental Assistant. He is a native Spanish speaker and especially enjoys caring for Spanish-speaking and Latino patients. He puts weight on making patients feel comfortable, respected and cared for.',
+      },
       brunoConteAndre: {
         role: 'Dental Assistant',
         languages: 'Speaks Portuguese.',
-        bio: 'Bruno has prior training and clinical experience in Brazil. In the United States he works at Contemporary Dental Care as a dental assistant.',
+        bio: 'Bruno is a dental professional from Brazil. He graduated in 2004 and has worked in oral surgery and oral rehabilitation. He moved to the US with his family in 2022. At Contemporary Dental Care he supports the dentists and clinical team, assists with procedures, and helps with patient coordination. His goal is to earn his US dental license and become a licensed dentist here. He plays piano in his church\'s music ministry and enjoys traveling with his family and barbecues with family and friends.',
       },
-      tyreseBrown: { role: 'Dental Assistant' },
+      tyreseBrown: {
+        role: 'Dental Assistant',
+        bio: 'Tyrese has been a Dental Assistant for two years and is continuing his education with the goal of becoming a dentist. Outside the office he plays basketball and golf, goes to the beach, and does community service. His favorite part of the job is making a positive difference in someone\'s day. He believes everyone deserves to feel comfortable, confident and proud of their smile.',
+      },
     },
   },
   doctor: {
@@ -159,24 +166,31 @@ export const about: Record<Locale, AboutMessages> = {
         jessicaSalazar: { role: 'Higienista dental', languages: 'Habla español.' },
         brittiniBlankenship: {
           role: 'Gerente dental regional',
-          bio: 'Brittini comenzó en la odontología al terminar la escuela secundaria. Se formó como asistente dental y fue avanzando por los puestos de subgerente y gerente de consultorio hasta llegar a la gerencia regional. Dirige el desarrollo del equipo, la experiencia del paciente, la programación de citas, la facturación y los cobros, el marketing, el acercamiento a la comunidad y los sistemas de la clínica.',
+          bio: '',
         },
         franchescaAvila: {
           role: 'Gerente del consultorio y coordinadora de seguros',
-          bio: 'Franchesca tiene unos cinco años de experiencia en odontología y habla inglés y español con fluidez. Ayuda a los pacientes a entender los planes de tratamiento, los beneficios del seguro y las opciones de financiamiento.',
+          bio: '',
         },
         amandaNguyen: {
           role: 'Gerente del consultorio',
-          bio: 'Amanda tiene una licenciatura de la University of Florida.',
+          bio: '',
         },
-        nestorUgalde: { role: 'Asistente dental de funciones ampliadas', languages: 'Habla español.' },
+        nestorUgalde: {
+          role: 'Asistente dental de funciones ampliadas',
+          languages: 'Habla español.',
+          bio: '',
+        },
         // Review: Bruno is never called "Dr.", "dentist" or "treating provider" in any language.
         brunoConteAndre: {
           role: 'Asistente dental',
+          bio: '',
           languages: 'Habla portugués.',
-          bio: 'Bruno tiene formación y experiencia clínica previas en Brasil. En Estados Unidos trabaja en Contemporary Dental Care como asistente dental.',
         },
-        tyreseBrown: { role: 'Asistente dental' },
+        tyreseBrown: {
+          role: 'Asistente dental',
+          bio: '',
+        },
       },
     },
     doctor: {
@@ -258,24 +272,31 @@ export const about: Record<Locale, AboutMessages> = {
         jessicaSalazar: { role: 'Higienista odontológica', languages: 'Fala espanhol.' },
         brittiniBlankenship: {
           role: 'Gerente regional odontológica',
-          bio: 'Brittini começou na odontologia depois do ensino médio. Formou-se como assistente odontológica e passou pelos cargos de subgerente e gerente de consultório até chegar à gerência regional. Ela lidera o desenvolvimento da equipe, a experiência do paciente, o agendamento, o faturamento e a cobrança, o marketing, as ações junto à comunidade e os sistemas da clínica.',
+          bio: '',
         },
         franchescaAvila: {
           role: 'Gerente do consultório e coordenadora de convênios',
-          bio: 'Franchesca tem cerca de cinco anos na odontologia e é fluente em inglês e espanhol. Ela ajuda os pacientes a entender os planos de tratamento, os benefícios do convênio e as opções de financiamento.',
+          bio: '',
         },
         amandaNguyen: {
           role: 'Gerente do consultório',
-          bio: 'Amanda tem bacharelado pela University of Florida.',
+          bio: '',
         },
-        nestorUgalde: { role: 'Assistente odontológico de funções ampliadas', languages: 'Fala espanhol.' },
+        nestorUgalde: {
+          role: 'Assistente odontológico de funções ampliadas',
+          languages: 'Fala espanhol.',
+          bio: '',
+        },
         // Review: Bruno is never called "Dr.", "dentist" or "treating provider" in any language.
         brunoConteAndre: {
           role: 'Assistente odontológico',
+          bio: '',
           languages: 'Fala português.',
-          bio: 'Bruno tem formação e experiência clínica prévias no Brasil. Nos Estados Unidos, ele trabalha na Contemporary Dental Care como assistente odontológico.',
         },
-        tyreseBrown: { role: 'Assistente odontológico' },
+        tyreseBrown: {
+          role: 'Assistente odontológico',
+          bio: '',
+        },
       },
     },
     doctor: {
