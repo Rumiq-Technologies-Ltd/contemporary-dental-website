@@ -27,7 +27,7 @@ test('homepage shows one primary action and the page structure', async ({ page }
   // Hero, what to expect, common problems, what you can expect, and questions.
   await expect(page.locator('main > section')).toHaveCount(5);
   await expect(page.locator('header')).toHaveCount(1);
-  await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toHaveCount(1);
+  await expect(page.getByLabel('Menu — open navigation')).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Honest, patient-focused dental care in Orlando/);
   await expect(page.getByRole('heading', { level: 1 })).toBeInViewport();
 
@@ -39,7 +39,7 @@ test('homepage shows one primary action and the page structure', async ({ page }
 
 test('the primary action is a solid, high-contrast cyan button', async ({ page }) => {
   await ready(page);
-  const primary = page.getByRole('link', { name: 'Request an appointment', exact: true }).first();
+  const primary = page.getByRole('banner').getByRole('link', { name: 'Request an appointment' });
   await expect(primary).toHaveCSS('background-color', 'rgb(169, 234, 247)');
   await expect(primary).toHaveCSS('color', 'rgb(19, 28, 21)');
 });
@@ -86,7 +86,7 @@ test('the header stays on screen while the page scrolls', async ({ page }) => {
   await ready(page);
   await page.evaluate(() => window.scrollTo({ top: 1600, behavior: 'instant' }));
   await expect.poll(() => page.locator('header').evaluate(element => element.getBoundingClientRect().top)).toBe(0);
-  await expect(page.getByRole('link', { name: 'Request an appointment', exact: true }).first()).toBeVisible();
+  await expect(page.locator('header').getByRole('link', { name: 'Request an appointment' })).toBeVisible();
 });
 
 test('large screens show the navigation bar and link to the right pages', async ({ page }) => {
@@ -94,13 +94,14 @@ test('large screens show the navigation bar and link to the right pages', async 
   await ready(page);
   const nav = page.getByRole('navigation', { name: 'Primary navigation' });
   await expect(nav).toBeVisible();
+  await expect(page.getByLabel('Menu — open navigation')).toBeHidden();
   await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance and payment$/, /^Contemporary Smile Club$/, /^About$/, /^Location$/]);
   await nav.getByRole('link', { name: 'Emergency' }).click();
   await expect(page).toHaveURL(/\/emergency$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Emergency dental care');
   await expect(page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Emergency' })).toHaveAttribute('aria-current', 'page');
   await page.goto('/');
-  await page.getByRole('link', { name: 'Request an appointment', exact: true }).first().click();
+  await page.getByRole('banner').getByRole('link', { name: 'Request an appointment' }).click();
   await expect(page).toHaveURL(/\/contact#request-appointment$/);
   await page.goto('/');
   await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Services' }).click();
@@ -110,14 +111,15 @@ test('large screens show the navigation bar and link to the right pages', async 
   await expect(page).toHaveURL(/\/about$/);
 });
 
-test('phones show every section link and the request button in the top bar', async ({ page }) => {
+test('phones and tablets open the menu, which ends with the request and call actions', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await ready(page);
-  const nav = page.getByRole('navigation', { name: 'Primary navigation' });
-  await expect(nav).toBeVisible();
-  await expect(nav.getByRole('link')).toHaveCount(7);
-  await expect(page.getByRole('link', { name: 'Request an appointment', exact: true }).first()).toBeVisible();
-  await nav.getByRole('link', { name: /Emergency/ }).click();
+  await expect(page.getByRole('navigation', { name: 'Primary navigation' })).toBeHidden();
+  await page.getByLabel('Menu — open navigation').click();
+  const panel = page.getByRole('navigation', { name: 'Main navigation' });
+  await expect(panel.getByRole('link', { name: /Emergency/ })).toBeVisible();
+  await expect(page.locator('details[open]').getByRole('link', { name: 'Request an appointment', exact: true })).toBeVisible();
+  await panel.getByRole('link', { name: /Emergency/ }).click();
   await expect(page).toHaveURL(/\/emergency$/);
 });
 
@@ -186,6 +188,11 @@ test('homepage passes WCAG accessibility checks on desktop and mobile', async ({
   const homepage = await new AxeBuilder({ page }).withTags(tags).analyze();
   expect(homepage.violations).toEqual([]);
   await page.setViewportSize({ width: 390, height: 844 });
+  await page.getByLabel('Menu — open navigation').click();
+  await settle(page);
+  const withMenu = await new AxeBuilder({ page }).withTags(tags).analyze();
+  expect(withMenu.violations).toEqual([]);
+  await page.keyboard.press('Escape');
   await settle(page);
   const mobile = await new AxeBuilder({ page }).withTags(tags).analyze();
   expect(mobile.violations).toEqual([]);
@@ -254,7 +261,7 @@ test('reduced motion can be enabled during an entrance without leaving hidden co
   await ready(page);
   await page.emulateMedia({ reducedMotion: 'reduce' });
   await expect(page.locator('#home')).toHaveAttribute('data-motion', 'reduced');
-  await expect(page.getByRole('link', { name: 'Request an appointment', exact: true }).first()).toHaveCSS('opacity', '1');
+  await expect(page.getByRole('banner').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
   await expect(page.locator('#home h1')).toBeVisible();
   await page.locator('#why-us').scrollIntoViewIfNeeded();
   await expect(page.locator('#why-us')).toBeVisible();
@@ -277,7 +284,7 @@ test('server-rendered content stays readable without JavaScript', async ({ brows
   const page = await context.newPage();
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Request an appointment', exact: true }).first()).toHaveCSS('opacity', '1');
+  await expect(page.getByRole('banner').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
   await page.locator('#why-us').scrollIntoViewIfNeeded();
   await expect(page.locator('#why-us')).toBeVisible();
   await page.goto('/services');

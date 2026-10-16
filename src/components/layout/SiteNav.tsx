@@ -11,7 +11,8 @@ interface SiteNavProps {
   label: string;
 }
 
-// Every section of the site in one bar. On narrow screens the links wrap onto more rows.
+// Large screens show every section in one bar. Smaller screens use SiteMenu instead;
+// the CSS decides which one is visible, so both stay in the document for every breakpoint.
 export function SiteNav({ items, label }: SiteNavProps) {
   const pathname = usePathname();
   return <nav className={styles.nav} aria-label={label}>
