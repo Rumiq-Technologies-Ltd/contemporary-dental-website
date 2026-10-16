@@ -27,7 +27,7 @@ const pages: readonly { path: string; title: string; heading: string }[] = [
   { path: '/insurance', title: 'Insurance | Contemporary Dental Care', heading: 'Insurance' },
   { path: '/pricing', title: 'Pricing and Offers | Contemporary Dental Care', heading: 'Pricing and offers' },
   { path: '/faq', title: 'Frequently Asked Questions | Contemporary Dental Care', heading: 'Frequently asked questions' },
-  { path: '/contact', title: 'Contact Us | Contemporary Dental Care', heading: 'Contact us' },
+  { path: '/contact', title: 'Contact Us | Contemporary Dental Care', heading: 'Location' },
   { path: '/privacy', title: 'Privacy Policy | Contemporary Dental Care', heading: 'Privacy policy' },
   { path: '/privacy/notice-of-privacy-practices', title: 'Notice of Privacy Practices | Contemporary Dental Care', heading: 'Notice of Privacy Practices' },
   { path: '/terms', title: 'Terms of Use | Contemporary Dental Care', heading: 'Terms of use' },

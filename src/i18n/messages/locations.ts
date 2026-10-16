@@ -14,7 +14,7 @@ const en = {
     arrivalLandmarks: 'Arrival landmarks',
   },
   orlando: {
-    title: 'Orlando office',
+    title: 'Orlando',
     photoAlt: 'The Contemporary Dental Care office at 5330 S John Young Parkway, Orlando',
     tableCaption: 'Orlando office details',
     hoursNote: 'We are also open one Saturday a month. The date changes, so please call to check.',
@@ -47,7 +47,7 @@ export const locations: Record<Locale, LocationsMessages> = {
       arrivalLandmarks: 'Puntos de referencia',
     },
     orlando: {
-      title: 'Consultorio de Orlando',
+      title: 'Orlando',
       photoAlt: 'El consultorio de Contemporary Dental Care en 5330 S John Young Parkway, Orlando',
       tableCaption: 'Datos del consultorio de Orlando',
       hoursNote: 'También abrimos un sábado al mes. La fecha cambia, así que llame para confirmarla.',
@@ -75,7 +75,7 @@ export const locations: Record<Locale, LocationsMessages> = {
       arrivalLandmarks: 'Pontos de referência',
     },
     orlando: {
-      title: 'Consultório de Orlando',
+      title: 'Orlando',
       photoAlt: 'O consultório da Contemporary Dental Care na 5330 S John Young Parkway, Orlando',
       tableCaption: 'Informações do consultório de Orlando',
       hoursNote: 'Também abrimos um sábado por mês. A data muda, então ligue para conferir.',
