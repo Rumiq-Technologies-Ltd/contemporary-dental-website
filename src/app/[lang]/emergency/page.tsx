@@ -25,9 +25,9 @@ export default async function EmergencyPage() {
   const t = messages.visit.emergency;
   return <PageLayout>
     <PageIntro title={t.title} actions={offices.map(office => <CallButton key={office.id} office={office} />)} />
-    <SafetyNotice label={t.safetyLabel}>{t.safetyNotice}</SafetyNotice>
     <div className={`${styles.split} ${styles.splitTop}`}>
       <div className={styles.section}>
+        <SafetyNotice label={t.safetyLabel}>{t.safetyNotice}</SafetyNotice>
         <Prose>
           <p>{t.lead}</p>
           <p>{t.sameDayCare}</p>
