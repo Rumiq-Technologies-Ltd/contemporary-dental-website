@@ -29,11 +29,11 @@ Production builds are indexable and `robots.txt` welcomes all crawlers (it is no
 - Dr. Khan: practice portrait placed. Still no licence number and no advanced-training claims.
 - Team: practice group photo placed. Jessica Salazar and Tyrese Brown show name and role only.
 - Home: no Google reviews link (no URL supplied) and no testimonials.
-- Patient results (before-and-after) section, on the home page after Services: built and animated, but production shows nothing. It needs `beforeAfterEnabled` set to `true` and real cases with `consentOnFile` in `src/content/beforeAfter.ts`, which waits on C14 §4.10 (authorization, permitted channels, revocation, no-manipulation rule) and counsel review of its copy. The five images in `public/images/before-after/` are AI-generated illustrations, not patient results. Development builds show four of them, labelled on screen, for design review only.
+- "How our treatments look" section, on the home page after Services: four AI-generated treatment illustrations (crown, veneers, root canal, clear aligners), each labelled "Illustration, not a patient result". They are not patient photos, and the section never uses the words "patient results" or "shared with permission". The illustrations live in `public/images/treatment-illustrations/`, cropped from the originals in `public/images/before-after/`, which are not committed. Whitening is left out (not in the service list). Real patient cases may be added to `src/content/beforeAfter.ts` only with `consentOnFile` and C14 §4.10 closed.
 
 ## Not built
 
-Membership page (C18 draft), Haitian Creole pages, analytics and advertising tags, the before-and-after gallery with real patients (see above), the Altamonte Springs location, LANAP, CEREC, same-day crowns, nitrous oxide, facial aesthetics, the referral promotion, Crunch Fitness content.
+Membership page (C18 draft), Haitian Creole pages, analytics and advertising tags, a before-and-after gallery of real patients (see above), the Altamonte Springs location, LANAP, CEREC, same-day crowns, nitrous oxide, facial aesthetics, the referral promotion, Crunch Fitness content.
 
 ## Translations
 
@@ -71,4 +71,4 @@ Spanish (`/es`) and Portuguese (`/pt`) versions of the customer-facing pages are
 13. The Google reviews URL.
 14. The legacy sitemap for URL mapping. Confirm the preferred host (`www` or the apex domain) and set `NEXT_PUBLIC_SITE_URL` in the Vercel Production environment.
 15. The practice's own photographs, to replace the stock images.
-16. Real before-and-after photographs with signed authorization, a permitted-channels scope, a revocation process and a no-manipulation rule (C14 §4.10), then the "Patient results" copy through counsel. Until then the section stays hidden in production.
+16. Counsel review of the "How our treatments look" copy. Before any real before-and-after photographs are shown as patient results: signed authorization for each patient, a permitted-channels scope, a revocation process and a no-manipulation rule (C14 §4.10), then counsel review of that copy too.

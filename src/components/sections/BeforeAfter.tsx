@@ -8,8 +8,8 @@ import { BeforeAfterCarousel, type CarouselLabels } from './BeforeAfterCarousel'
 import type { CarouselCase } from './BeforeAfterCard';
 import styles from './beforeAfter.module.css';
 
-// "Patient results": the before-and-after section. It renders nothing when there are no cases to
-// show, which is every production build until consent is on file and the section is enabled.
+// "How our treatments look": before-and-after illustrations on the home page. It renders nothing
+// when no case passes the filter in content/beforeAfter.ts.
 export async function BeforeAfter() {
   const cases = beforeAfterCases();
   if (cases.length === 0) return null;
@@ -22,10 +22,15 @@ export async function BeforeAfter() {
     const service = services.find(candidate => candidate.id === item.service);
     if (!service) throw new Error(`Unknown service: ${item.service}`);
     const office = offices.find(candidate => candidate.id === item.office);
+    // An illustration is named by its treatment; a real case by the patient's initials.
+    const name = item.isIllustration ? service.title : item.patient;
+    const detail = item.isIllustration
+      ? (office?.name ?? '')
+      : (office ? `${service.title} · ${office.name}` : service.title);
     return {
       id: item.id,
-      patient: item.patient,
-      detail: office ? `${service.title} · ${office.name}` : service.title,
+      patient: name,
+      detail,
       illustration: item.isIllustration,
       before: { src: item.before.src, width: item.before.width, height: item.before.height, alt: `${t.before}: ${service.title}` },
       after: { src: item.after.src, width: item.after.width, height: item.after.height, alt: `${t.after}: ${service.title}` },
