@@ -15,7 +15,7 @@ async function settle(page: Page) {
       || !(animation.timeline instanceof DocumentTimeline)));
 }
 
-test('homepage shows one primary action, both offices and the page structure', async ({ page }) => {
+test('homepage shows one primary action and the page structure', async ({ page }) => {
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   // Next.js prefetches unprefixed links as ?_rsc requests. The English pages are served from the internal
@@ -24,26 +24,16 @@ test('homepage shows one primary action, both offices and the page structure', a
     if (message.type() === 'error' && !message.location().url.includes('_rsc=')) errors.push(message.text());
   });
   await ready(page);
-  // Hero, steps, problems, services, about, what to expect, emergency, team, offices and questions.
-  await expect(page.locator('main > section')).toHaveCount(10);
+  // Hero, what to expect, common problems, what you can expect, and questions.
+  await expect(page.locator('main > section')).toHaveCount(5);
   await expect(page.locator('header')).toHaveCount(1);
   await expect(page.getByLabel('Menu — open navigation')).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Honest, patient-focused dental care in Orlando/);
   await expect(page.getByRole('heading', { level: 1 })).toBeInViewport();
 
-  // The first screen has one primary action, and the phone number is the second action.
-  const hero = page.locator('#home');
-  await expect(hero.getByRole('link', { name: 'Request an appointment' })).toHaveAttribute('href', '/contact#request-appointment');
-  await expect(hero.getByRole('link', { name: 'Call Orlando: 321-522-8577' })).toHaveAttribute('href', 'tel:+13215228577');
+  // The hero has no buttons: its headline and trust line are the first screen.
+  await expect(page.locator('#home h1')).toBeVisible();
 
-  // Each office has its own call button.
-  const offices = page.locator('#offices');
-  await expect(offices.getByRole('link', { name: /^Call Orlando: 321-522-8577$/ })).toHaveAttribute('href', 'tel:+13215228577');
-  await expect(offices.getByRole('link', { name: 'Office details', exact: true }).first()).toBeVisible();
-
-  await expect(page.locator('#services').getByRole('article')).toHaveCount(10);
-  await expect(page.getByRole('heading', { name: 'About us' })).toHaveCount(0);
-  await expect(page.locator('#advantages').getByRole('heading', { level: 2 })).toHaveText('A practice built on honest care');
   expect(errors).toEqual([]);
 });
 
@@ -117,8 +107,8 @@ test('large screens show the navigation bar and link to the right pages', async 
   await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Services' }).click();
   await expect(page).toHaveURL(/\/services$/);
   await page.goto('/');
-  await page.locator('#advantages').getByRole('link', { name: 'Meet Dr. Khan and our team' }).click();
-  await expect(page).toHaveURL(/\/about\/team$/);
+  await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'About' }).click();
+  await expect(page).toHaveURL(/\/about$/);
 });
 
 test('phones and tablets open the menu, which ends with the request and call actions', async ({ page }) => {
@@ -135,6 +125,7 @@ test('phones and tablets open the menu, which ends with the request and call act
 
 test('service cards link to their pages and saved preferences survive a reload', async ({ page }) => {
   await ready(page);
+  await page.goto('/services');
   const services = page.locator('#services');
   await services.getByRole('link', { name: 'Cleanings and check-ups', exact: true }).click();
   await expect(page).toHaveURL(/\/services\/cleanings-checkups$/);
@@ -155,6 +146,7 @@ test('malformed stored preferences do not crash the website', async ({ page }) =
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   await ready(page);
+  await page.goto('/services');
   const heart = page.getByRole('button', { name: 'Save Cleanings and check-ups', exact: true });
   await expect(heart).toHaveAttribute('aria-pressed', 'false');
   // The card eases in with GSAP; wait for it to settle so the click lands on the button, not mid-turn.
@@ -175,7 +167,11 @@ test('mobile and tablet reflow with no horizontal overflow', async ({ page }, te
       expect(box!.x).toBeGreaterThanOrEqual(0);
       expect(box!.x + box!.width).toBeLessThanOrEqual(width + 1);
     }
-    await page.locator('#services').getByRole('link', { name: 'Cosmetic dentistry', exact: true }).click();
+    await page.goto('/services');
+    const cosmetic = page.locator('#services').getByRole('link', { name: 'Cosmetic dentistry', exact: true });
+    await cosmetic.scrollIntoViewIfNeeded();
+    await expect(cosmetic.locator('xpath=ancestor::li[1]')).toHaveAttribute('data-in', '');
+    await cosmetic.click();
     await expect(page).toHaveURL(/\/services\/cosmetic$/);
     if (width === 390) {
       await page.goto('/');
@@ -239,7 +235,7 @@ test('reduced motion preference disables smooth scrolling and entrance animation
   await expect(page.locator('#home')).toHaveAttribute('data-motion', 'reduced');
   expect(await page.locator('#home [data-load], #home .split-unit').evaluateAll(elements => elements.every(element => element.getAnimations().length === 0))).toBe(true);
   // Nothing waits for a scroll reveal: content further down is already fully visible.
-  await expect(page.locator('#team [data-reveal]').first()).toHaveCSS('opacity', '1');
+  await expect(page.locator('#why-us [data-reveal]').first()).toHaveCSS('opacity', '1');
 });
 
 test('sections share edges and keep their content on the page', async ({ page }) => {
@@ -267,8 +263,8 @@ test('reduced motion can be enabled during an entrance without leaving hidden co
   await expect(page.locator('#home')).toHaveAttribute('data-motion', 'reduced');
   await expect(page.getByRole('banner').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
   await expect(page.locator('#home h1')).toBeVisible();
-  await page.locator('#offices').scrollIntoViewIfNeeded();
-  await expect(page.locator('#offices').getByRole('link', { name: /^Call Orlando/ })).toBeVisible();
+  await page.locator('#why-us').scrollIntoViewIfNeeded();
+  await expect(page.locator('#why-us')).toBeVisible();
 });
 
 test('frequently asked questions open and close with the keyboard', async ({ page }) => {
@@ -289,9 +285,9 @@ test('server-rendered content stays readable without JavaScript', async ({ brows
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.getByRole('banner').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
-  await page.locator('#offices').scrollIntoViewIfNeeded();
-  await expect(page.locator('#offices').getByRole('link', { name: /^Call Orlando/ })).toBeVisible();
-  await page.locator('#services').scrollIntoViewIfNeeded();
+  await page.locator('#why-us').scrollIntoViewIfNeeded();
+  await expect(page.locator('#why-us')).toBeVisible();
+  await page.goto('/services');
   await expect(page.locator('#services').getByRole('link', { name: 'Cleanings and check-ups', exact: true })).toBeVisible();
   await context.close();
 });
@@ -299,10 +295,10 @@ test('server-rendered content stays readable without JavaScript', async ({ brows
 test('content below the fold reveals as it scrolls into view, and cards tilt in 3D', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await ready(page);
+  await page.goto('/services');
   await expect(page.locator('html')).toHaveClass(/(^|\s)js(\s|$)/);
   await expect(page.locator('html')).toHaveClass(/(^|\s)ready(\s|$)/);
   const card = page.locator('#services li[data-reveal]').first();
-  await expect(card).not.toHaveAttribute('data-in', '');
   await card.scrollIntoViewIfNeeded();
   await expect(card).toHaveAttribute('data-in', '');
   await expect.poll(() => card.evaluate(element => getComputedStyle(element).opacity)).toBe('1');
@@ -323,7 +319,7 @@ test('jumping past content with an anchor link never leaves it hidden', async ({
   await expect(page.locator('#faq details').first()).toHaveAttribute('data-in', '');
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   await page.mouse.wheel(0, 200);
-  await expect.poll(() => page.locator('#services li[data-reveal]').first().getAttribute('data-in')).toBe('');
+  await expect.poll(() => page.locator('#why-us tr[data-reveal]').first().getAttribute('data-in')).toBe('');
 });
 
 test('security headers, security.txt and the share image are served', async ({ request }) => {

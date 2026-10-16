@@ -110,22 +110,6 @@ const en = {
       },
     },
   },
-  services: {
-    eyebrow: 'Our services',
-    heading: 'Everything we treat',
-    learnMore: 'Learn more',
-  },
-  advantages: {
-    eyebrow: 'About us',
-    heading: 'A practice built on honest care',
-    teaser: {
-      withOcoee: 'Dr. Sheryar Khan, a general dentist, founded Contemporary Dental Care in 2023. We see patients at our Orlando office, and at our Ocoee office on Mondays. We explain your options clearly, plan treatment in sensible stages and put your health first.',
-      orlandoOnly: 'Dr. Sheryar Khan, a general dentist, founded Contemporary Dental Care in 2023. We see patients at our Orlando office. We explain your options clearly, plan treatment in sensible stages and put your health first.',
-    },
-    cta: 'Meet Dr. Khan and our team',
-    photoAlt: 'A treatment room at Contemporary Dental Care',
-    commitments: ['Honest treatment planning', 'Easy to reach', 'Care in your language'],
-  },
   whyUs: {
     heading: 'What you can expect from us',
     tableLabel: 'What we offer',
@@ -143,17 +127,7 @@ const en = {
       orlandoOnly: 'An office phone line and an after-hours line',
     },
   },
-  team: {
-    heading: 'The people who look after you',
-    intro: 'Dr. Sheryar Khan leads a diverse team of caregivers.',
-    cta: 'Meet the team',
-  },
   offices: {
-    eyebrow: 'Where to find us',
-    heading: 'Call the office nearest you to book',
-    allLocations: 'Contact us',
-    photoAlt: 'The {name} office',
-    details: 'Office details',
     directions: 'Get directions',
     mapTitle: 'Map of the {name} office',
   },
@@ -275,22 +249,6 @@ export const home: Record<Locale, HomeMessages> = {
         },
       },
     },
-    services: {
-      eyebrow: 'Nuestros servicios',
-      heading: 'Todo lo que tratamos',
-      learnMore: 'Más información',
-    },
-    advantages: {
-      eyebrow: 'Sobre nosotros',
-      heading: 'Un consultorio basado en la atención honesta',
-      teaser: {
-        withOcoee: 'El Dr. Sheryar Khan, odontólogo general, fundó Contemporary Dental Care en 2023. Atendemos a pacientes en nuestro consultorio de Orlando y, los lunes, en nuestro consultorio de Ocoee. Le explicamos sus opciones con claridad, planificamos el tratamiento en etapas razonables y ponemos su salud primero.',
-        orlandoOnly: 'El Dr. Sheryar Khan, odontólogo general, fundó Contemporary Dental Care en 2023. Atendemos a pacientes en nuestro consultorio de Orlando. Le explicamos sus opciones con claridad, planificamos el tratamiento en etapas razonables y ponemos su salud primero.',
-      },
-      cta: 'Conozca al Dr. Khan y a nuestro equipo',
-      photoAlt: 'Una sala de tratamiento en Contemporary Dental Care',
-      commitments: ['Planificación honesta del tratamiento', 'Fácil de contactar', 'Atención en su idioma'],
-    },
     whyUs: {
       heading: 'Qué puede esperar de nosotros',
       tableLabel: 'Lo que ofrecemos',
@@ -309,17 +267,7 @@ export const home: Record<Locale, HomeMessages> = {
         orlandoOnly: 'Una línea telefónica del consultorio y una línea fuera del horario de atención',
       },
     },
-    team: {
-      heading: 'Las personas que cuidan de usted',
-      intro: 'El Dr. Sheryar Khan dirige un equipo diverso de profesionales dedicados al cuidado.',
-      cta: 'Conozca al equipo',
-    },
     offices: {
-      eyebrow: 'Dónde encontrarnos',
-      heading: 'Llame al consultorio más cercano para reservar su cita',
-      allLocations: 'Contacto',
-      photoAlt: 'El consultorio de {name}',
-      details: 'Detalles del consultorio',
       directions: 'Cómo llegar',
       mapTitle: 'Mapa del consultorio de {name}',
     },
@@ -436,22 +384,6 @@ export const home: Record<Locale, HomeMessages> = {
         },
       },
     },
-    services: {
-      eyebrow: 'Nossos serviços',
-      heading: 'Tudo o que tratamos',
-      learnMore: 'Saiba mais',
-    },
-    advantages: {
-      eyebrow: 'Sobre nós',
-      heading: 'Um consultório construído sobre o atendimento honesto',
-      teaser: {
-        withOcoee: 'O Dr. Sheryar Khan, clínico geral, fundou a Contemporary Dental Care em 2023. Atendemos pacientes no nosso consultório de Orlando e, às segundas-feiras, no nosso consultório de Ocoee. Explicamos suas opções com clareza, planejamos o tratamento em etapas sensatas e colocamos a sua saúde em primeiro lugar.',
-        orlandoOnly: 'O Dr. Sheryar Khan, clínico geral, fundou a Contemporary Dental Care em 2023. Atendemos pacientes no nosso consultório de Orlando. Explicamos suas opções com clareza, planejamos o tratamento em etapas sensatas e colocamos a sua saúde em primeiro lugar.',
-      },
-      cta: 'Conheça o Dr. Khan e a nossa equipe',
-      photoAlt: 'Uma sala de tratamento na Contemporary Dental Care',
-      commitments: ['Planejamento de tratamento honesto', 'Fácil de contatar', 'Atendimento no seu idioma'],
-    },
     whyUs: {
       heading: 'O que você pode esperar de nós',
       tableLabel: 'O que oferecemos',
@@ -470,17 +402,7 @@ export const home: Record<Locale, HomeMessages> = {
         orlandoOnly: 'Uma linha telefônica do consultório e uma linha fora do horário',
       },
     },
-    team: {
-      heading: 'As pessoas que cuidam de você',
-      intro: 'O Dr. Sheryar Khan lidera uma equipe diversa de profissionais dedicados ao cuidado.',
-      cta: 'Conheça a equipe',
-    },
     offices: {
-      eyebrow: 'Onde nos encontrar',
-      heading: 'Ligue para o consultório mais próximo de você para agendar',
-      allLocations: 'Contato',
-      photoAlt: 'O consultório de {name}',
-      details: 'Detalhes do consultório',
       directions: 'Como chegar',
       mapTitle: 'Mapa do consultório de {name}',
     },

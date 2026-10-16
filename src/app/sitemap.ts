@@ -21,7 +21,7 @@ function entriesFor(path: string): MetadataRoute.Sitemap {
 // legal pages wait for counsel review.
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths: string[] = [
-    routes.home, routes.about, routes.doctor, routes.team, routes.services,
+    routes.home, routes.about, routes.doctor, routes.services,
     ...getServicePages(defaultLocale).map(service => service.href),
     routes.emergency, routes.technology,
     routes.newPatients, routes.insurance, routes.pricing, routes.faq,

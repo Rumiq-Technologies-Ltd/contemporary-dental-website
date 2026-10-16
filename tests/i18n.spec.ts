@@ -5,7 +5,7 @@ import { localeNames, localeTags, locales, publicLocales } from '../src/i18n/loc
 // Languages the public site serves. Those that are built but not yet published must not be served.
 const secondary = publicLocales.filter(locale => locale !== 'en');
 const unpublished = locales.filter(locale => !publicLocales.includes(locale));
-const samplePaths = ['', '/services', '/services/implants', '/faq', '/contact', '/insurance', '/about/team'];
+const samplePaths = ['', '/services', '/services/implants', '/faq', '/contact', '/insurance', '/about'];
 
 // Held content from docs/content-holds.md. None of it may appear in any language.
 const heldTerms = [

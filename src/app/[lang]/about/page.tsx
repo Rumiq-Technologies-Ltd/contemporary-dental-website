@@ -4,7 +4,9 @@ import { CardGrid, InfoCard } from '@/components/page/Cards';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { PagePhoto } from '@/components/page/PagePhoto';
+import { Section } from '@/components/page/Section';
 import { appointmentFormEnabled, routes, whenOcoee } from '@/content/site';
+import { getTeam } from '@/content/team';
 import { getMessages } from '@/i18n/dictionaries';
 import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
@@ -17,9 +19,11 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({ lang, title: meta.title, description: meta.description, path: routes.about });
 }
 
+// The team lives here, so it is not repeated on the homepage or elsewhere.
 export default async function AboutPage() {
   const lang = await getLocale();
-  const t = getMessages(lang).about.overview;
+  const messages = getMessages(lang);
+  const t = messages.about.overview;
   // Source wording: "Phone lines at both offices, an after-hours line, and an enquiry form
   // for questions before your visit." The Ocoee and request-form holds are applied here.
   const reachCopy = appointmentFormEnabled ? t.reach.withForm : t.reach.withoutForm;
@@ -30,12 +34,16 @@ export default async function AboutPage() {
       <InfoCard title={t.reach.title}><p>{whenOcoee(reachCopy.withOcoee, reachCopy.orlandoOnly)}</p></InfoCard>
       <InfoCard title={t.language.title}><p>{t.language.body}</p></InfoCard>
     </CardGrid>
-    <div className={styles.split}>
-      <PagePhoto photo="teamGroup" alt={getMessages(lang).about.team.groupPhotoAlt} />
-      <div>
-        <p><Link href={localePath(lang, routes.team)} className="pill pill-accent pill-large">{t.teamLink}</Link></p>
-        <p className={styles.meta}>{t.doctorLink.before} <Link className={styles.link} href={localePath(lang, routes.doctor)}>{t.doctorLink.link}</Link>{t.doctorLink.after}</p>
-      </div>
-    </div>
+    <Section id="team" title={messages.about.team.title}>
+      <PagePhoto photo="teamGroup" alt={messages.about.team.groupPhotoAlt} wide />
+      <ul className={styles.team}>
+        {getTeam(lang).map(member => <li key={member.name} className={styles.member}>
+          <h3>{member.name}</h3>
+          <p><strong>{member.role}.</strong> {member.offices}.{member.languages ? ` ${member.languages}` : ''}</p>
+          {member.bio && <p>{member.bio}</p>}
+        </li>)}
+      </ul>
+    </Section>
+    <p className={styles.meta}>{t.doctorLink.before} <Link className={styles.link} href={localePath(lang, routes.doctor)}>{t.doctorLink.link}</Link>{t.doctorLink.after}</p>
   </PageLayout>;
 }

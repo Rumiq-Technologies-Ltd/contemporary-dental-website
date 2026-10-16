@@ -1,7 +1,9 @@
 import { PagePhoto } from '@/components/page/PagePhoto';
 import { Section } from '@/components/page/Section';
+import { MapEmbed } from '@/components/ui/MapEmbed';
 import type { PhotoName } from '@/content/assets';
-import { directionsHref, formatAddress, type Office } from '@/content/site';
+import { directionsHref, formatAddress, mapEmbedHref, type Office } from '@/content/site';
+import { fill } from '@/i18n/fill';
 import styles from './page.module.css';
 
 interface OfficeDetailsProps {
@@ -13,12 +15,14 @@ interface OfficeDetailsProps {
   hours: string;
   services: string;
   directionsLabel: string;
+  /** Map frame title with a {name} placeholder. */
+  mapTitle: string;
   photo?: { name: PhotoName; alt: string };
 }
 
-// One office's details on the contact page: its photograph when it has one, then the facts in a
-// table and a link to directions. The section id is the office id, so each office has an anchor.
-export function OfficeDetails({ office, title, tableCaption, labels, hours, services, directionsLabel, photo }: OfficeDetailsProps) {
+// One office's details on the contact page: its photograph when it has one, the facts in a table,
+// the map, and a link to directions. The section id is the office id, so each office has an anchor.
+export function OfficeDetails({ office, title, tableCaption, labels, hours, services, directionsLabel, mapTitle, photo }: OfficeDetailsProps) {
   return <Section id={office.id} title={title}>
     {photo && <PagePhoto photo={photo.name} alt={photo.alt} wide />}
     <table className={styles.table}>
@@ -30,6 +34,7 @@ export function OfficeDetails({ office, title, tableCaption, labels, hours, serv
         <tr><th scope="row">{labels.services}</th><td>{services}</td></tr>
       </tbody>
     </table>
+    <MapEmbed src={mapEmbedHref(office)} title={fill(mapTitle, { name: office.name })} />
     <p><a className={styles.link} href={directionsHref(office)}>{directionsLabel}</a></p>
   </Section>;
 }

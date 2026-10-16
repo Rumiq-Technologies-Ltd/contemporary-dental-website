@@ -11,7 +11,6 @@ const pages: readonly { path: string; title: string; heading: string }[] = [
   },
   { path: '/about', title: 'About Us | Contemporary Dental Care', heading: 'About Contemporary Dental Care' },
   { path: '/about/dr-sheryar-khan', title: 'Dr. Sheryar Khan, DDS | Contemporary Dental Care', heading: 'Dr. Sheryar Khan, DDS' },
-  { path: '/about/team', title: 'Our Team | Contemporary Dental Care', heading: 'Meet the team' },
   { path: '/services', title: 'Dental Services | Contemporary Dental Care', heading: 'Our services' },
   { path: '/services/cleanings-checkups', title: 'Cleanings and Check-Ups | Contemporary Dental Care', heading: 'Cleanings and check-ups' },
   { path: '/emergency', title: 'Emergency Dental Care | Contemporary Dental Care', heading: 'Emergency dental care' },
@@ -200,13 +199,13 @@ test.describe('facts', () => {
     await expect(page.locator('details[open]')).toHaveCount(0);
   });
 
-  test('the team page shows the roles and never calls Bruno a dentist', async ({ page }) => {
-    await page.goto('/about/team');
-    await expect(page.getByRole('heading', { level: 2 })).toHaveCount(8);
-    const bruno = page.getByRole('listitem').filter({ hasText: 'Bruno Conte André' });
+  test('the about page lists the team with roles and never calls Bruno a dentist', async ({ page }) => {
+    await page.goto('/about');
+    await expect(page.locator('#team').getByRole('listitem')).toHaveCount(8);
+    const bruno = page.locator('#team').getByRole('listitem').filter({ hasText: 'Bruno Conte André' });
     await expect(bruno).toContainText('Dental Assistant');
     await expect(bruno).not.toContainText(/Dr\.|treating provider|facial/i);
-    await expect(page.getByRole('listitem').filter({ hasText: 'Tyrese Brown' })).toContainText('Dental Assistant');
+    await expect(page.locator('#team').getByRole('listitem').filter({ hasText: 'Tyrese Brown' })).toContainText('Dental Assistant');
   });
 
   test('structured data is valid JSON and names the practice', async ({ page }) => {

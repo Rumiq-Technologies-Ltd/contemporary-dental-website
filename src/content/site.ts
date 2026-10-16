@@ -92,7 +92,6 @@ export const routes = {
   pricing: '/pricing',
   about: '/about',
   doctor: '/about/dr-sheryar-khan',
-  team: '/about/team',
   technology: '/technology',
   faq: '/faq',
   privacy: '/privacy',
