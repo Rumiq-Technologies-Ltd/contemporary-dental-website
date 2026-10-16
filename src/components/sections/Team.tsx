@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { getTeam } from '@/content/team';
 import { routes } from '@/content/site';
@@ -7,8 +8,8 @@ import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
 import styles from './team.module.css';
 
-// Team photos are held until each person's written consent is confirmed (content/team.ts),
-// so each person is shown as a coloured tile with initials, name and role.
+// A person with a confirmed portrait (content/team.ts) is shown with it. Everyone else is a
+// coloured tile with initials until their written consent is confirmed.
 // "Dr." stays as written in every language, so the prefix is stripped the same way.
 function initials(name: string): string {
   const words = name.replace(/^Dr\.\s+/, '').split(/\s+/);
@@ -28,7 +29,11 @@ export async function Team() {
     </div>
     <ul className={styles.grid} data-stagger="">
       {team.map(member => <li key={member.name} className={styles.member} data-reveal="flip">
-        <span className={styles.tile} aria-hidden="true" data-tilt="10">{initials(member.name)}</span>
+        <span className={styles.tile} aria-hidden="true" data-tilt="10">
+          {member.photo
+            ? <Image src={member.photo} alt="" fill sizes="(max-width: 899px) 50vw, 25vw" placeholder="blur" />
+            : initials(member.name)}
+        </span>
         <p className={styles.name}>{member.name}</p>
         <p className={styles.role}>{member.role}</p>
       </li>)}

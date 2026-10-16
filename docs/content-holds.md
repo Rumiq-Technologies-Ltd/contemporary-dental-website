@@ -26,7 +26,7 @@ Production builds are indexable and `robots.txt` welcomes all crawlers (it is no
 - Notice of Privacy Practices: placeholder until the approved text is supplied. The privacy policy and terms follow the content file's outline only, are marked as drafts and are set to `noindex`.
 - New patients: no sedation or nitrous oxide wording; no "what to bring" list.
 - Payment and financing: no payment-methods line and no in-house plan terms.
-- Dr. Khan: practice portrait placed. Still no licence number and no advanced-training claims.
+- Dr. Khan: portrait on a plain brand-colour background (`public/images/practice/dr-sheryar-khan-brand.jpg`, made from the practice portrait by replacing the grey background; the original `dr-sheryar-khan.jpg` is no longer used). It shows on the home team section and his page. Dr. Khan must approve the portrait. Still no licence number and no advanced-training claims.
 - Team: practice group photo placed. Jessica Salazar and Tyrese Brown show name and role only.
 - Home: no Google reviews link (no URL supplied) and no testimonials.
 - "How our treatments look" section, on the home page after Services: four AI-generated treatment illustrations (crown, veneers, root canal, clear aligners), each labelled "Illustration, not a patient result". They are not patient photos, and the section never uses the words "patient results" or "shared with permission". The illustrations live in `public/images/treatment-illustrations/`, cropped from the originals in `public/images/before-after/`, which are not committed. Whitening is left out (not in the service list). Real patient cases may be added to `src/content/beforeAfter.ts` only with `consentOnFile` and C14 §4.10 closed.
