@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { ClosingBand } from '@/components/page/ClosingBand';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { PagePhoto } from '@/components/page/PagePhoto';
@@ -24,20 +23,22 @@ export async function generateMetadata(): Promise<Metadata> {
 // The portrait was supplied by the practice; confirm Dr. Khan approves it before launch.
 export default async function DoctorPage() {
   const lang = await getLocale();
-  const t = getMessages(lang).about.doctor;
+  const messages = getMessages(lang);
+  const t = messages.about.doctor;
+  // His bio is kept with his team entry, so the About page and this page show the same text.
+  const bio = messages.about.team.members.sheryarKhan.bio;
   const offices = whenOcoee(t.offices.withOcoee, t.offices.orlandoOnly);
   return <PageLayout>
     <PageIntro title={t.title} lead={t.lead} />
     <div className={styles.split}>
       <Prose>
         <p>{fill(t.education, { offices })}</p>
-        {t.bio && <p>{t.bio}</p>}
+        {bio && <p>{bio}</p>}
         <p>{t.clinical}</p>
         <p>{t.approach}</p>
         <p><strong>{t.tagline}</strong></p>
       </Prose>
       <PagePhoto photo="doctorPortrait" alt={t.photoAlt} />
     </div>
-    <ClosingBand />
   </PageLayout>;
 }
