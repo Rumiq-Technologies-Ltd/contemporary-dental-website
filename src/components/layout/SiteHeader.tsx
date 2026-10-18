@@ -21,7 +21,8 @@ export async function SiteHeader() {
   const requestHref = localePath(lang, routes.requestAppointment);
   return <header className={styles.header}>
     <Link href={localePath(lang, routes.home)} className={styles.logo} aria-label={fill(t.homeLabel, { name: site.name })}>
-      <Image src={brand.logo} alt="" className={styles.logoImage} priority />
+      <Image src={brand.logoIcon} alt="" className={styles.logoIcon} priority />
+      <Image src={brand.logoWordmark} alt="" className={styles.logoWordmark} priority />
     </Link>
     <Link href={requestHref} className={`pill pill-accent ${styles.request}`}>{t.requestAppointment}</Link>
     <SiteMenu items={items} requestHref={requestHref} t={t} />
