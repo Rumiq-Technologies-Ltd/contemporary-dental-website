@@ -6,10 +6,10 @@ import { getLocale } from '@/i18n/server';
 import { cardLabels, toCarouselCases } from './beforeAfterItems';
 import { IllustrationGrid } from './IllustrationGrid';
 
-// The treatment illustrations, shown with the services they illustrate. Pass a service to show only
-// its illustrations; leave it out for all of them. Renders nothing when no case matches.
+// The treatment illustrations. A service page passes its service and shows the cases for that service;
+// the home page passes nothing and shows the cases marked for the home section. Renders nothing when no case matches.
 export async function TreatmentIllustrations({ service }: { service?: ServiceId }) {
-  const cases = beforeAfterCases().filter(item => !service || item.service === service);
+  const cases = beforeAfterCases().filter(item => (service ? item.onServicePage && item.service === service : item.onHome));
   if (cases.length === 0) return null;
 
   const lang = await getLocale();
