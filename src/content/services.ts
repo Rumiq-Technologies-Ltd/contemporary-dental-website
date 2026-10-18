@@ -22,8 +22,10 @@ export interface Service {
   listLabel: string;
   /** English path. Pass it through localePath(lang, service.href) for a link. */
   href: string;
-  /** Card photo for the services grid. */
+  /** Hero photo for the service page. */
   image: PhotoName;
+  /** Card photo for the services grid. */
+  thumbnail: PhotoName;
   description: string;
   paragraphs: readonly string[];
 }
@@ -33,6 +35,7 @@ interface ServiceDefinition {
   id: ServiceId;
   href: string;
   image: PhotoName;
+  thumbnail: PhotoName;
 }
 
 // Content is data, not component markup: additions need no card-layout changes. The copy
@@ -40,16 +43,16 @@ interface ServiceDefinition {
 // Held items from the content file (same-day crowns, implant offer, All-on-4,
 // partial dentures, orthobrain wording, trademarked product names) are left out on purpose.
 const definitions: readonly ServiceDefinition[] = [
-  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, image: 'xrayTeamLandscape' },
-  { id: 'emergency', href: routes.emergency, image: 'guides' },
-  { id: 'extractions', href: `${routes.services}/extractions`, image: 'appointments' },
-  { id: 'restorative', href: `${routes.services}/restorative`, image: 'roomTeal' },
-  { id: 'crowns', href: `${routes.services}/crowns`, image: 'assessment' },
-  { id: 'root-canal', href: `${routes.services}/root-canal`, image: 'teethModel' },
-  { id: 'implants', href: `${routes.services}/implants`, image: 'toothModel' },
-  { id: 'dentures', href: `${routes.services}/dentures`, image: 'roomCream' },
-  { id: 'clear-aligners-braces', href: `${routes.services}/clear-aligners-braces`, image: 'clearAligner' },
-  { id: 'cosmetic', href: `${routes.services}/cosmetic`, image: 'smile' },
+  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, image: 'xrayTeamLandscape', thumbnail: 'thumbCleanings' },
+  { id: 'emergency', href: routes.emergency, image: 'guides', thumbnail: 'thumbEmergency' },
+  { id: 'extractions', href: `${routes.services}/extractions`, image: 'appointments', thumbnail: 'thumbExtractions' },
+  { id: 'restorative', href: `${routes.services}/restorative`, image: 'roomTeal', thumbnail: 'thumbRestorative' },
+  { id: 'crowns', href: `${routes.services}/crowns`, image: 'assessment', thumbnail: 'thumbCrowns' },
+  { id: 'root-canal', href: `${routes.services}/root-canal`, image: 'teethModel', thumbnail: 'thumbRootCanal' },
+  { id: 'implants', href: `${routes.services}/implants`, image: 'toothModel', thumbnail: 'thumbImplants' },
+  { id: 'dentures', href: `${routes.services}/dentures`, image: 'roomCream', thumbnail: 'thumbDentures' },
+  { id: 'clear-aligners-braces', href: `${routes.services}/clear-aligners-braces`, image: 'clearAligner', thumbnail: 'thumbAligners' },
+  { id: 'cosmetic', href: `${routes.services}/cosmetic`, image: 'smile', thumbnail: 'thumbCosmetic' },
 ];
 
 /** Picks the Ocoee or Orlando-only paragraphs where a service has both forms. */
@@ -61,11 +64,11 @@ function pickParagraphs(paragraphs: ServiceCopy['paragraphs']): readonly string[
 export function getServices(lang: Locale): readonly Service[] {
   const t = getMessages(lang).services;
   const atOffices = whenOcoee(t.atOffices.withOcoee, t.atOffices.orlandoOnly);
-  return definitions.map(({ id, href, image }) => {
+  return definitions.map(({ id, href, image, thumbnail }) => {
     const copy = t.items[id];
     const paragraphs = pickParagraphs(copy.paragraphs).map(paragraph => fill(paragraph, { atOffices }));
     return {
-      id, href, image, paragraphs,
+      id, href, image, thumbnail, paragraphs,
       title: copy.title,
       heading: copy.heading,
       titleTag: copy.titleTag,

@@ -19,6 +19,17 @@ import roomTeal from '../../public/images/practice/treatment-room-teal.jpg';
 import roomCream from '../../public/images/practice/treatment-room-cream.jpg';
 // The practice logo, transparent so it sits on any background (docs/image-credits.md).
 import contemporaryLogo from '../../public/images/logo/contemporary-dental-care-logo.png';
+// Service card photos for the services grid, one per service (public/images/services/thumbnails).
+import thumbCleanings from '../../public/images/services/thumbnails/cleanings-checkups.jpg';
+import thumbEmergency from '../../public/images/services/thumbnails/emergency.jpg';
+import thumbExtractions from '../../public/images/services/thumbnails/extractions.jpg';
+import thumbRestorative from '../../public/images/services/thumbnails/restorative.jpg';
+import thumbCrowns from '../../public/images/services/thumbnails/crowns.jpg';
+import thumbRootCanal from '../../public/images/services/thumbnails/root-canal.jpg';
+import thumbImplants from '../../public/images/services/thumbnails/implants.jpg';
+import thumbDentures from '../../public/images/services/thumbnails/dentures.jpg';
+import thumbAligners from '../../public/images/services/thumbnails/clear-aligners-braces.jpg';
+import thumbCosmetic from '../../public/images/services/thumbnails/cosmetic.jpg';
 
 // Static imports supply intrinsic dimensions and blur placeholders to Next Image.
 // The first six come from the Figma design. The practice photographs (public/images/practice)
@@ -29,6 +40,7 @@ export const photos = {
   toothModel, clearAligner, teethModel,
   doctorPortrait, teamGroup, orlandoFront, orlandoEntrance, frontDesk,
   xrayTeamLandscape, xrayTeamPortrait, roomTeal, roomCream,
+  thumbCleanings, thumbEmergency, thumbExtractions, thumbRestorative, thumbCrowns, thumbRootCanal, thumbImplants, thumbDentures, thumbAligners, thumbCosmetic,
 };
 export type PhotoName = keyof typeof photos;
 
