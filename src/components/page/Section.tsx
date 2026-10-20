@@ -1,9 +1,10 @@
 import type { ReactNode } from 'react';
 import styles from './page.module.css';
 
-export function Section({ id, title, children, wide = false }: { id: string; title: string; children: ReactNode; wide?: boolean }) {
+/** `hideTitle` keeps the heading for screen readers only, for a page whose h1 already names the section. */
+export function Section({ id, title, children, wide = false, hideTitle = false }: { id: string; title: string; children: ReactNode; wide?: boolean; hideTitle?: boolean }) {
   return <section id={id} aria-labelledby={`${id}-title`} className={`${styles.section} ${wide ? styles.wide : ''}`} data-reveal="">
-    <h2 id={`${id}-title`} data-reveal="mask">{title}</h2>
+    {hideTitle ? <h2 id={`${id}-title`} className="sr-only">{title}</h2> : <h2 id={`${id}-title`} data-reveal="mask">{title}</h2>}
     {children}
   </section>;
 }

@@ -9,7 +9,7 @@ const officePhotos: Partial<Record<Office['id'], PhotoName>> = { orlando: 'orlan
 
 // One office with its copy, hours and photograph. The contact page shows every office with it, and
 // each office page shows its own, so the details are written in one place.
-export async function OfficeBlock({ office }: { office: Office }) {
+export async function OfficeBlock({ office, hideTitle = false }: { office: Office; hideTitle?: boolean }) {
   const lang = await getLocale();
   const messages = getMessages(lang);
   const { labels } = messages.locations;
@@ -26,5 +26,6 @@ export async function OfficeBlock({ office }: { office: Office }) {
     mapTitle={messages.home.offices.mapTitle}
     photo={photo && 'photoAlt' in copy ? { name: photo, alt: copy.photoAlt } : undefined}
     arrivalTip={{ label: labels.arrivalTip, text: copy.arrivalTip, landmarksLabel: labels.arrivalLandmarks, landmarks: copy.arrivalLandmarks }}
+    hideTitle={hideTitle}
   />;
 }
