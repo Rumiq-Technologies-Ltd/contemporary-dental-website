@@ -11,7 +11,7 @@ import { Highlights } from './Highlights';
 import styles from './steps.module.css';
 
 // One icon per card, in the order the cards appear in the copy.
-const cardIcons: readonly IconName[] = ['phone', 'lotus', 'shield', 'globe', 'headphones', 'family'];
+const cardIcons: readonly IconName[] = ['addPerson', 'lotus', 'shield', 'globe', 'headphones', 'family'];
 
 export async function Steps() {
   const lang = await getLocale();

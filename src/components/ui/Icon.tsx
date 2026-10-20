@@ -1,7 +1,7 @@
 // Inline SVG icons drawn with currentColor, so each icon takes the colour of the
 // element around it. The tooth and heart shapes come from the practice's original icons.
 
-type IconName = 'tooth' | 'arrow' | 'heart' | 'menu' | 'phone' | 'check' | 'shield' | 'globe' | 'headphones' | 'family' | 'lotus';
+type IconName = 'tooth' | 'arrow' | 'heart' | 'menu' | 'phone' | 'check' | 'shield' | 'globe' | 'headphones' | 'family' | 'lotus' | 'addPerson';
 
 interface IconDefinition {
   viewBox: string;
@@ -56,6 +56,11 @@ const iconDefinitions: Record<IconName, IconDefinition> = {
     viewBox: '0 0 24 24',
     strokeWidth: 2,
     paths: ['M3 18v-6a9 9 0 0 1 18 0v6', 'M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z'],
+  },
+  addPerson: {
+    viewBox: '0 0 24 24',
+    strokeWidth: 2,
+    paths: ['M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2', 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', 'M19 8v6M16 11h6'],
   },
   lotus: {
     viewBox: '0 0 24 24',
