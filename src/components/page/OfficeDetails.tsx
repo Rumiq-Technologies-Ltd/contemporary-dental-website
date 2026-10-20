@@ -40,7 +40,7 @@ export function OfficeDetails({ office, title, tableCaption, labels, hours, serv
     </table>
     <MapEmbed src={mapEmbedHref(office)} title={fill(mapTitle, { name: office.name })} />
     <p><a className={styles.link} href={directionsHref(office)}>{directionsLabel}</a></p>
-    {arrivalTip && (arrivalTip.text || arrivalTip.landmarks) && <Notice>
+    {arrivalTip && (arrivalTip.text || arrivalTip.landmarks) && <Notice wide>
       {arrivalTip.text && <><strong>{arrivalTip.label}:</strong> {arrivalTip.text}</>}
       {arrivalTip.text && arrivalTip.landmarks && <br />}
       {arrivalTip.landmarks && <><strong>{arrivalTip.landmarksLabel}:</strong> {arrivalTip.landmarks}</>}

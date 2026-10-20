@@ -17,8 +17,9 @@ export function BulletList({ children }: { children: ReactNode }) {
   return <ul className={styles.list}>{children}</ul>;
 }
 
-export function Notice({ children }: { children: ReactNode }) {
-  return <p className={styles.notice}>{children}</p>;
+export function Notice({ children, wide = false }: { children: ReactNode; wide?: boolean }) {
+  // wide drops the reading-width cap so the box lines up with full-width content beside it.
+  return <p className={wide ? `${styles.notice} ${styles.noticeWide}` : styles.notice}>{children}</p>;
 }
 
 /** Emergency safety wording. Dr. Khan must approve it before publication. */
