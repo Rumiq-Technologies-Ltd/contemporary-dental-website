@@ -76,6 +76,7 @@
   background: var(--color-tint-soft); font-size: 1.0625rem; line-height: 1.7; color: var(--color-ink);
 }
 .notice { max-width: 66ch; padding: 20px 24px; border-radius: var(--radius-card); background: var(--color-off); font-size: 15px; line-height: 1.65; }
+.noticeWide { max-width: none; }
 
 /* Questions: rows separated by hairlines, with a cyan plus square. */
 .faq { display: grid; max-width: 860px; border-top: 1px solid var(--color-line); }

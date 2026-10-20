@@ -283,7 +283,7 @@ test('frequently asked questions open and close with the keyboard', async ({ pag
   await ready(page);
   const faq = page.locator('#faq');
   const first = faq.locator('details').first();
-  await expect(faq.locator('details')).toHaveCount(7);
+  await expect(faq.locator('details')).toHaveCount(6);
   await first.locator('summary').focus();
   await page.keyboard.press('Enter');
   await expect(first).toHaveAttribute('open', '');

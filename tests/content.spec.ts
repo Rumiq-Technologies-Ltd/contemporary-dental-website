@@ -264,6 +264,7 @@ test.describe('website fixes', () => {
     await expect(home.getByText('Do you offer financing?', { exact: true })).toBeVisible();
     await expect(home.getByText("I'm nervous about dental visits. What can I do?", { exact: true })).toBeVisible();
     await expect(home.getByText('Do you speak Spanish or Portuguese?', { exact: true })).toHaveCount(0);
+    await expect(home.getByText('Can I book an appointment online?', { exact: true })).toHaveCount(0);
     // Answers sit in closed disclosures; open the cancellation question to reach its link.
     await home.getByText('What is your cancellation policy?', { exact: true }).click();
     await expect(home.getByRole('link', { name: 'Financial Policy & Appointments page' })).toHaveAttribute('href', '/financial-policy');
@@ -273,6 +274,7 @@ test.describe('website fixes', () => {
       await expect(main.getByText(question, { exact: true })).toHaveCount(0);
     }
     await expect(main.getByText('Do you speak Haitian Creole?', { exact: true })).toHaveCount(1);
+    await expect(main.getByText('Can I book an appointment online?', { exact: true })).toHaveCount(1);
   });
 
   test('the missing teeth tab gives both answers and links to implants and dentures', async ({ page }) => {
