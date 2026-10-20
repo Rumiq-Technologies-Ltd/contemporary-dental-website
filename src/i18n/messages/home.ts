@@ -78,9 +78,9 @@ const en = {
     ],
   },
   beforeAfter: {
-    heading: 'How our treatments look',
+    heading: 'WHAT TREATMENT CAN DO',
     intro: 'Illustrations of common treatments. They are not patient results.',
-    disclaimer: 'The illustrations show the general kind of change a treatment can make. They are not photographs of patients. Your own result depends on a clinical assessment at your visit.',
+    disclaimer: 'The illustrations are for educational purposes only. They show the general kind of change a treatment can make. They are not photographs of patients. Your own result depends on a clinical assessment at your visit.',
     illustration: 'Illustration, not a patient result',
     before: 'Before',
     after: 'After',
@@ -229,9 +229,9 @@ export const home: Record<Locale, HomeMessages> = {
     },
     // Review: a qualified Spanish speaker checks this block before it is published.
     beforeAfter: {
-      heading: 'Así se ven nuestros tratamientos',
+      heading: 'LO QUE PUEDE HACER UN TRATAMIENTO',
       intro: 'Ilustraciones de tratamientos habituales. No son resultados de pacientes.',
-      disclaimer: 'Las ilustraciones muestran el tipo general de cambio que puede lograr un tratamiento. No son fotografías de pacientes. Su propio resultado depende de una evaluación clínica en su visita.',
+      disclaimer: 'Las ilustraciones tienen fines únicamente educativos. Muestran el tipo general de cambio que puede lograr un tratamiento. No son fotografías de pacientes. Su propio resultado depende de una evaluación clínica en su visita.',
       illustration: 'Ilustración, no es un resultado de paciente',
       before: 'Antes',
       after: 'Después',
@@ -376,9 +376,9 @@ export const home: Record<Locale, HomeMessages> = {
     },
     // Review: a qualified Portuguese speaker checks this block before it is published.
     beforeAfter: {
-      heading: 'Como ficam nossos tratamentos',
+      heading: 'O QUE UM TRATAMENTO PODE FAZER',
       intro: 'Ilustrações de tratamentos comuns. Não são resultados de pacientes.',
-      disclaimer: 'As ilustrações mostram o tipo geral de mudança que um tratamento pode fazer. Não são fotografias de pacientes. O seu próprio resultado depende de uma avaliação clínica na sua consulta.',
+      disclaimer: 'As ilustrações têm fins apenas educativos. Mostram o tipo geral de mudança que um tratamento pode fazer. Não são fotografias de pacientes. O seu próprio resultado depende de uma avaliação clínica na sua consulta.',
       illustration: 'Ilustração, não é um resultado de paciente',
       before: 'Antes',
       after: 'Depois',
