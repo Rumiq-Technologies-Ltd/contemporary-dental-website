@@ -1,0 +1,24 @@
+/* Patient reviews: a dark ink band with white quote cards, laid out in columns so quotes of any
+   length pack together. White text sits on the ink background at full contrast. */
+.reviews { grid-template-columns: minmax(0, 1fr); row-gap: 48px; background: var(--color-ink); }
+.reviews h2 { max-width: 20ch; font-size: clamp(2.8rem, 5.4vw, 4.8rem); color: #ffffff; }
+
+.list { columns: 3 300px; column-gap: 20px; margin: 0; padding: 0; list-style: none; }
+.list li { break-inside: avoid; margin-bottom: 20px; }
+
+.card {
+  position: relative; display: grid; gap: 16px; margin: 0; padding: 28px;
+  border-radius: var(--radius-card); background: var(--color-bg); color: var(--color-ink);
+}
+/* A large cyan opening quote in the display face marks each card. */
+.mark {
+  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: 72px; font-weight: 800; line-height: 0.6; color: var(--color-accent-ink);
+}
+.card blockquote { margin: 0; }
+.card blockquote p { font-size: 16px; line-height: 1.65; color: var(--color-text); }
+.card figcaption {
+  padding-top: 14px; border-top: 1px solid var(--color-line);
+  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: 22px; font-weight: 700; line-height: 1; text-transform: uppercase; color: var(--color-ink);
+}

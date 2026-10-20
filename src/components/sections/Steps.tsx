@@ -5,13 +5,13 @@ import { Screen } from '@/components/layout/Screen';
 import { Icon, type IconName } from '@/components/ui/Icon';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
-import { localePath } from '@/i18n/locales';
+import { languageHref } from '@/i18n/languageHref';
 import { getLocale } from '@/i18n/server';
 import { Highlights } from './Highlights';
 import styles from './steps.module.css';
 
 // One icon per card, in the order the cards appear in the copy.
-const cardIcons: readonly IconName[] = ['addPerson', 'lotus', 'shield', 'globe', 'heartCare', 'family'];
+const cardIcons: readonly IconName[] = ['addPerson', 'cross', 'shield', 'globe', 'heartCare', 'family'];
 
 export async function Steps() {
   const lang = await getLocale();
@@ -40,18 +40,17 @@ export async function Steps() {
     <div className={styles.panel}>
       <div className={styles.intro}>
         <h2 id="steps-title" data-reveal="mask">{t.heading}</h2>
-        <div data-reveal="" style={{ '--d': '150ms' } as CSSProperties}><Link href={localePath(lang, routes.newPatients)} className="pill pill-outline pill-large">{t.whatToExpect}</Link></div>
       </div>
       <ul className={styles.cards} data-stagger="">
         {cards.map((card, index) => <li key={card.title} style={{ '--i': index } as CSSProperties}>
           <article className={styles.card} data-reveal="" data-tilt="9">
-            <span className={styles.number} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+            <span className={styles.number} aria-hidden="true">{index + 1}</span>
             <span className={styles.iconWrap}><Icon name={card.icon} /></span>
             <h3>{card.title}</h3>
             <span className={styles.subhead}>{card.subtitle}</span>
             <p>{card.text}</p>
             {card.lines.length > 0 && <div className={styles.lines}>
-              {card.lines.map(line => <Link key={line.locale} href={localePath(line.locale, routes.home)}>{line.label}</Link>)}
+              {card.lines.map(line => <Link key={line.locale} href={languageHref(line.locale, lang, routes.home)}>{line.label}</Link>)}
             </div>}
           </article>
         </li>)}
