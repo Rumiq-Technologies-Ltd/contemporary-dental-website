@@ -24,7 +24,7 @@ const en = {
     trustLanguages: 'English, Spanish and Portuguese',
   },
   steps: {
-    heading: 'Getting good care is simple',
+    heading: 'WHY PATIENTS CHOOSE OUR PRACTICE',
     whatToExpect: 'What to expect',
     highlights: {
       label: 'Practice highlights',
@@ -170,7 +170,8 @@ export const home: Record<Locale, HomeMessages> = {
       trustLanguages: 'Inglés, español y portugués',
     },
     steps: {
-      heading: 'Recibir buena atención es sencillo',
+      // Review: a qualified Spanish speaker checks this heading before it is published.
+      heading: 'Por qué los pacientes eligen nuestro consultorio',
       whatToExpect: 'Qué esperar',
       highlights: {
         label: 'Aspectos destacados del consultorio',
@@ -313,7 +314,8 @@ export const home: Record<Locale, HomeMessages> = {
       trustLanguages: 'Inglês, espanhol e português',
     },
     steps: {
-      heading: 'Receber um bom atendimento é simples',
+      // Review: a qualified Portuguese speaker checks this heading before it is published.
+      heading: 'Por que os pacientes escolhem nosso consultório',
       whatToExpect: 'O que esperar',
       highlights: {
         label: 'Destaques do consultório',
