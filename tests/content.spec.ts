@@ -320,6 +320,7 @@ test.describe('website fixes', () => {
     await page.goto('/');
     await expect(page.locator('#home')).toContainText('385 Five-Star Reviews and Counting');
     await expect(page.locator('#home')).not.toContainText('New patients welcome');
+    await expect(page.locator('#home [aria-label="Google"]')).toHaveCount(1);
     const cards = page.locator('#reviews figure');
     const count = await cards.count();
     expect(count).toBeGreaterThan(0);
