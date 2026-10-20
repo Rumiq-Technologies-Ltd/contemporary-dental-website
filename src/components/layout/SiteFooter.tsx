@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { formatAddress, legalLinks, offices, routes, site } from '@/content/site';
+import { Icon } from '@/components/ui/Icon';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
 import { localePath } from '@/i18n/locales';
@@ -12,7 +13,7 @@ import styles from './layout.module.css';
 export async function SiteFooter() {
   const lang = await getLocale();
   const t = getMessages(lang).common;
-  const items = localizedNavigation(lang, t.nav);
+  const items = localizedNavigation(lang, t);
   return <footer className={styles.siteFooter}>
     <div className={styles.footerTop} data-reveal="">
       <nav aria-label={t.footerNavigation} className={styles.footerNav}>
@@ -38,6 +39,11 @@ export async function SiteFooter() {
     </div>
     <div className={styles.footerBottom}>
       <p className={styles.siteTagline}>{t.footer.tagline}</p>
+      {/* Brand names, the same in every language. */}
+      <nav aria-label={t.footer.social} className={styles.socialLinks}>
+        <a href={site.instagram}><Icon name="instagram" />Instagram</a>
+        <a href={site.facebook}><Icon name="facebook" />Facebook</a>
+      </nav>
       <nav aria-label={t.legalNavigation} className={styles.legalLinks}>
         {legalLinks.map(link => <Link key={link.href} href={link.href}>{t.legal[link.key]}</Link>)}
       </nav>

@@ -17,7 +17,7 @@ import styles from './layout.module.css';
 export async function SiteHeader() {
   const lang = await getLocale();
   const t = getMessages(lang).common;
-  const items = localizedNavigation(lang, t.nav);
+  const items = localizedNavigation(lang, t);
   const requestHref = localePath(lang, routes.requestAppointment);
   return <header className={styles.header}>
     <Link href={localePath(lang, routes.home)} className={styles.logo} aria-label={fill(t.homeLabel, { name: site.name })}>

@@ -36,8 +36,8 @@ export function formatPartnerList(and: string): string {
   return `${financingPartners.slice(0, -1).join(', ')} ${and} ${last}`;
 }
 
-// Summary of the financial policy. Replace with the approved Financial Policy &
-// Appointment Agreement wording, verbatim, before launch.
+// The financial policy, in the practice's wording of 20 October 2026. The weekend rule is part of
+// the missed-appointment item. Check it against the signed Financial Policy & Appointment Agreement before launch.
 export function getFinancialPolicy(lang: Locale): readonly FinancialPolicyItem[] {
   const policy = money[lang].financialPolicy;
   return [
@@ -45,7 +45,6 @@ export function getFinancialPolicy(lang: Locale): readonly FinancialPolicyItem[]
     policy.balances,
     policy.cancellations,
     policy.lateCancellation,
-    policy.weekends,
     policy.insurance,
     policy.questions,
   ];

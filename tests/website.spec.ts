@@ -95,7 +95,7 @@ test('large screens show the navigation bar and link to the right pages', async 
   const nav = page.getByRole('navigation', { name: 'Primary navigation' });
   await expect(nav).toBeVisible();
   await expect(page.getByLabel('Menu — open navigation')).toBeHidden();
-  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance and payment$/, /^Contemporary Smile Club$/, /^About$/, /^Locations$/]);
+  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance & Payments$/, /^Contemporary Smile Club$/, /^About$/, /^Locations$/]);
   await nav.getByRole('link', { name: 'Emergency' }).click();
   await expect(page).toHaveURL(/\/emergency$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Emergency dental care');
@@ -109,6 +109,12 @@ test('large screens show the navigation bar and link to the right pages', async 
   await page.goto('/');
   await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'About' }).click();
   await expect(page).toHaveURL(/\/about$/);
+  // Insurance & Payments opens a dropdown with its two pages.
+  const payments = page.getByRole('navigation', { name: 'Primary navigation' });
+  await payments.getByRole('link', { name: 'Insurance & Payments' }).hover();
+  await expect(payments.getByRole('link', { name: 'Insurance & Financing', exact: true })).toBeVisible();
+  await payments.getByRole('link', { name: 'Financial Policy & Appointments' }).click();
+  await expect(page).toHaveURL(/\/financial-policy$/);
   // Locations opens a dropdown with one link per office.
   const primary = page.getByRole('navigation', { name: 'Primary navigation' });
   await primary.getByRole('link', { name: 'Locations' }).hover();
@@ -277,7 +283,7 @@ test('frequently asked questions open and close with the keyboard', async ({ pag
   await ready(page);
   const faq = page.locator('#faq');
   const first = faq.locator('details').first();
-  await expect(faq.locator('details')).toHaveCount(6);
+  await expect(faq.locator('details')).toHaveCount(7);
   await first.locator('summary').focus();
   await page.keyboard.press('Enter');
   await expect(first).toHaveAttribute('open', '');

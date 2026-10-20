@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
-import { CallButton } from '@/components/page/Actions';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { PagePhoto } from '@/components/page/PagePhoto';
 import { Prose, SafetyNotice, Section } from '@/components/page/Section';
-import { offices, routes, site } from '@/content/site';
+import { routes, site } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { getLocale } from '@/i18n/server';
 import { EnquiryPanel } from '@/features/inquiry/EnquiryPanel';
@@ -24,7 +23,7 @@ export default async function EmergencyPage() {
   const messages = getMessages(lang);
   const t = messages.visit.emergency;
   return <PageLayout>
-    <PageIntro title={t.title} actions={offices.map(office => <CallButton key={office.id} office={office} />)} />
+    <PageIntro title={t.title} />
     <div className={`${styles.split} ${styles.splitTop}`}>
       <div className={styles.section}>
         <SafetyNotice label={t.safetyLabel}>{t.safetyNotice}</SafetyNotice>

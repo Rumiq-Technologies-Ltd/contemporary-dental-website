@@ -23,8 +23,9 @@ const pages: readonly { path: string; title: string; heading: string }[] = [
   { path: '/services/clear-aligners-braces', title: 'Clear Aligners and Braces | Contemporary Dental Care', heading: 'Clear aligners and braces' },
   { path: '/services/cosmetic', title: 'Cosmetic Dentistry | Contemporary Dental Care', heading: 'Cosmetic dentistry' },
   { path: '/technology', title: 'Technology | Contemporary Dental Care', heading: 'Technology at our practice' },
-  { path: '/new-patients', title: 'New Patients | Contemporary Dental Care', heading: 'New patients' },
-  { path: '/insurance', title: 'Insurance | Contemporary Dental Care', heading: 'Insurance' },
+  { path: '/new-patients', title: 'New Patients | Contemporary Dental Care', heading: 'Welcome to Contemporary Dental Care' },
+  { path: '/insurance', title: 'Insurance & Financing | Contemporary Dental Care', heading: 'Insurance & Financing' },
+  { path: '/financial-policy', title: 'Financial Policy & Appointments | Contemporary Dental Care', heading: 'Our Financial & Appointment Policy' },
   { path: '/membership', title: 'Contemporary Smile Club | Contemporary Dental Care', heading: 'Contemporary Smile Club' },
   { path: '/pricing', title: 'Pricing and Offers | Contemporary Dental Care', heading: 'Pricing and offers' },
   { path: '/faq', title: 'Frequently Asked Questions | Contemporary Dental Care', heading: 'Frequently asked questions' },
@@ -174,7 +175,7 @@ test.describe('facts', () => {
     await page.goto('/emergency');
     await expect(page.getByRole('complementary', { name: 'When to call 911' })).toContainText('call 911 or go to the nearest emergency room now');
     await expect(page.getByText('We are not open 24 hours')).toBeVisible();
-    await expect(page.locator('#main-content').getByRole('link', { name: 'Call Orlando: 321-522-8577' })).toHaveAttribute('href', 'tel:+13215228577');
+    await expect(page.getByRole('link', { name: 'Call Orlando: 321-522-8577' }).first()).toHaveAttribute('href', 'tel:+13215228577');
   });
 
   test('crowns are never described as same-day', async ({ page }) => {
@@ -183,13 +184,14 @@ test.describe('facts', () => {
     await expect(page.locator('main')).not.toContainText(/same-day crown|crown in one visit/i);
   });
 
-  test('insurance and payment pages state the policies as written', async ({ page }) => {
+  test('the insurance & financing and financial policy pages state the policies as written', async ({ page }) => {
     await page.goto('/insurance');
     await expect(page.getByText('We do not accept Medicaid.')).toBeVisible();
     await expect(page.getByText('An estimate is not a guarantee of payment.')).toBeVisible();
-    await expect(page.getByText('Alphaeon, CareCredit, Sunbit, Afterpay and Klarna')).toBeVisible();
-    await expect(page.getByText('$50 on a weekday, $100 on a weekend.')).toBeVisible();
-    await expect(page.getByText('A $150 deposit is required to reserve a treatment appointment.')).toBeVisible();
+    await expect(page.getByText('Alphaeon, CareCredit, Sunbit, Afterpay and Klarna', { exact: false })).toBeVisible();
+    await page.goto('/financial-policy');
+    await expect(page.getByText('$50 for weekday appointments and $100 for weekend appointments', { exact: false })).toBeVisible();
+    await expect(page.getByText('A $150 deposit is required', { exact: false })).toBeVisible();
   });
 
   test('the FAQ opens and closes with the keyboard', async ({ page }) => {
@@ -220,16 +222,13 @@ test.describe('facts', () => {
   });
 });
 
-test.describe('phone call bar', () => {
-  test('is sticky on phones and hidden on desktop', async ({ page }) => {
+test.describe('phone call link', () => {
+  test('phones have no floating call button, and the top bar keeps the Orlando number in reach', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 800 });
     await page.goto('/about');
-    const bar = page.getByRole('link', { name: 'Call Orlando: 321-522-8577' }).last();
-    await expect(bar).toBeVisible();
-    await expect(bar).toHaveCSS('position', 'fixed');
-    await expect(bar).toHaveAttribute('href', 'tel:+13215228577');
-    await page.setViewportSize({ width: 1440, height: 900 });
-    await expect(page.locator('a[href="tel:+13215228577"]').last()).toBeHidden();
+    const fixed = await page.locator('a[href^="tel:"]').evaluateAll(links => links.filter(link => getComputedStyle(link).position === 'fixed').length);
+    expect(fixed).toBe(0);
+    await expect(page.getByRole('link', { name: 'Call Orlando: 321-522-8577' }).first()).toBeInViewport();
   });
 });
 
@@ -265,15 +264,15 @@ test.describe('website fixes', () => {
     await expect(home.getByText('Do you offer financing?', { exact: true })).toBeVisible();
     await expect(home.getByText("I'm nervous about dental visits. What can I do?", { exact: true })).toBeVisible();
     await expect(home.getByText('Do you speak Spanish or Portuguese?', { exact: true })).toHaveCount(0);
+    // Answers sit in closed disclosures; open the cancellation question to reach its link.
+    await home.getByText('What is your cancellation policy?', { exact: true }).click();
+    await expect(home.getByRole('link', { name: 'Financial Policy & Appointments page' })).toHaveAttribute('href', '/financial-policy');
     await page.goto('/faq');
     const main = page.locator('main');
-    for (const question of ['Do you accept my insurance?', 'Do you offer financing?', "I'm nervous about dental visits. What can I do?"]) {
+    for (const question of ['Do you accept my insurance?', 'Do you offer financing?', 'What is your cancellation policy?', "I'm nervous about dental visits. What can I do?", 'Do you speak Spanish or Portuguese?']) {
       await expect(main.getByText(question, { exact: true })).toHaveCount(0);
     }
-    await expect(main.getByText('Do you speak Spanish or Portuguese?', { exact: true })).toHaveCount(1);
-    // Answers sit in closed disclosures; open the cancellation question to reach its link.
-    await main.getByText('What is your cancellation policy?', { exact: true }).click();
-    await expect(main.getByRole('link', { name: 'Insurance and Financing page' })).toHaveAttribute('href', '/insurance#financial-policy');
+    await expect(main.getByText('Do you speak Haitian Creole?', { exact: true })).toHaveCount(1);
   });
 
   test('the missing teeth tab gives both answers and links to implants and dentures', async ({ page }) => {
@@ -282,7 +281,36 @@ test.describe('website fixes', () => {
     const panel = page.locator('#problem-panel-implants');
     await expect(panel.getByText('Dentures replace missing teeth with a removable replacement.')).toBeVisible();
     await expect(panel.getByRole('link', { name: 'About dental implants' })).toHaveAttribute('href', '/services/implants');
-    await expect(panel.getByRole('link', { name: 'Dentures' })).toHaveAttribute('href', '/services/dentures');
+    await expect(panel.getByRole('link', { name: 'About dentures' })).toHaveAttribute('href', '/services/dentures');
+  });
+
+  test('the footer links to the practice on Instagram and Facebook', async ({ page }) => {
+    await page.goto('/');
+    const social = page.getByRole('navigation', { name: 'Social media' });
+    await expect(social.getByRole('link', { name: 'Instagram' })).toHaveAttribute('href', 'https://www.instagram.com/contemporarydentalcare/');
+    await expect(social.getByRole('link', { name: 'Facebook' })).toHaveAttribute('href', /facebook\.com/);
+  });
+
+  test('the new patients page walks through five numbered steps', async ({ page }) => {
+    await page.goto('/new-patients');
+    const steps = page.locator('#first-visit ol > li');
+    await expect(steps).toHaveCount(5);
+    await expect(steps.first()).toContainText('Step 1');
+    await expect(steps.nth(3).getByRole('link', { name: 'Financial Policy & Appointments page' })).toHaveAttribute('href', '/financial-policy');
+  });
+
+  test('the financial policy has its own page, and the insurance page links to it', async ({ page }) => {
+    await page.goto('/insurance');
+    await expect(page.locator('#financial-policy')).toHaveCount(0);
+    await expect(page.locator('#financing')).toHaveCount(1);
+    await page.locator('main').getByRole('link', { name: 'Financial Policy & Appointments' }).click();
+    await expect(page).toHaveURL(/\/financial-policy$/);
+    await expect(page.locator('main li')).toHaveCount(6);
+    await expect(page.locator('main')).toContainText('A $150 deposit is required');
+    // The practice's copy bolds each item's name and the notice period and fees.
+    for (const phrase of ['Treatment Deposits:', '48 hours’ notice', '$50 for weekday appointments', '$100 for weekend appointments']) {
+      await expect(page.locator('main li strong', { hasText: phrase })).toHaveCount(1);
+    }
   });
 
   test('every page ends with the copyright line', async ({ page }) => {

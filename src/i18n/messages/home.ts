@@ -113,7 +113,7 @@ const en = {
           'Dentures replace missing teeth with a removable replacement.',
         ],
         linkLabel: 'About dental implants',
-        dentureLinkLabel: 'Dentures',
+        dentureLinkLabel: 'About dentures',
       },
       alignersBraces: {
         tab: 'Crooked teeth',
@@ -272,7 +272,7 @@ export const home: Record<Locale, HomeMessages> = {
             'Las prótesis dentales reemplazan los dientes faltantes con un aparato removible.',
           ],
           linkLabel: 'Acerca de los implantes dentales',
-          dentureLinkLabel: 'Prótesis dentales',
+          dentureLinkLabel: 'Acerca de las prótesis dentales',
         },
         alignersBraces: {
           tab: 'Dientes torcidos',
@@ -427,7 +427,7 @@ export const home: Record<Locale, HomeMessages> = {
             'As próteses dentárias substituem dentes ausentes com um aparelho removível.',
           ],
           linkLabel: 'Sobre implantes dentários',
-          dentureLinkLabel: 'Próteses dentárias',
+          dentureLinkLabel: 'Sobre próteses dentárias',
         },
         alignersBraces: {
           tab: 'Dentes tortos',
