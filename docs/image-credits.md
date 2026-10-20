@@ -24,6 +24,10 @@ Before launch:
 
 A photo that showed a patient in treatment was deleted at the owner's request. Patients may appear on the website only with documented written consent.
 
+## Homepage hero (`public/images/hero/`)
+
+`hero-smile.jpg`, a woman pointing to her smile, was supplied by the practice on 20 October 2026 for the homepage hero. Its source and licence are not recorded yet: confirm the practice holds the rights (or a model release, if it shows a patient) and add them here.
+
 ## Stock photographs (`public/images/stock/`)
 
 Used under the [Pexels License](https://www.pexels.com/license/) (free for commercial use, no attribution required). They are generic illustrations and do not show the practice, its offices or its team. Their alt text stays generic.

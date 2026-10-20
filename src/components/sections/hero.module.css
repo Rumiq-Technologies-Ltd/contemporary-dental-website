@@ -4,10 +4,14 @@
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); align-items: end; gap: 32px clamp(32px, 5vw, 96px);
   min-height: clamp(560px, 82svh, 800px); isolation: isolate; color: #ffffff; background: var(--color-ink);
 }
-.photo { z-index: -2; object-fit: cover; object-position: 12% 55%; }
+/* The face is on the right of the photo, so narrow screens keep the right side in view. */
+.photo { z-index: -2; object-fit: cover; object-position: 78% 30%; }
 .hero::after {
   content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
-  background: linear-gradient(180deg, rgb(0 0 0 / 0.25) 0%, rgb(0 0 0 / 0.35) 40%, rgb(0 0 0 / 0.78) 100%);
+  /* The hero photo is light, so a side shade darkens the text side and leaves the face on the right bright. */
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.45) 0%, rgb(0 0 0 / 0.3) 50%, rgb(0 0 0 / 0) 75%),
+    linear-gradient(180deg, rgb(0 0 0 / 0.2) 0%, rgb(0 0 0 / 0.3) 40%, rgb(0 0 0 / 0.75) 100%);
 }
 .copy { display: grid; gap: 20px; min-width: 0; }
 .headline { font-size: clamp(3.4rem, 8.2vw, 7.4rem); line-height: 0.88; color: #ffffff; }
