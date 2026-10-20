@@ -136,6 +136,10 @@ const en = {
   },
   reviews: {
     heading: 'What our patients say',
+    allReviews: 'Read all patient reviews',
+    pageTitle: 'Patient reviews',
+    pageDescription: 'What patients say about their visits to Contemporary Dental Care, in their own words and shared with their written permission.',
+    pageLead: 'In their own words, shared with their written permission.',
   },
   offices: {
     directions: 'Get directions',
@@ -285,9 +289,13 @@ export const home: Record<Locale, HomeMessages> = {
         },
       },
     },
-    // Review: a qualified Spanish speaker checks this heading before it is published.
+    // Review: a qualified Spanish speaker checks this block before it is published.
     reviews: {
       heading: 'Lo que dicen nuestros pacientes',
+      allReviews: 'Leer todas las opiniones de pacientes',
+      pageTitle: 'Opiniones de pacientes',
+      pageDescription: 'Lo que dicen los pacientes sobre sus visitas a Contemporary Dental Care, en sus propias palabras y compartido con su permiso por escrito.',
+      pageLead: 'En sus propias palabras, compartidas con su permiso por escrito.',
     },
     offices: {
       directions: 'Cómo llegar',
@@ -432,9 +440,13 @@ export const home: Record<Locale, HomeMessages> = {
         },
       },
     },
-    // Review: a qualified Portuguese speaker checks this heading before it is published.
+    // Review: a qualified Portuguese speaker checks this block before it is published.
     reviews: {
       heading: 'O que nossos pacientes dizem',
+      allReviews: 'Ler todas as avaliações de pacientes',
+      pageTitle: 'Avaliações de pacientes',
+      pageDescription: 'O que os pacientes dizem sobre suas consultas na Contemporary Dental Care, nas palavras deles e compartilhado com sua permissão por escrito.',
+      pageLead: 'Nas palavras deles, compartilhadas com sua permissão por escrito.',
     },
     offices: {
       directions: 'Como chegar',

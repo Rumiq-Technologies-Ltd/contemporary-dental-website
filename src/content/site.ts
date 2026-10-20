@@ -99,6 +99,7 @@ export const routes = {
   noticeOfPrivacyPractices: '/privacy/notice-of-privacy-practices',
   terms: '/terms',
   accessibility: '/accessibility',
+  reviews: '/reviews',
   comingSoon: '/coming-soon',
 } as const;
 
