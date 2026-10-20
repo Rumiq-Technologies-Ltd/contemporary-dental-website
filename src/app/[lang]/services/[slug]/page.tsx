@@ -42,7 +42,10 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const service = findService(lang, (await params).slug);
   if (!service) notFound();
   const related = getServicePages(lang).filter(item => item.id !== service.id);
-  const paragraphs = service.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>);
+  const paragraphs = <>
+    {service.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+    {service.note && <p><em>{service.note}</em></p>}
+  </>;
   return <PageLayout>
     <PageIntro title={service.heading} lead={service.lead} />
     {service.plainIntro

@@ -32,6 +32,8 @@ export interface Service {
   plainIntro: boolean;
   description: string;
   paragraphs: readonly string[];
+  /** A closing note, shown in italics after the paragraphs. */
+  note?: string;
 }
 
 /** What stays the same in every language: the code, the route and the photo. */
@@ -78,6 +80,7 @@ export function getServices(lang: Locale): readonly Service[] {
       title: copy.title,
       heading: copy.heading,
       lead: copy.lead,
+      note: copy.note,
       titleTag: copy.titleTag,
       summary: copy.summary,
       listLabel: copy.listLabel,

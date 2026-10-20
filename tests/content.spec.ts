@@ -344,6 +344,14 @@ test.describe('website fixes', () => {
     await expect(page.locator('main a[href^="tel:"]')).toHaveCount(2);
   });
 
+  test('the extractions page shows its sub-header, same-day wording and the referral note in italics', async ({ page }) => {
+    await page.goto('/services/extractions');
+    const main = page.locator('main');
+    await expect(main.getByText('Gentle, thoughtful care focused on your long-term health and comfort.')).toBeVisible();
+    await expect(main.getByText('whenever clinically appropriate and schedule permitting', { exact: false })).toBeVisible();
+    await expect(main.locator('em', { hasText: 'trusted local oral surgery partners' })).toHaveCount(1);
+  });
+
   test('every page ends with the copyright line', async ({ page }) => {
     for (const path of ['/', '/faq', '/locations/orlando']) {
       await page.goto(path);
