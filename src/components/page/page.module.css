@@ -87,7 +87,7 @@
   background: var(--color-tint); color: var(--color-ink); font-size: 26px; font-weight: 300; line-height: 1;
 }
 .faq details[open] summary::after { content: '\2212'; background: var(--color-accent); }
-.faq details p { padding: 0 56px 22px 0; max-width: 66ch; line-height: 1.7; }
+.faq details p { padding: 0 56px 22px 0; max-width: 66ch; line-height: 1.7; white-space: pre-line; }
 .answerLink { color: var(--color-accent-ink); font-weight: 600; text-decoration: underline; text-underline-offset: 4px; }
 
 /* Closing call to action: a pale cyan panel with the two actions. */

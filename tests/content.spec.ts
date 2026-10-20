@@ -270,7 +270,7 @@ test.describe('website fixes', () => {
     await expect(home.getByRole('link', { name: 'See our Financial and Appointments policy' })).toHaveAttribute('href', '/financial-policy');
     await page.goto('/faq');
     const main = page.locator('main');
-    for (const question of ['Are emergency visits open to new patients?', 'Do you accept my insurance?', 'Do you offer financing?', 'What is your cancellation policy?', "I'm nervous about dental visits. What can I do?", 'Do you speak Spanish or Portuguese?']) {
+    for (const question of ['What if I have a dental emergency after hours?', 'Are emergency visits open to new patients?', 'Do you accept my insurance?', 'Do you offer financing?', 'What is your cancellation policy?', "I'm nervous about dental visits. What can I do?", 'Do you speak Spanish or Portuguese?']) {
       await expect(main.getByText(question, { exact: true })).toHaveCount(0);
     }
     await expect(main.getByText('Do you speak Haitian Creole?', { exact: true })).toHaveCount(1);
