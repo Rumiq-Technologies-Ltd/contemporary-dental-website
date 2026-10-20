@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+import Link from 'next/link';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
+import { emphasize } from '@/components/page/emphasize';
 import { BulletList, Prose, Section } from '@/components/page/Section';
-import { formatPartnerList, getFinancialPolicy, getInsuranceLists } from '@/content/insurance';
+import { formatPartnerList, getInsuranceLists } from '@/content/insurance';
 import { routes, whenOcoee } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
+import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
 import { pageMetadata } from '@/lib/metadata';
 
@@ -16,14 +18,10 @@ export async function generateMetadata(): Promise<Metadata> {
   return pageMetadata({ lang, title: meta.title, description: meta.description, path: routes.insurance });
 }
 
-/** Wraps each **marked** phrase in strong text. Only the intro copy uses this marker. */
-function emphasize(text: string): ReactNode[] {
-  return text.split('**').map((part, index) => (index % 2 === 1 ? <strong key={index}>{part}</strong> : part));
-}
-
 // Still to do before launch: replace the lists with the complete authoritative Insurance
 // List and remove "and more". The Ocoee participation confirmation is outstanding.
-// Payment and financing sit on this page too, so the page covers both insurance and payment.
+// Insurance & Financing, the first page in the Insurance & Payments menu. The financial policy has its
+// own page (/financial-policy), linked from the financing section.
 export default async function InsurancePage() {
   const lang = await getLocale();
   const messages = getMessages(lang);
@@ -49,13 +47,8 @@ export default async function InsurancePage() {
       <Prose>
         <p>{fill(payment.financing.partners, { partners })}</p>
         <p><strong>{payment.financing.inHouse.heading}</strong> {payment.financing.inHouse.body}</p>
+        <p>{payment.policy.pointer.before}<Link href={localePath(lang, routes.financialPolicy)}>{payment.policy.pointer.link}</Link>{payment.policy.pointer.after}</p>
       </Prose>
-    </Section>
-    <Section id="financial-policy" title={payment.policy.title}>
-      <Prose><p>{payment.policy.intro}</p></Prose>
-      <BulletList>
-        {getFinancialPolicy(lang).map(item => <li key={item.term}><strong>{item.term}:</strong> {item.text}</li>)}
-      </BulletList>
     </Section>
   </PageLayout>;
 }

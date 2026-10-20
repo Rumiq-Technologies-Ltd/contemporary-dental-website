@@ -44,37 +44,39 @@ const en = {
       title: 'New Patients',
       description: 'How your first visit works: booking, emergency visits, forms, your financial policy, language and what to do if you feel nervous.',
     },
-    title: 'New patients',
-    lead: 'Welcome. Here is how your first visit works.',
+    title: 'Welcome to Contemporary Dental Care',
+    subtitle: 'Simple, Patient-Centered Steps for Your First Visit',
+    lead: 'We’re excited to welcome you to our practice! Whether you’re due for a routine check-up, starting a personalized care plan, or seeking urgent support, we make your first visit smooth, transparent, and comfortable.',
+    stepsTitle: 'Step-by-step patient process',
+    /** {n} is the step number. */
+    stepLabel: 'Step {n}',
     booking: {
-      label: 'Booking.',
-      withForm: 'Request an appointment through our form, or call our office.',
-      callOnly: 'Call our office to request an appointment.',
+      title: 'Simple Booking & Language Preference',
+      body: {
+        withOcoee: 'Call our Orlando or Ocoee office to request your appointment. Be sure to let us know if you prefer care in English, Spanish, or Portuguese so we can coordinate our multilingual team for your visit.',
+        orlandoOnly: 'Call our Orlando office to request your appointment. Be sure to let us know if you prefer care in English, Spanish, or Portuguese so we can coordinate our multilingual team for your visit.',
+      },
     },
     emergencies: {
-      label: 'Emergencies.',
-      body: 'Emergency visits are open to new patients.',
+      title: 'Emergency & Same-Day Care',
+      body: 'Dental pain shouldn\'t wait. Emergency visits are always open to new patients, with same-day evaluation and relief options available whenever clinically appropriate.',
     },
-    // The link text between before and after is common.legal.noticeOfPrivacyPractices.
+    // The Notice of Privacy Practices link (common.legal.noticeOfPrivacyPractices) sits between before and after.
     forms: {
-      label: 'Forms.',
-      before: "We'll ask you to complete our new-patient forms, including our HIPAA ",
-      after: ". Please don't include health details in the website form.",
+      title: 'New Patient Forms & Privacy',
+      before: 'To save time at check-in, we will ask you to complete our standard new-patient forms, including our HIPAA ',
+      after: '.',
     },
-    // Review: the card on file is taken at booking (practice decision, 16 Oct 2026; C17 §6). Whether the financial policy is signed at booking or at the first visit is still to confirm.
-    firstVisit: {
-      label: 'Your first visit.',
-      before: "A valid payment card is required on file for every patient at booking. At your first visit, you'll review and sign our financial policy. Details are on the ",
-      link: 'Payment and financing',
-      after: ' page.',
-    },
-    language: {
-      label: 'Language.',
-      body: "Tell us your language when you book, and we'll confirm who is in.",
+    // Review: the card on file is taken at booking (practice decision, 16 Oct 2026; C17 §6).
+    financial: {
+      title: 'Financial Policy & Payment Options',
+      before: 'To hold your reservation, a valid payment card is required on file when booking. During your initial visit, our front desk team will review our clear financial policy with you so there are never any unexpected costs. You can review full details anytime on our ',
+      link: 'Financial Policy & Appointments page',
+      after: '.',
     },
     nervous: {
-      label: 'Feeling nervous?',
-      body: 'If dental visits make you nervous, tell us when you book, so we can plan your visit around what helps.',
+      title: 'Tailored Support for Nervous Patients',
+      body: 'If you experience dental anxiety, please mention it when you book! We specialize in comfort-first care and offer amenities like noise-canceling headphones and weighted blankets to ensure you feel calm and in control throughout your appointment.',
     },
     photoAlt: 'A treatment room at Contemporary Dental Care',
   },
@@ -171,22 +173,18 @@ const en = {
         question: 'What if I need an appointment on a weekend?',
         answer: "We are open one Saturday a month. Weekend and after-hours emergency appointments are often available. Call us, and we'll tell you what we can do.",
       },
-      spanishPortuguese: {
-        question: 'Do you speak Spanish or Portuguese?',
-        answer: 'Care is available in English, Spanish and Portuguese. Please ask about language support when you call.',
-      },
-      // Review: this answer must stay as written until a qualified interpretation route exists. Do not add any
-      // promise of interpretation or language support in any language.
-      haitianCreoleFrench: {
-        question: 'Do you speak Haitian Creole or French?',
-        answer: 'Please call our office and tell us about your language needs.',
+      // The practice chose this answer on 20 October 2026. C14 §6 says a qualified medical interpretation
+      // route is the only lawful path until staff capability exists; keep this under compliance review.
+      haitianCreole: {
+        question: 'Do you speak Haitian Creole?',
+        answer: 'Not at this time, though we are actively looking to add Haitian Creole-speaking staff to our team to better serve our community. In the meantime, you are always welcome to bring a family member or interpreter to assist during your visit.',
       },
       // Review: financial policy wording. The late-cancellation amounts ($50 weekday, $100 weekend) must match the
       // financial policy on the insurance page. The link label must appear word for word in the answer.
       cancellation: {
         question: 'What is your cancellation policy?',
-        answer: 'Please give 48 hours’ notice. A late cancellation or missed appointment is $50 on a weekday and $100 on a weekend. Our full financial policy is on the Insurance and Financing page.',
-        linkLabel: 'Insurance and Financing page',
+        answer: 'Please give 48 hours’ notice. A late cancellation or missed appointment is $50 on a weekday and $100 on a weekend. Our full financial policy is on the Financial Policy & Appointments page.',
+        linkLabel: 'Financial Policy & Appointments page',
       },
       nervous: {
         question: "I'm nervous about dental visits. What can I do?",
@@ -237,36 +235,39 @@ export const visit: Record<Locale, VisitMessages> = {
         title: 'Pacientes nuevos',
         description: 'Cómo funciona su primera visita: la reserva de la cita, las visitas de urgencia, los formularios, su política financiera, el idioma y qué hacer si siente nervios.',
       },
-      title: 'Pacientes nuevos',
-      lead: 'Le damos la bienvenida. Así funciona su primera visita.',
+      title: 'Bienvenido a Contemporary Dental Care',
+      subtitle: 'Pasos sencillos y centrados en el paciente para su primera visita',
+      lead: '¡Nos alegra darle la bienvenida a nuestro consultorio! Ya sea que le toque una revisión de rutina, que comience un plan de atención personalizado o que necesite ayuda urgente, hacemos que su primera visita sea sencilla, transparente y cómoda.',
+      stepsTitle: 'Proceso paso a paso para pacientes',
+      /** {n} is the step number. */
+      stepLabel: 'Paso {n}',
       booking: {
-        label: 'Reserva de la cita.',
-        withForm: 'Solicite una cita a través de nuestro formulario o llame a su consultorio.',
-        callOnly: 'Llame a su consultorio para solicitar una cita.',
+        title: 'Reserva sencilla y preferencia de idioma',
+        body: {
+          withOcoee: 'Llame a nuestro consultorio de Orlando o de Ocoee para solicitar su cita. Asegúrese de decirnos si prefiere recibir atención en inglés, español o portugués para que podamos coordinar a nuestro equipo multilingüe para su visita.',
+          orlandoOnly: 'Llame a nuestro consultorio de Orlando para solicitar su cita. Asegúrese de decirnos si prefiere recibir atención en inglés, español o portugués para que podamos coordinar a nuestro equipo multilingüe para su visita.',
+        },
       },
       emergencies: {
-        label: 'Urgencias.',
-        body: 'Las visitas de urgencia están abiertas a pacientes nuevos.',
+        title: 'Urgencias y atención el mismo día',
+        body: 'El dolor dental no debe esperar. Las visitas de urgencia siempre están abiertas a pacientes nuevos, con evaluación el mismo día y opciones de alivio disponibles cuando sea clínicamente adecuado.',
       },
+      // The Notice of Privacy Practices link (common.legal.noticeOfPrivacyPractices) sits between before and after.
       forms: {
-        label: 'Formularios.',
-        before: 'Le pediremos que complete nuestros formularios para pacientes nuevos, incluido nuestro ',
-        after: ' de la HIPAA. Por favor, no incluya detalles de salud en el formulario del sitio web.',
+        title: 'Formularios para pacientes nuevos y privacidad',
+        before: 'Para ahorrar tiempo al registrarse, le pediremos que complete nuestros formularios estándar para pacientes nuevos, incluido nuestro ',
+        after: ' de HIPAA.',
       },
-      // Review: the card on file is taken at booking (practice decision, 16 Oct 2026; C17 §6). Whether the financial policy is signed at booking or at the first visit is still to confirm.
-      firstVisit: {
-        label: 'Su primera visita.',
-        before: 'Se requiere una tarjeta de pago válida registrada para cada paciente al reservar la cita. En su primera visita, usted revisará y firmará nuestra política financiera. Encontrará los detalles en la página ',
-        link: 'Pago y financiamiento',
+      // Review: the card on file is taken at booking (practice decision, 16 Oct 2026; C17 §6).
+      financial: {
+        title: 'Política financiera y opciones de pago',
+        before: 'Para reservar su cita, se requiere una tarjeta de pago válida registrada al momento de reservar. Durante su primera visita, nuestro equipo de recepción revisará con usted nuestra política financiera, clara y sencilla, para que nunca haya costos inesperados. Puede consultar todos los detalles en cualquier momento en nuestra ',
+        link: 'página de Política financiera y citas',
         after: '.',
       },
-      language: {
-        label: 'Idioma.',
-        body: 'Díganos qué idioma habla al reservar su cita y le confirmaremos quién está en el consultorio.',
-      },
       nervous: {
-        label: '¿Siente nervios?',
-        body: 'Si las visitas al dentista le generan nervios, díganoslo al reservar su cita, para que podamos planificar su visita según lo que le ayude.',
+        title: 'Apoyo personalizado para pacientes nerviosos',
+        body: '¡Si siente ansiedad dental, menciónelo al reservar! Nos especializamos en una atención centrada en la comodidad y ofrecemos comodidades como audífonos con cancelación de ruido y mantas con peso para que se sienta tranquilo y con control durante toda su cita.',
       },
       photoAlt: 'Una sala de tratamiento en Contemporary Dental Care',
     },
@@ -357,20 +358,17 @@ export const visit: Record<Locale, VisitMessages> = {
           question: '¿Qué pasa si necesito una cita en fin de semana?',
           answer: 'Abrimos un sábado al mes. Con frecuencia hay citas de urgencia en fin de semana y fuera del horario de atención. Llámenos y le diremos qué podemos hacer.',
         },
-        spanishPortuguese: {
-          question: '¿Hablan español o portugués?',
-          answer: 'Atendemos en inglés, español y portugués. Por favor, pregunte por el apoyo en su idioma al llamar.',
-        },
-        // Review: this answer must stay as written until a qualified interpretation route exists.
-        haitianCreoleFrench: {
-          question: '¿Hablan criollo haitiano o francés?',
-          answer: 'Por favor, llame a nuestro consultorio y cuéntenos sus necesidades de idioma.',
+        // The practice chose this answer on 20 October 2026. C14 §6 says a qualified medical interpretation
+        // route is the only lawful path until staff capability exists; keep this under compliance review.
+        haitianCreole: {
+          question: '¿Hablan criollo haitiano?',
+          answer: 'Por el momento no, aunque estamos buscando activamente incorporar a nuestro equipo personal que hable criollo haitiano para atender mejor a nuestra comunidad. Mientras tanto, siempre puede traer a un familiar o a un intérprete para que le ayude durante su visita.',
         },
         // Review: financial policy wording. The amounts must match the financial policy on the insurance page.
         cancellation: {
           question: '¿Cuál es su política de cancelación?',
-          answer: 'Por favor, avísenos con 48 horas de anticipación. Una cancelación tardía o una cita a la que no se asista tiene un costo de $50 en un día de semana y de $100 en fin de semana. Nuestra política financiera completa está en la página de Seguros y financiamiento.',
-          linkLabel: 'página de Seguros y financiamiento',
+          answer: 'Por favor, avísenos con 48 horas de anticipación. Una cancelación tardía o una cita a la que no se asista tiene un costo de $50 en un día de semana y de $100 en fin de semana. Nuestra política financiera completa está en la página de Política financiera y citas.',
+          linkLabel: 'página de Política financiera y citas',
         },
         nervous: {
           question: 'Las visitas al dentista me generan nervios. ¿Qué puedo hacer?',
@@ -416,36 +414,39 @@ export const visit: Record<Locale, VisitMessages> = {
         title: 'Novos pacientes',
         description: 'Como funciona a sua primeira visita: agendamento, atendimentos de emergência, formulários, a sua política financeira, idioma e o que fazer se você sentir nervosismo.',
       },
-      title: 'Novos pacientes',
-      lead: 'Boas-vindas. Veja como funciona a sua primeira visita.',
+      title: 'Bem-vindo à Contemporary Dental Care',
+      subtitle: 'Passos simples e centrados no paciente para sua primeira consulta',
+      lead: 'Estamos muito felizes em receber você em nosso consultório! Seja para uma revisão de rotina, para começar um plano de cuidados personalizado ou para buscar atendimento urgente, tornamos sua primeira consulta tranquila, transparente e confortável.',
+      stepsTitle: 'Processo passo a passo para pacientes',
+      /** {n} is the step number. */
+      stepLabel: 'Passo {n}',
       booking: {
-        label: 'Agendamento.',
-        withForm: 'Solicite uma consulta pelo nosso formulário ou ligue para o seu consultório.',
-        callOnly: 'Ligue para o seu consultório para solicitar uma consulta.',
+        title: 'Agendamento simples e preferência de idioma',
+        body: {
+          withOcoee: 'Ligue para o nosso consultório de Orlando ou de Ocoee para solicitar sua consulta. Não deixe de nos dizer se prefere ser atendido em inglês, espanhol ou português para que possamos organizar nossa equipe multilíngue para a sua visita.',
+          orlandoOnly: 'Ligue para o nosso consultório de Orlando para solicitar sua consulta. Não deixe de nos dizer se prefere ser atendido em inglês, espanhol ou português para que possamos organizar nossa equipe multilíngue para a sua visita.',
+        },
       },
       emergencies: {
-        label: 'Emergências.',
-        body: 'Os atendimentos de emergência estão abertos a novos pacientes.',
+        title: 'Emergências e atendimento no mesmo dia',
+        body: 'A dor de dente não deve esperar. As consultas de emergência estão sempre abertas a novos pacientes, com avaliação no mesmo dia e opções de alívio disponíveis sempre que clinicamente indicado.',
       },
+      // The Notice of Privacy Practices link (common.legal.noticeOfPrivacyPractices) sits between before and after.
       forms: {
-        label: 'Formulários.',
-        before: 'Pediremos que você preencha os nossos formulários de novos pacientes, incluindo o nosso ',
-        after: ' da HIPAA. Por favor, não inclua dados de saúde no formulário do site.',
+        title: 'Formulários para novos pacientes e privacidade',
+        before: 'Para economizar tempo no check-in, pediremos que você preencha nossos formulários padrão para novos pacientes, incluindo nosso ',
+        after: ' da HIPAA.',
       },
-      // Review: the card on file is taken at booking (practice decision, 16 Oct 2026; C17 §6). Whether the financial policy is signed at booking or at the first visit is still to confirm.
-      firstVisit: {
-        label: 'Sua primeira visita.',
-        before: 'É obrigatório ter um cartão de pagamento válido cadastrado para todos os pacientes no momento da reserva. Na sua primeira visita, você vai revisar e assinar a nossa política financeira. Os detalhes estão na página ',
-        link: 'Pagamento e financiamento',
+      // Review: the card on file is taken at booking (practice decision, 16 Oct 2026; C17 §6).
+      financial: {
+        title: 'Política financeira e opções de pagamento',
+        before: 'Para garantir sua reserva, é necessário um cartão de pagamento válido cadastrado no momento do agendamento. Na sua primeira consulta, nossa equipe da recepção revisará com você nossa política financeira clara, para que nunca haja custos inesperados. Você pode consultar todos os detalhes a qualquer momento na nossa ',
+        link: 'página Política financeira e consultas',
         after: '.',
       },
-      language: {
-        label: 'Idioma.',
-        body: 'Diga-nos o seu idioma ao agendar, e confirmaremos quem está presente.',
-      },
       nervous: {
-        label: 'Sente nervosismo?',
-        body: 'Se as visitas ao dentista deixam você nervoso, avise-nos ao agendar, para que possamos planejar a sua visita de acordo com o que ajuda.',
+        title: 'Apoio personalizado para pacientes nervosos',
+        body: 'Se você tem ansiedade odontológica, mencione isso ao agendar! Somos especializados em um atendimento que prioriza o conforto e oferecemos recursos como fones com cancelamento de ruído e cobertores com peso para que você se sinta calmo e no controle durante toda a consulta.',
       },
       photoAlt: 'Uma sala de tratamento da Contemporary Dental Care',
     },
@@ -536,20 +537,17 @@ export const visit: Record<Locale, VisitMessages> = {
           question: 'E se eu precisar de uma consulta no fim de semana?',
           answer: 'Abrimos um sábado por mês. Consultas de emergência nos fins de semana e fora do horário costumam estar disponíveis. Ligue para nós e diremos o que podemos fazer.',
         },
-        spanishPortuguese: {
-          question: 'Vocês falam espanhol ou português?',
-          answer: 'Atendemos em inglês, espanhol e português. Por favor, pergunte por apoio no seu idioma ao ligar.',
-        },
-        // Review: this answer must stay as written until a qualified interpretation route exists.
-        haitianCreoleFrench: {
-          question: 'Vocês falam crioulo haitiano ou francês?',
-          answer: 'Por favor, ligue para o nosso consultório e conte-nos sobre as suas necessidades de idioma.',
+        // The practice chose this answer on 20 October 2026. C14 §6 says a qualified medical interpretation
+        // route is the only lawful path until staff capability exists; keep this under compliance review.
+        haitianCreole: {
+          question: 'Vocês falam crioulo haitiano?',
+          answer: 'No momento, não, mas estamos buscando ativamente incluir na equipe profissionais que falem crioulo haitiano para atender melhor à nossa comunidade. Enquanto isso, você sempre pode trazer um familiar ou intérprete para ajudar durante a sua consulta.',
         },
         // Review: financial policy wording. The amounts must match the financial policy on the insurance page.
         cancellation: {
           question: 'Qual é a política de cancelamento de vocês?',
-          answer: 'Pedimos aviso com 48 horas de antecedência. Um cancelamento tardio ou a falta a uma consulta custa $50 em dia de semana e $100 no fim de semana. A nossa política financeira completa está na página Seguros e financiamento.',
-          linkLabel: 'página Seguros e financiamento',
+          answer: 'Pedimos aviso com 48 horas de antecedência. Um cancelamento tardio ou a falta a uma consulta custa $50 em dia de semana e $100 no fim de semana. A nossa política financeira completa está na página Política financeira e consultas.',
+          linkLabel: 'página Política financeira e consultas',
         },
         nervous: {
           question: 'Sinto nervosismo ao ir ao dentista. O que posso fazer?',

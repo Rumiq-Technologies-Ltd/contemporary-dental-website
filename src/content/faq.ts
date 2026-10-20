@@ -8,7 +8,7 @@ import { localePath, type Locale } from '@/i18n/locales';
 export type FaqId =
   | 'offices' | 'hours' | 'open24Hours' | 'afterHoursEmergency' | 'bookOnline' | 'emergencyNewPatients'
   | 'sameDayExtraction' | 'sameDayCrowns' | 'insurance' | 'medicaid' | 'financing' | 'rootCanal'
-  | 'orthodontist' | 'weekend' | 'spanishPortuguese' | 'haitianCreoleFrench' | 'cancellation' | 'nervous';
+  | 'orthodontist' | 'weekend' | 'haitianCreole' | 'cancellation' | 'nervous';
 
 /** A phrase inside the answer that links to a page. The label must appear word for word in the answer. */
 export interface FaqLink {
@@ -24,18 +24,17 @@ export interface FaqItem {
 }
 
 /** The questions the homepage shows, in this order. */
-export const homepageFaqs: readonly FaqId[] = ['bookOnline', 'afterHoursEmergency', 'emergencyNewPatients', 'insurance', 'financing', 'nervous'];
+export const homepageFaqs: readonly FaqId[] = ['bookOnline', 'afterHoursEmergency', 'emergencyNewPatients', 'insurance', 'financing', 'cancellation', 'nervous'];
 
 /**
  * Homepage questions that the FAQ page leaves out, so a visitor does not read the same question
  * twice. The other homepage questions stay on the FAQ page too.
  */
-export const homepageOnlyFaqs: readonly FaqId[] = ['insurance', 'financing', 'nervous'];
+export const homepageOnlyFaqs: readonly FaqId[] = ['insurance', 'financing', 'cancellation', 'nervous'];
 
 // Questions and answers live in src/i18n/messages/visit.ts. They are verbatim from the content
 // file. Every answer that mentions Ocoee switches with the Ocoee hold. The Haitian Creole
-// and French answer must stay as written, in every language, until a qualified
-// interpretation route exists.
+// answer is the practice's own wording of 20 October 2026; see the C14 §6 note beside it in visit.ts.
 export function getFaqs(lang: Locale): readonly FaqItem[] {
   const t = getMessages(lang).visit.faq;
   const items = t.items;
@@ -69,15 +68,13 @@ export function getFaqs(lang: Locale): readonly FaqItem[] {
     { id: 'rootCanal', question: items.rootCanal.question, answer: whenOcoee(items.rootCanal.answer.withOcoee, items.rootCanal.answer.orlandoOnly) },
     { id: 'orthodontist', question: items.orthodontist.question, answer: whenOcoee(items.orthodontist.answer.withOcoee, items.orthodontist.answer.orlandoOnly) },
     { id: 'weekend', question: items.weekend.question, answer: items.weekend.answer },
-    { id: 'spanishPortuguese', question: items.spanishPortuguese.question, answer: items.spanishPortuguese.answer },
-    // Review: the answer must stay as written until a qualified interpretation route exists. The owner
-    // checks its translation in src/i18n/messages/visit.ts.
-    { id: 'haitianCreoleFrench', question: items.haitianCreoleFrench.question, answer: items.haitianCreoleFrench.answer },
+    // Review: the owner checks this answer's translations in src/i18n/messages/visit.ts.
+    { id: 'haitianCreole', question: items.haitianCreole.question, answer: items.haitianCreole.answer },
     {
       id: 'cancellation',
       question: items.cancellation.question,
       answer: items.cancellation.answer,
-      link: { label: items.cancellation.linkLabel, href: `${localePath(lang, routes.insurance)}#financial-policy` },
+      link: { label: items.cancellation.linkLabel, href: localePath(lang, routes.financialPolicy) },
     },
     { id: 'nervous', question: items.nervous.question, answer: items.nervous.answer },
   ];

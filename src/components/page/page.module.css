@@ -18,7 +18,19 @@
   background: var(--color-ink); color: #ffffff; font-size: 22px;
 }
 .intro h1 { max-width: 16ch; font-size: clamp(3.4rem, 8vw, 7rem); line-height: 0.88; overflow-wrap: anywhere; }
+.subtitle {
+  max-width: 40ch; font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: clamp(1.5rem, 2.4vw, 2.1rem); font-weight: 700; line-height: 1.05; text-transform: uppercase; color: var(--color-accent-ink);
+}
 .lead { max-width: 60ch; font-size: clamp(1.0625rem, 1.3vw, 1.2rem); line-height: 1.65; color: var(--color-ink); }
+/* Numbered steps, for example the first-visit process: a label, a title and the text, divided by rules. */
+.steps { display: grid; margin: 0; padding: 0; list-style: none; }
+.steps li { display: grid; gap: 8px; padding: 20px 0; border-bottom: 1px solid var(--color-line); }
+.steps li:first-child { padding-top: 0; }
+.steps li:last-child { border-bottom: 0; }
+.stepLabel { font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62; font-size: 16px; font-weight: 700; word-spacing: 0.2em; text-transform: uppercase; color: var(--color-accent-ink); }
+.steps h3 { font-size: 1.6rem; }
+.steps p { font-size: 1.0625rem; line-height: 1.7; }
 .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 8px; }
 
 .section { display: grid; gap: 22px; max-width: 980px; }
@@ -33,6 +45,7 @@
 .list li { position: relative; padding: 14px 0 14px 30px; border-bottom: 1px solid var(--color-line); }
 .list li::before { content: ''; position: absolute; left: 0; top: 1.15em; width: 12px; height: 12px; border-radius: 2px; background: var(--color-accent); }
 .list strong { color: var(--color-ink); font-weight: 700; }
+.policyTerm { display: block; margin-bottom: 2px; }
 
 /* A text column beside a framed photo; stacks on narrow screens. */
 .split { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 80px); align-items: center; }

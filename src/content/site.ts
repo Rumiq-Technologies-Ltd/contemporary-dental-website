@@ -33,6 +33,13 @@ export const site = {
   afterHoursHref: 'tel:+14076255440',
   /** The year in the footer's copyright line. */
   copyrightYear: 2026,
+  /**
+   * Social accounts in the footer. Facebook is the address in C01 (the master fact sheet); C19 notes that
+   * Google's listing shows facebook.com/ContempDentalCare instead. Instagram is @contemporarydentalcare,
+   * which the practice is reclaiming. Both may change once access is recovered.
+   */
+  instagram: 'https://www.instagram.com/contemporarydentalcare/',
+  facebook: 'https://www.facebook.com/profile.php?id=61578997001706',
 } as const;
 
 const orlando: Office = {
@@ -96,6 +103,7 @@ export const routes = {
   services: '/services',
   newPatients: '/new-patients',
   insurance: '/insurance',
+  financialPolicy: '/financial-policy',
   membership: '/membership',
   pricing: '/pricing',
   about: '/about',
@@ -112,13 +120,20 @@ export const routes = {
 
 /**
  * Main navigation. Labels come from messages.common.nav[key]; numbers are fixed. An entry with
- * officeLinks opens a dropdown with one link per office page.
+ * children opens a dropdown of those pages (labels from messages.common.navChildren[key]); an entry
+ * with officeLinks opens a dropdown with one link per office page.
  */
 export const navigation = [
   { key: 'services', href: routes.services, number: '01' },
   { key: 'emergency', href: routes.emergency, number: '02' },
   { key: 'newPatients', href: routes.newPatients, number: '03' },
-  { key: 'insurance', href: routes.insurance, number: '04' },
+  {
+    key: 'insurance', href: routes.insurance, number: '04',
+    children: [
+      { key: 'insurance', href: routes.insurance },
+      { key: 'financialPolicy', href: routes.financialPolicy },
+    ],
+  },
   { key: 'club', href: routes.membership, number: '05' },
   { key: 'about', href: routes.about, number: '06' },
   { key: 'contact', href: routes.contact, number: '07', officeLinks: true },

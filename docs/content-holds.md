@@ -42,7 +42,7 @@ Spanish (`/es`) and Portuguese (`/pt`) versions of the customer-facing pages are
 
 - A qualified native speaker must review every page, especially the clinical, insurance, financial and emergency wording. Each one is marked `// Review:` in `src/i18n/messages/`.
 - Dr. Khan (and the owner, Mohammed Khan) must approve the translated emergency safety notice, the financial policy summary and the after-hours 911 answer before launch.
-- The FAQ answer about Haitian Creole and French must stay as written until a qualified interpretation route exists. Its translations keep the same meaning and need owner sign-off.
+- The FAQ now asks "Do you speak Haitian Creole?" and gives the practice's own answer (20 October 2026): not yet, staff are being recruited, and patients may bring a family member or interpreter. C14 §6 says a qualified medical interpretation route is the only lawful path until staff capability exists, so this answer, and its suggestion of family interpreters, needs compliance sign-off before launch. Its translations need owner sign-off.
 - Legal pages (privacy, terms, notice of privacy practices, accessibility) are English only and return the not-found page in other languages.
 - Haitian Creole is not built. See `docs/internationalization.md`.
 
@@ -53,7 +53,8 @@ Spanish (`/es`) and Portuguese (`/pt`) versions of the customer-facing pages are
 - The six cards in the "Why patients choose our practice" section on the homepage use the owner's pasted section copy. Their Orlando-only wording for the new-patients card is derived from the Ocoee text, and the Spanish and Portuguese versions are drafts for native review.
 - A privacy-policy line that no analytics, advertising tags or session replay are used, and a line about the saved-service hearts (browser storage only).
 - Generic stock photographs (see `image-credits.md`) with generic alt text. They do not show the practice.
-- Removed from the old design because the content file has no equivalent: Log In and Sign Up buttons, "Get The App", social icons and the "Best Start Up of 2023" line (a superlative claim), the smile-story video dialog, and the "coming soon" dialogs.
+- Footer links to Instagram (@contemporarydentalcare, which the practice is reclaiming) and Facebook (the C01 address, facebook.com/profile.php?id=61578997001706; C19 notes that Google's listing shows facebook.com/ContempDentalCare). Confirm both once access is recovered; they live in `site` in src/content/site.ts.
+- Removed from the old design because the content file has no equivalent: Log In and Sign Up buttons, "Get The App" and the "Best Start Up of 2023" line (a superlative claim), the smile-story video dialog, and the "coming soon" dialogs.
 
 ## Still needed before launch
 

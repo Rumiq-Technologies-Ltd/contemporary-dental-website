@@ -11,8 +11,8 @@ const en = {
     },
     title: 'About Us',
     intro: {
-      withOcoee: 'Contemporary Dental Care is a general dental practice founded in 2023 by Dr. Sheryar Khan. Our practice rests on three commitments.',
-      orlandoOnly: 'Contemporary Dental Care is a general dental practice founded in 2023 by Dr. Sheryar Khan. Our practice rests on three commitments.',
+      withOcoee: 'Founded in 2023 by Dr. Sheryar Khan, Contemporary Dental Care was built with a simple mission: to provide honest, gentle, and accessible dental care for families across Orlando and Ocoee. Our warm, multilingual team is dedicated to putting your comfort and health first at every visit.',
+      orlandoOnly: 'Founded in 2023 by Dr. Sheryar Khan, Contemporary Dental Care was built with a simple mission: to provide honest, gentle, and accessible dental care for families across Orlando. Our warm, multilingual team is dedicated to putting your comfort and health first at every visit.',
     },
     honest: {
       title: 'Honest treatment planning',
@@ -119,8 +119,8 @@ export const about: Record<Locale, AboutMessages> = {
       },
       title: 'Sobre nosotros',
       intro: {
-        withOcoee: 'Contemporary Dental Care es una clínica dental general fundada en 2023 por el Dr. Sheryar Khan. Nuestra clínica se basa en tres compromisos.',
-        orlandoOnly: 'Contemporary Dental Care es una clínica dental general fundada en 2023 por el Dr. Sheryar Khan. Nuestra clínica se basa en tres compromisos.',
+        withOcoee: 'Fundada en 2023 por el Dr. Sheryar Khan, Contemporary Dental Care nació con una misión sencilla: brindar atención dental honesta, delicada y accesible a las familias de Orlando y Ocoee. Nuestro cálido equipo multilingüe se dedica a poner su comodidad y su salud en primer lugar en cada visita.',
+        orlandoOnly: 'Fundada en 2023 por el Dr. Sheryar Khan, Contemporary Dental Care nació con una misión sencilla: brindar atención dental honesta, delicada y accesible a las familias de Orlando. Nuestro cálido equipo multilingüe se dedica a poner su comodidad y su salud en primer lugar en cada visita.',
       },
       honest: {
         title: 'Planificación honesta del tratamiento',
@@ -227,8 +227,8 @@ export const about: Record<Locale, AboutMessages> = {
       },
       title: 'Sobre nós',
       intro: {
-        withOcoee: 'A Contemporary Dental Care é uma clínica odontológica geral fundada em 2023 pelo Dr. Sheryar Khan. Nossa clínica se apoia em três compromissos.',
-        orlandoOnly: 'A Contemporary Dental Care é uma clínica odontológica geral fundada em 2023 pelo Dr. Sheryar Khan. Nossa clínica se apoia em três compromissos.',
+        withOcoee: 'Fundada em 2023 pelo Dr. Sheryar Khan, a Contemporary Dental Care nasceu com uma missão simples: oferecer atendimento odontológico honesto, gentil e acessível às famílias de Orlando e Ocoee. Nossa equipe acolhedora e multilíngue se dedica a colocar seu conforto e sua saúde em primeiro lugar em cada consulta.',
+        orlandoOnly: 'Fundada em 2023 pelo Dr. Sheryar Khan, a Contemporary Dental Care nasceu com uma missão simples: oferecer atendimento odontológico honesto, gentil e acessível às famílias de Orlando. Nossa equipe acolhedora e multilíngue se dedica a colocar seu conforto e sua saúde em primeiro lugar em cada consulta.',
       },
       honest: {
         title: 'Planejamento de tratamento honesto',

@@ -26,10 +26,15 @@ const en = {
     services: 'Services',
     emergency: 'Emergency',
     newPatients: 'New patients',
-    insurance: 'Insurance and payment',
+    insurance: 'Insurance & Payments',
     club: 'Contemporary Smile Club',
     about: 'About',
     contact: 'Locations',
+  },
+  /** Pages in a menu entry's dropdown. */
+  navChildren: {
+    insurance: 'Insurance & Financing',
+    financialPolicy: 'Financial Policy & Appointments',
   },
   legal: {
     privacyPolicy: 'Privacy policy',
@@ -42,6 +47,7 @@ const en = {
     email: 'Email',
     tagline: 'Your smile is our priority',
     copyright: 'Copyright © {year} {name}. All rights reserved.',
+    social: 'Social media',
   },
   hours: {
     orlando: 'Monday to Friday, 8:00am to 5:00pm. We also open one Saturday a month; please call to confirm the date.',
@@ -111,6 +117,10 @@ export const common: Record<Locale, CommonMessages> = {
       about: 'Acerca de',
       contact: 'Ubicaciones',
     },
+    navChildren: {
+      insurance: 'Seguros y financiamiento',
+      financialPolicy: 'Política financiera y citas',
+    },
     legal: {
       privacyPolicy: 'Política de privacidad',
       termsOfUse: 'Términos de uso',
@@ -122,6 +132,7 @@ export const common: Record<Locale, CommonMessages> = {
       email: 'Correo electrónico',
       tagline: 'Su sonrisa es nuestra prioridad',
       copyright: 'Copyright © {year} {name}. Todos los derechos reservados.',
+      social: 'Redes sociales',
     },
     hours: {
       orlando: 'De lunes a viernes, de 8:00 a. m. a 5:00 p. m. Abrimos también un sábado al mes; llame para confirmar la fecha.',
@@ -181,10 +192,14 @@ export const common: Record<Locale, CommonMessages> = {
       services: 'Serviços',
       emergency: 'Emergência',
       newPatients: 'Novos pacientes',
-      insurance: 'Convênios e pagamento',
+      insurance: 'Convênios e pagamentos',
       club: 'Clube Contemporary Smile',
       about: 'Sobre',
       contact: 'Localizações',
+    },
+    navChildren: {
+      insurance: 'Convênios e financiamento',
+      financialPolicy: 'Política financeira e consultas',
     },
     legal: {
       privacyPolicy: 'Política de privacidade',
@@ -197,6 +212,7 @@ export const common: Record<Locale, CommonMessages> = {
       email: 'E-mail',
       tagline: 'Seu sorriso é a nossa prioridade',
       copyright: 'Copyright © {year} {name}. Todos os direitos reservados.',
+      social: 'Redes sociais',
     },
     hours: {
       orlando: 'De segunda a sexta, das 8h às 17h. Também abrimos um sábado por mês; ligue para confirmar a data.',
