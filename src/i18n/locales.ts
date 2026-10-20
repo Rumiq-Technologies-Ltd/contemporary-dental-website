@@ -51,3 +51,17 @@ export function localePath(locale: Locale, path: string): string {
   if (locale === defaultLocale) return path;
   return path === '/' ? `/${locale}` : `/${locale}${path}`;
 }
+
+const localePrefix = new RegExp(`^/(${publicLocales.join('|')})(/.*)?$`);
+
+/**
+ * A pathname without its language prefix. Static HTML for English pages is rendered with the
+ * internal /en/services that proxy.ts rewrites to, while the browser shows /services; both forms
+ * (and /es/services) become /services, so anything derived from the pathname matches on the
+ * server and in the browser.
+ */
+export function unprefixedPath(pathname: string): string {
+  const match = localePrefix.exec(pathname);
+  if (!match) return pathname;
+  return match[2] ?? '/';
+}
