@@ -142,12 +142,6 @@
 /* The copyright line closes every page in very small print. */
 .copyright { margin-top: 6px; font-size: 11px; line-height: 1.5; color: var(--color-muted); }
 
-/* Sticky call button for phones. The body gains matching bottom space (globals.css). */
-a.callBar { display: none; }
-@media (max-width: 899px) {
-  a.callBar { display: inline-flex; position: fixed; z-index: 40; left: 16px; right: 16px; bottom: 16px; justify-content: center; box-shadow: 0 14px 30px -12px rgb(0 0 0 / 0.5); }
-}
-
 /* Touch: keep the layout, but give the header, top bar, language and footer links a 44px-plus tap area on phones (WCAG 2.5.5). */
 @media (pointer: coarse) {
   .logo { min-height: 44px; }
