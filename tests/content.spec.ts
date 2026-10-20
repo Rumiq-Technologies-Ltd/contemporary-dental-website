@@ -350,6 +350,7 @@ test.describe('website fixes', () => {
     await expect(main.getByText('Gentle, thoughtful care focused on your long-term health and comfort.')).toBeVisible();
     await expect(main.getByText('whenever clinically appropriate and schedule permitting', { exact: false })).toBeVisible();
     await expect(main.locator('em', { hasText: 'trusted local oral surgery partners' })).toHaveCount(1);
+    await expect(main.locator('a[href^="tel:"]')).toHaveCount(0);
   });
 
   test('every page ends with the copyright line', async ({ page }) => {

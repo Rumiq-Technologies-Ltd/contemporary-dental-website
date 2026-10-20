@@ -42,23 +42,18 @@ export default async function ServicePage({ params }: ServicePageProps) {
   const service = findService(lang, (await params).slug);
   if (!service) notFound();
   const related = getServicePages(lang).filter(item => item.id !== service.id);
-  const paragraphs = <>
+  const copy = <Prose>
     {service.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
     {service.note && <p><em>{service.note}</em></p>}
-  </>;
+    {service.callButtons && <div className={styles.actions}>
+      {offices.map(office => <CallButton key={office.id} office={office} />)}
+    </div>}
+  </Prose>;
   return <PageLayout>
     <PageIntro title={service.heading} lead={service.lead} />
-    {service.plainIntro
-      ? <Prose>{paragraphs}</Prose>
-      : <div className={styles.split}>
-        <Prose>
-          {paragraphs}
-          <div className={styles.actions}>
-            {offices.map(office => <CallButton key={office.id} office={office} />)}
-          </div>
-        </Prose>
-        <PagePhoto photo={service.image} priority />
-      </div>}
+    {service.image
+      ? <div className={styles.split}>{copy}<PagePhoto photo={service.image} objectPosition={service.imagePosition} priority /></div>
+      : copy}
     <TreatmentIllustrations service={service.id} />
     <Section id="more-services" title={t.detail.otherServices} wide>
       <CardGrid>
