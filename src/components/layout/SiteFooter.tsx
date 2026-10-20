@@ -42,7 +42,6 @@ export async function SiteFooter() {
         {legalLinks.map(link => <Link key={link.href} href={link.href}>{t.legal[link.key]}</Link>)}
       </nav>
     </div>
-    <p className={styles.legalName}>{site.legalName}</p>
     <p className={styles.copyright}>{fill(t.footer.copyright, { year: String(site.copyrightYear), name: site.name })}</p>
   </footer>;
 }
