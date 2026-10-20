@@ -148,4 +148,7 @@
   .topBarContacts a, .languageLink, .languageCurrent { padding-block: 12px; margin-block: -12px; }
   .languageLink, .languageCurrent { min-height: 44px; }
   .siteFooter a { padding-block: 12px; margin-block: -12px; }
+  /* The footer's boxed links and button are already 44px tall. The negative margins above would pull
+     their wrapped rows into each other, so they keep their own size. */
+  .footerTop a { padding-block: 0; margin-block: 0; }
 }
