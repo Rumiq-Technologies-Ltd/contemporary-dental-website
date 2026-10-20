@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
 import { Steps } from '@/components/sections/Steps';
 import { Problems } from '@/components/sections/Problems';
-import { WhyUs } from '@/components/sections/WhyUs';
 import { FaqBand } from '@/components/sections/HomeBands';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { JsonLd } from '@/components/page/JsonLd';
@@ -24,9 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-// Order follows the visitor's decision: the promise, how a visit works, the problem they came with,
-// why us, then the answers that remove the last objections. Services, the team, about and contact
-// live on their own pages, so each piece of information has one place. The footer closes with the action.
+// Order follows the visitor's decision: the promise, how a visit works and what to expect from the practice,
+// the problem they came with, then the answers that remove the last objections. Services, the team, about
+// and contact live on their own pages, so each piece of information has one place. The footer closes with the action.
 export default async function HomePage() {
   const lang = await getLocale();
   return <>
@@ -34,7 +33,6 @@ export default async function HomePage() {
       <Hero />
       <Steps />
       <Problems />
-      <WhyUs />
       <FaqBand />
     </main>
     <div className="page-shell"><SiteFooter /></div>

@@ -1,7 +1,7 @@
 // Inline SVG icons drawn with currentColor, so each icon takes the colour of the
 // element around it. The tooth and heart shapes come from the practice's original icons.
 
-type IconName = 'tooth' | 'arrow' | 'heart' | 'menu' | 'phone' | 'check';
+type IconName = 'tooth' | 'arrow' | 'heart' | 'menu' | 'phone' | 'check' | 'clock' | 'shield' | 'globe' | 'headphones' | 'users';
 
 interface IconDefinition {
   viewBox: string;
@@ -41,6 +41,31 @@ const iconDefinitions: Record<IconName, IconDefinition> = {
     viewBox: '0 0 24 24',
     strokeWidth: 2.2,
     paths: ['M5 12.5l4.2 4.2L19 7'],
+  },
+  clock: {
+    viewBox: '0 0 24 24',
+    strokeWidth: 2,
+    paths: ['M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z', 'M12 6v6l4 2'],
+  },
+  shield: {
+    viewBox: '0 0 24 24',
+    strokeWidth: 2,
+    paths: ['M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z', 'M9 12l2 2 4-4'],
+  },
+  globe: {
+    viewBox: '0 0 24 24',
+    strokeWidth: 2,
+    paths: ['M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z', 'M2 12h20', 'M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z'],
+  },
+  headphones: {
+    viewBox: '0 0 24 24',
+    strokeWidth: 2,
+    paths: ['M3 18v-6a9 9 0 0 1 18 0v6', 'M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z'],
+  },
+  users: {
+    viewBox: '0 0 24 24',
+    strokeWidth: 2,
+    paths: ['M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2', 'M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0z', 'M23 21v-2a4 4 0 0 0-3-3.87', 'M16 3.13a4 4 0 0 1 0 7.75'],
   },
 };
 
