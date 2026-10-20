@@ -95,7 +95,7 @@ test('large screens show the navigation bar and link to the right pages', async 
   const nav = page.getByRole('navigation', { name: 'Primary navigation' });
   await expect(nav).toBeVisible();
   await expect(page.getByLabel('Menu — open navigation')).toBeHidden();
-  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance and payment$/, /^Contemporary Smile Club$/, /^About$/, /^Location$/]);
+  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance and payment$/, /^Contemporary Smile Club$/, /^About$/, /^Locations$/]);
   await nav.getByRole('link', { name: 'Emergency' }).click();
   await expect(page).toHaveURL(/\/emergency$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Emergency dental care');
@@ -109,6 +109,12 @@ test('large screens show the navigation bar and link to the right pages', async 
   await page.goto('/');
   await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'About' }).click();
   await expect(page).toHaveURL(/\/about$/);
+  // Locations opens a dropdown with one link per office.
+  const primary = page.getByRole('navigation', { name: 'Primary navigation' });
+  await primary.getByRole('link', { name: 'Locations' }).hover();
+  await expect(primary.getByRole('link', { name: 'Orlando' })).toBeVisible();
+  await primary.getByRole('link', { name: 'Ocoee' }).click();
+  await expect(page).toHaveURL(/\/locations\/ocoee$/);
 });
 
 test('phones and tablets open the menu, which ends with the request and call actions', async ({ page }) => {

@@ -94,7 +94,7 @@ const en = {
   },
   problems: {
     label: 'Common problems',
-    heading: 'Common problems, clear solutions',
+    heading: 'Your smile concerns, simplified',
     allServices: 'All services',
     items: {
       emergency: {
@@ -108,8 +108,12 @@ const en = {
         tab: 'Missing teeth',
         headline: 'Missing a tooth?',
         big: 'Two ways',
-        text: 'An implant replaces a missing tooth root and supports a crown or another replacement tooth. Dentures replace missing teeth with a removable replacement.',
+        lines: [
+          'An implant replaces a missing tooth root or supports a crown or another replacement tooth.',
+          'Dentures replace missing teeth with a removable replacement.',
+        ],
         linkLabel: 'About dental implants',
+        dentureLinkLabel: 'Dentures',
       },
       alignersBraces: {
         tab: 'Crooked teeth',
@@ -122,7 +126,7 @@ const en = {
         tab: 'Check-up due',
         headline: 'Due a check-up?',
         big: 'Every 6 months',
-        text: 'Regular cleanings and check-ups every six months help us catch problems early. X-rays are taken when Dr. Khan decides they are needed.',
+        text: 'Regular cleanings and check-ups every six months help us catch problems early. X-rays are taken when a dentist decides they are needed.',
         linkLabel: 'About cleanings and check-ups',
       },
       cosmetic: {
@@ -136,6 +140,10 @@ const en = {
   },
   reviews: {
     heading: 'What our patients say',
+    allReviews: 'Read all patient reviews',
+    pageTitle: 'Patient reviews',
+    pageDescription: 'What patients say about their visits to Contemporary Dental Care, in their own words and shared with their written permission.',
+    pageLead: 'In their own words, shared with their written permission.',
   },
   offices: {
     directions: 'Get directions',
@@ -245,7 +253,7 @@ export const home: Record<Locale, HomeMessages> = {
     },
     problems: {
       label: 'Problemas frecuentes',
-      heading: 'Problemas frecuentes, soluciones claras',
+      heading: 'Sus inquietudes sobre su sonrisa, simplificadas',
       allServices: 'Todos los servicios',
       items: {
         emergency: {
@@ -259,8 +267,12 @@ export const home: Record<Locale, HomeMessages> = {
           tab: 'Dientes faltantes',
           headline: '¿Le falta un diente?',
           big: 'Dos opciones',
-          text: 'Un implante reemplaza la raíz de un diente que falta y sostiene una corona u otro diente de reemplazo. Las prótesis dentales reemplazan los dientes faltantes con un aparato removible.',
+          lines: [
+            'Un implante reemplaza la raíz de un diente que falta o sostiene una corona u otro diente de reemplazo.',
+            'Las prótesis dentales reemplazan los dientes faltantes con un aparato removible.',
+          ],
           linkLabel: 'Acerca de los implantes dentales',
+          dentureLinkLabel: 'Prótesis dentales',
         },
         alignersBraces: {
           tab: 'Dientes torcidos',
@@ -273,7 +285,7 @@ export const home: Record<Locale, HomeMessages> = {
           tab: 'Revisión pendiente',
           headline: '¿Le toca una revisión?',
           big: 'Cada 6 meses',
-          text: 'Las limpiezas y revisiones regulares cada seis meses nos ayudan a detectar problemas a tiempo. Las radiografías se toman cuando el Dr. Khan decide que son necesarias.',
+          text: 'Las limpiezas y revisiones regulares cada seis meses nos ayudan a detectar problemas a tiempo. Las radiografías se toman cuando un dentista decide que son necesarias.',
           linkLabel: 'Acerca de las limpiezas y revisiones',
         },
         cosmetic: {
@@ -285,9 +297,13 @@ export const home: Record<Locale, HomeMessages> = {
         },
       },
     },
-    // Review: a qualified Spanish speaker checks this heading before it is published.
+    // Review: a qualified Spanish speaker checks this block before it is published.
     reviews: {
       heading: 'Lo que dicen nuestros pacientes',
+      allReviews: 'Leer todas las opiniones de pacientes',
+      pageTitle: 'Opiniones de pacientes',
+      pageDescription: 'Lo que dicen los pacientes sobre sus visitas a Contemporary Dental Care, en sus propias palabras y compartido con su permiso por escrito.',
+      pageLead: 'En sus propias palabras, compartidas con su permiso por escrito.',
     },
     offices: {
       directions: 'Cómo llegar',
@@ -392,7 +408,7 @@ export const home: Record<Locale, HomeMessages> = {
     },
     problems: {
       label: 'Problemas comuns',
-      heading: 'Problemas comuns, soluções claras',
+      heading: 'Suas preocupações com o sorriso, simplificadas',
       allServices: 'Todos os serviços',
       items: {
         emergency: {
@@ -406,8 +422,12 @@ export const home: Record<Locale, HomeMessages> = {
           tab: 'Dentes ausentes',
           headline: 'Falta algum dente?',
           big: 'Duas opções',
-          text: 'Um implante substitui a raiz de um dente ausente e sustenta uma coroa ou outro dente de substituição. As próteses dentárias substituem dentes ausentes com um aparelho removível.',
+          lines: [
+            'Um implante substitui a raiz de um dente ausente ou sustenta uma coroa ou outro dente de substituição.',
+            'As próteses dentárias substituem dentes ausentes com um aparelho removível.',
+          ],
           linkLabel: 'Sobre implantes dentários',
+          dentureLinkLabel: 'Próteses dentárias',
         },
         alignersBraces: {
           tab: 'Dentes tortos',
@@ -420,7 +440,7 @@ export const home: Record<Locale, HomeMessages> = {
           tab: 'Revisão pendente',
           headline: 'Está na hora da revisão?',
           big: 'A cada 6 meses',
-          text: 'Limpezas e revisões regulares a cada seis meses nos ajudam a identificar problemas cedo. As radiografias são feitas quando o Dr. Khan decide que são necessárias.',
+          text: 'Limpezas e revisões regulares a cada seis meses nos ajudam a identificar problemas cedo. As radiografias são feitas quando um dentista decide que são necessárias.',
           linkLabel: 'Sobre limpezas e revisões',
         },
         cosmetic: {
@@ -432,9 +452,13 @@ export const home: Record<Locale, HomeMessages> = {
         },
       },
     },
-    // Review: a qualified Portuguese speaker checks this heading before it is published.
+    // Review: a qualified Portuguese speaker checks this block before it is published.
     reviews: {
       heading: 'O que nossos pacientes dizem',
+      allReviews: 'Ler todas as avaliações de pacientes',
+      pageTitle: 'Avaliações de pacientes',
+      pageDescription: 'O que os pacientes dizem sobre suas consultas na Contemporary Dental Care, nas palavras deles e compartilhado com sua permissão por escrito.',
+      pageLead: 'Nas palavras deles, compartilhadas com sua permissão por escrito.',
     },
     offices: {
       directions: 'Como chegar',

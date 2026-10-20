@@ -11,9 +11,10 @@ export interface Problem {
   headline: string;
   big: string;
   bigText?: string;
-  text: string;
-  href: string;
-  linkLabel: string;
+  /** The panel text, one paragraph per line. */
+  lines: readonly string[];
+  /** One black button per related page. */
+  links: readonly { href: string; label: string }[];
   photo: StaticImageData;
 }
 
@@ -79,10 +80,10 @@ export function ProblemTabs({ problems, label }: ProblemTabsProps) {
       </div>
       <div className={styles.fact}>
         <p className={styles.big} data-fact="">{problem.big}</p>
-        <p data-fact="">{problem.text}</p>
+        {problem.lines.map(line => <p key={line} data-fact="">{line}</p>)}
         {problem.bigText && <p className={styles.bigText} data-fact="">{problem.bigText}</p>}
         <div className={styles.actions} data-fact="">
-          <Link href={problem.href} className="pill pill-dark">{problem.linkLabel}</Link>
+          {problem.links.map(link => <Link key={link.href} href={link.href} className="pill pill-dark">{link.label}</Link>)}
         </div>
       </div>
     </div>)}

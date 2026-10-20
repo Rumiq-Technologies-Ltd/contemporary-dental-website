@@ -2,8 +2,8 @@
 // A review appears only when its reviewer's written authorization is recorded (the sheet's
 // "Authorization received?" column) and it has no hold. Never edit a reviewer's words to clear a
 // hold: leave the review out instead.
-// Written authorization for Judian D., Declan R., Melba Z., Nilson D. and Steph was confirmed by the
-// practice on 20 October 2026. Record it in the spreadsheet's column too, so both stay in step.
+// Written authorization for all eight reviewers was confirmed by the practice on 20 October 2026.
+// Record it in the spreadsheet's column too, so both stay in step.
 
 export interface Testimonial {
   id: string;
@@ -12,8 +12,13 @@ export interface Testimonial {
   quote: string;
   /** Mirrors the spreadsheet's "Authorization received?" column. */
   authorizationReceived: boolean;
-  /** Why the review cannot be published as written, when that is the case. */
+  /** Why the review cannot be published anywhere as written. */
   hold?: string;
+  /**
+   * Why the review stays off the homepage, which is an ad landing page with its own banned wording.
+   * It still appears on the reviews page.
+   */
+  homepageHold?: string;
 }
 
 export const testimonials: readonly Testimonial[] = [
@@ -27,7 +32,7 @@ export const testimonials: readonly Testimonial[] = [
     id: 'brian-c',
     name: 'Brian C.',
     quote: 'Had an emergency dental situation that needed to be addressed before I left town in the morning. They were available on Sunday and did a great job taking care of my problem. Dr Khan was very personable and professional. Highly recommend.',
-    authorizationReceived: false,
+    authorizationReceived: true,
     hold: 'Says the practice was available on a Sunday. C14 §3.1 bars Sunday availability claims, and a review cannot be edited.',
   },
   {
@@ -46,8 +51,8 @@ export const testimonials: readonly Testimonial[] = [
     id: 'mayank-o',
     name: 'Mayank O.',
     quote: 'I\'ve been seeing Dr. Khan for a while now, and I can honestly say it\'s the best dental experience I\'ve had. Dr. Khan is not only skilled, but also down-to-earth and easy to talk to. You never feel rushed, and they actually take the time to explain what\'s going on and why something needs to be done. . . It doesn\'t feel like a typical clinic — there\'s a calm vibe, and you can tell they\'ve put effort into making the space feel welcoming. If you\'re someone who usually dreads going to the dentist, this place will change your mind. Dr. Khan\'s approach is thoughtful, honest, and genuinely caring. I\'m really glad I found this clinic.',
-    authorizationReceived: false,
-    hold: 'Uses "best", which the landing page brief bars on the homepage (tests/launch.spec.ts).',
+    authorizationReceived: true,
+    homepageHold: 'Uses "best", which the landing page brief bars on the homepage (tests/launch.spec.ts).',
   },
   {
     id: 'nilson-d',
@@ -65,10 +70,13 @@ export const testimonials: readonly Testimonial[] = [
     id: 'samuel-j',
     name: 'Samuel J.',
     quote: 'Best staffing I have ever came across on . . . very friendly and kind and helpful in any kind of way, made me feel like family while I was in there . . . if you want your teeth clean and other great service I definitely recommend this place . . . Front desk was great, best customer service I have ever had.',
-    authorizationReceived: false,
-    hold: 'Uses "best", which the landing page brief bars on the homepage (tests/launch.spec.ts).',
+    authorizationReceived: true,
+    homepageHold: 'Uses "best", which the landing page brief bars on the homepage (tests/launch.spec.ts).',
   },
 ];
 
-/** The reviews that may be shown: authorized and with no hold. */
+/** The reviews that may be shown anywhere: authorized and with no hold. They all appear on the reviews page. */
 export const publishedTestimonials: readonly Testimonial[] = testimonials.filter(review => review.authorizationReceived && !review.hold);
+
+/** The published reviews that may also appear on the homepage. */
+export const homepageTestimonials: readonly Testimonial[] = publishedTestimonials.filter(review => !review.homepageHold);

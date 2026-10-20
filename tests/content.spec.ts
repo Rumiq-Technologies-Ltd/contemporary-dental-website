@@ -28,7 +28,7 @@ const pages: readonly { path: string; title: string; heading: string }[] = [
   { path: '/membership', title: 'Contemporary Smile Club | Contemporary Dental Care', heading: 'Contemporary Smile Club' },
   { path: '/pricing', title: 'Pricing and Offers | Contemporary Dental Care', heading: 'Pricing and offers' },
   { path: '/faq', title: 'Frequently Asked Questions | Contemporary Dental Care', heading: 'Frequently asked questions' },
-  { path: '/contact', title: 'Contact Us | Contemporary Dental Care', heading: 'Location' },
+  { path: '/contact', title: 'Contact Us | Contemporary Dental Care', heading: 'Locations' },
   { path: '/privacy', title: 'Privacy Policy | Contemporary Dental Care', heading: 'Privacy policy' },
   { path: '/privacy/notice-of-privacy-practices', title: 'Notice of Privacy Practices | Contemporary Dental Care', heading: 'Notice of Privacy Practices' },
   { path: '/terms', title: 'Terms of Use | Contemporary Dental Care', heading: 'Terms of use' },
@@ -97,7 +97,9 @@ test.describe('held items', () => {
     expect(sitemap).toContain('/services/implants');
     expect(sitemap).toContain('/contact');
     expect(sitemap).not.toMatch(/membership|privacy|terms|hero-clean/i);
-    expect(sitemap).not.toContain('/locations');
+    // Each office has its own page; the old locations list is not a page of its own.
+    expect(sitemap).toContain('/locations/orlando');
+    expect(sitemap).not.toMatch(/\/locations<\/loc>/);
     expect(sitemap).not.toContain('/payment-financing');
   });
 
@@ -242,12 +244,52 @@ test.describe('Ocoee office', () => {
     await expect(page.locator('main').getByText('2910 Maguire Rd, Suite 1005, Ocoee, FL 34761')).toBeVisible();
   });
 
-  test('the Ocoee details are on the contact page, and the old office address leads there', async ({ page }) => {
+  test('Ocoee has its own page with its address, phone, Monday hours and directions', async ({ page }) => {
     test.skip(!ocoeeEnabled, 'Ocoee is paused in content/site.ts');
-    await page.goto('/locations/ocoee');
-    await expect(page).toHaveURL(/\/contact$/);
+    const response = await page.goto('/locations/ocoee');
+    expect(response?.status()).toBe(200);
+    await expect(page).toHaveURL(/\/locations\/ocoee$/);
+    await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Our\s+Ocoee\s+office/);
+    await expect(page).toHaveTitle('Dental Care in Ocoee | Contemporary Dental Care');
+    await expect(page.locator('#ocoee').getByText('2910 Maguire Rd, Suite 1005, Ocoee, FL 34761')).toBeVisible();
+    await expect(page.locator('#ocoee').getByRole('link', { name: /directions/i })).toBeVisible();
     await expect(page.locator('#ocoee').getByRole('heading', { name: 'Ocoee office' })).toBeVisible();
     await expect(page.locator('#ocoee')).toContainText('Open Mondays, 9:00am to 5:00pm');
     await expect(page.locator('#ocoee').getByRole('link', { name: '689-407-3015' })).toHaveAttribute('href', 'tel:+16894073015');
+  });
+});
+
+test.describe('website fixes', () => {
+  test('homepage-only questions appear on the homepage and are left off the FAQ page', async ({ page }) => {
+    await page.goto('/');
+    const home = page.locator('#faq');
+    await expect(home.getByText('Do you offer financing?', { exact: true })).toBeVisible();
+    await expect(home.getByText("I'm nervous about dental visits. What can I do?", { exact: true })).toBeVisible();
+    await expect(home.getByText('Do you speak Spanish or Portuguese?', { exact: true })).toHaveCount(0);
+    await page.goto('/faq');
+    const main = page.locator('main');
+    for (const question of ['Do you accept my insurance?', 'Do you offer financing?', "I'm nervous about dental visits. What can I do?"]) {
+      await expect(main.getByText(question, { exact: true })).toHaveCount(0);
+    }
+    await expect(main.getByText('Do you speak Spanish or Portuguese?', { exact: true })).toHaveCount(1);
+    // Answers sit in closed disclosures; open the cancellation question to reach its link.
+    await main.getByText('What is your cancellation policy?', { exact: true }).click();
+    await expect(main.getByRole('link', { name: 'Insurance and Financing page' })).toHaveAttribute('href', '/insurance#financial-policy');
+  });
+
+  test('the missing teeth tab gives both answers and links to implants and dentures', async ({ page }) => {
+    await page.goto('/');
+    await page.getByRole('tab', { name: 'Missing teeth' }).click();
+    const panel = page.locator('#problem-panel-implants');
+    await expect(panel.getByText('Dentures replace missing teeth with a removable replacement.')).toBeVisible();
+    await expect(panel.getByRole('link', { name: 'About dental implants' })).toHaveAttribute('href', '/services/implants');
+    await expect(panel.getByRole('link', { name: 'Dentures' })).toHaveAttribute('href', '/services/dentures');
+  });
+
+  test('every page ends with the copyright line', async ({ page }) => {
+    for (const path of ['/', '/faq', '/locations/orlando']) {
+      await page.goto(path);
+      await expect(page.getByText('Copyright © 2026 Contemporary Dental Care. All rights reserved.')).toBeVisible();
+    }
   });
 });

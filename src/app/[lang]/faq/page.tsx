@@ -3,7 +3,7 @@ import { FaqList } from '@/components/page/FaqList';
 import { JsonLd } from '@/components/page/JsonLd';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
-import { getFaqs } from '@/content/faq';
+import { getFaqs, homepageOnlyFaqs } from '@/content/faq';
 import { routes } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { localeTags } from '@/i18n/locales';
@@ -18,7 +18,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function FaqPage() {
   const lang = await getLocale();
-  const faqs = getFaqs(lang);
+  // Questions that live only on the homepage are left out, so none appears twice on the site.
+  const faqs = getFaqs(lang).filter(item => !homepageOnlyFaqs.includes(item.id));
   // Structured data repeats exactly the questions and answers shown on the page.
   const structuredData = {
     '@context': 'https://schema.org',

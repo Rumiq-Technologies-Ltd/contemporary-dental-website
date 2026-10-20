@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { formatAddress, legalLinks, offices, routes, site } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
+import { fill } from '@/i18n/fill';
 import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
 import { localizedNavigation } from './navigation';
@@ -42,5 +43,6 @@ export async function SiteFooter() {
       </nav>
     </div>
     <p className={styles.legalName}>{site.legalName}</p>
+    <p className={styles.copyright}>{fill(t.footer.copyright, { year: String(site.copyrightYear), name: site.name })}</p>
   </footer>;
 }

@@ -1,7 +1,7 @@
 // Inline SVG icons drawn with currentColor, so each icon takes the colour of the
 // element around it. The tooth and heart shapes come from the practice's original icons.
 
-type IconName = 'tooth' | 'arrow' | 'heart' | 'menu' | 'phone' | 'check' | 'shield' | 'globe' | 'family' | 'cross' | 'addPerson' | 'heartCare';
+type IconName = 'tooth' | 'arrow' | 'heart' | 'menu' | 'chevron' | 'phone' | 'check' | 'shield' | 'globe' | 'family' | 'cross' | 'addPerson' | 'heartCare';
 
 // Most icons are line drawings. A filled icon is a traced outline, so it has no stroke width.
 type IconDefinition =
@@ -30,6 +30,11 @@ const iconDefinitions: Record<IconName, IconDefinition> = {
     viewBox: '0 0 24 24',
     strokeWidth: 2,
     paths: ['M4 7h16M4 12h16M4 17h10'],
+  },
+  chevron: {
+    viewBox: '0 0 24 24',
+    strokeWidth: 2,
+    paths: ['M6 9l6 6 6-6'],
   },
   phone: {
     viewBox: '0 0 24 24',

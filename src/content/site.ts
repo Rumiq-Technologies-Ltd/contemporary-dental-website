@@ -31,6 +31,8 @@ export const site = {
   email: 'info@contemporarydentalcare.com',
   afterHoursPhone: '407-625-5440',
   afterHoursHref: 'tel:+14076255440',
+  /** The year in the footer's copyright line. */
+  copyrightYear: 2026,
 } as const;
 
 const orlando: Office = {
@@ -63,6 +65,11 @@ export function formatAddress(office: Office): string {
 /** Where an office's details are on the contact page. */
 export function officeAnchor(office: Office): string {
   return `${routes.contact}#${office.id}`;
+}
+
+/** An office's own page, for example /locations/ocoee, where ads for that area can land. */
+export function officePath(office: Office): string {
+  return `/locations/${office.id}`;
 }
 
 /** Google Maps directions to an office. A plain link, so the page loads no map or third-party frame. */
@@ -99,10 +106,14 @@ export const routes = {
   noticeOfPrivacyPractices: '/privacy/notice-of-privacy-practices',
   terms: '/terms',
   accessibility: '/accessibility',
+  reviews: '/reviews',
   comingSoon: '/coming-soon',
 } as const;
 
-/** Main navigation. Labels come from messages.common.nav[key]; numbers are fixed. */
+/**
+ * Main navigation. Labels come from messages.common.nav[key]; numbers are fixed. An entry with
+ * officeLinks opens a dropdown with one link per office page.
+ */
 export const navigation = [
   { key: 'services', href: routes.services, number: '01' },
   { key: 'emergency', href: routes.emergency, number: '02' },
@@ -110,7 +121,7 @@ export const navigation = [
   { key: 'insurance', href: routes.insurance, number: '04' },
   { key: 'club', href: routes.membership, number: '05' },
   { key: 'about', href: routes.about, number: '06' },
-  { key: 'contact', href: routes.contact, number: '07' },
+  { key: 'contact', href: routes.contact, number: '07', officeLinks: true },
 ] as const;
 
 /** Legal pages are English only, so these links always point at the English URLs. */

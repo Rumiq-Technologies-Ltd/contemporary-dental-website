@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from 'next';
-import { MobileCallBar } from '@/components/layout/MobileCallBar';
 import styles from '@/components/layout/layout.module.css';
 import { PageEffects } from '@/components/motion/PageEffects';
 import { SiteHeader } from '@/components/layout/SiteHeader';
@@ -53,7 +52,6 @@ export default async function LocaleLayout({ children }: Readonly<{ children: Re
         <SiteHeader />
       </div>
       {children}
-      <MobileCallBar />
       <PageEffects />
     </body>
   </html>;

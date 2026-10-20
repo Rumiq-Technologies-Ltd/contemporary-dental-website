@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { getServicePages } from '@/content/services';
-import { routes } from '@/content/site';
+import { officePath, offices, routes } from '@/content/site';
 import { defaultLocale, isEnglishOnlyPath, localePath, localeTags, publicLocales } from '@/i18n/locales';
 import { siteUrl } from '@/lib/siteUrl';
 
@@ -17,7 +17,7 @@ function entriesFor(path: string): MetadataRoute.Sitemap {
   }));
 }
 
-// Public pages only. Both offices are on the contact page. Membership is not built, and the
+// Public pages only. Both offices are on the contact page, and each has its own page. Membership is not built, and the
 // legal pages wait for counsel review.
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths: string[] = [
@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...getServicePages(defaultLocale).map(service => service.href),
     routes.emergency, routes.technology,
     routes.newPatients, routes.insurance, routes.membership, routes.pricing, routes.faq,
-    routes.contact, routes.accessibility,
+    routes.reviews, routes.contact, ...offices.map(officePath), routes.accessibility,
   ];
   return paths.flatMap(entriesFor);
 }

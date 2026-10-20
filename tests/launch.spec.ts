@@ -63,7 +63,6 @@ test('the coming-soon page is not indexed and announces each language in that la
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   await expect(page.locator('article[lang^="es"]').getByRole('heading', { name: 'Se Habla Español' })).toBeVisible();
   await expect(page.locator('article[lang^="pt"]').getByRole('heading', { name: 'Falamos Português' })).toBeVisible();
-  await expect(page.locator('a[href="tel:+13215228577"]').first()).toBeVisible();
 });
 
 test('the homepage language links open the coming-soon page until those languages are published', async ({ page }) => {
@@ -75,11 +74,21 @@ test('the homepage language links open the coming-soon page until those language
   }
 });
 
-test('a patient review appears on the homepage only when it is authorized and has no hold', async ({ page }) => {
+test('a patient review appears on the homepage only when it is authorized and has no hold of either kind', async ({ page }) => {
   await page.goto('/');
   for (const review of testimonials) {
-    const published = review.authorizationReceived && !review.hold;
-    await expect(page.locator('#reviews figcaption').filter({ hasText: review.name })).toHaveCount(published ? 1 : 0);
+    const shown = review.authorizationReceived && !review.hold && !review.homepageHold;
+    await expect(page.locator('#reviews figcaption').filter({ hasText: review.name })).toHaveCount(shown ? 1 : 0);
+  }
+  await expect(page.locator('#reviews').getByRole('link', { name: 'Read all patient reviews' })).toHaveAttribute('href', '/reviews');
+});
+
+test('the reviews page shows every authorized review without a site-wide hold', async ({ page }) => {
+  const response = await page.goto('/reviews');
+  expect(response?.status()).toBe(200);
+  for (const review of testimonials) {
+    const shown = review.authorizationReceived && !review.hold;
+    await expect(page.locator('figcaption').filter({ hasText: review.name })).toHaveCount(shown ? 1 : 0);
   }
 });
 

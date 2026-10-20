@@ -50,12 +50,11 @@ const nextConfig: NextConfig = {
       { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=(), payment=(), usb=(), serial=(), bluetooth=(), hid=(), browsing-topics=(), interest-cohort=()' },
     ] }];
   },
-  // The office pages and the old locations list are now the contact page; the payment page is the
-  // insurance page. The old addresses keep working so existing links do not fail.
+  // The old locations list is now the contact page (each office has its own page under /locations);
+  // the payment page is the insurance page. The old addresses keep working so existing links do not fail.
   async redirects() {
     return [
       { source: '/locations', destination: '/contact', permanent: true },
-      { source: '/locations/:office', destination: '/contact', permanent: true },
       { source: '/payment-financing', destination: '/insurance', permanent: true },
       { source: '/about/team', destination: '/about', permanent: true },
     ];

@@ -22,3 +22,7 @@
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
   font-size: 22px; font-weight: 700; line-height: 1; text-transform: uppercase; color: var(--color-ink);
 }
+
+/* The reviews page: the same cards on an ink panel, matching the homepage band. */
+.band { padding: clamp(28px, 4vw, 56px); border-radius: var(--radius-panel); background: var(--color-ink); }
+.band .list li:last-child { margin-bottom: 0; }
