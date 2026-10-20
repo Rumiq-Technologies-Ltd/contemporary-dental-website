@@ -11,7 +11,7 @@ import { Highlights } from './Highlights';
 import styles from './steps.module.css';
 
 // One icon per card, in the order the cards appear in the copy.
-const cardIcons: readonly IconName[] = ['addPerson', 'lotus', 'shield', 'globe', 'headphones', 'family'];
+const cardIcons: readonly IconName[] = ['addPerson', 'lotus', 'shield', 'globe', 'heartCare', 'family'];
 
 export async function Steps() {
   const lang = await getLocale();
@@ -45,6 +45,7 @@ export async function Steps() {
       <ul className={styles.cards} data-stagger="">
         {cards.map((card, index) => <li key={card.title} style={{ '--i': index } as CSSProperties}>
           <article className={styles.card} data-reveal="" data-tilt="9">
+            <span className={styles.number} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
             <span className={styles.iconWrap}><Icon name={card.icon} /></span>
             <h3>{card.title}</h3>
             <span className={styles.subhead}>{card.subtitle}</span>

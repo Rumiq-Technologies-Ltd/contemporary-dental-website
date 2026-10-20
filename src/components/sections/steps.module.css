@@ -16,39 +16,36 @@ section.steps { grid-template-columns: minmax(0, 1fr); row-gap: 20px; padding-to
   display: grid; gap: 48px; padding: clamp(40px, 6vw, 96px) max(clamp(20px, 4vw, 60px), calc((100% - var(--container)) / 2));
   border-radius: var(--radius-panel); background: var(--color-tint);
 }
-.intro { display: grid; justify-items: start; gap: 28px; }
-.intro h2 { font-size: clamp(2.8rem, 5.4vw, 4.8rem); }
+/* Heading on the left, its action on the right, as in the other homepage sections. */
+.intro { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 28px; }
+.intro h2 { max-width: 22ch; font-size: clamp(2.8rem, 5.4vw, 4.8rem); }
 
 /* Three columns, two on tablets, one on phones. */
-.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+.cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin: 0; padding: 0; list-style: none; }
 @media (max-width: 1024px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .cards { grid-template-columns: minmax(0, 1fr); } }
 
-/* The 3D tilt and pointer light come from the shared [data-tilt] rules in globals.css. Nothing here
-   sets transform on the card, so the tilt is not overridden. Overflow stays visible so the icon can
-   sit forward of the card in 3D. */
+/* Ink-bordered white cards on the cyan panel, like the site's other cards. The 3D tilt and pointer
+   light come from the shared [data-tilt] rules in globals.css, so nothing here sets transform on the
+   card. Overflow stays visible so the icon tile and numeral can sit forward of the card in 3D. */
 .card {
-  position: relative; display: flex; flex-direction: column; height: 100%; padding: 32px 28px;
-  border: 1px solid var(--color-line); border-radius: 12px; background: var(--color-bg);
-  box-shadow: 0 2px 4px rgb(0 0 0 / 0.04), 0 18px 32px -18px rgb(19 28 21 / 0.28);
+  position: relative; display: flex; flex-direction: column; height: 100%; padding: 28px;
+  border: 1px solid var(--color-ink); border-radius: var(--radius-card); background: var(--color-bg);
 }
-/* An accent bar draws across the foot of the card on hover. */
-.card::before {
-  content: ''; position: absolute; inset: auto 0 0; height: 4px; border-radius: 0 0 12px 12px;
-  background: var(--color-accent-ink); transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease-out);
+/* The card's position, set large and pale in the display face, echoes the site's numbered steps. */
+.number {
+  position: absolute; top: 20px; right: 24px; pointer-events: none;
+  font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: clamp(56px, 5vw, 72px); font-weight: 800; line-height: 0.8; color: var(--color-highlight);
+  transform: translateZ(20px);
 }
-.card:hover::before { transform: scaleX(1); }
+/* An ink tile with a cyan icon, the site's badge colours; it swaps to the cyan pill colours on hover. */
 .iconWrap {
-  display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; margin-bottom: 20px;
-  border-radius: 50%; background: var(--color-highlight); color: var(--color-ink); font-size: 30px;
-  transform: translateZ(40px); box-shadow: 0 0 0 8px var(--color-tint-soft); transition: scale 0.4s var(--ease-out);
+  display: flex; align-items: center; justify-content: center; width: 56px; height: 56px; margin-bottom: 24px;
+  border-radius: var(--radius-button); background: var(--color-ink); color: var(--color-accent); font-size: 28px;
+  transform: translateZ(40px); transition: background-color 0.25s, color 0.25s;
 }
-.card:hover .iconWrap { scale: 1.08; }
-/* Each icon bobs gently; the offset comes from the card's index so the row does not move in step. */
-@media (prefers-reduced-motion: no-preference) {
-  .iconWrap { animation: icon-float 5s ease-in-out infinite; animation-delay: calc(var(--i, 0) * -0.8s); }
-}
-@keyframes icon-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+.card:hover .iconWrap { background: var(--color-accent); color: var(--color-ink); }
 .card h3 {
   margin: 0 0 8px; font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
   font-size: clamp(22px, 2vw, 26px); font-weight: 700; line-height: 1.05; text-transform: uppercase; color: var(--color-ink);

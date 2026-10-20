@@ -50,7 +50,7 @@ Spanish (`/es`) and Portuguese (`/pt`) versions of the customer-facing pages are
 
 - Orlando-only alternatives for sentences that mention "both offices" or Ocoee (derived from the content file's own build notes). Review them before launch.
 - Short meta descriptions for each page (the content file gives title tags only).
-- The six cards in the "Getting good care is simple" section on the homepage use the owner's pasted section copy. Their Orlando-only wording for the new-patients card is derived from the Ocoee text, and the Spanish and Portuguese versions are drafts for native review.
+- The six cards in the "Why patients choose our practice" section on the homepage use the owner's pasted section copy. Their Orlando-only wording for the new-patients card is derived from the Ocoee text, and the Spanish and Portuguese versions are drafts for native review.
 - A privacy-policy line that no analytics, advertising tags or session replay are used, and a line about the saved-service hearts (browser storage only).
 - Generic stock photographs (see `image-credits.md`) with generic alt text. They do not show the practice.
 - Removed from the old design because the content file has no equivalent: Log In and Sign Up buttons, "Get The App", social icons and the "Best Start Up of 2023" line (a superlative claim), the smile-story video dialog, and the "coming soon" dialogs.
