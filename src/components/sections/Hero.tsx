@@ -4,6 +4,7 @@ import { photos } from '@/content/assets';
 import { whenOcoee } from '@/content/site';
 import { Screen } from '@/components/layout/Screen';
 import { SplitWords } from '@/components/motion/SplitWords';
+import { GoogleMark } from '@/components/ui/GoogleMark';
 import { getMessages } from '@/i18n/dictionaries';
 import { getLocale } from '@/i18n/server';
 import styles from './hero.module.css';
@@ -25,7 +26,7 @@ export async function Hero() {
     <div className={styles.copy}>
       <SplitWords as="h1" id="hero-title" className={styles.headline} text={headline} delay={100} />
       <p className={styles.trust} data-load="" style={delay(650)}>
-        <span>{t.trustReviews}</span>
+        <span><GoogleMark className={styles.google} label="Google" />{t.trustReviews}</span>
       </p>
     </div>
   </Screen>;
