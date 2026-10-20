@@ -22,6 +22,8 @@ export interface ServiceCopy {
   listLabel: string;
   description: string;
   paragraphs: readonly string[] | { withOcoee: readonly string[]; orlandoOnly: readonly string[] };
+  /** A closing note, shown in italics after the paragraphs. */
+  note?: string;
 }
 
 const enItems: Record<ServiceId, ServiceCopy> = {
@@ -55,9 +57,14 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     summary: 'including same-day when suitable',
     listLabel: 'Tooth extractions, including same-day when suitable',
     description: 'Extraction may be the right option when a tooth cannot be saved. Same-day extraction is subject to clinical suitability and availability.',
+    // The practice's copy of 20 October 2026, with "best step" as "right step" (no superlatives, by the
+    // practice's choice). The same-day wording matches C14's "clinical suitability and availability".
+    lead: 'Gentle, thoughtful care focused on your long-term health and comfort.',
     paragraphs: [
-      'When a tooth cannot be saved, extraction may be the right option. Extractions are one of our same-day services, subject to clinical suitability and availability. Dr. Khan explains your options before any treatment starts. Some types of oral surgery are referred to another provider.',
+      'When a tooth is severely damaged or cannot be saved, a gentle extraction is often the right step to relieve pain and protect the rest of your smile. We provide same-day extractions whenever clinically appropriate and schedule permitting.',
+      'Before any treatment begins, Dr. Sheryar Khan will walk you through your diagnostic results, explain your options in clear language, and make sure you feel completely comfortable with your care plan.',
     ],
+    note: 'Note: For specialized or complex surgical cases beyond general care, we work closely with trusted local oral surgery partners to ensure you receive the safest treatment possible.',
   },
   restorative: {
     title: 'Fillings and restorative care',
@@ -219,9 +226,12 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: 'incluidas las del mismo día cuando resulte adecuado',
         listLabel: 'Extracciones dentales, incluidas las del mismo día cuando resulte adecuado',
         description: 'La extracción puede ser la mejor opción cuando no es posible salvar un diente. La extracción el mismo día está sujeta a la idoneidad clínica y a la disponibilidad.',
+        lead: 'Atención amable y cuidadosa, centrada en su salud y comodidad a largo plazo.',
         paragraphs: [
-          'Cuando no es posible salvar un diente, la extracción puede ser la mejor opción. Las extracciones son uno de nuestros servicios del mismo día, sujetas a la idoneidad clínica y a la disponibilidad. El Dr. Khan le explica sus opciones antes de que comience cualquier tratamiento. Algunos tipos de cirugía oral se derivan a otro profesional.',
+          'Cuando un diente está muy dañado o no se puede salvar, una extracción cuidadosa suele ser el paso adecuado para aliviar el dolor y proteger el resto de su sonrisa. Realizamos extracciones el mismo día siempre que sea clínicamente apropiado y la agenda lo permita.',
+          'Antes de comenzar cualquier tratamiento, el Dr. Sheryar Khan revisará con usted los resultados de su diagnóstico, le explicará sus opciones en un lenguaje claro y se asegurará de que se sienta completamente cómodo con su plan de atención.',
         ],
+        note: 'Nota: para casos quirúrgicos especializados o complejos que van más allá de la atención general, trabajamos en estrecha colaboración con cirujanos orales locales de confianza para que reciba el tratamiento más seguro posible.',
       },
       restorative: {
         title: 'Empastes y atención restauradora',
@@ -357,9 +367,12 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: 'inclusive no mesmo dia, quando adequado',
         listLabel: 'Extrações dentárias, inclusive no mesmo dia, quando adequado',
         description: 'A extração pode ser a melhor opção quando um dente não pode ser salvo. A extração no mesmo dia está sujeita à adequação clínica e à disponibilidade.',
+        lead: 'Cuidado gentil e atencioso, focado na sua saúde e no seu conforto a longo prazo.',
         paragraphs: [
-          'Quando um dente não pode ser salvo, a extração pode ser a melhor opção. As extrações são um dos nossos serviços no mesmo dia, sujeitas à adequação clínica e à disponibilidade. O Dr. Khan explica as suas opções antes de qualquer tratamento começar. Alguns tipos de cirurgia oral são encaminhados a outro profissional.',
+          'Quando um dente está muito danificado ou não pode ser salvo, uma extração cuidadosa costuma ser o passo certo para aliviar a dor e proteger o restante do seu sorriso. Realizamos extrações no mesmo dia sempre que clinicamente adequado e a agenda permitir.',
+          'Antes de qualquer tratamento começar, o Dr. Sheryar Khan vai explicar os resultados do seu diagnóstico, apresentar as suas opções em linguagem clara e garantir que você se sinta totalmente confortável com o seu plano de cuidados.',
         ],
+        note: 'Observação: para casos cirúrgicos especializados ou complexos, que vão além do atendimento geral, trabalhamos em estreita colaboração com parceiros locais de confiança em cirurgia oral para garantir que você receba o tratamento mais seguro possível.',
       },
       restorative: {
         title: 'Restaurações e cuidados restauradores',
