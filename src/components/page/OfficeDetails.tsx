@@ -20,12 +20,14 @@ interface OfficeDetailsProps {
   photo?: { name: PhotoName; alt: string };
   /** Shown under the directions link. Each line is left out when its text is empty. */
   arrivalTip?: { label: string; text: string; landmarksLabel: string; landmarks: string };
+  /** Keep the heading for screen readers only, on an office's own page where the h1 already names it. */
+  hideTitle?: boolean;
 }
 
 // One office's details on the contact page: its photograph when it has one, the facts in a table,
 // the map, a link to directions, and the arrival tip. The section id is the office id, so each office has an anchor.
-export function OfficeDetails({ office, title, tableCaption, labels, hours, services, directionsLabel, mapTitle, photo, arrivalTip }: OfficeDetailsProps) {
-  return <Section id={office.id} title={title}>
+export function OfficeDetails({ office, title, tableCaption, labels, hours, services, directionsLabel, mapTitle, photo, arrivalTip, hideTitle = false }: OfficeDetailsProps) {
+  return <Section id={office.id} title={title} hideTitle={hideTitle}>
     {photo && <PagePhoto photo={photo.name} alt={photo.alt} wide />}
     <table className={styles.table}>
       <caption className="sr-only">{tableCaption}</caption>

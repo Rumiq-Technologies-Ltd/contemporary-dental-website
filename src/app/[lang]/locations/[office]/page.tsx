@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { CallButton } from '@/components/page/Actions';
 import { OfficeBlock } from '@/components/page/OfficeBlock';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
@@ -41,7 +40,9 @@ export default async function OfficePage({ params }: OfficePageProps) {
   const lang = await getLocale();
   const t = getMessages(lang).locations[office.id];
   return <PageLayout>
-    <PageIntro title={t.pageHeading} actions={<CallButton office={office} />} />
-    <OfficeBlock office={office} />
+    {/* The h1 names the office once; the call button and the section heading would repeat it, and the
+        phone number is in the details table. */}
+    <PageIntro title={t.pageHeading} />
+    <OfficeBlock office={office} hideTitle />
   </PageLayout>;
 }

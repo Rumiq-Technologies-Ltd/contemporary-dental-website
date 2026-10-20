@@ -253,7 +253,6 @@ test.describe('Ocoee office', () => {
     await expect(page).toHaveTitle('Dental Care in Ocoee | Contemporary Dental Care');
     await expect(page.locator('#ocoee').getByText('2910 Maguire Rd, Suite 1005, Ocoee, FL 34761')).toBeVisible();
     await expect(page.locator('#ocoee').getByRole('link', { name: /directions/i })).toBeVisible();
-    await expect(page.locator('#ocoee').getByRole('heading', { name: 'Ocoee office' })).toBeVisible();
     await expect(page.locator('#ocoee')).toContainText('Open Mondays, 9:00am to 5:00pm');
     await expect(page.locator('#ocoee').getByRole('link', { name: '689-407-3015' })).toHaveAttribute('href', 'tel:+16894073015');
   });
