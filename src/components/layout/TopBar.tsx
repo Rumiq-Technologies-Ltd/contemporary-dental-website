@@ -15,6 +15,6 @@ export async function TopBar() {
       <span>{t.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></span>
       <span>{t.footer.email} <a href={`mailto:${site.email}`}>{site.email}</a></span>
     </p>
-    <LanguageSwitcher current={lang} label={t.languageLabel} comingSoon={t.languageComingSoon} />
+    <LanguageSwitcher current={lang} label={t.languageLabel} />
   </div>;
 }

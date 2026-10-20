@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test';
+import { testimonials } from '../src/content/testimonials';
 import { publicLocales } from '../src/i18n/locales';
 
 // Landing Page Brief, "What must never appear". Checked on every page that an ad can point to.
@@ -53,6 +54,33 @@ test('the thank-you page is not indexed and shows the practice numbers', async (
   await expect(page.locator('a[href="tel:+14076255440"]').first()).toBeVisible();
   // No form values in the address: the page opens with nothing after its path.
   expect(new URL(page.url()).search).toBe('');
+});
+
+test('the coming-soon page is not indexed and announces each language in that language', async ({ page }) => {
+  const response = await page.goto('/coming-soon');
+  expect(response?.status()).toBe(200);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Coming\s*soon/);
+  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+  await expect(page.locator('article[lang^="es"]').getByRole('heading', { name: 'Se Habla Español' })).toBeVisible();
+  await expect(page.locator('article[lang^="pt"]').getByRole('heading', { name: 'Falamos Português' })).toBeVisible();
+  await expect(page.locator('a[href="tel:+13215228577"]').first()).toBeVisible();
+});
+
+test('the homepage language links open the coming-soon page until those languages are published', async ({ page }) => {
+  test.skip(publicLocales.includes('es') && publicLocales.includes('pt'), 'Spanish and Portuguese are published');
+  await page.goto('/');
+  const card = page.locator('#how-it-works article').filter({ hasText: 'Se Habla Español' });
+  for (const name of ['Se Habla Español', 'Falamos Português']) {
+    await expect(card.getByRole('link', { name })).toHaveAttribute('href', /\/coming-soon$/);
+  }
+});
+
+test('a patient review appears on the homepage only when it is authorized and has no hold', async ({ page }) => {
+  await page.goto('/');
+  for (const review of testimonials) {
+    const published = review.authorizationReceived && !review.hold;
+    await expect(page.locator('#reviews figcaption').filter({ hasText: review.name })).toHaveCount(published ? 1 : 0);
+  }
 });
 
 test('the thank-you page is in Spanish and Portuguese once those languages are published', async ({ page }) => {

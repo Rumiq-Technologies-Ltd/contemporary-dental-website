@@ -24,8 +24,8 @@ test('homepage shows one primary action and the page structure', async ({ page }
     if (message.type() === 'error' && !message.location().url.includes('_rsc=')) errors.push(message.text());
   });
   await ready(page);
-  // Hero, getting good care with six cards, common problems, and questions.
-  await expect(page.locator('main > section')).toHaveCount(4);
+  // Hero, why patients choose us, common problems, what our patients say, and questions.
+  await expect(page.locator('main > section')).toHaveCount(5);
   await expect(page.locator('header')).toHaveCount(1);
   await expect(page.getByLabel('Menu — open navigation')).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Honest, patient-focused dental care in Orlando/);

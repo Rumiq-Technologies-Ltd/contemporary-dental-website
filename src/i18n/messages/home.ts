@@ -25,7 +25,6 @@ const en = {
   },
   steps: {
     heading: 'WHY PATIENTS CHOOSE OUR PRACTICE',
-    whatToExpect: 'What to expect',
     highlights: {
       label: 'Practice highlights',
       newPatients: 'New patients welcome',
@@ -135,6 +134,9 @@ const en = {
       },
     },
   },
+  reviews: {
+    heading: 'What our patients say',
+  },
   offices: {
     directions: 'Get directions',
     mapTitle: 'Map of the {name} office',
@@ -172,7 +174,6 @@ export const home: Record<Locale, HomeMessages> = {
     steps: {
       // Review: a qualified Spanish speaker checks this heading before it is published.
       heading: 'Por qué los pacientes eligen nuestro consultorio',
-      whatToExpect: 'Qué esperar',
       highlights: {
         label: 'Aspectos destacados del consultorio',
         newPatients: 'Aceptamos pacientes nuevos',
@@ -284,6 +285,10 @@ export const home: Record<Locale, HomeMessages> = {
         },
       },
     },
+    // Review: a qualified Spanish speaker checks this heading before it is published.
+    reviews: {
+      heading: 'Lo que dicen nuestros pacientes',
+    },
     offices: {
       directions: 'Cómo llegar',
       mapTitle: 'Mapa del consultorio de {name}',
@@ -316,7 +321,6 @@ export const home: Record<Locale, HomeMessages> = {
     steps: {
       // Review: a qualified Portuguese speaker checks this heading before it is published.
       heading: 'Por que os pacientes escolhem nosso consultório',
-      whatToExpect: 'O que esperar',
       highlights: {
         label: 'Destaques do consultório',
         newPatients: 'Recebemos novos pacientes',
@@ -427,6 +431,10 @@ export const home: Record<Locale, HomeMessages> = {
           linkLabel: 'Sobre odontologia estética',
         },
       },
+    },
+    // Review: a qualified Portuguese speaker checks this heading before it is published.
+    reviews: {
+      heading: 'O que nossos pacientes dizem',
     },
     offices: {
       directions: 'Como chegar',

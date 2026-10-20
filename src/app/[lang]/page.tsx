@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Hero } from '@/components/sections/Hero';
 import { Steps } from '@/components/sections/Steps';
 import { Problems } from '@/components/sections/Problems';
+import { Reviews } from '@/components/sections/Reviews';
 import { FaqBand } from '@/components/sections/HomeBands';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { JsonLd } from '@/components/page/JsonLd';
@@ -24,7 +25,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 // Order follows the visitor's decision: the promise, how a visit works and what to expect from the practice,
-// the problem they came with, then the answers that remove the last objections. Services, the team, about
+// the problem they came with, what patients say, then the answers that remove the last objections. Services, the team, about
 // and contact live on their own pages, so each piece of information has one place. The footer closes with the action.
 export default async function HomePage() {
   const lang = await getLocale();
@@ -33,6 +34,7 @@ export default async function HomePage() {
       <Hero />
       <Steps />
       <Problems />
+      <Reviews />
       <FaqBand />
     </main>
     <div className="page-shell"><SiteFooter /></div>

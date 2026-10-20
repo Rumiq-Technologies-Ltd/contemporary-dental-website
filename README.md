@@ -53,7 +53,7 @@ Two flags in `src/content/site.ts` apply the content file's holds:
 - `ocoeeEnabled` (default `true`): both offices appear everywhere. `false` returns the Orlando-only wording and hides the Ocoee details on `/contact`.
 - `appointmentFormEnabled` (default `false`): the website request form is not built until the C15 decision on form data handling. The contact page asks visitors to call.
 
-Not built, on purpose: the membership page, any offer or price list, before-and-after images, testimonials, Spanish and Portuguese versions, and analytics or advertising tags. Booking happens by phone. No authentication, patient data, email delivery or medical data collection is implemented. Service hearts store only service IDs in localStorage, with a safe fallback if storage is unavailable.
+Not built, on purpose: the membership page, any offer or price list, before-and-after images, Spanish and Portuguese versions, and analytics or advertising tags. Patient reviews are built but each stays hidden until its authorization is recorded (see docs/content-holds.md). Booking happens by phone. No authentication, patient data, email delivery or medical data collection is implemented. Service hearts store only service IDs in localStorage, with a safe fallback if storage is unavailable.
 
 Search engines and AI crawlers: production builds are indexable, with `robots.txt` allowing every crawler and listing the sitemap. Nothing is blocked by name. Vercel preview deployments are `noindex` and disallowed. The privacy policy, Notice of Privacy Practices and terms stay `noindex` until counsel has reviewed them.
 

@@ -16,7 +16,7 @@ section.steps { grid-template-columns: minmax(0, 1fr); row-gap: 20px; padding-to
   display: grid; gap: 48px; padding: clamp(40px, 6vw, 96px) max(clamp(20px, 4vw, 60px), calc((100% - var(--container)) / 2));
   border-radius: var(--radius-panel); background: var(--color-tint);
 }
-/* Heading on the left, its action on the right, as in the other homepage sections. */
+/* The section heading, left-aligned like the other homepage sections. */
 .intro { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px 28px; }
 .intro h2 { max-width: 22ch; font-size: clamp(2.8rem, 5.4vw, 4.8rem); }
 

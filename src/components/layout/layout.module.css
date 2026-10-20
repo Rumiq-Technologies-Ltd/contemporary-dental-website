@@ -13,12 +13,10 @@
 .topBarContacts a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .topBarPhone { font-weight: 700; }
 /* The status line hangs below the language links, so the row stays on the same centre line as the other items. */
-.languageGroup { position: relative; display: grid; justify-items: center; }
+.languageGroup { display: grid; justify-items: center; }
 .languages { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 12px; }
 .languageLink,
 .languageCurrent { display: inline-flex; align-items: center; min-height: 28px; padding: 0 4px; color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
-.languageButton { border: 0; background: none; font: inherit; cursor: pointer; }
-.languageStatus { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); margin: 0; white-space: nowrap; font-size: 13px; font-weight: 600; }
 
 /* Header: white, with the practice logo, the navigation and one cyan action. Sits inside the sticky top group. */
 .header {
