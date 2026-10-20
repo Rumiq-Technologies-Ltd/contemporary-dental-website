@@ -1,7 +1,7 @@
 import type { ServiceId } from './serviceIds';
 import type { Office } from './site';
 
-// Before-and-after cases for the "How our treatments look" section on the home page. A case is
+// Before-and-after cases for the "What treatment can do" section on the service pages. A case is
 // either an illustration (an AI-generated treatment picture, labelled on screen as not a patient
 // result) or a real patient photo. Real patient photos may only be added once the signed photo and
 // marketing authorization is on file (consentOnFile) and C14 §4.10 is closed, and they must not be
@@ -27,7 +27,7 @@ export interface BeforeAfterCase {
   consentOnFile: boolean;
   /** An AI-generated treatment illustration, labelled on screen as not a patient result. */
   isIllustration: boolean;
-  /** Shown in the "How our treatments look" section on the home page. */
+  /** Shown in the "What treatment can do" section on the home page. */
   onHome: boolean;
   /** Shown on the matching service page. */
   onServicePage: boolean;
