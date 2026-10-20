@@ -46,7 +46,7 @@ const en = {
         description: 'Our terms for appointments and payments: cancellations, late cancellations and missed appointments, weekend bookings, deposits, balances and insurance estimates.',
       },
       title: 'Our Financial & Appointment Policy',
-      subtitle: 'Transparent terms designed to respect your time and keep your care seamless.',
+      lead: 'Transparent terms designed to respect your time and keep your care seamless.',
       pointer: {
         before: 'Our terms for appointments and payments are on the ',
         link: 'Financial Policy & Appointments',
@@ -175,7 +175,7 @@ export const money: Record<Locale, MoneyMessages> = {
           description: 'Nuestras condiciones para citas y pagos: cancelaciones, cancelaciones tardías y citas perdidas, reservas de fin de semana, depósitos, saldos y estimaciones del seguro.',
         },
         title: 'Nuestra política financiera y de citas',
-        subtitle: 'Condiciones transparentes pensadas para respetar su tiempo y mantener su atención sin contratiempos.',
+        lead: 'Condiciones transparentes pensadas para respetar su tiempo y mantener su atención sin contratiempos.',
         pointer: {
           before: 'Nuestras condiciones para citas y pagos están en la página ',
           link: 'Política financiera y citas',
@@ -301,7 +301,7 @@ export const money: Record<Locale, MoneyMessages> = {
           description: 'Nossas condições para consultas e pagamentos: cancelamentos, cancelamentos tardios e faltas, agendamentos de fim de semana, depósitos, saldos e estimativas do convênio.',
         },
         title: 'Nossa política financeira e de consultas',
-        subtitle: 'Condições transparentes pensadas para respeitar o seu tempo e manter o seu atendimento sem contratempos.',
+        lead: 'Condições transparentes pensadas para respeitar o seu tempo e manter o seu atendimento sem contratempos.',
         pointer: {
           before: 'Nossas condições para consultas e pagamentos estão na página ',
           link: 'Política financeira e consultas',

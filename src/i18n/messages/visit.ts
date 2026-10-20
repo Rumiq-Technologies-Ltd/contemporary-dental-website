@@ -45,7 +45,6 @@ const en = {
       description: 'How your first visit works: booking, emergency visits, forms, your financial policy, language and what to do if you feel nervous.',
     },
     title: 'Welcome to Contemporary Dental Care',
-    subtitle: 'Simple, Patient-Centered Steps for Your First Visit',
     lead: 'We’re excited to welcome you to our practice! Whether you’re due for a routine check-up, starting a personalized care plan, or seeking urgent support, we make your first visit smooth, transparent, and comfortable.',
     stepsTitle: 'Step-by-step patient process',
     /** {n} is the step number. */
@@ -236,7 +235,6 @@ export const visit: Record<Locale, VisitMessages> = {
         description: 'Cómo funciona su primera visita: la reserva de la cita, las visitas de urgencia, los formularios, su política financiera, el idioma y qué hacer si siente nervios.',
       },
       title: 'Bienvenido a Contemporary Dental Care',
-      subtitle: 'Pasos sencillos y centrados en el paciente para su primera visita',
       lead: '¡Nos alegra darle la bienvenida a nuestro consultorio! Ya sea que le toque una revisión de rutina, que comience un plan de atención personalizado o que necesite ayuda urgente, hacemos que su primera visita sea sencilla, transparente y cómoda.',
       stepsTitle: 'Proceso paso a paso para pacientes',
       /** {n} is the step number. */
@@ -415,7 +413,6 @@ export const visit: Record<Locale, VisitMessages> = {
         description: 'Como funciona a sua primeira visita: agendamento, atendimentos de emergência, formulários, a sua política financeira, idioma e o que fazer se você sentir nervosismo.',
       },
       title: 'Bem-vindo à Contemporary Dental Care',
-      subtitle: 'Passos simples e centrados no paciente para sua primeira consulta',
       lead: 'Estamos muito felizes em receber você em nosso consultório! Seja para uma revisão de rotina, para começar um plano de cuidados personalizado ou para buscar atendimento urgente, tornamos sua primeira consulta tranquila, transparente e confortável.',
       stepsTitle: 'Processo passo a passo para pacientes',
       /** {n} is the step number. */

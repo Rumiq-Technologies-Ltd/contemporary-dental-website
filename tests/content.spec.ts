@@ -295,6 +295,7 @@ test.describe('website fixes', () => {
 
   test('the new patients page walks through five numbered steps', async ({ page }) => {
     await page.goto('/new-patients');
+    await expect(page.getByText('Simple, Patient-Centered Steps for Your First Visit')).toHaveCount(0);
     const steps = page.locator('#first-visit ol > li');
     await expect(steps).toHaveCount(5);
     await expect(steps.first()).toContainText('Step 1');
