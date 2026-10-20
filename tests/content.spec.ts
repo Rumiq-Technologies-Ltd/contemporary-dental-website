@@ -173,8 +173,13 @@ test.describe('facts', () => {
 
   test('the emergency page carries the 911 safety wording and the after-hours line', async ({ page }) => {
     await page.goto('/emergency');
-    await expect(page.getByRole('complementary', { name: 'When to call 911' })).toContainText('call 911 or go to the nearest emergency room now');
-    await expect(page.getByText('We are not open 24 hours')).toBeVisible();
+    const notice = page.getByRole('complementary', { name: 'When to call 911' });
+    await expect(notice).toContainText('Urgent medical notice');
+    await expect(notice).toContainText('call 911 or go to the nearest emergency room immediately');
+    await expect(page.locator('#same-day li')).toHaveCount(4);
+    await expect(page.getByText('While we are not a 24-hour facility', { exact: false })).toBeVisible();
+    await expect(page.locator('#after-hours strong', { hasText: 'Orlando office' })).toHaveCount(1);
+    await expect(page.locator('#after-hours a[href="tel:+14076255440"]')).toHaveText('407-625-5440');
     await expect(page.getByRole('link', { name: 'Call Orlando: 321-522-8577' }).first()).toHaveAttribute('href', 'tel:+13215228577');
   });
 
@@ -326,6 +331,17 @@ test.describe('website fixes', () => {
     expect(count).toBeGreaterThan(0);
     await expect(page.locator('#reviews [aria-label="5 out of 5 stars"]')).toHaveCount(count);
     await expect(page.locator('#reviews [aria-label="Google review"]')).toHaveCount(count);
+  });
+
+  test('the cleanings page shows its sub-header and copy without the photo or call buttons', async ({ page }) => {
+    await page.goto('/services/cleanings-checkups');
+    const main = page.locator('main');
+    await expect(main.getByText('Gentle preventive care to keep your smile healthy, bright, and strong.')).toBeVisible();
+    await expect(main.getByText('We take digital X-rays only when clinically necessary', { exact: false })).toBeVisible();
+    await expect(main.locator('a[href^="tel:"]')).toHaveCount(0);
+    // Other service pages keep their call buttons.
+    await page.goto('/services/crowns');
+    await expect(page.locator('main a[href^="tel:"]')).toHaveCount(2);
   });
 
   test('every page ends with the copyright line', async ({ page }) => {

@@ -12,17 +12,33 @@ const en = {
       description: 'Tooth pain, swelling, a broken tooth or a dental injury? Emergency appointments are often available the same day, including for new patients.',
     },
     title: 'Emergency dental care',
-    // The practice's sub-header, under the h1.
-    intro: 'Gentle, priority care when you need it most. Our team is here to relieve your discomfort and guide your immediate next steps.',
-    lead: 'Tooth pain, a swollen face, a broken tooth or an injury to your teeth? Call us. Emergency appointments are often available the same day, including for new patients.',
+    // The practice's revised page copy of 20 October 2026, from the sub-header down.
+    intro: 'Gentle, priority care when you need it most. Our team is here to relieve your discomfort and guide your next steps.',
     // Spoken label for the safety notice landmark.
     safetyLabel: 'When to call 911',
     // Review: emergency safety wording. Dr. Khan must approve it in every language before publishing.
-    safetyNotice: 'If you have trouble breathing or swallowing, swelling that is spreading into your face or neck, or a serious injury to your head or face, call 911 or go to the nearest emergency room now.',
-    sameDayCare: 'Same-day emergency care includes assessment and first-stage treatment for abscesses and swelling, broken or fractured teeth, and dental trauma. It can also include extraction when needed, and starting a crown preparation.',
+    safetyTitle: 'Urgent medical notice',
+    safetyNotice: 'If you are experiencing difficulty breathing or swallowing, swelling that is spreading into your face or neck, or severe head/facial trauma, please call 911 or go to the nearest emergency room immediately.',
+    // Review against C14 §3.1: "you don't have to wait", "we reserve time" and "immediate relief" go
+    // beyond its framing of same-day or next-available appointments subject to availability.
+    sameDay: {
+      title: 'Same-day emergency care',
+      body: "Whether you are dealing with severe tooth pain, a swollen face, or a broken tooth, you don't have to wait. We reserve time in our schedule for same-day emergency appointments for both new and established patients.",
+      listIntro: 'Our priority is getting you out of pain quickly. Same-day emergency care covers comprehensive evaluation and immediate relief for:',
+      items: [
+        'Toothaches, abscesses, and sudden swelling',
+        'Broken, chipped, or fractured teeth',
+        'Dental trauma and urgent extractions',
+        'Temporary crown preparation and stabilization',
+      ],
+    },
     afterHours: {
-      title: 'After hours',
-      body: 'Calls outside opening hours are answered by our answering service, which passes your details to our team for a call-back. We are not open 24 hours, but weekend and after-hours emergency appointments are often available, subject to availability. After-hours emergencies are handled at our Orlando office.',
+      title: 'After hours care',
+      availability: 'While we are not a 24-hour facility, weekend and after-hours emergency appointments are often available based on schedule availability.',
+      callBack: 'If you call outside of normal business hours, our answering service will take your details and notify our team for a prompt call-back.',
+      locationLabel: 'Location note',
+      location: { before: 'All after-hours emergency visits are provided exclusively at our ', office: 'Orlando office', after: '.' },
+      lineLabel: 'After-hours call line',
     },
   },
   technology: {
@@ -206,15 +222,29 @@ export const visit: Record<Locale, VisitMessages> = {
         description: '¿Dolor dental, hinchazón, un diente roto o una lesión dental? Con frecuencia hay citas de urgencia el mismo día, también para pacientes nuevos.',
       },
       title: 'Atención dental de urgencia',
-      intro: 'Atención amable y prioritaria cuando más la necesita. Nuestro equipo está aquí para aliviar su malestar y orientarle sobre sus próximos pasos inmediatos.',
-      lead: '¿Dolor dental, la cara hinchada, un diente roto o una lesión en los dientes? Llámenos. Con frecuencia hay citas de urgencia el mismo día, también para pacientes nuevos.',
+      intro: 'Atención amable y prioritaria cuando más la necesita. Nuestro equipo está aquí para aliviar su malestar y orientarle sobre sus próximos pasos.',
       safetyLabel: 'Cuándo llamar al 911',
       // Review: emergency safety wording. Dr. Khan must approve it in every language before publishing.
-      safetyNotice: 'Si tiene dificultad para respirar o para tragar, una hinchazón que se extiende a la cara o al cuello, o una lesión grave en la cabeza o en la cara, llame al 911 o acuda ahora a la sala de urgencias más cercana.',
-      sameDayCare: 'La atención de urgencia el mismo día incluye la evaluación y el tratamiento de primera etapa de abscesos e hinchazón, dientes rotos o fracturados y traumatismos dentales. También puede incluir la extracción cuando sea necesaria y el inicio de la preparación de una corona.',
+      safetyTitle: 'Aviso médico urgente',
+      safetyNotice: 'Si tiene dificultad para respirar o para tragar, una hinchazón que se extiende a la cara o al cuello, o un traumatismo grave en la cabeza o la cara, llame al 911 o acuda de inmediato a la sala de urgencias más cercana.',
+      sameDay: {
+        title: 'Atención de urgencia el mismo día',
+        body: 'Ya sea que tenga un dolor de muelas intenso, la cara hinchada o un diente roto, no tiene que esperar. Reservamos tiempo en nuestra agenda para citas de urgencia el mismo día, tanto para pacientes nuevos como para pacientes actuales.',
+        listIntro: 'Nuestra prioridad es aliviar su dolor rápidamente. La atención de urgencia el mismo día incluye una evaluación completa y alivio inmediato para:',
+        items: [
+          'Dolor de muelas, abscesos e hinchazón repentina',
+          'Dientes rotos, astillados o fracturados',
+          'Traumatismos dentales y extracciones urgentes',
+          'Preparación de coronas provisionales y estabilización',
+        ],
+      },
       afterHours: {
-        title: 'Fuera del horario de atención',
-        body: 'Las llamadas fuera del horario de atención las responde nuestro servicio de atención telefónica, que transmite sus datos a nuestro equipo para que le devuelvan la llamada. No abrimos las 24 horas, pero con frecuencia hay citas de urgencia en fin de semana y fuera del horario, sujetas a disponibilidad. Las urgencias fuera del horario se atienden en nuestro consultorio de Orlando.',
+        title: 'Atención fuera del horario',
+        availability: 'Aunque no atendemos las 24 horas, con frecuencia hay citas de urgencia en fin de semana y fuera del horario, según la disponibilidad de la agenda.',
+        callBack: 'Si llama fuera del horario de atención, nuestro servicio de atención telefónica tomará sus datos y avisará a nuestro equipo para que le devuelvan la llamada pronto.',
+        locationLabel: 'Nota sobre el consultorio',
+        location: { before: 'Todas las visitas de urgencia fuera del horario se atienden únicamente en nuestro ', office: 'consultorio de Orlando', after: '.' },
+        lineLabel: 'Línea fuera del horario',
       },
     },
     technology: {
@@ -385,15 +415,29 @@ export const visit: Record<Locale, VisitMessages> = {
         description: 'Dor de dente, inchaço, um dente quebrado ou uma lesão dentária? Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes.',
       },
       title: 'Atendimento odontológico de emergência',
-      intro: 'Atendimento gentil e prioritário quando você mais precisa. Nossa equipe está aqui para aliviar o seu desconforto e orientar os seus próximos passos imediatos.',
-      lead: 'Dor de dente, rosto inchado, um dente quebrado ou uma lesão nos dentes? Ligue para nós. Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes.',
+      intro: 'Atendimento gentil e prioritário quando você mais precisa. Nossa equipe está aqui para aliviar o seu desconforto e orientar os seus próximos passos.',
       safetyLabel: 'Quando ligar para o 911',
       // Review: emergency safety wording. Dr. Khan must approve it in every language before publishing.
-      safetyNotice: 'Se você tiver dificuldade para respirar ou engolir, inchaço que esteja se espalhando para o rosto ou o pescoço, ou uma lesão grave na cabeça ou no rosto, ligue para o 911 ou vá agora ao pronto-socorro mais próximo.',
-      sameDayCare: 'O atendimento de emergência no mesmo dia inclui avaliação e tratamento de primeira etapa para abscessos e inchaço, dentes quebrados ou fraturados e traumatismo dentário. Também pode incluir extração, quando necessária, e o início do preparo de uma coroa.',
+      safetyTitle: 'Aviso médico urgente',
+      safetyNotice: 'Se você estiver com dificuldade para respirar ou engolir, inchaço que esteja se espalhando para o rosto ou o pescoço, ou um trauma grave na cabeça ou no rosto, ligue para o 911 ou vá imediatamente ao pronto-socorro mais próximo.',
+      sameDay: {
+        title: 'Atendimento de emergência no mesmo dia',
+        body: 'Seja uma dor de dente forte, o rosto inchado ou um dente quebrado, você não precisa esperar. Reservamos horários na nossa agenda para consultas de emergência no mesmo dia, tanto para novos pacientes quanto para pacientes atuais.',
+        listIntro: 'Nossa prioridade é tirar a sua dor rapidamente. O atendimento de emergência no mesmo dia inclui uma avaliação completa e alívio imediato para:',
+        items: [
+          'Dor de dente, abscessos e inchaço repentino',
+          'Dentes quebrados, lascados ou fraturados',
+          'Trauma dentário e extrações urgentes',
+          'Preparo de coroas provisórias e estabilização',
+        ],
+      },
       afterHours: {
-        title: 'Fora do horário',
-        body: 'As ligações fora do horário de atendimento são atendidas pelo nosso serviço de atendimento telefônico, que repassa os seus dados à nossa equipe para retorno da ligação. Não funcionamos 24 horas, mas consultas de emergência nos fins de semana e fora do horário costumam estar disponíveis, sujeitas à disponibilidade. As emergências fora do horário são atendidas no nosso consultório de Orlando.',
+        title: 'Atendimento fora do horário',
+        availability: 'Embora não funcionemos 24 horas, consultas de emergência nos fins de semana e fora do horário costumam estar disponíveis, conforme a disponibilidade da agenda.',
+        callBack: 'Se você ligar fora do horário comercial, nosso serviço de atendimento telefônico anotará os seus dados e avisará a nossa equipe para um retorno rápido.',
+        locationLabel: 'Observação sobre o local',
+        location: { before: 'Todas as consultas de emergência fora do horário são realizadas exclusivamente no nosso ', office: 'consultório de Orlando', after: '.' },
+        lineLabel: 'Linha fora do horário',
       },
     },
     technology: {

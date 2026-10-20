@@ -12,6 +12,8 @@ export interface ServiceCopy {
   title: string;
   /** Page heading (h1). */
   heading: string;
+  /** Sub-header under the heading, where the practice supplied one. */
+  lead?: string;
   /** Title tag, without the site suffix. */
   titleTag: string;
   /** Short line used in the homepage "What we treat" list. Empty when the service has none. */
@@ -30,9 +32,12 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     summary: 'routine preventive care',
     listLabel: 'Cleanings and check-ups: routine preventive care',
     description: 'Regular cleanings and check-ups every six months help us catch problems early.',
-    paragraphs: [
-      "Regular cleanings and check-ups every six months help us catch problems early. X-rays are taken when Dr. Khan decides they're needed. Our hygienist, Jessica Salazar, provides cleanings {atOffices}.",
-    ],
+    // The practice's copy of 20 October 2026. Digital radiography is confirmed in C04.
+    lead: 'Gentle preventive care to keep your smile healthy, bright, and strong.',
+    paragraphs: {
+      withOcoee: ['Routine cleanings and check-ups every six months allow us to protect your oral health and address minor issues before they become major problems. We take digital X-rays only when clinically necessary for a complete diagnosis. Dedicated hygiene care is available at both our Orlando and Ocoee locations.'],
+      orlandoOnly: ['Routine cleanings and check-ups every six months allow us to protect your oral health and address minor issues before they become major problems. We take digital X-rays only when clinically necessary for a complete diagnosis. Dedicated hygiene care is available at our Orlando location.'],
+    },
   },
   emergency: {
     title: 'Emergency care',
@@ -192,9 +197,11 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: 'atención preventiva de rutina',
         listLabel: 'Limpiezas y revisiones: atención preventiva de rutina',
         description: 'Las limpiezas y revisiones periódicas cada seis meses nos ayudan a detectar los problemas a tiempo.',
-        paragraphs: [
-          'Las limpiezas y revisiones periódicas cada seis meses nos ayudan a detectar los problemas a tiempo. Se toman radiografías cuando el Dr. Khan decide que son necesarias. Nuestra higienista dental, Jessica Salazar, realiza las limpiezas {atOffices}.',
-        ],
+        lead: 'Atención preventiva amable para mantener su sonrisa sana, luminosa y fuerte.',
+        paragraphs: {
+          withOcoee: ['Las limpiezas y revisiones de rutina cada seis meses nos permiten proteger su salud bucal y tratar los problemas pequeños antes de que se conviertan en grandes. Tomamos radiografías digitales solo cuando son clínicamente necesarias para un diagnóstico completo. Ofrecemos atención de higiene dental en nuestros dos consultorios, Orlando y Ocoee.'],
+          orlandoOnly: ['Las limpiezas y revisiones de rutina cada seis meses nos permiten proteger su salud bucal y tratar los problemas pequeños antes de que se conviertan en grandes. Tomamos radiografías digitales solo cuando son clínicamente necesarias para un diagnóstico completo. Ofrecemos atención de higiene dental en nuestro consultorio de Orlando.'],
+        },
       },
       emergency: {
         title: 'Atención de urgencia',
@@ -328,9 +335,11 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: 'cuidados preventivos de rotina',
         listLabel: 'Limpezas e revisões: cuidados preventivos de rotina',
         description: 'Limpezas e revisões regulares, a cada seis meses, nos ajudam a identificar problemas logo no início.',
-        paragraphs: [
-          'Limpezas e revisões regulares, a cada seis meses, nos ajudam a identificar problemas logo no início. Radiografias são feitas quando o Dr. Khan decide que são necessárias. Nossa higienista odontológica, Jessica Salazar, realiza as limpezas {atOffices}.',
-        ],
+        lead: 'Cuidados preventivos gentis para manter seu sorriso saudável, bonito e forte.',
+        paragraphs: {
+          withOcoee: ['Limpezas e revisões de rotina a cada seis meses nos permitem proteger sua saúde bucal e tratar pequenos problemas antes que se tornem grandes. Fazemos radiografias digitais apenas quando são clinicamente necessárias para um diagnóstico completo. O atendimento de higiene dental está disponível nos nossos dois consultórios, Orlando e Ocoee.'],
+          orlandoOnly: ['Limpezas e revisões de rotina a cada seis meses nos permitem proteger sua saúde bucal e tratar pequenos problemas antes que se tornem grandes. Fazemos radiografias digitais apenas quando são clinicamente necessárias para um diagnóstico completo. O atendimento de higiene dental está disponível no nosso consultório de Orlando.'],
+        },
       },
       emergency: {
         title: 'Atendimento de emergência',

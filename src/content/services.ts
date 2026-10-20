@@ -14,6 +14,8 @@ export interface Service {
   title: string;
   /** Page heading (h1). */
   heading: string;
+  /** Sub-header under the heading, where the practice supplied one. */
+  lead?: string;
   /** Title tag, without the site suffix. */
   titleTag: string;
   /** Short line used in the homepage "What we treat" list. */
@@ -26,6 +28,8 @@ export interface Service {
   image: PhotoName;
   /** Card photo for the services grid. */
   thumbnail: PhotoName;
+  /** The page shows its copy alone: no photo beside it and no call buttons under it. */
+  plainIntro: boolean;
   description: string;
   paragraphs: readonly string[];
 }
@@ -36,6 +40,7 @@ interface ServiceDefinition {
   href: string;
   image: PhotoName;
   thumbnail: PhotoName;
+  plainIntro?: true;
 }
 
 // Content is data, not component markup: additions need no card-layout changes. The copy
@@ -43,7 +48,8 @@ interface ServiceDefinition {
 // Held items from the content file (same-day crowns, implant offer, All-on-4,
 // partial dentures, orthobrain wording, trademarked product names) are left out on purpose.
 const definitions: readonly ServiceDefinition[] = [
-  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, image: 'xrayTeamLandscape', thumbnail: 'thumbCleanings' },
+  // The practice asked for the cleanings page without the photo and call buttons (20 October 2026).
+  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, image: 'xrayTeamLandscape', thumbnail: 'thumbCleanings', plainIntro: true },
   { id: 'emergency', href: routes.emergency, image: 'guides', thumbnail: 'thumbEmergency' },
   { id: 'extractions', href: `${routes.services}/extractions`, image: 'appointments', thumbnail: 'thumbExtractions' },
   { id: 'restorative', href: `${routes.services}/restorative`, image: 'roomTeal', thumbnail: 'thumbRestorative' },
@@ -64,13 +70,14 @@ function pickParagraphs(paragraphs: ServiceCopy['paragraphs']): readonly string[
 export function getServices(lang: Locale): readonly Service[] {
   const t = getMessages(lang).services;
   const atOffices = whenOcoee(t.atOffices.withOcoee, t.atOffices.orlandoOnly);
-  return definitions.map(({ id, href, image, thumbnail }) => {
+  return definitions.map(({ id, href, image, thumbnail, plainIntro = false }) => {
     const copy = t.items[id];
     const paragraphs = pickParagraphs(copy.paragraphs).map(paragraph => fill(paragraph, { atOffices }));
     return {
-      id, href, image, thumbnail, paragraphs,
+      id, href, image, thumbnail, plainIntro, paragraphs,
       title: copy.title,
       heading: copy.heading,
+      lead: copy.lead,
       titleTag: copy.titleTag,
       summary: copy.summary,
       listLabel: copy.listLabel,
