@@ -6,6 +6,11 @@ const en = {
   skipToContent: 'Skip to content',
   languageLabel: 'Language',
   languageComingSoon: 'Coming soon',
+  comingSoonPage: {
+    title: 'Spanish and Portuguese websites',
+    description: 'Our Spanish and Portuguese websites are coming soon. Our team speaks both languages: call us and tell us your preferred language.',
+    lead: 'Our Spanish and Portuguese websites are on their way. Our team already speaks both languages, so call us and tell us your preferred language.',
+  },
   callOffice: 'Call {name}: {phone}',
   callPhone: 'Call {phone}',
   afterHours: 'After hours:',
@@ -79,6 +84,12 @@ export const common: Record<Locale, CommonMessages> = {
     skipToContent: 'Ir al contenido',
     languageLabel: 'Idioma',
     languageComingSoon: 'Próximamente',
+    // Review: a qualified Spanish speaker checks this block before it is published.
+    comingSoonPage: {
+      title: 'Sitios web en español y portugués',
+      description: 'Nuestros sitios web en español y portugués estarán disponibles pronto. Nuestro equipo habla ambos idiomas: llámenos y díganos su idioma preferido.',
+      lead: 'Nuestros sitios web en español y portugués están en camino. Nuestro equipo ya habla ambos idiomas, así que llámenos y díganos su idioma preferido.',
+    },
     callOffice: 'Llame a {name}: {phone}',
     callPhone: 'Llame al {phone}',
     afterHours: 'Fuera del horario de atención:',
@@ -147,6 +158,12 @@ export const common: Record<Locale, CommonMessages> = {
     skipToContent: 'Ir para o conteúdo',
     languageLabel: 'Idioma',
     languageComingSoon: 'Em breve',
+    // Review: a qualified Portuguese speaker checks this block before it is published.
+    comingSoonPage: {
+      title: 'Sites em espanhol e português',
+      description: 'Nossos sites em espanhol e português estarão disponíveis em breve. Nossa equipe fala os dois idiomas: ligue para nós e diga seu idioma preferido.',
+      lead: 'Nossos sites em espanhol e português estão a caminho. Nossa equipe já fala os dois idiomas, então ligue para nós e diga seu idioma preferido.',
+    },
     callOffice: 'Ligue para {name}: {phone}',
     callPhone: 'Ligue para {phone}',
     afterHours: 'Fora do horário:',
@@ -212,3 +229,10 @@ export const common: Record<Locale, CommonMessages> = {
     },
   },
 };
+
+// Notices written in the language they announce, so they read the same on every version of the
+// coming-soon page. Review: qualified Spanish and Portuguese speakers check these before launch.
+export const languageNotices = {
+  es: { title: 'Se Habla Español', body: 'Nuestro sitio web en español estará disponible muy pronto. Mientras tanto, llámenos: nuestro equipo habla español.' },
+  pt: { title: 'Falamos Português', body: 'Nosso site em português estará disponível em breve. Enquanto isso, ligue para nós: nossa equipe fala português.' },
+} as const;

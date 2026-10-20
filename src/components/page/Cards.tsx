@@ -8,8 +8,9 @@ export function CardGrid({ children }: { children: ReactNode }) {
   return <div className={styles.grid} data-stagger="">{children}</div>;
 }
 
-export function InfoCard({ title, children }: { title: string; children: ReactNode }) {
-  return <article className={styles.card} data-reveal="" data-tilt=""><h3>{title}</h3>{children}</article>;
+/** `lang` marks a card written in another language, so screen readers pronounce it correctly. */
+export function InfoCard({ title, children, lang }: { title: string; children: ReactNode; lang?: string }) {
+  return <article className={styles.card} lang={lang} data-reveal="" data-tilt=""><h3>{title}</h3>{children}</article>;
 }
 
 /** `href` must already be localised (use localePath). */

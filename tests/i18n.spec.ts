@@ -61,15 +61,16 @@ test('English is served unprefixed, and /en copies declare the unprefixed canoni
   await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', /\/services$/);
 });
 
-test('the switcher lists every offered language, and an unpublished one says coming soon', async ({ page }) => {
+test('the switcher links every offered language, and an unpublished one opens the coming-soon page', async ({ page }) => {
   await page.goto('/services');
   const language = page.getByRole('navigation', { name: 'Language' });
-  await expect(language.getByRole('link')).toHaveCount(publicLocales.length);
-  await expect(language.getByRole('button')).toHaveCount(locales.length - publicLocales.length);
+  await expect(language.getByRole('link')).toHaveCount(locales.length);
   await expect(language.getByRole('link', { name: 'Français' })).toHaveCount(0);
-  await language.getByRole('button', { name: localeNames.es }).click();
-  await expect(page.getByRole('status')).toHaveText('Coming soon');
-  await expect(page).toHaveURL(/\/services$/);
+  test.skip(unpublished.length === 0, 'every language is published');
+  await expect(page.locator('html')).toHaveClass(/\bready\b/);
+  await language.getByRole('link', { name: localeNames[unpublished[0]] }).click();
+  await expect(page).toHaveURL(/\/coming-soon$/);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Coming\s*soon/);
 });
 
 test('the language switcher keeps the visitor on the same page', async ({ page }) => {

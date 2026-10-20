@@ -99,6 +99,7 @@ export const routes = {
   noticeOfPrivacyPractices: '/privacy/notice-of-privacy-practices',
   terms: '/terms',
   accessibility: '/accessibility',
+  comingSoon: '/coming-soon',
 } as const;
 
 /** Main navigation. Labels come from messages.common.nav[key]; numbers are fixed. */
