@@ -23,6 +23,15 @@ export interface FaqItem {
   link?: FaqLink;
 }
 
+/** The questions the homepage shows, in this order. */
+export const homepageFaqs: readonly FaqId[] = ['bookOnline', 'afterHoursEmergency', 'emergencyNewPatients', 'insurance', 'financing', 'nervous'];
+
+/**
+ * Homepage questions that the FAQ page leaves out, so a visitor does not read the same question
+ * twice. The other homepage questions stay on the FAQ page too.
+ */
+export const homepageOnlyFaqs: readonly FaqId[] = ['insurance', 'financing', 'nervous'];
+
 // Questions and answers live in src/i18n/messages/visit.ts. They are verbatim from the content
 // file. Every answer that mentions Ocoee switches with the Ocoee hold. The Haitian Creole
 // and French answer must stay as written, in every language, until a qualified
@@ -64,7 +73,12 @@ export function getFaqs(lang: Locale): readonly FaqItem[] {
     // Review: the answer must stay as written until a qualified interpretation route exists. The owner
     // checks its translation in src/i18n/messages/visit.ts.
     { id: 'haitianCreoleFrench', question: items.haitianCreoleFrench.question, answer: items.haitianCreoleFrench.answer },
-    { id: 'cancellation', question: items.cancellation.question, answer: items.cancellation.answer },
+    {
+      id: 'cancellation',
+      question: items.cancellation.question,
+      answer: items.cancellation.answer,
+      link: { label: items.cancellation.linkLabel, href: `${localePath(lang, routes.insurance)}#financial-policy` },
+    },
     { id: 'nervous', question: items.nervous.question, answer: items.nervous.answer },
   ];
 }

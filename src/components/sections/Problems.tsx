@@ -18,7 +18,15 @@ interface ProblemText {
   bigText?: string;
   /** Panel text for problems that need more than the service description. */
   text?: string;
+  /** Panel text as separate lines, for a problem with more than one answer. */
+  lines?: readonly string[];
   linkLabel: string;
+}
+
+/** A further service the panel links to, shown as another button after the main one. */
+interface ExtraLink {
+  id: ServiceId;
+  label: string;
 }
 
 export async function Problems() {
@@ -29,18 +37,28 @@ export async function Problems() {
 
   // Each tab starts from a patient's problem and answers with a service. The description
   // comes from the content file; nothing here adds a claim.
-  function problem(id: ServiceId, text: ProblemText, photo: Problem['photo']): Problem {
+  function findService(id: ServiceId) {
     const service = services.find(item => item.id === id);
     if (!service) throw new Error(`Unknown service: ${id}`);
+    return service;
+  }
+
+  function problem(id: ServiceId, text: ProblemText, photo: Problem['photo'], extraLinks: readonly ExtraLink[] = []): Problem {
+    const service = findService(id);
     return {
       id, tab: text.tab, headline: text.headline, big: text.big, bigText: text.bigText, photo,
-      text: text.text ?? service.description, href: localePath(lang, service.href), linkLabel: text.linkLabel,
+      lines: text.lines ?? [text.text ?? service.description],
+      links: [
+        { href: localePath(lang, service.href), label: text.linkLabel },
+        ...extraLinks.map(link => ({ href: localePath(lang, findService(link.id).href), label: link.label })),
+      ],
     };
   }
 
   const problems: readonly Problem[] = [
     problem('emergency', t.items.emergency, photos.guides),
-    problem('implants', t.items.implants, photos.toothModel),
+    // Missing teeth has two answers, so it links to both the implants and the dentures pages.
+    problem('implants', t.items.implants, photos.toothModel, [{ id: 'dentures', label: t.items.implants.dentureLinkLabel }]),
     problem('clear-aligners-braces', t.items.alignersBraces, photos.clearAligner),
     problem('cleanings-checkups', t.items.checkups, photos.assessment),
     problem('cosmetic', t.items.cosmetic, photos.smile),

@@ -63,7 +63,6 @@ test('the coming-soon page is not indexed and announces each language in that la
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   await expect(page.locator('article[lang^="es"]').getByRole('heading', { name: 'Se Habla Español' })).toBeVisible();
   await expect(page.locator('article[lang^="pt"]').getByRole('heading', { name: 'Falamos Português' })).toBeVisible();
-  await expect(page.locator('a[href="tel:+13215228577"]').first()).toBeVisible();
 });
 
 test('the homepage language links open the coming-soon page until those languages are published', async ({ page }) => {

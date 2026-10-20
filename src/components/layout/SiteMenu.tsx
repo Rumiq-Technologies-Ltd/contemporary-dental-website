@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef } from 'react';
+import { Fragment, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { primaryOffice, site } from '@/content/site';
@@ -31,7 +31,12 @@ export function SiteMenu({ items, requestHref, t }: SiteMenuProps) {
     </summary>
     <div className={styles.menuPanel}>
       <nav aria-label={t.mainNavigation}>
-        {items.map(item => <Link key={item.href} href={item.href} onClick={close} aria-current={isNavCurrent(pathname, item.href) ? 'page' : undefined}><span>{item.number}</span>{item.label}<span aria-hidden="true"><Icon name="arrow" /></span></Link>)}
+        {items.map(item => <Fragment key={item.href}>
+          <Link href={item.href} onClick={close} aria-current={isNavCurrent(pathname, item.href) ? 'page' : undefined}><span>{item.number}</span>{item.label}<span aria-hidden="true"><Icon name="arrow" /></span></Link>
+          {/* Sub-entries such as each office sit indented under their entry; the empty first span keeps the indent. */}
+          {item.children?.map(child => <Link key={child.href} href={child.href} onClick={close} className={styles.menuSubLink}
+            aria-current={isNavCurrent(pathname, child.href) ? 'page' : undefined}><span aria-hidden="true" />{child.label}<span aria-hidden="true"><Icon name="arrow" /></span></Link>)}
+        </Fragment>)}
       </nav>
       <div className={styles.menuActions}>
         <Link href={requestHref} onClick={close} className="pill pill-accent pill-large">{t.requestAppointment}</Link>

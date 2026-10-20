@@ -29,7 +29,7 @@ const en = {
     insurance: 'Insurance and payment',
     club: 'Contemporary Smile Club',
     about: 'About',
-    contact: 'Location',
+    contact: 'Locations',
   },
   legal: {
     privacyPolicy: 'Privacy policy',
@@ -41,9 +41,10 @@ const en = {
     afterHours: 'After hours',
     email: 'Email',
     tagline: 'Your smile is our priority',
+    copyright: 'Copyright © {year} {name}. All rights reserved.',
   },
   hours: {
-    orlando: 'Monday to Friday, 8:00am to 5:00pm. We also open one Saturday a month; please call for the date.',
+    orlando: 'Monday to Friday, 8:00am to 5:00pm. We also open one Saturday a month; please call to confirm the date.',
     ocoee: 'Open Mondays, 9:00am to 5:00pm',
   },
   learnMore: 'Learn more ↗',
@@ -108,7 +109,7 @@ export const common: Record<Locale, CommonMessages> = {
       insurance: 'Seguros y pagos',
       club: 'Club Contemporary Smile',
       about: 'Acerca de',
-      contact: 'Ubicación',
+      contact: 'Ubicaciones',
     },
     legal: {
       privacyPolicy: 'Política de privacidad',
@@ -120,6 +121,7 @@ export const common: Record<Locale, CommonMessages> = {
       afterHours: 'Fuera del horario de atención',
       email: 'Correo electrónico',
       tagline: 'Su sonrisa es nuestra prioridad',
+      copyright: 'Copyright © {year} {name}. Todos los derechos reservados.',
     },
     hours: {
       orlando: 'De lunes a viernes, de 8:00 a. m. a 5:00 p. m. Abrimos también un sábado al mes; llame para confirmar la fecha.',
@@ -182,7 +184,7 @@ export const common: Record<Locale, CommonMessages> = {
       insurance: 'Convênios e pagamento',
       club: 'Clube Contemporary Smile',
       about: 'Sobre',
-      contact: 'Localização',
+      contact: 'Localizações',
     },
     legal: {
       privacyPolicy: 'Política de privacidade',
@@ -194,9 +196,10 @@ export const common: Record<Locale, CommonMessages> = {
       afterHours: 'Fora do horário',
       email: 'E-mail',
       tagline: 'Seu sorriso é a nossa prioridade',
+      copyright: 'Copyright © {year} {name}. Todos os direitos reservados.',
     },
     hours: {
-      orlando: 'De segunda a sexta, das 8h às 17h. Também abrimos um sábado por mês; ligue para saber a data.',
+      orlando: 'De segunda a sexta, das 8h às 17h. Também abrimos um sábado por mês; ligue para confirmar a data.',
       ocoee: 'Aberto às segundas-feiras, das 9h às 17h',
     },
     learnMore: 'Saiba mais ↗',

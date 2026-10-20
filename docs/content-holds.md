@@ -7,7 +7,7 @@ Re-check every fact against the current Drive masters before publishing. The own
 
 | Flag | Default | Effect |
 |---|---|---|
-| `ocoeeEnabled` | `true` | `true`: both offices on every page (hero, footer, contact, FAQ, sitemap, structured data). The Ocoee details are on `/contact`; the old `/locations/*` addresses redirect there. Enabled 14 October 2026 at the owner's request. `false` returns the Orlando-only wording and hides the Ocoee details. |
+| `ocoeeEnabled` | `true` | `true`: both offices on every page (hero, footer, contact, FAQ, sitemap, structured data). The Ocoee details are on `/contact` and on their own page, `/locations/ocoee` (Orlando has `/locations/orlando`), reached from the Locations dropdown; `/locations` redirects to `/contact`. `false` also drops the Ocoee page and its menu link. Enabled 14 October 2026 at the owner's request. `false` returns the Orlando-only wording and hides the Ocoee details. |
 | `appointmentFormEnabled` | `false` | `false`: no request form. The contact page, FAQ, About and New patients pages point visitors to the phone. `true` switches the wording back to the form; the form itself still has to be built (fields: Name, Phone, Email, Office, Preferred language, Reason, Message, with the form note and confirmation message from content file section 5.26). |
 
 ## Search indexing

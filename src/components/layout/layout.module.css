@@ -51,6 +51,7 @@
 .menuPanel nav a span:first-child { min-width: 26px; font-family: var(--font-body), sans-serif; font-variation-settings: normal; font-size: 13px; font-weight: 500; color: var(--color-muted); }
 .menuPanel nav a span:last-child { margin-left: auto; font-size: 20px; }
 .menuPanel nav a[aria-current='page'] { color: var(--color-accent-ink); }
+.menuPanel nav a.menuSubLink { min-height: 46px; font-size: 20px; }
 .menuActions { display: grid; gap: 10px; padding: 16px 4px 4px; }
 .menuActions :global(.pill) { width: 100%; }
 .menuAfterHours { font-size: 15px; color: var(--color-muted); text-align: center; }
@@ -79,6 +80,23 @@
 }
 .navLink:hover::after, .navLink[aria-current='page']::after { transform: scaleX(1); }
 .navLink[aria-current='page'] { color: var(--color-accent-ink); }
+
+/* A navigation entry with a dropdown (Locations). It opens on hover and while keyboard focus is
+   inside it, and its entry shows as current when one of its pages is open. */
+.navGroup { position: relative; display: flex; align-items: center; }
+.navGroup > .navLink { display: inline-flex; align-items: center; gap: 4px; }
+.navGroup > .navLink svg { font-size: 14px; transition: transform 0.2s var(--ease-out); }
+.subnav {
+  position: absolute; top: 100%; left: 0; z-index: 60; display: none; min-width: 180px; margin: 0; padding: 8px; list-style: none;
+  border: 1px solid var(--color-ink); border-radius: var(--radius-card); background: var(--color-bg);
+  box-shadow: 0 24px 50px -20px rgb(0 0 0 / 0.35);
+}
+.navGroup:hover .subnav, .navGroup:focus-within .subnav { display: grid; gap: 2px; }
+.navGroup:hover > .navLink svg, .navGroup:focus-within > .navLink svg { transform: rotate(180deg); }
+.subnavLink { display: block; padding: 10px 12px; border-radius: var(--radius-button); font-size: 15px; font-weight: 600; white-space: nowrap; color: var(--color-ink); }
+.subnavLink:hover { background: var(--color-tint-soft); }
+.subnavLink[aria-current='page'] { color: var(--color-accent-ink); }
+.navGroup:has(.subnavLink[aria-current='page']) > .navLink { color: var(--color-accent-ink); }
 
 @media (min-width: 640px) {
   .header { grid-template-columns: 1fr auto auto; grid-template-areas: 'logo auth menu'; }
@@ -121,6 +139,8 @@
 .siteTagline { font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62; font-size: 24px; font-weight: 700; text-transform: uppercase; }
 .legalLinks { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; }
 .legalName { font-size: 13px; line-height: 1.5; color: var(--color-muted); }
+/* The copyright line closes every page in very small print. */
+.copyright { margin-top: 6px; font-size: 11px; line-height: 1.5; color: var(--color-muted); }
 
 /* Sticky call button for phones. The body gains matching bottom space (globals.css). */
 a.callBar { display: none; }

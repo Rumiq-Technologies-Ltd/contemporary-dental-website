@@ -83,7 +83,7 @@ const en = {
       title: 'Contact Us',
       description: 'Phone numbers, addresses, hours and email for Contemporary Dental Care, and how to request an appointment.',
     },
-    title: 'Location',
+    title: 'Locations',
   },
   faq: {
     meta: {
@@ -150,8 +150,8 @@ const en = {
       },
       // Review: financing wording. Partner names are not translated. Financing is subject to approval and the lender's terms.
       financing: {
-        question: 'Do you offer payment plans or financing?',
-        answer: "Yes. We work with Alphaeon, CareCredit, Sunbit, Afterpay and Klarna, and we offer in-house payment plans. Financing is subject to approval and the lender's terms.",
+        question: 'Do you offer financing?',
+        answer: "Yes. We work with Alphaeon, CareCredit, Sunbit, Afterpay and Klarna. Financing is subject to approval and the lender's terms.",
       },
       rootCanal: {
         question: 'Do you do root canal treatment?',
@@ -182,14 +182,15 @@ const en = {
         answer: 'Please call our office and tell us about your language needs.',
       },
       // Review: financial policy wording. The late-cancellation amounts ($50 weekday, $100 weekend) must match the
-      // financial policy on the Payment and financing page. The page name must match that page's title.
+      // financial policy on the insurance page. The link label must appear word for word in the answer.
       cancellation: {
         question: 'What is your cancellation policy?',
-        answer: 'Please give 48 hours’ notice. A late cancellation or missed appointment is $50 on a weekday and $100 on a weekend. Our full financial policy is on the Payment and financing page.',
+        answer: 'Please give 48 hours’ notice. A late cancellation or missed appointment is $50 on a weekday and $100 on a weekend. Our full financial policy is on the Insurance and Financing page.',
+        linkLabel: 'Insurance and Financing page',
       },
       nervous: {
         question: "I'm nervous about dental visits. What can I do?",
-        answer: "Tell us when you book, and we'll plan your visit around what helps.",
+        answer: 'Please mention your anxiety when you schedule your appointment, and we will tailor your visit around your comfort level. Our friendly team takes the time to explain everything step-by-step in plain language—no surprises, no pressure. You can also take advantage of our relaxing amenities, including noise-canceling headphones and weighted blankets, to help you feel at ease throughout your care.',
       },
     },
   },
@@ -274,7 +275,7 @@ export const visit: Record<Locale, VisitMessages> = {
         title: 'Contáctenos',
         description: 'Números de teléfono, direcciones, horarios y correo electrónico de Contemporary Dental Care, y cómo solicitar una cita.',
       },
-      title: 'Ubicación',
+      title: 'Ubicaciones',
     },
     faq: {
       meta: {
@@ -335,8 +336,8 @@ export const visit: Record<Locale, VisitMessages> = {
         },
         // Review: financing wording. Partner names are not translated.
         financing: {
-          question: '¿Ofrecen planes de pago o financiamiento?',
-          answer: 'Sí. Trabajamos con Alphaeon, CareCredit, Sunbit, Afterpay y Klarna, y ofrecemos planes de pago propios. El financiamiento está sujeto a aprobación y a los términos del prestamista.',
+          question: '¿Ofrecen financiamiento?',
+          answer: 'Sí. Trabajamos con Alphaeon, CareCredit, Sunbit, Afterpay y Klarna. El financiamiento está sujeto a aprobación y a los términos del prestamista.',
         },
         rootCanal: {
           question: '¿Hacen endodoncias?',
@@ -365,14 +366,15 @@ export const visit: Record<Locale, VisitMessages> = {
           question: '¿Hablan criollo haitiano o francés?',
           answer: 'Por favor, llame a nuestro consultorio y cuéntenos sus necesidades de idioma.',
         },
-        // Review: financial policy wording. The amounts must match the financial policy on the Payment and financing page.
+        // Review: financial policy wording. The amounts must match the financial policy on the insurance page.
         cancellation: {
           question: '¿Cuál es su política de cancelación?',
-          answer: 'Por favor, avísenos con 48 horas de anticipación. Una cancelación tardía o una cita a la que no se asista tiene un costo de $50 en un día de semana y de $100 en fin de semana. Nuestra política financiera completa está en la página Pago y financiamiento.',
+          answer: 'Por favor, avísenos con 48 horas de anticipación. Una cancelación tardía o una cita a la que no se asista tiene un costo de $50 en un día de semana y de $100 en fin de semana. Nuestra política financiera completa está en la página de Seguros y financiamiento.',
+          linkLabel: 'página de Seguros y financiamiento',
         },
         nervous: {
           question: 'Las visitas al dentista me generan nervios. ¿Qué puedo hacer?',
-          answer: 'Díganoslo al reservar su cita y planificaremos su visita según lo que le ayude.',
+          answer: 'Por favor, mencione su ansiedad al programar su cita y adaptaremos su visita a su nivel de comodidad. Nuestro amable equipo se toma el tiempo de explicarle todo paso a paso en un lenguaje sencillo, sin sorpresas ni presiones. También puede aprovechar nuestras comodidades relajantes, como audífonos con cancelación de ruido y mantas con peso, para sentirse tranquilo durante toda su atención.',
         },
       },
     },
@@ -452,7 +454,7 @@ export const visit: Record<Locale, VisitMessages> = {
         title: 'Fale conosco',
         description: 'Telefones, endereços, horários e e-mail da Contemporary Dental Care, e como solicitar uma consulta.',
       },
-      title: 'Localização',
+      title: 'Localizações',
     },
     faq: {
       meta: {
@@ -513,8 +515,8 @@ export const visit: Record<Locale, VisitMessages> = {
         },
         // Review: financing wording. Partner names are not translated.
         financing: {
-          question: 'Vocês oferecem planos de pagamento ou financiamento?',
-          answer: 'Sim. Trabalhamos com Alphaeon, CareCredit, Sunbit, Afterpay e Klarna, e oferecemos planos de pagamento próprios. O financiamento está sujeito a aprovação e aos termos do credor.',
+          question: 'Vocês oferecem financiamento?',
+          answer: 'Sim. Trabalhamos com Alphaeon, CareCredit, Sunbit, Afterpay e Klarna. O financiamento está sujeito a aprovação e aos termos do credor.',
         },
         rootCanal: {
           question: 'Vocês fazem tratamento de canal?',
@@ -543,14 +545,15 @@ export const visit: Record<Locale, VisitMessages> = {
           question: 'Vocês falam crioulo haitiano ou francês?',
           answer: 'Por favor, ligue para o nosso consultório e conte-nos sobre as suas necessidades de idioma.',
         },
-        // Review: financial policy wording. The amounts must match the financial policy on the Payment and financing page.
+        // Review: financial policy wording. The amounts must match the financial policy on the insurance page.
         cancellation: {
           question: 'Qual é a política de cancelamento de vocês?',
-          answer: 'Pedimos aviso com 48 horas de antecedência. Um cancelamento tardio ou a falta a uma consulta custa $50 em dia de semana e $100 no fim de semana. A nossa política financeira completa está na página Pagamento e financiamento.',
+          answer: 'Pedimos aviso com 48 horas de antecedência. Um cancelamento tardio ou a falta a uma consulta custa $50 em dia de semana e $100 no fim de semana. A nossa política financeira completa está na página Seguros e financiamento.',
+          linkLabel: 'página Seguros e financiamento',
         },
         nervous: {
           question: 'Sinto nervosismo ao ir ao dentista. O que posso fazer?',
-          answer: 'Avise-nos ao agendar, e planejaremos a sua visita de acordo com o que ajuda.',
+          answer: 'Por favor, mencione sua ansiedade ao agendar sua consulta, e adaptaremos sua visita ao seu nível de conforto. Nossa equipe simpática dedica tempo para explicar tudo passo a passo em linguagem simples, sem surpresas e sem pressão. Você também pode aproveitar nossos recursos relaxantes, como fones com cancelamento de ruído e cobertores com peso, para se sentir à vontade durante todo o atendimento.',
         },
       },
     },

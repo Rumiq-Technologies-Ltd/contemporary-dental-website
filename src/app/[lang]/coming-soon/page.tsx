@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { CallButton } from '@/components/page/Actions';
 import { CardGrid, InfoCard } from '@/components/page/Cards';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
@@ -24,7 +23,7 @@ export default async function ComingSoonPage() {
   const lang = await getLocale();
   const t = getMessages(lang).common;
   return <PageLayout>
-    <PageIntro title={t.languageComingSoon} lead={t.comingSoonPage.lead} actions={<CallButton />} />
+    <PageIntro title={t.languageComingSoon} lead={t.comingSoonPage.lead} />
     <CardGrid>
       {(['es', 'pt'] as const).map(locale => <InfoCard key={locale} title={languageNotices[locale].title} lang={localeTags[locale]}>
         <p>{languageNotices[locale].body}</p>
