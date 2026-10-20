@@ -25,7 +25,7 @@ export async function Hero() {
     <div className={styles.copy}>
       <SplitWords as="h1" id="hero-title" className={styles.headline} text={headline} delay={100} />
       <p className={styles.trust} data-load="" style={delay(650)}>
-        <span>{t.trustNewPatients}</span><span>{t.trustLanguages}</span>
+        <span>{t.trustReviews}</span>
       </p>
     </div>
   </Screen>;

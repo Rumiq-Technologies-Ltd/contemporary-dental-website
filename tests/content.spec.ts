@@ -316,6 +316,17 @@ test.describe('website fixes', () => {
     }
   });
 
+  test('the hero gives the review count and each review card shows five stars and the Google mark', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.locator('#home')).toContainText('385 Five-Star Reviews and Counting');
+    await expect(page.locator('#home')).not.toContainText('New patients welcome');
+    const cards = page.locator('#reviews figure');
+    const count = await cards.count();
+    expect(count).toBeGreaterThan(0);
+    await expect(page.locator('#reviews [aria-label="5 out of 5 stars"]')).toHaveCount(count);
+    await expect(page.locator('#reviews [aria-label="Google review"]')).toHaveCount(count);
+  });
+
   test('every page ends with the copyright line', async ({ page }) => {
     for (const path of ['/', '/faq', '/locations/orlando']) {
       await page.goto(path);

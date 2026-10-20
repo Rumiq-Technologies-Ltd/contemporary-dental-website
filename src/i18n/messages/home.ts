@@ -20,8 +20,8 @@ const en = {
       withOcoee: 'Honest, patient-focused dental care in Orlando and Ocoee',
       orlandoOnly: 'Honest, patient-focused dental care in Orlando',
     },
-    trustNewPatients: 'New patients welcome',
-    trustLanguages: 'English, Spanish and Portuguese',
+    // The practice's Google review count, supplied on 20 October 2026. Update it as reviews come in.
+    trustReviews: '385 Five-Star Reviews and Counting',
   },
   steps: {
     heading: 'WHY PATIENTS CHOOSE OUR PRACTICE',
@@ -176,8 +176,7 @@ export const home: Record<Locale, HomeMessages> = {
         withOcoee: 'Atención dental honesta y centrada en el paciente en Orlando y Ocoee',
         orlandoOnly: 'Atención dental honesta y centrada en el paciente en Orlando',
       },
-      trustNewPatients: 'Aceptamos pacientes nuevos',
-      trustLanguages: 'Inglés, español y portugués',
+      trustReviews: '385 reseñas de cinco estrellas y contando',
     },
     steps: {
       // Review: a qualified Spanish speaker checks this heading before it is published.
@@ -331,8 +330,7 @@ export const home: Record<Locale, HomeMessages> = {
         withOcoee: 'Atendimento odontológico honesto e centrado no paciente em Orlando e Ocoee',
         orlandoOnly: 'Atendimento odontológico honesto e centrado no paciente em Orlando',
       },
-      trustNewPatients: 'Recebemos novos pacientes',
-      trustLanguages: 'Inglês, espanhol e português',
+      trustReviews: '385 avaliações cinco estrelas e contando',
     },
     steps: {
       // Review: a qualified Portuguese speaker checks this heading before it is published.
