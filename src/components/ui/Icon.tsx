@@ -1,7 +1,7 @@
 // Inline SVG icons drawn with currentColor, so each icon takes the colour of the
 // element around it. The tooth and heart shapes come from the practice's original icons.
 
-type IconName = 'tooth' | 'arrow' | 'heart' | 'menu' | 'phone' | 'check' | 'clock' | 'shield' | 'globe' | 'headphones' | 'users';
+type IconName = 'tooth' | 'arrow' | 'heart' | 'menu' | 'phone' | 'check' | 'shield' | 'globe' | 'headphones' | 'family' | 'lotus' | 'addPerson';
 
 interface IconDefinition {
   viewBox: string;
@@ -42,11 +42,6 @@ const iconDefinitions: Record<IconName, IconDefinition> = {
     strokeWidth: 2.2,
     paths: ['M5 12.5l4.2 4.2L19 7'],
   },
-  clock: {
-    viewBox: '0 0 24 24',
-    strokeWidth: 2,
-    paths: ['M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0z', 'M12 6v6l4 2'],
-  },
   shield: {
     viewBox: '0 0 24 24',
     strokeWidth: 2,
@@ -62,10 +57,32 @@ const iconDefinitions: Record<IconName, IconDefinition> = {
     strokeWidth: 2,
     paths: ['M3 18v-6a9 9 0 0 1 18 0v6', 'M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z'],
   },
-  users: {
+  addPerson: {
     viewBox: '0 0 24 24',
     strokeWidth: 2,
-    paths: ['M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2', 'M13 7a4 4 0 1 1-8 0 4 4 0 0 1 8 0z', 'M23 21v-2a4 4 0 0 0-3-3.87', 'M16 3.13a4 4 0 0 1 0 7.75'],
+    paths: ['M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2', 'M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z', 'M19 8v6M16 11h6'],
+  },
+  lotus: {
+    viewBox: '0 0 24 24',
+    strokeWidth: 2,
+    paths: [
+      'M12 20C9 17 8.5 13 12 6c3.5 7 3 11 0 14z',
+      'M12 20c-4-1-8-4-8-9 3 1 5 4 8 9z',
+      'M12 20c4-1 8-4 8-9-3 1-5 4-8 9z',
+      'M6 21h12',
+    ],
+  },
+  family: {
+    viewBox: '0 0 24 24',
+    strokeWidth: 2,
+    paths: [
+      'M7 9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z',
+      'M1 21v-2a3.5 3.5 0 0 1 7 0v2',
+      'M15 7.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0z',
+      'M8 21v-3.5a4 4 0 0 1 8 0V21',
+      'M22 9.5a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z',
+      'M16 21v-2a3.5 3.5 0 0 1 7 0v2',
+    ],
   },
 };
 

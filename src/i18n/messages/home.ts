@@ -61,6 +61,10 @@ const en = {
         title: 'CARE IN YOUR LANGUAGE',
         subtitle: 'English, Spanish & Portuguese',
         text: 'Feel fully comfortable discussing your care. Our multilingual team explains every step of your treatment clearly—just let us know your preferred language when you call.',
+        lines: [
+          { label: 'Se Habla Español', locale: 'es' as const },
+          { label: 'Falamos Português', locale: 'pt' as const },
+        ],
       },
       {
         title: 'COMFORT-FIRST DENTAL VISITS',
@@ -204,6 +208,10 @@ export const home: Record<Locale, HomeMessages> = {
           title: 'ATENCIÓN EN SU IDIOMA',
           subtitle: 'Inglés, español y portugués',
           text: 'Sienta total comodidad al hablar de su atención. Nuestro equipo multilingüe le explica cada paso de su tratamiento con claridad; solo infórmenos su idioma preferido al llamar.',
+          lines: [
+            { label: 'Se Habla Español', locale: 'es' as const },
+            { label: 'Falamos Português', locale: 'pt' as const },
+          ],
         },
         {
           title: 'VISITAS DENTALES CENTRADAS EN LA COMODIDAD',
@@ -343,6 +351,10 @@ export const home: Record<Locale, HomeMessages> = {
           title: 'ATENDIMENTO NO SEU IDIOMA',
           subtitle: 'Inglês, espanhol e português',
           text: 'Sinta-se totalmente à vontade para conversar sobre o seu tratamento. Nossa equipe multilíngue explica cada etapa do seu tratamento com clareza; basta nos dizer seu idioma preferido ao ligar.',
+          lines: [
+            { label: 'Se Habla Español', locale: 'es' as const },
+            { label: 'Falamos Português', locale: 'pt' as const },
+          ],
         },
         {
           title: 'VISITAS ODONTOLÓGICAS COM FOCO NO CONFORTO',
