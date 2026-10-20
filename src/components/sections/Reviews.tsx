@@ -6,6 +6,8 @@ import { homepageTestimonials, type Testimonial } from '@/content/testimonials';
 import { getMessages } from '@/i18n/dictionaries';
 import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
+import { GoogleMark } from '@/components/ui/GoogleMark';
+import { Icon } from '@/components/ui/Icon';
 import styles from './reviews.module.css';
 
 /**
@@ -19,7 +21,12 @@ export function ReviewList({ reviews }: { reviews: readonly Testimonial[] }) {
       <figure className={styles.card} data-reveal="" lang="en">
         <span className={styles.mark} aria-hidden="true">“</span>
         <blockquote><p>{review.quote}</p></blockquote>
-        <figcaption>{review.name}</figcaption>
+        <figcaption>
+          {review.stars && <span className={styles.stars} role="img" aria-label={`${review.stars} out of 5 stars`}>
+            {Array.from({ length: review.stars }, (_, star) => <Icon key={star} name="star" />)}
+          </span>}
+          <span className={styles.reviewer}>{review.name}{review.source === 'google' && <GoogleMark className={styles.google} />}</span>
+        </figcaption>
       </figure>
     </li>)}
   </ul>;

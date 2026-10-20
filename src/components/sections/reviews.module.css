@@ -18,11 +18,17 @@
 }
 .card blockquote { margin: 0; }
 .card blockquote p { font-size: 16px; line-height: 1.65; color: var(--color-text); }
-.card figcaption {
-  padding-top: 14px; border-top: 1px solid var(--color-line);
+.card figcaption { display: grid; gap: 12px; padding-top: 14px; border-top: 1px solid var(--color-line); }
+/* Stars in the site's cyan, outlined in its darker blue so they hold up on the white card. */
+.stars { display: flex; gap: 4px; font-size: 22px; color: var(--color-accent); }
+.stars svg { stroke: var(--color-accent-ink); stroke-width: 1.2px; stroke-linejoin: round; }
+/* The reviewer's name, with the Google mark to its right. */
+.reviewer {
+  display: inline-flex; align-items: center; gap: 10px;
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
   font-size: 22px; font-weight: 700; line-height: 1; text-transform: uppercase; color: var(--color-ink);
 }
+.google { flex: none; font-size: 20px; }
 
 /* The reviews page: the same cards on an ink panel, matching the homepage band. */
 .band { padding: clamp(28px, 4vw, 56px); border-radius: var(--radius-panel); background: var(--color-ink); }
