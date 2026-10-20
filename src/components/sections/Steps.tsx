@@ -11,7 +11,7 @@ import { Highlights } from './Highlights';
 import styles from './steps.module.css';
 
 // One icon per card, in the order the cards appear in the copy.
-const cardIcons: readonly IconName[] = ['phone', 'clock', 'shield', 'globe', 'headphones', 'users'];
+const cardIcons: readonly IconName[] = ['phone', 'lotus', 'shield', 'globe', 'headphones', 'family'];
 
 export async function Steps() {
   const lang = await getLocale();
@@ -31,6 +31,7 @@ export async function Steps() {
     title: card.title,
     subtitle: card.subtitle,
     text: typeof card.text === 'string' ? card.text : whenOcoee(card.text.withOcoee, card.text.orlandoOnly),
+    lines: card.lines ?? [],
     icon: cardIcons[index],
   }));
 
@@ -42,12 +43,15 @@ export async function Steps() {
         <div data-reveal="" style={{ '--d': '150ms' } as CSSProperties}><Link href={localePath(lang, routes.newPatients)} className="pill pill-outline pill-large">{t.whatToExpect}</Link></div>
       </div>
       <ul className={styles.cards} data-stagger="">
-        {cards.map(card => <li key={card.title}>
-          <article className={styles.card} data-reveal="">
+        {cards.map((card, index) => <li key={card.title} style={{ '--i': index } as CSSProperties}>
+          <article className={styles.card} data-reveal="" data-tilt="9">
             <span className={styles.iconWrap}><Icon name={card.icon} /></span>
             <h3>{card.title}</h3>
             <span className={styles.subhead}>{card.subtitle}</span>
             <p>{card.text}</p>
+            {card.lines.length > 0 && <div className={styles.lines}>
+              {card.lines.map(line => <Link key={line.locale} href={localePath(line.locale, routes.home)}>{line.label}</Link>)}
+            </div>}
           </article>
         </li>)}
       </ul>

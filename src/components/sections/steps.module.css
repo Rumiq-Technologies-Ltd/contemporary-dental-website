@@ -24,17 +24,37 @@ section.steps { grid-template-columns: minmax(0, 1fr); row-gap: 20px; padding-to
 @media (max-width: 1024px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .cards { grid-template-columns: minmax(0, 1fr); } }
 
+/* The 3D tilt and pointer light come from the shared [data-tilt] rules in globals.css. Nothing here
+   sets transform on the card, so the tilt is not overridden. Overflow stays visible so the icon can
+   sit forward of the card in 3D. */
 .card {
-  display: flex; flex-direction: column; height: 100%; padding: 28px 24px;
+  position: relative; display: flex; flex-direction: column; height: 100%; padding: 32px 28px;
   border: 1px solid var(--color-line); border-radius: 12px; background: var(--color-bg);
-  box-shadow: 0 2px 4px rgb(0 0 0 / 0.04); transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.04), 0 18px 32px -18px rgb(19 28 21 / 0.28);
 }
-.card:hover { transform: translateY(-4px); box-shadow: 0 10px 20px rgb(0 0 0 / 0.08); }
+/* An accent bar draws across the foot of the card on hover. */
+.card::before {
+  content: ''; position: absolute; inset: auto 0 0; height: 4px; border-radius: 0 0 12px 12px;
+  background: var(--color-accent-ink); transform: scaleX(0); transform-origin: left; transition: transform 0.5s var(--ease-out);
+}
+.card:hover::before { transform: scaleX(1); }
 .iconWrap {
-  display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; margin-bottom: 16px;
-  border-radius: 50%; background: var(--color-tint-soft); color: var(--color-accent-ink); font-size: 28px;
+  display: flex; align-items: center; justify-content: center; width: 60px; height: 60px; margin-bottom: 20px;
+  border-radius: 50%; background: var(--color-highlight); color: var(--color-ink); font-size: 30px;
+  transform: translateZ(40px); box-shadow: 0 0 0 8px var(--color-tint-soft); transition: scale 0.4s var(--ease-out);
 }
-.card h3 { margin: 0 0 4px; font-family: var(--font-body), system-ui, sans-serif; font-size: 17px; font-weight: 700; letter-spacing: 0.5px; line-height: 1.3; color: var(--color-ink); }
-.subhead { display: block; margin-bottom: 12px; font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--color-accent-ink); }
+.card:hover .iconWrap { scale: 1.08; }
+/* Each icon bobs gently; the offset comes from the card's index so the row does not move in step. */
+@media (prefers-reduced-motion: no-preference) {
+  .iconWrap { animation: icon-float 5s ease-in-out infinite; animation-delay: calc(var(--i, 0) * -0.8s); }
+}
+@keyframes icon-float { 0%, 100% { translate: 0 0; } 50% { translate: 0 -4px; } }
+.card h3 {
+  margin: 0 0 8px; font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
+  font-size: clamp(22px, 2vw, 26px); font-weight: 700; line-height: 1.05; text-transform: uppercase; color: var(--color-ink);
+}
+.subhead { display: block; margin-bottom: 14px; font-size: 14px; font-weight: 600; line-height: 1.4; color: var(--color-accent-ink); }
 .card p { margin: 0; font-size: 15px; line-height: 1.6; color: var(--color-text); }
-@media (prefers-reduced-motion: reduce) { .card, .card:hover { transform: none; transition: none; } }
+.lines { display: grid; gap: 4px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--color-line); }
+.lines a { justify-self: start; font-weight: 700; color: var(--color-ink); text-decoration: underline; text-decoration-color: var(--color-accent-ink); text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.lines a:hover { color: var(--color-accent-ink); }
