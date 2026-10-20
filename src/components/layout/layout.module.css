@@ -138,7 +138,8 @@
 .footerBottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; }
 .siteTagline { font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62; font-size: 24px; font-weight: 700; text-transform: uppercase; }
 .legalLinks { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; }
-.socialLinks { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; }
+.socialLinks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; font-size: 14px; }
+.followLabel { font-weight: 700; }
 .socialLinks a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
 .socialLinks svg { font-size: 18px; }
 /* The copyright line closes every page in very small print. */

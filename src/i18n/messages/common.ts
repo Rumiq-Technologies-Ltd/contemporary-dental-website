@@ -48,6 +48,7 @@ const en = {
     tagline: 'Your smile is our priority',
     copyright: 'Copyright © {year} {name}. All rights reserved.',
     social: 'Social media',
+    follow: 'Follow Us:',
   },
   hours: {
     orlando: 'Monday to Friday, 8:00am to 5:00pm. We also open one Saturday a month; please call to confirm the date.',
@@ -133,6 +134,7 @@ export const common: Record<Locale, CommonMessages> = {
       tagline: 'Su sonrisa es nuestra prioridad',
       copyright: 'Copyright © {year} {name}. Todos los derechos reservados.',
       social: 'Redes sociales',
+      follow: 'Síganos:',
     },
     hours: {
       orlando: 'De lunes a viernes, de 8:00 a. m. a 5:00 p. m. Abrimos también un sábado al mes; llame para confirmar la fecha.',
@@ -213,6 +215,7 @@ export const common: Record<Locale, CommonMessages> = {
       tagline: 'Seu sorriso é a nossa prioridade',
       copyright: 'Copyright © {year} {name}. Todos os direitos reservados.',
       social: 'Redes sociais',
+      follow: 'Siga-nos:',
     },
     hours: {
       orlando: 'De segunda a sexta, das 8h às 17h. Também abrimos um sábado por mês; ligue para confirmar a data.',

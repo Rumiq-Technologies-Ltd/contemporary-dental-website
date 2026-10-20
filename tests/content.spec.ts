@@ -294,6 +294,7 @@ test.describe('website fixes', () => {
   test('the footer links to the practice on Instagram and Facebook', async ({ page }) => {
     await page.goto('/');
     const social = page.getByRole('navigation', { name: 'Social media' });
+    await expect(social).toContainText('Follow Us:');
     await expect(social.getByRole('link', { name: 'Instagram' })).toHaveAttribute('href', 'https://www.instagram.com/contemporarydentalcare/');
     await expect(social.getByRole('link', { name: 'Facebook' })).toHaveAttribute('href', /facebook\.com/);
   });

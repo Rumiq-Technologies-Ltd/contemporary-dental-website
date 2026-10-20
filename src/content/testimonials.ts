@@ -99,8 +99,14 @@ export const testimonials: readonly Testimonial[] = [
   },
 ];
 
-/** The reviews that may be shown anywhere: authorized and with no hold. They all appear on the reviews page. */
+/** The reviews that may be shown anywhere: authorized and with no hold. */
 export const publishedTestimonials: readonly Testimonial[] = testimonials.filter(review => review.authorizationReceived && !review.hold);
 
 /** The published reviews that may also appear on the homepage. */
 export const homepageTestimonials: readonly Testimonial[] = publishedTestimonials.filter(review => !review.homepageHold);
+
+/**
+ * The published reviews the homepage leaves out. The reviews page shows only these, so no review
+ * appears on both pages (the practice's request of 20 October 2026).
+ */
+export const reviewsPageTestimonials: readonly Testimonial[] = publishedTestimonials.filter(review => review.homepageHold);

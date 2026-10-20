@@ -41,6 +41,7 @@ export async function SiteFooter() {
       <p className={styles.siteTagline}>{t.footer.tagline}</p>
       {/* Brand names, the same in every language. */}
       <nav aria-label={t.footer.social} className={styles.socialLinks}>
+        <span className={styles.followLabel}>{t.footer.follow}</span>
         <a href={site.instagram}><Icon name="instagram" />Instagram</a>
         <a href={site.facebook}><Icon name="facebook" />Facebook</a>
       </nav>
