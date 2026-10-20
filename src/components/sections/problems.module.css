@@ -1,7 +1,8 @@
 /* "Common problems, clear solutions": text tabs above a photo and a pale cyan fact panel. */
 .problems { grid-template-columns: minmax(0, 1fr); row-gap: 32px; padding-top: 0; background: var(--color-off); }
 .heading { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
-.heading h2 { max-width: 20ch; font-size: clamp(2.8rem, 5.4vw, 4.8rem); }
+/* No width cap: on wide screens "Your smile concerns, simplified" sits on one line beside its button. */
+.heading h2 { font-size: clamp(2.8rem, 5.4vw, 4.8rem); }
 
 .tabsRoot { display: grid; gap: 0; }
 .tabs { display: flex; flex-wrap: wrap; gap: 4px 32px; }
