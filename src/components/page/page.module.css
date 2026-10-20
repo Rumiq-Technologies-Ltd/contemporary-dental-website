@@ -69,8 +69,9 @@
 /* Safety and notice panels pair colour with a border and a label, so meaning never relies on colour alone. */
 .safety {
   display: grid; max-width: 66ch; padding: 24px 28px; border: 2px solid var(--color-ink); border-radius: var(--radius-card);
-  background: var(--color-tint-soft); font-size: 1.0625rem; line-height: 1.7; color: var(--color-ink);
+  gap: 6px; background: var(--color-tint-soft); font-size: 1.0625rem; line-height: 1.7; color: var(--color-ink);
 }
+.safetyTitle { font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; }
 .notice { max-width: 66ch; padding: 20px 24px; border-radius: var(--radius-card); background: var(--color-off); font-size: 15px; line-height: 1.65; }
 .noticeWide { max-width: none; }
 

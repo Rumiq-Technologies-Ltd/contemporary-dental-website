@@ -173,8 +173,13 @@ test.describe('facts', () => {
 
   test('the emergency page carries the 911 safety wording and the after-hours line', async ({ page }) => {
     await page.goto('/emergency');
-    await expect(page.getByRole('complementary', { name: 'When to call 911' })).toContainText('call 911 or go to the nearest emergency room now');
-    await expect(page.getByText('We are not open 24 hours')).toBeVisible();
+    const notice = page.getByRole('complementary', { name: 'When to call 911' });
+    await expect(notice).toContainText('Urgent medical notice');
+    await expect(notice).toContainText('call 911 or go to the nearest emergency room immediately');
+    await expect(page.locator('#same-day li')).toHaveCount(4);
+    await expect(page.getByText('While we are not a 24-hour facility', { exact: false })).toBeVisible();
+    await expect(page.locator('#after-hours strong', { hasText: 'Orlando office' })).toHaveCount(1);
+    await expect(page.locator('#after-hours a[href="tel:+14076255440"]')).toHaveText('407-625-5440');
     await expect(page.getByRole('link', { name: 'Call Orlando: 321-522-8577' }).first()).toHaveAttribute('href', 'tel:+13215228577');
   });
 

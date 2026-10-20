@@ -23,6 +23,9 @@ export function Notice({ children, wide = false }: { children: ReactNode; wide?:
 }
 
 /** Emergency safety wording. Dr. Khan must approve it before publication. */
-export function SafetyNotice({ children, label }: { children: ReactNode; label: string }) {
-  return <aside className={styles.safety} aria-label={label}><p>{children}</p></aside>;
+export function SafetyNotice({ children, label, title }: { children: ReactNode; label: string; title?: string }) {
+  return <aside className={styles.safety} aria-label={label}>
+    {title && <p className={styles.safetyTitle}>{title}</p>}
+    <p>{children}</p>
+  </aside>;
 }
