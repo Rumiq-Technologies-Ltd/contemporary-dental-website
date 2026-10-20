@@ -22,7 +22,7 @@ export async function Hero() {
   const headline = whenOcoee(t.headline.withOcoee, t.headline.orlandoOnly);
 
   return <Screen id="home" labelledBy="hero-title" className={styles.hero}>
-    <Image src={photos.appointments} alt="" fill priority sizes="100vw" placeholder="blur" className={styles.photo} data-parallax="" />
+    <Image src={photos.heroSmile} alt="" fill priority sizes="100vw" placeholder="blur" className={styles.photo} data-parallax="" />
     <div className={styles.copy}>
       <SplitWords as="h1" id="hero-title" className={styles.headline} text={headline} delay={100} />
       <p className={styles.trust} data-load="" style={delay(650)}>

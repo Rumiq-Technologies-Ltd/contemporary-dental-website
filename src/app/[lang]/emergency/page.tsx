@@ -45,7 +45,7 @@ export default async function EmergencyPage() {
           </BulletList>
         </Section>
       </div>
-      <PagePhoto photo="guides" />
+      <PagePhoto photo="emergencyPatient" />
     </div>
     <EnquiryPanel source="/emergency" />
   </PageLayout>;

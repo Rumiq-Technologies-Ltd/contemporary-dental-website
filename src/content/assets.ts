@@ -7,6 +7,12 @@ import guides from '../../public/images/figma/25eac.png';
 import toothModel from '../../public/images/stock/tooth-model.jpg';
 import clearAligner from '../../public/images/stock/clear-aligner.jpg';
 import teethModel from '../../public/images/stock/teeth-model.jpg';
+// The homepage hero, supplied by the practice on 20 October 2026 (docs/image-credits.md).
+import heroSmile from '../../public/images/hero/hero-smile.jpg';
+// Service page photos supplied by the practice on 20 October 2026 (docs/image-credits.md).
+import extractionsPatient from '../../public/images/services/extractions-patient.jpg';
+import emergencyPatient from '../../public/images/services/emergency-patient.jpg';
+import restorativePatient from '../../public/images/services/restorative-patient.jpg';
 // Dr. Khan's portrait with its grey background replaced by the brand colour (see docs/content-holds.md).
 import doctorPortrait from '../../public/images/practice/dr-sheryar-khan-brand.jpg';
 import teamGroup from '../../public/images/practice/team-group.jpg';
@@ -39,7 +45,7 @@ import thumbCosmetic from '../../public/images/services/thumbnails/cosmetic.jpg'
 // no practice photograph exists yet (docs/image-credits.md).
 export const photos = {
   smile, assessment, appointments, medication, backPortrait, guides,
-  toothModel, clearAligner, teethModel,
+  toothModel, clearAligner, teethModel, heroSmile, extractionsPatient, emergencyPatient, restorativePatient,
   doctorPortrait, teamGroup, orlandoFront, orlandoEntrance, frontDesk,
   xrayTeamLandscape, xrayTeamPortrait, roomTeal, roomCream,
   thumbCleanings, thumbEmergency, thumbExtractions, thumbRestorative, thumbCrowns, thumbRootCanal, thumbImplants, thumbDentures, thumbAligners, thumbCosmetic,

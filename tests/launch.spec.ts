@@ -80,14 +80,14 @@ test('a patient review appears on the homepage only when it is authorized and ha
     const shown = review.authorizationReceived && !review.hold && !review.homepageHold;
     await expect(page.locator('#reviews figcaption').filter({ hasText: review.name })).toHaveCount(shown ? 1 : 0);
   }
-  await expect(page.locator('#reviews').getByRole('link', { name: 'Read all patient reviews' })).toHaveAttribute('href', '/reviews');
+  await expect(page.locator('#reviews').getByRole('link', { name: 'Read more patient reviews' })).toHaveAttribute('href', '/reviews');
 });
 
-test('the reviews page shows every authorized review without a site-wide hold', async ({ page }) => {
+test('the reviews page shows only the published reviews the homepage leaves out', async ({ page }) => {
   const response = await page.goto('/reviews');
   expect(response?.status()).toBe(200);
   for (const review of testimonials) {
-    const shown = review.authorizationReceived && !review.hold;
+    const shown = review.authorizationReceived && !review.hold && Boolean(review.homepageHold);
     await expect(page.locator('figcaption').filter({ hasText: review.name })).toHaveCount(shown ? 1 : 0);
   }
 });

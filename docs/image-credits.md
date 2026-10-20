@@ -24,6 +24,22 @@ Before launch:
 
 A photo that showed a patient in treatment was deleted at the owner's request. Patients may appear on the website only with documented written consent.
 
+## Homepage hero (`public/images/hero/`)
+
+`hero-smile.jpg`, a woman pointing to her smile, was supplied by the practice on 20 October 2026 for the homepage hero. Its source and licence are not recorded yet: confirm the practice holds the rights (or a model release, if it shows a patient) and add them here.
+
+## Service photos supplied by the practice
+
+Supplied on 20 October 2026. Their source and licence are not recorded yet: confirm the practice holds the rights (or a model release, if they show patients) and add them here.
+
+| File | Used on |
+|---|---|
+| `public/images/services/extractions-patient.jpg` | Tooth extractions page, beside the text |
+| `public/images/services/emergency-patient.jpg` | Emergency page, beside the text |
+| `public/images/services/thumbnails/emergency.jpg` | Emergency care card on the services grid (replaces the earlier card photo) |
+| `public/images/services/restorative-patient.jpg` | Fillings and restorative care page, beside the text |
+| `public/images/services/thumbnails/restorative.jpg` | Fillings and restorative care card on the services grid (replaces the earlier card photo) |
+
 ## Stock photographs (`public/images/stock/`)
 
 Used under the [Pexels License](https://www.pexels.com/license/) (free for commercial use, no attribution required). They are generic illustrations and do not show the practice, its offices or its team. Their alt text stays generic.

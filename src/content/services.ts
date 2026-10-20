@@ -24,12 +24,14 @@ export interface Service {
   listLabel: string;
   /** English path. Pass it through localePath(lang, service.href) for a link. */
   href: string;
-  /** Hero photo for the service page. */
-  image: PhotoName;
+  /** Photo beside the copy on the service page. A page without one shows its copy full width. */
+  image?: PhotoName;
+  /** CSS object-position for the photo's crop, when the subject is off centre. */
+  imagePosition?: string;
   /** Card photo for the services grid. */
   thumbnail: PhotoName;
-  /** The page shows its copy alone: no photo beside it and no call buttons under it. */
-  plainIntro: boolean;
+  /** Call buttons for each office under the copy. */
+  callButtons: boolean;
   description: string;
   paragraphs: readonly string[];
   /** A closing note, shown in italics after the paragraphs. */
@@ -40,9 +42,10 @@ export interface Service {
 interface ServiceDefinition {
   id: ServiceId;
   href: string;
-  image: PhotoName;
+  image?: PhotoName;
+  imagePosition?: string;
   thumbnail: PhotoName;
-  plainIntro?: true;
+  callButtons?: false;
 }
 
 // Content is data, not component markup: additions need no card-layout changes. The copy
@@ -50,11 +53,12 @@ interface ServiceDefinition {
 // Held items from the content file (same-day crowns, implant offer, All-on-4,
 // partial dentures, orthobrain wording, trademarked product names) are left out on purpose.
 const definitions: readonly ServiceDefinition[] = [
-  // The practice asked for the cleanings page without the photo and call buttons (20 October 2026).
-  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, image: 'xrayTeamLandscape', thumbnail: 'thumbCleanings', plainIntro: true },
-  { id: 'emergency', href: routes.emergency, image: 'guides', thumbnail: 'thumbEmergency' },
-  { id: 'extractions', href: `${routes.services}/extractions`, image: 'appointments', thumbnail: 'thumbExtractions' },
-  { id: 'restorative', href: `${routes.services}/restorative`, image: 'roomTeal', thumbnail: 'thumbRestorative' },
+  // The practice asked for the cleanings page without a photo or call buttons, and the extractions
+  // page with a new photo and no call buttons (20 October 2026).
+  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, thumbnail: 'thumbCleanings', callButtons: false },
+  { id: 'emergency', href: routes.emergency, image: 'emergencyPatient', thumbnail: 'thumbEmergency' },
+  { id: 'extractions', href: `${routes.services}/extractions`, image: 'extractionsPatient', imagePosition: '30% 50%', thumbnail: 'thumbExtractions', callButtons: false },
+  { id: 'restorative', href: `${routes.services}/restorative`, image: 'restorativePatient', imagePosition: '72% 50%', thumbnail: 'thumbRestorative' },
   { id: 'crowns', href: `${routes.services}/crowns`, image: 'assessment', thumbnail: 'thumbCrowns' },
   { id: 'root-canal', href: `${routes.services}/root-canal`, image: 'teethModel', thumbnail: 'thumbRootCanal' },
   { id: 'implants', href: `${routes.services}/implants`, image: 'toothModel', thumbnail: 'thumbImplants' },
@@ -72,11 +76,11 @@ function pickParagraphs(paragraphs: ServiceCopy['paragraphs']): readonly string[
 export function getServices(lang: Locale): readonly Service[] {
   const t = getMessages(lang).services;
   const atOffices = whenOcoee(t.atOffices.withOcoee, t.atOffices.orlandoOnly);
-  return definitions.map(({ id, href, image, thumbnail, plainIntro = false }) => {
+  return definitions.map(({ id, href, image, imagePosition, thumbnail, callButtons = true }) => {
     const copy = t.items[id];
     const paragraphs = pickParagraphs(copy.paragraphs).map(paragraph => fill(paragraph, { atOffices }));
     return {
-      id, href, image, thumbnail, plainIntro, paragraphs,
+      id, href, image, imagePosition, thumbnail, callButtons, paragraphs,
       title: copy.title,
       heading: copy.heading,
       lead: copy.lead,

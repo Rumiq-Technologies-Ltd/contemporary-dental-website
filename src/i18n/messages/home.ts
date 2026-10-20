@@ -82,6 +82,8 @@ const en = {
     intro: 'Illustrations of common treatments. They are not patient results.',
     disclaimer: 'The illustrations are for educational purposes only. They show the general kind of change a treatment can make. They are not photographs of patients. Your own result depends on a clinical assessment at your visit.',
     illustration: 'Illustration, not a patient result',
+    // Label for the cleanings illustration, which also shows whitening (offered, per the practice, 20 October 2026).
+    cleaningsWhitening: 'Cleanings and whitening',
     before: 'Before',
     after: 'After',
     compare: 'Compare before and after',
@@ -140,7 +142,7 @@ const en = {
   },
   reviews: {
     heading: 'What our patients say',
-    allReviews: 'Read all patient reviews',
+    allReviews: 'Read more patient reviews',
     pageTitle: 'Patient reviews',
     pageDescription: 'What patients say about their visits to Contemporary Dental Care, in their own words and shared with their written permission.',
     pageLead: 'In their own words, shared with their written permission.',
@@ -240,6 +242,7 @@ export const home: Record<Locale, HomeMessages> = {
       intro: 'Ilustraciones de tratamientos habituales. No son resultados de pacientes.',
       disclaimer: 'Las ilustraciones tienen fines únicamente educativos. Muestran el tipo general de cambio que puede lograr un tratamiento. No son fotografías de pacientes. Su propio resultado depende de una evaluación clínica en su visita.',
       illustration: 'Ilustración, no es un resultado de paciente',
+      cleaningsWhitening: 'Limpiezas y blanqueamiento',
       before: 'Antes',
       after: 'Después',
       compare: 'Comparar antes y después',
@@ -299,7 +302,7 @@ export const home: Record<Locale, HomeMessages> = {
     // Review: a qualified Spanish speaker checks this block before it is published.
     reviews: {
       heading: 'Lo que dicen nuestros pacientes',
-      allReviews: 'Leer todas las opiniones de pacientes',
+      allReviews: 'Leer más opiniones de pacientes',
       pageTitle: 'Opiniones de pacientes',
       pageDescription: 'Lo que dicen los pacientes sobre sus visitas a Contemporary Dental Care, en sus propias palabras y compartido con su permiso por escrito.',
       pageLead: 'En sus propias palabras, compartidas con su permiso por escrito.',
@@ -394,6 +397,7 @@ export const home: Record<Locale, HomeMessages> = {
       intro: 'Ilustrações de tratamentos comuns. Não são resultados de pacientes.',
       disclaimer: 'As ilustrações têm fins apenas educativos. Mostram o tipo geral de mudança que um tratamento pode fazer. Não são fotografias de pacientes. O seu próprio resultado depende de uma avaliação clínica na sua consulta.',
       illustration: 'Ilustração, não é um resultado de paciente',
+      cleaningsWhitening: 'Limpezas e clareamento',
       before: 'Antes',
       after: 'Depois',
       compare: 'Comparar antes e depois',
@@ -453,7 +457,7 @@ export const home: Record<Locale, HomeMessages> = {
     // Review: a qualified Portuguese speaker checks this block before it is published.
     reviews: {
       heading: 'O que nossos pacientes dizem',
-      allReviews: 'Ler todas as avaliações de pacientes',
+      allReviews: 'Ler mais avaliações de pacientes',
       pageTitle: 'Avaliações de pacientes',
       pageDescription: 'O que os pacientes dizem sobre suas consultas na Contemporary Dental Care, nas palavras deles e compartilhado com sua permissão por escrito.',
       pageLead: 'Nas palavras deles, compartilhadas com sua permissão por escrito.',

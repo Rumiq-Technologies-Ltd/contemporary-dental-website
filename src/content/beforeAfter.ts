@@ -31,6 +31,8 @@ export interface BeforeAfterCase {
   onHome: boolean;
   /** Shown on the matching service page. */
   onServicePage: boolean;
+  /** An illustration label that replaces the service name (a key in the beforeAfter messages). */
+  label?: 'cleaningsWhitening';
 }
 
 /** Turns the section on or off. The section renders nothing when no case passes the filter below. */
@@ -39,7 +41,8 @@ export const beforeAfterEnabled = true;
 const illustrationSize = { width: 760, height: 704 };
 
 // Cropped from the supplied AI-generated illustrations, keeping only the two halves. The whitening
-// illustration is left out: whitening is not in the service inventory (C04 §2).
+// illustration is left out. The practice confirmed on 20 October 2026 that it offers whitening, which
+// C04 §2 does not list yet; the cleanings illustration is labelled "Cleanings and whitening".
 const cases: readonly BeforeAfterCase[] = [
   {
     id: 'illustration-crown',
@@ -122,6 +125,7 @@ const cases: readonly BeforeAfterCase[] = [
   {
     id: 'illustration-cleanings-service',
     service: 'cleanings-checkups',
+    label: 'cleaningsWhitening',
     patient: '',
     before: { src: '/images/services/before-after/cleanings-checkups-before.jpg', width: 764, height: 728 },
     after: { src: '/images/services/before-after/cleanings-checkups-after.jpg', width: 764, height: 728 },

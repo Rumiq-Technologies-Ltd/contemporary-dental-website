@@ -294,6 +294,7 @@ test.describe('website fixes', () => {
   test('the footer links to the practice on Instagram and Facebook', async ({ page }) => {
     await page.goto('/');
     const social = page.getByRole('navigation', { name: 'Social media' });
+    await expect(social).toContainText('Follow Us:');
     await expect(social.getByRole('link', { name: 'Instagram' })).toHaveAttribute('href', 'https://www.instagram.com/contemporarydentalcare/');
     await expect(social.getByRole('link', { name: 'Facebook' })).toHaveAttribute('href', /facebook\.com/);
   });
@@ -350,6 +351,7 @@ test.describe('website fixes', () => {
     await expect(main.getByText('Gentle, thoughtful care focused on your long-term health and comfort.')).toBeVisible();
     await expect(main.getByText('whenever clinically appropriate and schedule permitting', { exact: false })).toBeVisible();
     await expect(main.locator('em', { hasText: 'trusted local oral surgery partners' })).toHaveCount(1);
+    await expect(main.locator('a[href^="tel:"]')).toHaveCount(0);
   });
 
   test('every page ends with the copyright line', async ({ page }) => {
