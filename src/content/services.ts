@@ -58,7 +58,7 @@ const definitions: readonly ServiceDefinition[] = [
   { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, thumbnail: 'thumbCleanings', callButtons: false },
   { id: 'emergency', href: routes.emergency, image: 'emergencyPatient', thumbnail: 'thumbEmergency' },
   { id: 'extractions', href: `${routes.services}/extractions`, image: 'extractionsPatient', imagePosition: '30% 50%', thumbnail: 'thumbExtractions', callButtons: false },
-  { id: 'restorative', href: `${routes.services}/restorative`, image: 'roomTeal', thumbnail: 'thumbRestorative' },
+  { id: 'restorative', href: `${routes.services}/restorative`, image: 'restorativePatient', imagePosition: '72% 50%', thumbnail: 'thumbRestorative' },
   { id: 'crowns', href: `${routes.services}/crowns`, image: 'assessment', thumbnail: 'thumbCrowns' },
   { id: 'root-canal', href: `${routes.services}/root-canal`, image: 'teethModel', thumbnail: 'thumbRootCanal' },
   { id: 'implants', href: `${routes.services}/implants`, image: 'toothModel', thumbnail: 'thumbImplants' },

@@ -37,6 +37,8 @@ Supplied on 20 October 2026. Their source and licence are not recorded yet: conf
 | `public/images/services/extractions-patient.jpg` | Tooth extractions page, beside the text |
 | `public/images/services/emergency-patient.jpg` | Emergency page, beside the text |
 | `public/images/services/thumbnails/emergency.jpg` | Emergency care card on the services grid (replaces the earlier card photo) |
+| `public/images/services/restorative-patient.jpg` | Fillings and restorative care page, beside the text |
+| `public/images/services/thumbnails/restorative.jpg` | Fillings and restorative care card on the services grid (replaces the earlier card photo) |
 
 ## Stock photographs (`public/images/stock/`)
 
