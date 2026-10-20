@@ -33,7 +33,9 @@ export const testimonials: readonly Testimonial[] = [
     name: 'Brian C.',
     quote: 'Had an emergency dental situation that needed to be addressed before I left town in the morning. They were available on Sunday and did a great job taking care of my problem. Dr Khan was very personable and professional. Highly recommend.',
     authorizationReceived: true,
-    hold: 'Says the practice was available on a Sunday. C14 §3.1 bars Sunday availability claims, and a review cannot be edited.',
+    // Published on the practice's decision of 20 October 2026: the Sunday visit was an emergency, which matches
+    // C14 §3.1's accurate framing that weekend emergency appointments are often available.
+    homepageHold: 'Mentions a Sunday visit. The homepage is the ad landing page, where weekend wording is kept out (C14 §3.1, R-49).',
   },
   {
     id: 'declan-r',
