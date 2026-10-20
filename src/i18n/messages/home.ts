@@ -37,24 +37,42 @@ const en = {
       languages: 'English, Spanish and Portuguese spoken',
       afterHours: 'After-hours line: {phone}',
     },
-    call: {
-      badge: 'New patients welcome',
-      title: 'Call our office',
-      text: {
-        withOcoee: 'Call Orlando or Ocoee to book. Tell us your language when you call.',
-        orlandoOnly: 'Call our Orlando office to book. Tell us your language when you call.',
+    cards: [
+      {
+        title: 'NEW PATIENTS WELCOME',
+        subtitle: 'Convenient Booking & Flexible Support',
+        // The Orlando-only wording is derived from the Ocoee text. Owner to confirm before launch.
+        text: {
+          withOcoee: 'We are currently accepting new patients at both our Orlando and Ocoee offices. Call either location or reach our dedicated after-hours line to schedule your first visit.',
+          orlandoOnly: 'We are currently accepting new patients at our Orlando office. Call us or reach our dedicated after-hours line to schedule your first visit.',
+        },
       },
-    },
-    plan: {
-      badge: 'Honest treatment planning',
-      title: 'Get an honest plan',
-      text: 'We explain your options in plain language and recommend treatment in stages that suit your health.',
-    },
-    care: {
-      badge: 'Care in your language',
-      title: 'Care that puts your health first',
-      text: 'Care in English, Spanish and Portuguese. Please ask about language support when you call. Your health comes ahead of the size of a treatment plan.',
-    },
+      {
+        title: 'EMERGENCY APPOINTMENTS AVAILABLE',
+        subtitle: 'Regular Hours & After-Hours Support',
+        text: 'Fast, compassionate care when you need it most. We offer same-day emergency appointments for both new and existing patients, including same-day extractions when clinically appropriate.',
+      },
+      {
+        title: 'HONEST TREATMENT PLANNING',
+        subtitle: 'Care That Puts Your Health First',
+        text: 'We explain all your options clearly in plain language, without jargon, and structure treatment in stages that fit your health goals and budget—never selling you procedures you don\'t need.',
+      },
+      {
+        title: 'CARE IN YOUR LANGUAGE',
+        subtitle: 'English, Spanish & Portuguese',
+        text: 'Feel fully comfortable discussing your care. Our multilingual team explains every step of your treatment clearly—just let us know your preferred language when you call.',
+      },
+      {
+        title: 'COMFORT-FIRST DENTAL VISITS',
+        subtitle: 'Personalized Support for Nervous Patients',
+        text: 'We understand dental anxiety and are here to put you completely at ease. Our warm, patient-centered team explains every option in plain language so you always feel informed and in control. To help you relax, we offer comfort amenities like noise-canceling headphones and weighted blankets—just let us know what you need, and we will tailor your visit entirely around your comfort.',
+      },
+      {
+        title: 'FAMILY-FRIENDLY DENTISTRY',
+        subtitle: 'Gentle Care for Patients of All Ages',
+        text: 'We make dental visits positive, fun, and stress-free for your entire family, from children to grandparents. Our patient, welcoming team takes extra time with young patients to build trust and form healthy habits for life. With flexible family block scheduling and a friendly environment, keeping everyone\'s smile healthy has never been easier.',
+      },
+    ],
   },
   beforeAfter: {
     heading: 'How our treatments look',
@@ -113,23 +131,6 @@ const en = {
       },
     },
   },
-  whyUs: {
-    heading: 'What you can expect from us',
-    tableLabel: 'What we offer',
-    yes: 'Yes',
-    promises: [
-      'Options explained in plain language',
-      'Treatment recommended in stages that suit your health',
-      'Emergency appointments often available the same day',
-      'Emergency visits open to new patients',
-      'Same-day extraction when clinically suitable',
-      'Team members who speak English, Spanish and Portuguese',
-    ],
-    phoneLines: {
-      withOcoee: 'Phone lines at both offices and an after-hours line',
-      orlandoOnly: 'An office phone line and an after-hours line',
-    },
-  },
   offices: {
     directions: 'Get directions',
     mapTitle: 'Map of the {name} office',
@@ -178,24 +179,43 @@ export const home: Record<Locale, HomeMessages> = {
         languages: 'Se habla inglés, español y portugués',
         afterHours: 'Línea fuera del horario de atención: {phone}',
       },
-      call: {
-        badge: 'Aceptamos pacientes nuevos',
-        title: 'Llame a su consultorio',
-        text: {
-          withOcoee: 'Llame a Orlando o a Ocoee para reservar su cita. Díganos su idioma cuando llame.',
-          orlandoOnly: 'Llame a nuestro consultorio de Orlando para reservar su cita. Díganos su idioma cuando llame.',
+      // Review: a qualified Spanish speaker checks this block before it is published. Clinical wording
+      // ("same-day extractions when clinically appropriate") needs a dentist to confirm the meaning.
+      cards: [
+        {
+          title: 'BIENVENIDA A PACIENTES NUEVOS',
+          subtitle: 'Reservas cómodas y apoyo flexible',
+          text: {
+            withOcoee: 'Actualmente aceptamos pacientes nuevos en nuestros consultorios de Orlando y Ocoee. Llame a cualquiera de las dos sedes o comuníquese con nuestra línea dedicada fuera del horario de atención para programar su primera visita.',
+            orlandoOnly: 'Actualmente aceptamos pacientes nuevos en nuestro consultorio de Orlando. Llámenos o comuníquese con nuestra línea dedicada fuera del horario de atención para programar su primera visita.',
+          },
         },
-      },
-      plan: {
-        badge: 'Planificación honesta del tratamiento',
-        title: 'Reciba un plan honesto',
-        text: 'Le explicamos sus opciones en un lenguaje sencillo y recomendamos el tratamiento por etapas que se adapten a su salud.',
-      },
-      care: {
-        badge: 'Atención en su idioma',
-        title: 'Atención que pone su salud primero',
-        text: 'Atención en inglés, español y portugués. Pregunte por el apoyo en su idioma al llamar. Su salud va antes que el tamaño de un plan de tratamiento.',
-      },
+        {
+          title: 'CITAS DE URGENCIA DISPONIBLES',
+          subtitle: 'Horario regular y apoyo fuera del horario de atención',
+          text: 'Atención rápida y compasiva cuando más la necesita. Ofrecemos citas de urgencia el mismo día para pacientes nuevos y actuales, incluidas extracciones el mismo día cuando son clínicamente adecuadas.',
+        },
+        {
+          title: 'PLANIFICACIÓN HONESTA DEL TRATAMIENTO',
+          subtitle: 'Una atención que pone su salud primero',
+          text: 'Le explicamos todas sus opciones con claridad y en un lenguaje sencillo, sin jerga, y organizamos el tratamiento en etapas que se adaptan a sus objetivos de salud y a su presupuesto, sin venderle nunca procedimientos que no necesita.',
+        },
+        {
+          title: 'ATENCIÓN EN SU IDIOMA',
+          subtitle: 'Inglés, español y portugués',
+          text: 'Sienta total comodidad al hablar de su atención. Nuestro equipo multilingüe le explica cada paso de su tratamiento con claridad; solo infórmenos su idioma preferido al llamar.',
+        },
+        {
+          title: 'VISITAS DENTALES CENTRADAS EN LA COMODIDAD',
+          subtitle: 'Apoyo personalizado para pacientes nerviosos',
+          text: 'Entendemos la ansiedad dental y estamos aquí para que se sienta completamente tranquilo. Nuestro equipo cálido y centrado en el paciente le explica cada opción en un lenguaje sencillo para que siempre se sienta informado y con control. Para ayudarle a relajarse, ofrecemos comodidades como audífonos con cancelación de ruido y mantas con peso; solo díganos qué necesita y adaptaremos su visita por completo a su comodidad.',
+        },
+        {
+          title: 'ODONTOLOGÍA PARA TODA LA FAMILIA',
+          subtitle: 'Atención amable para pacientes de todas las edades',
+          text: 'Hacemos que las visitas dentales sean positivas, divertidas y libres de estrés para toda su familia, desde niños hasta abuelos. Nuestro equipo paciente y acogedor dedica tiempo extra a los pacientes jóvenes para generar confianza y crear hábitos saludables para toda la vida. Con programación familiar flexible en bloque y un ambiente amable, mantener sanas las sonrisas de todos nunca ha sido tan fácil.',
+        },
+      ],
     },
     // Review: a qualified Spanish speaker checks this block before it is published.
     beforeAfter: {
@@ -255,24 +275,6 @@ export const home: Record<Locale, HomeMessages> = {
         },
       },
     },
-    whyUs: {
-      heading: 'Qué puede esperar de nosotros',
-      tableLabel: 'Lo que ofrecemos',
-      yes: 'Sí',
-      promises: [
-        'Opciones explicadas en un lenguaje sencillo',
-        'Tratamiento recomendado por etapas que se adaptan a su salud',
-        'Citas de urgencia con frecuencia disponibles el mismo día',
-        'Visitas de urgencia abiertas a pacientes nuevos',
-        // Review: clinical qualifier ("when clinically suitable"); confirm it reads the same to a dentist.
-        'Extracción el mismo día cuando es clínicamente adecuada',
-        'Miembros del equipo que hablan inglés, español y portugués',
-      ],
-      phoneLines: {
-        withOcoee: 'Líneas telefónicas en ambos consultorios y una línea fuera del horario de atención',
-        orlandoOnly: 'Una línea telefónica del consultorio y una línea fuera del horario de atención',
-      },
-    },
     offices: {
       directions: 'Cómo llegar',
       mapTitle: 'Mapa del consultorio de {name}',
@@ -316,24 +318,43 @@ export const home: Record<Locale, HomeMessages> = {
         languages: 'Falamos inglês, espanhol e português',
         afterHours: 'Linha fora do horário: {phone}',
       },
-      call: {
-        badge: 'Recebemos novos pacientes',
-        title: 'Ligue para o seu consultório',
-        text: {
-          withOcoee: 'Ligue para Orlando ou Ocoee para agendar sua consulta. Informe-nos seu idioma ao ligar.',
-          orlandoOnly: 'Ligue para o nosso consultório de Orlando para agendar sua consulta. Informe-nos seu idioma ao ligar.',
+      // Review: a qualified Portuguese speaker checks this block before it is published. Clinical wording
+      // ("same-day extractions when clinically appropriate") needs a dentist to confirm the meaning.
+      cards: [
+        {
+          title: 'BEM-VINDOS NOVOS PACIENTES',
+          subtitle: 'Agendamento prático e suporte flexível',
+          text: {
+            withOcoee: 'Atualmente estamos aceitando novos pacientes nos nossos consultórios de Orlando e Ocoee. Ligue para qualquer uma das unidades ou entre em contato com nossa linha exclusiva fora do horário para marcar sua primeira consulta.',
+            orlandoOnly: 'Atualmente estamos aceitando novos pacientes no nosso consultório de Orlando. Ligue para nós ou entre em contato com nossa linha exclusiva fora do horário para marcar sua primeira consulta.',
+          },
         },
-      },
-      plan: {
-        badge: 'Planejamento de tratamento honesto',
-        title: 'Receba um plano honesto',
-        text: 'Explicamos suas opções em linguagem simples e recomendamos o tratamento em etapas adequadas à sua saúde.',
-      },
-      care: {
-        badge: 'Atendimento no seu idioma',
-        title: 'Atendimento que coloca a sua saúde em primeiro lugar',
-        text: 'Atendimento em inglês, espanhol e português. Pergunte sobre o apoio no seu idioma ao ligar. Sua saúde vem antes do tamanho de um plano de tratamento.',
-      },
+        {
+          title: 'ATENDIMENTO DE EMERGÊNCIA DISPONÍVEL',
+          subtitle: 'Horário comercial e suporte fora do horário',
+          text: 'Atendimento rápido e cuidadoso quando você mais precisa. Oferecemos consultas de emergência no mesmo dia para pacientes novos e atuais, incluindo extrações no mesmo dia quando clinicamente indicadas.',
+        },
+        {
+          title: 'PLANEJAMENTO DE TRATAMENTO HONESTO',
+          subtitle: 'Um cuidado que coloca sua saúde em primeiro lugar',
+          text: 'Explicamos todas as suas opções com clareza e em linguagem simples, sem jargão, e organizamos o tratamento em etapas que se adequam aos seus objetivos de saúde e ao seu orçamento, sem nunca vender procedimentos desnecessários.',
+        },
+        {
+          title: 'ATENDIMENTO NO SEU IDIOMA',
+          subtitle: 'Inglês, espanhol e português',
+          text: 'Sinta-se totalmente à vontade para conversar sobre o seu tratamento. Nossa equipe multilíngue explica cada etapa do seu tratamento com clareza; basta nos dizer seu idioma preferido ao ligar.',
+        },
+        {
+          title: 'VISITAS ODONTOLÓGICAS COM FOCO NO CONFORTO',
+          subtitle: 'Apoio personalizado para pacientes nervosos',
+          text: 'Entendemos a ansiedade odontológica e estamos aqui para deixar você completamente tranquilo. Nossa equipe acolhedora e centrada no paciente explica cada opção em linguagem simples, para que você sempre se sinta informado e no controle. Para ajudar você a relaxar, oferecemos recursos de conforto como fones com cancelamento de ruído e cobertores com peso; basta nos dizer o que você precisa, e adaptaremos sua visita inteiramente ao seu conforto.',
+        },
+        {
+          title: 'ODONTOLOGIA PARA A FAMÍLIA',
+          subtitle: 'Cuidado gentil para pacientes de todas as idades',
+          text: 'Tornamos as visitas ao dentista positivas, divertidas e sem estresse para toda a sua família, das crianças aos avós. Nossa equipe paciente e acolhedora dedica tempo extra aos pacientes mais jovens para criar confiança e hábitos saudáveis para a vida toda. Com agendamento familiar flexível e um ambiente amigável, manter o sorriso de todos saudável nunca foi tão fácil.',
+        },
+      ],
     },
     // Review: a qualified Portuguese speaker checks this block before it is published.
     beforeAfter: {
@@ -391,24 +412,6 @@ export const home: Record<Locale, HomeMessages> = {
           text: 'Facetas (lentes dentais) são lâminas finas e feitas sob medida, coladas à frente dos dentes para mudar sua forma, cor ou alinhamento. O design do sorriso planeja com você o aspecto geral do seu sorriso.',
           linkLabel: 'Sobre odontologia estética',
         },
-      },
-    },
-    whyUs: {
-      heading: 'O que você pode esperar de nós',
-      tableLabel: 'O que oferecemos',
-      yes: 'Sim',
-      promises: [
-        'Opções explicadas em linguagem simples',
-        'Tratamento recomendado em etapas adequadas à sua saúde',
-        'Consultas de emergência costumam estar disponíveis no mesmo dia',
-        'Atendimentos de emergência abertos a novos pacientes',
-        // Review: clinical qualifier ("when clinically suitable"); confirm it reads the same to a dentist.
-        'Extração no mesmo dia quando clinicamente adequada',
-        'Membros da equipe que falam inglês, espanhol e português',
-      ],
-      phoneLines: {
-        withOcoee: 'Linhas telefônicas nos dois consultórios e uma linha fora do horário',
-        orlandoOnly: 'Uma linha telefônica do consultório e uma linha fora do horário',
       },
     },
     offices: {

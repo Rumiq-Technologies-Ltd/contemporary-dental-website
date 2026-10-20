@@ -2,13 +2,16 @@ import Link from 'next/link';
 import type { CSSProperties } from 'react';
 import { routes, site, whenOcoee } from '@/content/site';
 import { Screen } from '@/components/layout/Screen';
-import { Icon } from '@/components/ui/Icon';
+import { Icon, type IconName } from '@/components/ui/Icon';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
 import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
 import { Highlights } from './Highlights';
 import styles from './steps.module.css';
+
+// One icon per card, in the order the cards appear in the copy.
+const cardIcons: readonly IconName[] = ['phone', 'clock', 'shield', 'globe', 'headphones', 'users'];
 
 export async function Steps() {
   const lang = await getLocale();
@@ -23,12 +26,13 @@ export async function Steps() {
     fill(t.highlights.afterHours, { phone: site.afterHoursPhone }),
   ];
 
-  // The three steps restate the practice's own commitments: call, an honest plan, staged care.
-  const steps = [
-    { id: 'call', badge: t.call.badge, title: t.call.title, text: whenOcoee(t.call.text.withOcoee, t.call.text.orlandoOnly) },
-    { id: 'plan', badge: t.plan.badge, title: t.plan.title, text: t.plan.text },
-    { id: 'care', badge: t.care.badge, title: t.care.title, text: t.care.text },
-  ];
+  // Only the new-patients body names both offices, so it is the only card with an Orlando-only form.
+  const cards = t.cards.map((card, index) => ({
+    title: card.title,
+    subtitle: card.subtitle,
+    text: typeof card.text === 'string' ? card.text : whenOcoee(card.text.withOcoee, card.text.orlandoOnly),
+    icon: cardIcons[index],
+  }));
 
   return <Screen id="how-it-works" labelledBy="steps-title" className={styles.steps}>
     <Highlights items={highlights} label={t.highlights.label} />
@@ -37,16 +41,16 @@ export async function Steps() {
         <h2 id="steps-title" data-reveal="mask">{t.heading}</h2>
         <div data-reveal="" style={{ '--d': '150ms' } as CSSProperties}><Link href={localePath(lang, routes.newPatients)} className="pill pill-outline pill-large">{t.whatToExpect}</Link></div>
       </div>
-      <ol className={styles.list}>
-        {steps.map((step, index) => <li key={step.id} className={styles.step} data-reveal="right" style={{ '--i': index } as CSSProperties}>
-          <span className={styles.number} aria-hidden="true" data-scroll-rise="">{index + 1}</span>
-          <div className={styles.stepBody}>
-            <p className="badge"><Icon name="check" />{step.badge}</p>
-            <h3>{step.title}</h3>
-            <p>{step.text}</p>
-          </div>
+      <ul className={styles.cards} data-stagger="">
+        {cards.map(card => <li key={card.title}>
+          <article className={styles.card} data-reveal="">
+            <span className={styles.iconWrap}><Icon name={card.icon} /></span>
+            <h3>{card.title}</h3>
+            <span className={styles.subhead}>{card.subtitle}</span>
+            <p>{card.text}</p>
+          </article>
         </li>)}
-      </ol>
+      </ul>
     </div>
   </Screen>;
 }

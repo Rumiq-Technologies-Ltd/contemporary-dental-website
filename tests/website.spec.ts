@@ -24,8 +24,8 @@ test('homepage shows one primary action and the page structure', async ({ page }
     if (message.type() === 'error' && !message.location().url.includes('_rsc=')) errors.push(message.text());
   });
   await ready(page);
-  // Hero, what to expect, common problems, what you can expect, and questions.
-  await expect(page.locator('main > section')).toHaveCount(5);
+  // Hero, getting good care with six cards, common problems, and questions.
+  await expect(page.locator('main > section')).toHaveCount(4);
   await expect(page.locator('header')).toHaveCount(1);
   await expect(page.getByLabel('Menu — open navigation')).toHaveCount(1);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Honest, patient-focused dental care in Orlando/);
@@ -61,7 +61,7 @@ test('problem tabs switch panels with the mouse and the arrow keys', async ({ pa
 
 test('the highlights strip pauses on hover and on keyboard focus, and stays readable', async ({ page }) => {
   await ready(page);
-  await expect(page.getByRole('list', { name: 'Practice highlights' }).getByRole('listitem')).toHaveCount(5);
+  await expect(page.getByRole('list', { name: 'Practice highlights' }).getByRole('listitem')).toHaveCount(4);
   // There is no pause button: hovering or focusing the strip is what stops it.
   await expect(page.getByRole('button', { name: /highlights/i })).toHaveCount(0);
   const strip = page.getByRole('region', { name: 'Practice highlights' });
@@ -235,7 +235,7 @@ test('reduced motion preference disables smooth scrolling and entrance animation
   await expect(page.locator('#home')).toHaveAttribute('data-motion', 'reduced');
   expect(await page.locator('#home [data-load], #home .split-unit').evaluateAll(elements => elements.every(element => element.getAnimations().length === 0))).toBe(true);
   // Nothing waits for a scroll reveal: content further down is already fully visible.
-  await expect(page.locator('#why-us [data-reveal]').first()).toHaveCSS('opacity', '1');
+  await expect(page.locator('#how-it-works [data-reveal]').first()).toHaveCSS('opacity', '1');
 });
 
 test('sections share edges and keep their content on the page', async ({ page }) => {
@@ -263,8 +263,8 @@ test('reduced motion can be enabled during an entrance without leaving hidden co
   await expect(page.locator('#home')).toHaveAttribute('data-motion', 'reduced');
   await expect(page.getByRole('banner').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
   await expect(page.locator('#home h1')).toBeVisible();
-  await page.locator('#why-us').scrollIntoViewIfNeeded();
-  await expect(page.locator('#why-us')).toBeVisible();
+  await page.locator('#how-it-works').scrollIntoViewIfNeeded();
+  await expect(page.locator('#how-it-works')).toBeVisible();
 });
 
 test('frequently asked questions open and close with the keyboard', async ({ page }) => {
@@ -285,8 +285,8 @@ test('server-rendered content stays readable without JavaScript', async ({ brows
   await page.goto('/');
   await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   await expect(page.getByRole('banner').getByRole('link', { name: 'Request an appointment' })).toHaveCSS('opacity', '1');
-  await page.locator('#why-us').scrollIntoViewIfNeeded();
-  await expect(page.locator('#why-us')).toBeVisible();
+  await page.locator('#how-it-works').scrollIntoViewIfNeeded();
+  await expect(page.locator('#how-it-works')).toBeVisible();
   await page.goto('/services');
   await expect(page.locator('#services').getByRole('link', { name: 'Cleanings and check-ups', exact: true })).toBeVisible();
   await context.close();
@@ -319,7 +319,7 @@ test('jumping past content with an anchor link never leaves it hidden', async ({
   await expect(page.locator('#faq details').first()).toHaveAttribute('data-in', '');
   await page.evaluate(() => window.scrollTo({ top: 0, behavior: 'instant' }));
   await page.mouse.wheel(0, 200);
-  await expect.poll(() => page.locator('#why-us tr[data-reveal]').first().getAttribute('data-in')).toBe('');
+  await expect.poll(() => page.locator('#how-it-works article[data-reveal]').first().getAttribute('data-in')).toBe('');
 });
 
 test('security headers, security.txt and the share image are served', async ({ request }) => {
