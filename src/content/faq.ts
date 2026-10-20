@@ -24,7 +24,7 @@ export interface FaqItem {
 }
 
 /** The questions the homepage shows, in this order. */
-export const homepageFaqs: readonly FaqId[] = ['bookOnline', 'afterHoursEmergency', 'emergencyNewPatients', 'insurance', 'financing', 'cancellation', 'nervous'];
+export const homepageFaqs: readonly FaqId[] = ['afterHoursEmergency', 'emergencyNewPatients', 'insurance', 'financing', 'cancellation', 'nervous'];
 
 /**
  * Homepage questions that the FAQ page leaves out, so a visitor does not read the same question

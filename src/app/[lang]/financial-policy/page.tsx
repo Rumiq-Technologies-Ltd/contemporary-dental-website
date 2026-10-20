@@ -22,7 +22,7 @@ export default async function FinancialPolicyPage() {
   const lang = await getLocale();
   const t = getMessages(lang).money.payment.policy;
   return <PageLayout>
-    <PageIntro title={t.title} subtitle={t.subtitle} />
+    <PageIntro title={t.title} lead={t.subtitle} />
     <BulletList>
       {/* Each item's name sits on its own line; **marked** phrases in the text are bold. */}
       {getFinancialPolicy(lang).map(item => <li key={item.term}><strong className={styles.policyTerm}>{item.term}:</strong>{emphasize(item.text)}</li>)}
