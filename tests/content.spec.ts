@@ -328,6 +328,17 @@ test.describe('website fixes', () => {
     await expect(page.locator('#reviews [aria-label="Google review"]')).toHaveCount(count);
   });
 
+  test('the cleanings page shows its sub-header and copy without the photo or call buttons', async ({ page }) => {
+    await page.goto('/services/cleanings-checkups');
+    const main = page.locator('main');
+    await expect(main.getByText('Gentle preventive care to keep your smile healthy, bright, and strong.')).toBeVisible();
+    await expect(main.getByText('We take digital X-rays only when clinically necessary', { exact: false })).toBeVisible();
+    await expect(main.locator('a[href^="tel:"]')).toHaveCount(0);
+    // Other service pages keep their call buttons.
+    await page.goto('/services/crowns');
+    await expect(page.locator('main a[href^="tel:"]')).toHaveCount(2);
+  });
+
   test('every page ends with the copyright line', async ({ page }) => {
     for (const path of ['/', '/faq', '/locations/orlando']) {
       await page.goto(path);
