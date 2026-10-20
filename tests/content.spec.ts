@@ -267,10 +267,10 @@ test.describe('website fixes', () => {
     await expect(home.getByText('Can I book an appointment online?', { exact: true })).toHaveCount(0);
     // Answers sit in closed disclosures; open the cancellation question to reach its link.
     await home.getByText('What is your cancellation policy?', { exact: true }).click();
-    await expect(home.getByRole('link', { name: 'Financial Policy & Appointments page' })).toHaveAttribute('href', '/financial-policy');
+    await expect(home.getByRole('link', { name: 'See our Financial and Appointments policy' })).toHaveAttribute('href', '/financial-policy');
     await page.goto('/faq');
     const main = page.locator('main');
-    for (const question of ['Do you accept my insurance?', 'Do you offer financing?', 'What is your cancellation policy?', "I'm nervous about dental visits. What can I do?", 'Do you speak Spanish or Portuguese?']) {
+    for (const question of ['What if I have a dental emergency after hours?', 'Are emergency visits open to new patients?', 'Do you accept my insurance?', 'Do you offer financing?', 'What is your cancellation policy?', "I'm nervous about dental visits. What can I do?", 'Do you speak Spanish or Portuguese?']) {
       await expect(main.getByText(question, { exact: true })).toHaveCount(0);
     }
     await expect(main.getByText('Do you speak Haitian Creole?', { exact: true })).toHaveCount(1);
@@ -295,6 +295,7 @@ test.describe('website fixes', () => {
 
   test('the new patients page walks through five numbered steps', async ({ page }) => {
     await page.goto('/new-patients');
+    await expect(page.getByText('Simple, Patient-Centered Steps for Your First Visit')).toHaveCount(0);
     const steps = page.locator('#first-visit ol > li');
     await expect(steps).toHaveCount(5);
     await expect(steps.first()).toContainText('Step 1');

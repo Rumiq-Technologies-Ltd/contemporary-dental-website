@@ -73,6 +73,13 @@ test('the switcher links every offered language, and an unpublished one opens th
   await expect(page.getByRole('heading', { level: 1 })).toHaveText(/Coming\s*soon/);
 });
 
+test('the current language links to its home page', async ({ page }) => {
+  await page.goto('/services/implants');
+  await expect(page.locator('html')).toHaveClass(/\bready\b/);
+  await page.getByRole('navigation', { name: 'Language' }).getByRole('link', { name: localeNames.en }).click();
+  await expect(page).toHaveURL(/:\d+\/$/);
+});
+
 test('the language switcher keeps the visitor on the same page', async ({ page }) => {
   test.skip(secondary.length === 0, 'no other language is published yet');
   const lang = secondary[0];

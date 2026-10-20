@@ -30,7 +30,7 @@ export const homepageFaqs: readonly FaqId[] = ['afterHoursEmergency', 'emergency
  * Homepage questions that the FAQ page leaves out, so a visitor does not read the same question
  * twice. The other homepage questions stay on the FAQ page too.
  */
-export const homepageOnlyFaqs: readonly FaqId[] = ['insurance', 'financing', 'cancellation', 'nervous'];
+export const homepageOnlyFaqs: readonly FaqId[] = ['afterHoursEmergency', 'emergencyNewPatients', 'insurance', 'financing', 'cancellation', 'nervous'];
 
 // Questions and answers live in src/i18n/messages/visit.ts. They are verbatim from the content
 // file. Every answer that mentions Ocoee switches with the Ocoee hold. The Haitian Creole
@@ -40,9 +40,11 @@ export function getFaqs(lang: Locale): readonly FaqItem[] {
   const items = t.items;
   const officeLine = (office: Office): string => fill(t.officeLine, { name: office.name, address: formatAddress(office) });
   return [
-    { id: 'offices', question: items.offices.question, answer: offices.map(officeLine).join(' ') },
+    // One office per line (answers keep line breaks, see .faq in page.module.css).
+    { id: 'offices', question: items.offices.question, answer: offices.map(officeLine).join('\n') },
     { id: 'hours', question: items.hours.question, answer: whenOcoee(items.hours.answer.withOcoee, items.hours.answer.orlandoOnly) },
     { id: 'open24Hours', question: items.open24Hours.question, answer: items.open24Hours.answer },
+    { id: 'weekend', question: items.weekend.question, answer: items.weekend.answer },
     {
       id: 'afterHoursEmergency',
       question: items.afterHoursEmergency.question,
@@ -67,7 +69,6 @@ export function getFaqs(lang: Locale): readonly FaqItem[] {
     { id: 'financing', question: items.financing.question, answer: items.financing.answer },
     { id: 'rootCanal', question: items.rootCanal.question, answer: whenOcoee(items.rootCanal.answer.withOcoee, items.rootCanal.answer.orlandoOnly) },
     { id: 'orthodontist', question: items.orthodontist.question, answer: whenOcoee(items.orthodontist.answer.withOcoee, items.orthodontist.answer.orlandoOnly) },
-    { id: 'weekend', question: items.weekend.question, answer: items.weekend.answer },
     // Review: the owner checks this answer's translations in src/i18n/messages/visit.ts.
     { id: 'haitianCreole', question: items.haitianCreole.question, answer: items.haitianCreole.answer },
     {

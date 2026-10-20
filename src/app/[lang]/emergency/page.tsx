@@ -23,7 +23,7 @@ export default async function EmergencyPage() {
   const messages = getMessages(lang);
   const t = messages.visit.emergency;
   return <PageLayout>
-    <PageIntro title={t.title} />
+    <PageIntro title={t.title} lead={t.intro} />
     <div className={`${styles.split} ${styles.splitTop}`}>
       <div className={styles.section}>
         <SafetyNotice label={t.safetyLabel}>{t.safetyNotice}</SafetyNotice>

@@ -35,7 +35,7 @@ export default async function NewPatientsPage() {
     { title: t.nervous.title, body: t.nervous.body },
   ];
   return <PageLayout>
-    <PageIntro title={t.title} subtitle={t.subtitle} lead={t.lead} />
+    <PageIntro title={t.title} lead={t.lead} />
     <div className={`${styles.split} ${styles.splitTop}`}>
       <Section id="first-visit" title={t.stepsTitle}>
         <ol className={`${styles.steps} ${styles.prose}`}>
