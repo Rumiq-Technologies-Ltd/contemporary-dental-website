@@ -44,6 +44,7 @@ export function getFaqs(lang: Locale): readonly FaqItem[] {
     { id: 'offices', question: items.offices.question, answer: offices.map(officeLine).join('\n') },
     { id: 'hours', question: items.hours.question, answer: whenOcoee(items.hours.answer.withOcoee, items.hours.answer.orlandoOnly) },
     { id: 'open24Hours', question: items.open24Hours.question, answer: items.open24Hours.answer },
+    { id: 'weekend', question: items.weekend.question, answer: items.weekend.answer },
     {
       id: 'afterHoursEmergency',
       question: items.afterHoursEmergency.question,
@@ -68,7 +69,6 @@ export function getFaqs(lang: Locale): readonly FaqItem[] {
     { id: 'financing', question: items.financing.question, answer: items.financing.answer },
     { id: 'rootCanal', question: items.rootCanal.question, answer: whenOcoee(items.rootCanal.answer.withOcoee, items.rootCanal.answer.orlandoOnly) },
     { id: 'orthodontist', question: items.orthodontist.question, answer: whenOcoee(items.orthodontist.answer.withOcoee, items.orthodontist.answer.orlandoOnly) },
-    { id: 'weekend', question: items.weekend.question, answer: items.weekend.answer },
     // Review: the owner checks this answer's translations in src/i18n/messages/visit.ts.
     { id: 'haitianCreole', question: items.haitianCreole.question, answer: items.haitianCreole.answer },
     {
