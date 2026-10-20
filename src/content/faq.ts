@@ -30,7 +30,7 @@ export const homepageFaqs: readonly FaqId[] = ['afterHoursEmergency', 'emergency
  * Homepage questions that the FAQ page leaves out, so a visitor does not read the same question
  * twice. The other homepage questions stay on the FAQ page too.
  */
-export const homepageOnlyFaqs: readonly FaqId[] = ['insurance', 'financing', 'cancellation', 'nervous'];
+export const homepageOnlyFaqs: readonly FaqId[] = ['emergencyNewPatients', 'insurance', 'financing', 'cancellation', 'nervous'];
 
 // Questions and answers live in src/i18n/messages/visit.ts. They are verbatim from the content
 // file. Every answer that mentions Ocoee switches with the Ocoee hold. The Haitian Creole

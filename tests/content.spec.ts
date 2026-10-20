@@ -267,10 +267,10 @@ test.describe('website fixes', () => {
     await expect(home.getByText('Can I book an appointment online?', { exact: true })).toHaveCount(0);
     // Answers sit in closed disclosures; open the cancellation question to reach its link.
     await home.getByText('What is your cancellation policy?', { exact: true }).click();
-    await expect(home.getByRole('link', { name: 'Financial Policy & Appointments page' })).toHaveAttribute('href', '/financial-policy');
+    await expect(home.getByRole('link', { name: 'See our Financial and Appointments policy' })).toHaveAttribute('href', '/financial-policy');
     await page.goto('/faq');
     const main = page.locator('main');
-    for (const question of ['Do you accept my insurance?', 'Do you offer financing?', 'What is your cancellation policy?', "I'm nervous about dental visits. What can I do?", 'Do you speak Spanish or Portuguese?']) {
+    for (const question of ['Are emergency visits open to new patients?', 'Do you accept my insurance?', 'Do you offer financing?', 'What is your cancellation policy?', "I'm nervous about dental visits. What can I do?", 'Do you speak Spanish or Portuguese?']) {
       await expect(main.getByText(question, { exact: true })).toHaveCount(0);
     }
     await expect(main.getByText('Do you speak Haitian Creole?', { exact: true })).toHaveCount(1);

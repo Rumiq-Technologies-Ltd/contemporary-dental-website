@@ -12,6 +12,8 @@ const en = {
       description: 'Tooth pain, swelling, a broken tooth or a dental injury? Emergency appointments are often available the same day, including for new patients.',
     },
     title: 'Emergency dental care',
+    // The practice's sub-header, under the h1.
+    intro: 'Gentle, priority care when you need it most. Our team is here to relieve your discomfort and guide your immediate next steps.',
     lead: 'Tooth pain, a swollen face, a broken tooth or an injury to your teeth? Call us. Emergency appointments are often available the same day, including for new patients.',
     // Spoken label for the safety notice landmark.
     safetyLabel: 'When to call 911',
@@ -179,11 +181,11 @@ const en = {
         answer: 'Not at this time, though we are actively looking to add Haitian Creole-speaking staff to our team to better serve our community. In the meantime, you are always welcome to bring a family member or interpreter to assist during your visit.',
       },
       // Review: financial policy wording. The late-cancellation amounts ($50 weekday, $100 weekend) must match the
-      // financial policy on the insurance page. The link label must appear word for word in the answer.
+      // Financial Policy & Appointments page. The link label must appear word for word in the answer.
       cancellation: {
         question: 'What is your cancellation policy?',
-        answer: 'Please give 48 hours’ notice. A late cancellation or missed appointment is $50 on a weekday and $100 on a weekend. Our full financial policy is on the Financial Policy & Appointments page.',
-        linkLabel: 'Financial Policy & Appointments page',
+        answer: 'Please give 48 hours’ notice. A late cancellation or missed appointment is $50 on a weekday and $100 on a weekend. See our Financial and Appointments policy.',
+        linkLabel: 'See our Financial and Appointments policy',
       },
       nervous: {
         question: "I'm nervous about dental visits. What can I do?",
@@ -204,6 +206,7 @@ export const visit: Record<Locale, VisitMessages> = {
         description: '¿Dolor dental, hinchazón, un diente roto o una lesión dental? Con frecuencia hay citas de urgencia el mismo día, también para pacientes nuevos.',
       },
       title: 'Atención dental de urgencia',
+      intro: 'Atención amable y prioritaria cuando más la necesita. Nuestro equipo está aquí para aliviar su malestar y orientarle sobre sus próximos pasos inmediatos.',
       lead: '¿Dolor dental, la cara hinchada, un diente roto o una lesión en los dientes? Llámenos. Con frecuencia hay citas de urgencia el mismo día, también para pacientes nuevos.',
       safetyLabel: 'Cuándo llamar al 911',
       // Review: emergency safety wording. Dr. Khan must approve it in every language before publishing.
@@ -365,8 +368,8 @@ export const visit: Record<Locale, VisitMessages> = {
         // Review: financial policy wording. The amounts must match the financial policy on the insurance page.
         cancellation: {
           question: '¿Cuál es su política de cancelación?',
-          answer: 'Por favor, avísenos con 48 horas de anticipación. Una cancelación tardía o una cita a la que no se asista tiene un costo de $50 en un día de semana y de $100 en fin de semana. Nuestra política financiera completa está en la página de Política financiera y citas.',
-          linkLabel: 'página de Política financiera y citas',
+          answer: 'Por favor, avísenos con 48 horas de anticipación. Una cancelación tardía o una cita a la que no se asista tiene un costo de $50 en un día de semana y de $100 en fin de semana. Consulte nuestra política financiera y de citas.',
+          linkLabel: 'Consulte nuestra política financiera y de citas',
         },
         nervous: {
           question: 'Las visitas al dentista me generan nervios. ¿Qué puedo hacer?',
@@ -382,6 +385,7 @@ export const visit: Record<Locale, VisitMessages> = {
         description: 'Dor de dente, inchaço, um dente quebrado ou uma lesão dentária? Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes.',
       },
       title: 'Atendimento odontológico de emergência',
+      intro: 'Atendimento gentil e prioritário quando você mais precisa. Nossa equipe está aqui para aliviar o seu desconforto e orientar os seus próximos passos imediatos.',
       lead: 'Dor de dente, rosto inchado, um dente quebrado ou uma lesão nos dentes? Ligue para nós. Consultas de emergência costumam estar disponíveis no mesmo dia, inclusive para novos pacientes.',
       safetyLabel: 'Quando ligar para o 911',
       // Review: emergency safety wording. Dr. Khan must approve it in every language before publishing.
@@ -543,8 +547,8 @@ export const visit: Record<Locale, VisitMessages> = {
         // Review: financial policy wording. The amounts must match the financial policy on the insurance page.
         cancellation: {
           question: 'Qual é a política de cancelamento de vocês?',
-          answer: 'Pedimos aviso com 48 horas de antecedência. Um cancelamento tardio ou a falta a uma consulta custa $50 em dia de semana e $100 no fim de semana. A nossa política financeira completa está na página Política financeira e consultas.',
-          linkLabel: 'página Política financeira e consultas',
+          answer: 'Pedimos aviso com 48 horas de antecedência. Um cancelamento tardio ou a falta a uma consulta custa $50 em dia de semana e $100 no fim de semana. Veja a nossa política financeira e de consultas.',
+          linkLabel: 'Veja a nossa política financeira e de consultas',
         },
         nervous: {
           question: 'Sinto nervosismo ao ir ao dentista. O que posso fazer?',
