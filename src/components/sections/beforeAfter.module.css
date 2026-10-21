@@ -25,8 +25,9 @@
 }
 .card:hover { box-shadow: 0 18px 40px -22px rgb(15 23 42 / 0.35); transform: translateY(-3px); }
 
-/* Illustrations on service pages: the cards sit in a grid instead of the carousel's fixed-width row. */
-.illustrations { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
+/* Illustrations on service pages: the cards sit in a grid instead of the carousel's fixed-width row.
+   auto-fill keeps the empty columns, so a single card is the same size on every page. */
+.illustrations { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 440px), 1fr)); gap: 24px; margin: 0; padding: 0; list-style: none; }
 .illustrations .card { flex: none; }
 
 @media (min-width: 900px) {
