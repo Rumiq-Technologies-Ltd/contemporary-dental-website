@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { formatAddress, legalLinks, offices, routes, site } from '@/content/site';
-import { Icon } from '@/components/ui/Icon';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
 import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
+import { Icon } from '@/components/ui/Icon';
 import { localizedNavigation } from './navigation';
+import { SocialLinks } from './SocialLinks';
 import styles from './layout.module.css';
 
 // Closing footer shared by every page: the navigation and the main action, a giant wordmark,
@@ -17,7 +18,15 @@ export async function SiteFooter() {
   return <footer className={styles.siteFooter}>
     <div className={styles.footerTop} data-reveal="">
       <nav aria-label={t.footerNavigation} className={styles.footerNav}>
-        {items.map(item => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+        {/* Entries with sub-pages open the same dropdown as the header, on hover or keyboard focus. */}
+        {items.map(item => item.children
+          ? <div key={item.href} className={styles.footerGroup}>
+            <Link href={item.href} className={styles.footerNavLink}>{item.label}<Icon name="chevron" /></Link>
+            <ul className={styles.subnav}>
+              {item.children.map(child => <li key={child.href}><Link href={child.href} className={styles.subnavLink}>{child.label}</Link></li>)}
+            </ul>
+          </div>
+          : <Link key={item.href} href={item.href} className={styles.footerNavLink}>{item.label}</Link>)}
       </nav>
       <Link href={localePath(lang, routes.requestAppointment)} className="pill pill-dark">{t.requestAppointment}</Link>
     </div>
@@ -39,11 +48,8 @@ export async function SiteFooter() {
     </div>
     <div className={styles.footerBottom}>
       <p className={styles.siteTagline}>{t.footer.tagline}</p>
-      {/* Brand names, the same in every language. */}
       <nav aria-label={t.footer.social} className={styles.socialLinks}>
-        <span className={styles.followLabel}>{t.footer.follow}</span>
-        <a href={site.instagram}><Icon name="instagram" />Instagram</a>
-        <a href={site.facebook}><Icon name="facebook" />Facebook</a>
+        <SocialLinks followLabel={t.footer.follow} />
       </nav>
       <nav aria-label={t.legalNavigation} className={styles.legalLinks}>
         {legalLinks.map(link => <Link key={link.href} href={link.href}>{t.legal[link.key]}</Link>)}

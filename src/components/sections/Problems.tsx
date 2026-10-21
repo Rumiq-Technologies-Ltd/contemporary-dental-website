@@ -43,9 +43,8 @@ export async function Problems() {
     return service;
   }
 
-  // Headlines stay off the faces (practice request, 21 October 2026): at the bottom where faces fill the top,
-  // and in short lines on the left where the empty space is beside the face.
-  const titlePlacements: Partial<Record<ServiceId, Problem['titlePlacement']>> = { emergency: 'bottom', implants: 'topNarrow', 'clear-aligners-braces': 'bottom', 'cleanings-checkups': 'bottom', cosmetic: 'bottomNarrow' };
+  // Headlines stay off the faces (practice request, 21 October 2026): one line along the bottom.
+  const titlePlacements: Partial<Record<ServiceId, Problem['titlePlacement']>> = { emergency: 'bottom', implants: 'bottom', 'clear-aligners-braces': 'bottom', 'cleanings-checkups': 'bottom', cosmetic: 'bottom' };
 
   function problem(id: ServiceId, text: ProblemText, photo: Problem['photo'], extraLinks: readonly ExtraLink[] = []): Problem {
     const service = findService(id);

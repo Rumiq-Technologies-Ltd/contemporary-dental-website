@@ -14,25 +14,6 @@ const en = {
       withOcoee: 'Founded in 2023 by Dr. Sheryar Khan, Contemporary Dental Care was built with a simple mission: to provide honest, gentle, and accessible dental care for families across Orlando and Ocoee. Our warm, multilingual team is dedicated to putting your comfort and health first at every visit.',
       orlandoOnly: 'Founded in 2023 by Dr. Sheryar Khan, Contemporary Dental Care was built with a simple mission: to provide honest, gentle, and accessible dental care for families across Orlando. Our warm, multilingual team is dedicated to putting your comfort and health first at every visit.',
     },
-    honest: {
-      title: 'Honest treatment planning',
-      body: 'We explain your options in plain language. We recommend treatment in stages that suit your health, and we put your health ahead of the size of a treatment plan.',
-    },
-    reach: {
-      title: 'Easy to reach',
-      withForm: {
-        withOcoee: 'Phone lines at both offices, an after-hours line, and an enquiry form for questions before your visit.',
-        orlandoOnly: 'A phone line at our office, an after-hours line, and an enquiry form for questions before your visit.',
-      },
-      withoutForm: {
-        withOcoee: 'Phone lines at both offices and an after-hours line.',
-        orlandoOnly: 'A phone line at our office and an after-hours line.',
-      },
-    },
-    language: {
-      title: 'Care in your language',
-      body: "Care in English, Spanish and Portuguese. Please ask about language support when you call.",
-    },
     doctorLink: {
       before: 'Read more about',
       link: 'Dr. Sheryar Khan',
@@ -122,25 +103,6 @@ export const about: Record<Locale, AboutMessages> = {
         withOcoee: 'Fundada en 2023 por el Dr. Sheryar Khan, Contemporary Dental Care nació con una misión sencilla: brindar atención dental honesta, delicada y accesible a las familias de Orlando y Ocoee. Nuestro cálido equipo multilingüe se dedica a poner su comodidad y su salud en primer lugar en cada visita.',
         orlandoOnly: 'Fundada en 2023 por el Dr. Sheryar Khan, Contemporary Dental Care nació con una misión sencilla: brindar atención dental honesta, delicada y accesible a las familias de Orlando. Nuestro cálido equipo multilingüe se dedica a poner su comodidad y su salud en primer lugar en cada visita.',
       },
-      honest: {
-        title: 'Planificación honesta del tratamiento',
-        body: 'Le explicamos sus opciones en un lenguaje claro. Recomendamos el tratamiento por etapas, según su salud, y anteponemos su salud al tamaño de un plan de tratamiento.',
-      },
-      reach: {
-        title: 'Fácil de contactar',
-        withForm: {
-          withOcoee: 'Líneas telefónicas en ambos consultorios, una línea fuera del horario de atención y un formulario de consulta para preguntas antes de su visita.',
-          orlandoOnly: 'Una línea telefónica en nuestro consultorio, una línea fuera del horario de atención y un formulario de consulta para preguntas antes de su visita.',
-        },
-        withoutForm: {
-          withOcoee: 'Líneas telefónicas en ambos consultorios y una línea fuera del horario de atención.',
-          orlandoOnly: 'Una línea telefónica en nuestro consultorio y una línea fuera del horario de atención.',
-        },
-      },
-      language: {
-        title: 'Atención en su idioma',
-        body: 'Atención en inglés, español y portugués. Pregunte por el apoyo en su idioma al llamar.',
-      },
       doctorLink: {
         before: 'Más información sobre',
         link: 'el Dr. Sheryar Khan',
@@ -229,25 +191,6 @@ export const about: Record<Locale, AboutMessages> = {
       intro: {
         withOcoee: 'Fundada em 2023 pelo Dr. Sheryar Khan, a Contemporary Dental Care nasceu com uma missão simples: oferecer atendimento odontológico honesto, gentil e acessível às famílias de Orlando e Ocoee. Nossa equipe acolhedora e multilíngue se dedica a colocar seu conforto e sua saúde em primeiro lugar em cada consulta.',
         orlandoOnly: 'Fundada em 2023 pelo Dr. Sheryar Khan, a Contemporary Dental Care nasceu com uma missão simples: oferecer atendimento odontológico honesto, gentil e acessível às famílias de Orlando. Nossa equipe acolhedora e multilíngue se dedica a colocar seu conforto e sua saúde em primeiro lugar em cada consulta.',
-      },
-      honest: {
-        title: 'Planejamento de tratamento honesto',
-        body: 'Explicamos as suas opções em linguagem simples. Recomendamos o tratamento em etapas adequadas à sua saúde e colocamos a sua saúde à frente do tamanho de um plano de tratamento.',
-      },
-      reach: {
-        title: 'Fácil de contatar',
-        withForm: {
-          withOcoee: 'Linhas telefônicas nos dois consultórios, uma linha fora do horário e um formulário de contato para dúvidas antes da sua visita.',
-          orlandoOnly: 'Uma linha telefônica em nosso consultório, uma linha fora do horário e um formulário de contato para dúvidas antes da sua visita.',
-        },
-        withoutForm: {
-          withOcoee: 'Linhas telefônicas nos dois consultórios e uma linha fora do horário.',
-          orlandoOnly: 'Uma linha telefônica em nosso consultório e uma linha fora do horário.',
-        },
-      },
-      language: {
-        title: 'Atendimento no seu idioma',
-        body: 'Atendimento em inglês, espanhol e português. Pergunte sobre o apoio no seu idioma ao ligar.',
       },
       doctorLink: {
         before: 'Saiba mais sobre',

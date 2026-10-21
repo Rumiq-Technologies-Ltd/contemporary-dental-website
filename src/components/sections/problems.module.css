@@ -14,9 +14,11 @@
 .tab:hover { border-bottom-color: var(--color-ink); }
 .tab[aria-selected='true'] { color: var(--color-accent-ink); border-bottom-color: var(--color-accent); }
 
-.panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 520px; overflow: hidden; border-radius: var(--radius-card); }
+/* The panel shares the fact side's cyan, so the tilted card never shows a hairline of page background
+   between the two halves; the photo's scroll zoom is clipped to its own half. */
+.panel { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); min-height: 520px; overflow: hidden; border-radius: var(--radius-card); background: var(--color-tint); }
 .panel[hidden] { display: none; }
-.media { position: relative; min-height: 360px; background: #2a2a2a; }
+.media { position: relative; min-height: 360px; overflow: hidden; background: var(--color-tint); }
 .media img { object-fit: cover; }
 .media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0.1) 60%); }
 .mediaTitle { position: absolute; z-index: 1; left: clamp(20px, 3vw, 36px); right: 20px; top: clamp(20px, 3vw, 36px); font-size: clamp(3rem, 6vw, 5.5rem); line-height: 0.88; color: #ffffff; }
@@ -24,7 +26,6 @@
    clears the faces in the photo. */
 .mediaBottom::after { background: linear-gradient(0deg, rgb(0 0 0 / 0.65) 0%, rgb(0 0 0 / 0.1) 50%); }
 .mediaBottom .mediaTitle { top: auto; bottom: clamp(20px, 3vw, 36px); right: auto; font-size: clamp(1.9rem, 4.4vw, 4rem); }
-.mediaNarrow .mediaTitle { max-width: 3.6em; font-size: clamp(1.9rem, 4.4vw, 4rem); }
 
 .fact { display: grid; align-content: center; justify-items: start; gap: 16px; padding: clamp(28px, 4vw, 48px); background: var(--color-tint); color: var(--color-ink); }
 .big {

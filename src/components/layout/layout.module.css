@@ -12,6 +12,8 @@
 .topBarContacts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 22px; }
 .topBarContacts a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .topBarPhone { font-weight: 700; }
+.topBarSocial { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 14px; }
+.topBarSocial svg { font-size: 16px; }
 /* The status line hangs below the language links, so the row stays on the same centre line as the other items. */
 .languageGroup { display: grid; justify-items: center; }
 .languages { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 12px; }
@@ -124,8 +126,14 @@
 }
 .footerTop { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; }
 .footerNav { display: flex; flex-wrap: wrap; gap: 8px; }
-.footerNav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border: 1px solid var(--color-ink); border-radius: var(--radius-button); font-weight: 500; transition: background-color 0.2s, color 0.2s; }
-.footerNav a:hover { background: var(--color-ink); color: #ffffff; }
+.footerNavLink { display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 14px; border: 1px solid var(--color-ink); border-radius: var(--radius-button); font-weight: 500; transition: background-color 0.2s, color 0.2s; }
+.footerNavLink:hover { background: var(--color-ink); color: #ffffff; }
+.footerNavLink svg { font-size: 14px; transition: transform 0.2s var(--ease-out); }
+/* Footer dropdowns reuse the header's .subnav panel. */
+.footerGroup { position: relative; display: flex; }
+.footerGroup .subnav { margin-top: 6px; }
+.footerGroup:hover .subnav, .footerGroup:focus-within .subnav { display: grid; gap: 2px; }
+.footerGroup:hover > .footerNavLink svg, .footerGroup:focus-within > .footerNavLink svg { transform: rotate(180deg); }
 .footerWordmark {
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
   font-size: clamp(48px, 12.5vw, 190px); font-weight: 800; line-height: 0.84; letter-spacing: -0.02em; text-transform: uppercase;
@@ -140,8 +148,8 @@
 .legalLinks { display: flex; flex-wrap: wrap; gap: 8px 22px; font-size: 14px; }
 .socialLinks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 22px; font-size: 14px; }
 .followLabel { font-weight: 700; }
-.socialLinks a { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-.socialLinks svg { font-size: 18px; }
+.socialLink { display: inline-flex; align-items: center; gap: 6px; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.socialLink svg { font-size: 18px; }
 /* The copyright line closes every page in very small print. */
 .copyright { margin-top: 6px; font-size: 11px; line-height: 1.5; color: var(--color-muted); }
 

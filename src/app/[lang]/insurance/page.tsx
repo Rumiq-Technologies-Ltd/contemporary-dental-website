@@ -46,7 +46,7 @@ export default async function InsurancePage() {
     <Section id="financing" title={payment.financing.title}>
       <Prose>
         <p>{fill(payment.financing.partners, { partners })}</p>
-        <p><strong>{payment.financing.inHouse.heading}</strong> {payment.financing.inHouse.body}</p>
+        <p>{payment.financing.inHouse.before}<Link href={localePath(lang, routes.membership)}>{payment.financing.inHouse.link}</Link>{payment.financing.inHouse.after}</p>
         <p>{payment.policy.pointer.before}<Link href={localePath(lang, routes.financialPolicy)}>{payment.policy.pointer.link}</Link>{payment.policy.pointer.after}</p>
       </Prose>
     </Section>
