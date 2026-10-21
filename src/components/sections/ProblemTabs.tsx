@@ -17,10 +17,10 @@ export interface Problem {
   links: readonly { href: string; label: string }[];
   photo: StaticImageData;
   /**
-   * Where the headline sits on the photo. Photos whose faces fill the top put it at the bottom, on one
-   * line or (bottomNarrow) in short lines kept to the left.
+   * Where the headline sits on the photo, chosen to keep it off the faces: top or bottom, on one line or
+   * (Narrow) in short lines kept to the left.
    */
-  titlePlacement: 'top' | 'bottom' | 'bottomNarrow';
+  titlePlacement: 'top' | 'topNarrow' | 'bottom' | 'bottomNarrow';
 }
 
 interface ProblemTabsProps {
@@ -79,7 +79,7 @@ export function ProblemTabs({ problems, label }: ProblemTabsProps) {
     </div>
     {problems.map((problem, index) => <div key={problem.id} role="tabpanel" id={`problem-panel-${problem.id}`}
       aria-labelledby={`problem-tab-${problem.id}`} hidden={index !== active} className={styles.panel} data-tilt="2" ref={element => { panels.current[index] = element; }}>
-      <div className={[styles.media, problem.titlePlacement !== 'top' && styles.mediaBottom, problem.titlePlacement === 'bottomNarrow' && styles.mediaNarrow].filter(Boolean).join(' ')} data-media="">
+      <div className={[styles.media, problem.titlePlacement.startsWith('bottom') && styles.mediaBottom, problem.titlePlacement.endsWith('Narrow') && styles.mediaNarrow].filter(Boolean).join(' ')} data-media="">
         <Image src={problem.photo} alt="" fill sizes="(max-width: 899px) 100vw, 50vw" placeholder="blur" data-scroll-zoom="" />
         <h3 className={styles.mediaTitle}>{problem.headline}</h3>
       </div>
