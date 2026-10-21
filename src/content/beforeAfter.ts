@@ -40,7 +40,9 @@ export const beforeAfterEnabled = true;
 
 const illustrationSize = { width: 760, height: 704 };
 
-// Cropped from the supplied AI-generated illustrations, keeping only the two halves. The whitening
+// Cropped from the supplied AI-generated illustrations, keeping only the two halves. The mouth close-ups
+// show on the homepage only; each service page shows its one face illustration (practice request,
+// 21 October 2026). The whitening
 // illustration is left out. The practice confirmed on 20 October 2026 that it offers whitening, which
 // C04 §2 does not list yet; the cleanings illustration is labelled "Cleanings and whitening".
 const cases: readonly BeforeAfterCase[] = [
@@ -53,7 +55,7 @@ const cases: readonly BeforeAfterCase[] = [
     consentOnFile: false,
     isIllustration: true,
     onHome: true,
-    onServicePage: true,
+    onServicePage: false,
   },
   {
     id: 'illustration-veneers',
@@ -64,7 +66,7 @@ const cases: readonly BeforeAfterCase[] = [
     consentOnFile: false,
     isIllustration: true,
     onHome: true,
-    onServicePage: true,
+    onServicePage: false,
   },
   {
     id: 'illustration-root-canal',
@@ -76,7 +78,7 @@ const cases: readonly BeforeAfterCase[] = [
     consentOnFile: false,
     isIllustration: true,
     onHome: true,
-    onServicePage: true,
+    onServicePage: false,
   },
   {
     id: 'illustration-alignment',
@@ -87,7 +89,7 @@ const cases: readonly BeforeAfterCase[] = [
     consentOnFile: false,
     isIllustration: true,
     onHome: true,
-    onServicePage: true,
+    onServicePage: false,
   },
   {
     id: 'illustration-dental-crowns-service',
