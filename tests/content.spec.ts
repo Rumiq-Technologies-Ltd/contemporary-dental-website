@@ -233,7 +233,7 @@ test.describe('phone call link', () => {
     await page.goto('/about');
     const fixed = await page.locator('a[href^="tel:"]').evaluateAll(links => links.filter(link => getComputedStyle(link).position === 'fixed').length);
     expect(fixed).toBe(0);
-    await expect(page.getByRole('link', { name: 'Call Orlando: 321-522-8577' }).first()).toBeInViewport();
+    await expect(page.getByRole('link', { name: 'Orlando: 321-522-8577', exact: true }).first()).toBeInViewport();
   });
 });
 
@@ -373,7 +373,7 @@ test.describe('website fixes', () => {
 
   test('the top bar links to Instagram and Facebook, and the in-house plans line links to the Smile Club', async ({ page }) => {
     await page.goto('/insurance');
-    await expect(page.locator('[class*="topBarSocial"]')).toContainText('Follow Us:');
+    await expect(page.locator('[class*="topBarSocial"]').getByRole('link', { name: 'Instagram' })).toBeVisible();
     await expect(page.locator('main').getByRole('link', { name: 'Contemporary Smile Club page' })).toHaveAttribute('href', '/membership');
     await page.goto('/about');
     await expect(page.getByText('Honest treatment planning')).toHaveCount(0);

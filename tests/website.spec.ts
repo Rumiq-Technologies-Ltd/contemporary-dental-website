@@ -115,6 +115,8 @@ test('large screens show the navigation bar and link to the right pages', async 
   await expect(payments.getByRole('link', { name: 'Insurance & Financing', exact: true })).toBeVisible();
   await payments.getByRole('link', { name: 'Financial Policy & Appointments' }).click();
   await expect(page).toHaveURL(/\/financial-policy$/);
+  // Picking a page closes the dropdown, though the pointer is still over it.
+  await expect(payments.getByRole('link', { name: 'Insurance & Financing', exact: true })).toBeHidden();
   // Locations opens a dropdown with one link per office.
   const primary = page.getByRole('navigation', { name: 'Primary navigation' });
   await primary.getByRole('link', { name: 'Locations' }).hover();

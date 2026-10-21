@@ -5,18 +5,19 @@
 /* Top bar: a cyan strip inset from the page edges. It stays with the header at the top of the page. */
 .stickyHead { position: sticky; top: 0; z-index: 50; background: var(--color-bg); }
 .topBar {
-  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 28px;
-  margin: 12px clamp(12px, 1.5vw, 20px) 0; padding: 10px 16px; border-radius: var(--radius-card);
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 18px;
+  margin: 12px clamp(12px, 1.5vw, 20px) 0; padding: 10px 10px; border-radius: var(--radius-card);
   background: var(--color-highlight); color: var(--color-ink); font-size: 14px; font-weight: 700; line-height: 1.4; text-align: center;
 }
-.topBarContacts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 22px; }
+/* Tight gaps keep every item on one line on laptop screens (1366px and up). */
+.topBarContacts { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 16px; }
 .topBarContacts a { font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .topBarPhone { font-weight: 700; }
-.topBarSocial { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 14px; }
+.topBarSocial { display: inline-flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 4px 12px; }
 .topBarSocial svg { font-size: 16px; }
 /* The status line hangs below the language links, so the row stays on the same centre line as the other items. */
 .languageGroup { display: grid; justify-items: center; }
-.languages { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 12px; }
+.languages { display: inline-flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 8px; }
 .languageLink,
 .languageCurrent { display: inline-flex; align-items: center; min-height: 28px; padding: 0 4px; color: inherit; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 
@@ -134,6 +135,9 @@
 .footerGroup .subnav { margin-top: 6px; }
 .footerGroup:hover .subnav, .footerGroup:focus-within .subnav { display: grid; gap: 2px; }
 .footerGroup:hover > .footerNavLink svg, .footerGroup:focus-within > .footerNavLink svg { transform: rotate(180deg); }
+/* A dropdown closes once a sub-page is picked (DropdownGroup), even while the pointer is still on it. */
+.navGroup.dropdownClosed .subnav, .footerGroup.dropdownClosed .subnav { display: none; }
+.navGroup.dropdownClosed > .navLink svg, .footerGroup.dropdownClosed > .footerNavLink svg { transform: none; }
 .footerWordmark {
   font-family: var(--font-display); font-stretch: 62.5%; font-variation-settings: 'wdth' 62;
   font-size: clamp(48px, 12.5vw, 190px); font-weight: 800; line-height: 0.84; letter-spacing: -0.02em; text-transform: uppercase;

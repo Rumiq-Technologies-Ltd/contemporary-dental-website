@@ -5,6 +5,7 @@ import { fill } from '@/i18n/fill';
 import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
 import { Icon } from '@/components/ui/Icon';
+import { DropdownGroup } from './DropdownGroup';
 import { localizedNavigation } from './navigation';
 import { SocialLinks } from './SocialLinks';
 import styles from './layout.module.css';
@@ -20,12 +21,12 @@ export async function SiteFooter() {
       <nav aria-label={t.footerNavigation} className={styles.footerNav}>
         {/* Entries with sub-pages open the same dropdown as the header, on hover or keyboard focus. */}
         {items.map(item => item.children
-          ? <div key={item.href} className={styles.footerGroup}>
+          ? <DropdownGroup key={item.href} className={styles.footerGroup}>
             <Link href={item.href} className={styles.footerNavLink}>{item.label}<Icon name="chevron" /></Link>
             <ul className={styles.subnav}>
               {item.children.map(child => <li key={child.href}><Link href={child.href} className={styles.subnavLink}>{child.label}</Link></li>)}
             </ul>
-          </div>
+          </DropdownGroup>
           : <Link key={item.href} href={item.href} className={styles.footerNavLink}>{item.label}</Link>)}
       </nav>
       <Link href={localePath(lang, routes.requestAppointment)} className="pill pill-dark">{t.requestAppointment}</Link>
