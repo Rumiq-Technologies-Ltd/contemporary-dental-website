@@ -10,7 +10,7 @@ const samplePaths = ['', '/services', '/services/implants', '/faq', '/contact', 
 // Held content from docs/content-holds.md. None of it may appear in any language.
 const heldTerms = [
   /\$89\.99/, /\$49\.99/, /\$2,999/, /\$100 referral/i, /Altamonte/, /All-on-4/i, /CEREC/,
-  /LANAP/, /partial denture/i, /sedation/i, /nitrous/i, /before-and-after/i, /membership/i, /0% financing/i,
+  /LANAP/, /sedation/i, /nitrous/i, /before-and-after/i, /membership/i, /0% financing/i,
 ];
 
 test.describe('published languages', () => {

@@ -5,7 +5,7 @@
   min-height: clamp(560px, 82svh, 800px); isolation: isolate; color: #ffffff; background: var(--color-ink);
 }
 /* The face is on the right of the photo, so narrow screens keep the right side in view. */
-.photo { z-index: -2; object-fit: cover; object-position: 78% 30%; }
+.photo { z-index: -2; object-fit: cover; object-position: 78% 8%; }
 .hero::after {
   content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none;
   /* The hero photo is light, so a side shade darkens the text side and leaves the face on the right bright. */

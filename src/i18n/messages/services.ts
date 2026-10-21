@@ -3,7 +3,7 @@ import type { Locale } from '../locales';
 
 // Copy for the services index, the service pages and the content module in src/content/services.ts.
 // {atOffices} is replaced by the "atOffices" phrase, which switches with the Ocoee hold.
-// Held items from the content file (same-day crowns, implant offer, All-on-4, partial dentures,
+// Held items from the content file (same-day crowns, implant offer, All-on-4,
 // orthobrain wording, trademarked product names) are left out of every language on purpose.
 
 /** One service's copy. `paragraphs` has two forms only where the wording changes with the Ocoee hold. */
@@ -73,9 +73,13 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     summary: '',
     listLabel: 'Fillings and restorative care',
     description: 'Fillings and other restorative treatment repair teeth damaged by decay, cracks or breakage.',
-    paragraphs: [
-      'Fillings and other restorative treatment repair teeth damaged by decay, cracks or breakage. Available {atOffices}.',
-    ],
+    // The practice's copy of 21 October 2026. C04 confirms restorative care; "tooth-colored materials" is the
+    // practice's wording and not in the governed documents yet.
+    lead: 'Restore your smile’s natural strength, function, and seamless appearance.',
+    paragraphs: {
+      withOcoee: ['Whether repairing minor decay, cracks, or structural breakage, our restorative care is designed to look natural and feel like your own teeth. Dr. Sheryar Khan uses durable, tooth-colored materials that blend seamlessly with your smile, protecting your long-term dental health without compromising aesthetics.', 'Complete restorative treatments are available at both our Orlando and Ocoee locations.'],
+      orlandoOnly: ['Whether repairing minor decay, cracks, or structural breakage, our restorative care is designed to look natural and feel like your own teeth. Dr. Sheryar Khan uses durable, tooth-colored materials that blend seamlessly with your smile, protecting your long-term dental health without compromising aesthetics.', 'Complete restorative treatments are available at our Orlando location.'],
+    },
   },
   crowns: {
     title: 'Crowns',
@@ -84,8 +88,12 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     summary: '',
     listLabel: 'Crowns',
     description: 'A crown covers and protects a damaged or weakened tooth. Crowns need a dental laboratory case.',
+    // The practice's copy of 21 October 2026. It keeps C14's limits: crowns are not same-day, and crown
+    // preparation is a first step at an emergency visit.
+    lead: 'Custom-crafted protection to restore the strength, function, and appearance of your tooth.',
     paragraphs: [
-      'A crown covers and protects a damaged or weakened tooth. Crowns need a dental laboratory case, so they are not completed on the same day. Crown preparation can begin at an emergency visit, and Dr. Khan will explain the steps that follow.',
+      'A dental crown acts as a protective cover, fully encasing a weakened or damaged tooth to restore its structure and prevent further health issues. Because each crown is custom-crafted by a specialized dental laboratory for a precise fit and natural look, treatment is completed over two scheduled visits rather than on the same day.',
+      'If you are experiencing pain or an urgent tooth injury, initial crown preparation can begin during an emergency visit to stabilize your tooth right away. Dr. Sheryar Khan will explain every step of the process so you feel confident and fully informed throughout your care.',
     ],
   },
   'root-canal': {
@@ -95,12 +103,18 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     summary: '(Orlando)',
     listLabel: 'Root canal treatment (Orlando)',
     description: 'Root canal treatment is performed at our Orlando office.',
+    // The practice's copy of 21 October 2026. Referral to endodontists is not a specialty claim (C14 §3.2).
+    lead: 'Save your natural tooth and eliminate dental pain with gentle, focused care.',
     paragraphs: {
       withOcoee: [
-        'A root canal treats the soft tissue inside a tooth, called the pulp, when it is infected or damaged. The infected tissue is removed, the inside of the tooth is cleaned and sealed, and the tooth is then restored. Root canal treatment is performed at our Orlando office. If you are an Ocoee patient who needs root canal treatment, we will schedule you at Orlando. Root canal retreatment is referred to another provider.',
+        'Root canal therapy is a routine procedure designed to relieve severe tooth pain and preserve your natural smile. When the inner soft tissue of a tooth (the pulp) becomes inflamed or infected due to deep decay or injury, we carefully remove the infected tissue, thoroughly clean and seal the interior, and restore the tooth so it functions comfortably again.',
+        '**Location note:** Root canal procedures are performed exclusively at our Orlando office. If you are an Ocoee patient requiring root canal treatment, our team will coordinate your appointment seamlessly at our Orlando facility.',
+        '**Specialized referrals:** For root canal retreatments or highly complex root canal cases, we work closely with trusted local endodontists to ensure you receive specialized care.',
       ],
       orlandoOnly: [
-        'A root canal treats the soft tissue inside a tooth, called the pulp, when it is infected or damaged. The infected tissue is removed, the inside of the tooth is cleaned and sealed, and the tooth is then restored. Root canal treatment is performed at our Orlando office. Root canal retreatment is referred to another provider.',
+        'Root canal therapy is a routine procedure designed to relieve severe tooth pain and preserve your natural smile. When the inner soft tissue of a tooth (the pulp) becomes inflamed or infected due to deep decay or injury, we carefully remove the infected tissue, thoroughly clean and seal the interior, and restore the tooth so it functions comfortably again.',
+        '**Location note:** Root canal procedures are performed exclusively at our Orlando office.',
+        '**Specialized referrals:** For root canal retreatments or highly complex root canal cases, we work closely with trusted local endodontists to ensure you receive specialized care.',
       ],
     },
   },
@@ -111,8 +125,12 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     summary: '',
     listLabel: 'Dental implants',
     description: 'An implant replaces a missing tooth root and supports a crown or another replacement tooth.',
+    // The practice's copy of 21 October 2026, with two lines reworded at its choice to keep to C14 §3.2 (no
+    // specialty-implying wording) and avoid a superlative. Same-day placement wording matches C14 §2.
+    lead: 'A permanent, natural-looking solution to replace missing teeth and renew your confidence.',
     paragraphs: [
-      'An implant replaces a missing tooth root and supports a crown or another replacement tooth. Implant placement can be done the same day, subject to clinical suitability and availability. Dr. Khan plans treatment with you in clear stages, and implants are a particular focus of his care.',
+      'Dental implants provide a durable, natural-looking replacement for missing teeth. By replacing the tooth root itself, an implant creates a secure, long-lasting foundation for a custom crown, bridge, or replacement tooth—restoring full chewing function, preserving jaw structure, and blending seamlessly with your smile.',
+      'Dr. Khan provides implant treatment as part of his general practice. He works closely with you to plan your treatment in clear, transparent stages so you always know what to expect. Depending on your clinical evaluation and appointment availability, same-day implant placement options may be available.',
     ],
   },
   dentures: {
@@ -122,9 +140,18 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     summary: '',
     listLabel: 'Dentures',
     description: 'Dentures replace missing teeth. Dr. Khan will walk you through the options and the process.',
-    paragraphs: [
-      'Dentures replace missing teeth and are available {atOffices}. Dr. Khan will walk you through the options and the process at your visit.',
-    ],
+    // The practice's copy of 21 October 2026. Partial dentures are confirmed at both offices (the hold is lifted).
+    lead: 'Comfortable, natural-looking tooth replacement designed to restore your smile and confidence.',
+    paragraphs: {
+      withOcoee: [
+        'Missing teeth shouldn’t keep you from enjoying your favorite foods, speaking clearly, or smiling with confidence. Modern dentures offer a custom-crafted, comfortable solution tailored to complement your natural facial features and restore full function to your smile.',
+        'Whether you need full or partial dentures, Dr. Khan will walk you through every option and step of the process during your consultation, ensuring your new smile feels secure and natural. Complete denture care is available at both our Orlando and Ocoee locations.',
+      ],
+      orlandoOnly: [
+        'Missing teeth shouldn’t keep you from enjoying your favorite foods, speaking clearly, or smiling with confidence. Modern dentures offer a custom-crafted, comfortable solution tailored to complement your natural facial features and restore full function to your smile.',
+        'Whether you need full or partial dentures, Dr. Khan will walk you through every option and step of the process during your consultation, ensuring your new smile feels secure and natural. Complete denture care is available at our Orlando location.',
+      ],
+    },
   },
   'clear-aligners-braces': {
     title: 'Clear aligners and braces',
@@ -133,9 +160,22 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     summary: '',
     listLabel: 'Clear aligners and braces',
     description: 'Dr. Khan provides clear aligners and traditional braces.',
-    paragraphs: [
-      'Dr. Khan provides clear aligners and traditional braces {atOffices}. Clear aligners are a series of removable, clear trays that gradually move teeth. Traditional braces use brackets and wires. Most of our orthodontic cases are traditional braces.',
-    ],
+    // The practice's copy of 21 October 2026. It names no orthodontist and keeps braces as most cases (C14 §3.2).
+    lead: 'Straighten your teeth with options tailored to your lifestyle, comfort, and goals.',
+    paragraphs: {
+      withOcoee: [
+        'A well-aligned smile not only boosts your confidence but also supports better long-term oral health and chewing function. Contemporary Dental Care provides both clear aligners and traditional braces to help you achieve a straight, healthy smile on your terms.',
+        '**Clear aligners:** A series of custom-molded, virtually invisible trays that gently guide your teeth into place. Because they are removable, you can eat, drink, brush, and floss with complete freedom.',
+        '**Traditional braces:** A time-tested system using brackets and wires to deliver precise, effective alignment for a wide variety of cases. Due to their proven reliability and versatility, traditional braces represent the majority of our orthodontic care.',
+        'Complete orthodontic consultations and care are offered at both our Orlando and Ocoee locations.',
+      ],
+      orlandoOnly: [
+        'A well-aligned smile not only boosts your confidence but also supports better long-term oral health and chewing function. Contemporary Dental Care provides both clear aligners and traditional braces to help you achieve a straight, healthy smile on your terms.',
+        '**Clear aligners:** A series of custom-molded, virtually invisible trays that gently guide your teeth into place. Because they are removable, you can eat, drink, brush, and floss with complete freedom.',
+        '**Traditional braces:** A time-tested system using brackets and wires to deliver precise, effective alignment for a wide variety of cases. Due to their proven reliability and versatility, traditional braces represent the majority of our orthodontic care.',
+        'Complete orthodontic consultations and care are offered at our Orlando location.',
+      ],
+    },
   },
   cosmetic: {
     title: 'Cosmetic dentistry',
@@ -144,10 +184,22 @@ const enItems: Record<ServiceId, ServiceCopy> = {
     summary: '',
     listLabel: 'Cosmetic dentistry',
     description: 'Veneers, smile design and other cosmetic treatment, planned around your goals and your oral health.',
-    paragraphs: [
-      // Review: financing wording ("subject to approval"). Check against the financing partners' terms.
-      'Cosmetic treatment is planned around your goals and your oral health. Veneers are thin, custom-made shells bonded to the front of teeth to change their shape, color or alignment. Smile design plans the overall look of your smile with you. Cosmetic treatment can be paid for through our financing partners, subject to approval.',
-    ],
+    // The practice's copy of 21 October 2026. Veneers and smile design are confirmed in C04.
+    lead: 'A personalized approach to enhancing your natural smile with confidence and care.',
+    paragraphs: {
+      withOcoee: [
+        'Your smile is uniquely yours, and cosmetic care should reflect your personal vision while protecting your long-term oral health. Whether you want to make subtle enhancements or completely transform your look, we design every treatment around your goals.',
+        '**Porcelain veneers:** Custom-crafted, ultra-thin shells bonded to the front of your teeth to refine color, shape, symmetry, and alignment with a natural finish.',
+        '**Collaborative smile design:** A step-by-step planning process where Dr. Khan works directly with you to map out your overall aesthetic before treatment even begins.',
+        'To help make your treatment fit comfortably into your budget, flexible payment plans are available through our financing partners (subject to approval). Cosmetic care is offered at both our Orlando and Ocoee offices.',
+      ],
+      orlandoOnly: [
+        'Your smile is uniquely yours, and cosmetic care should reflect your personal vision while protecting your long-term oral health. Whether you want to make subtle enhancements or completely transform your look, we design every treatment around your goals.',
+        '**Porcelain veneers:** Custom-crafted, ultra-thin shells bonded to the front of your teeth to refine color, shape, symmetry, and alignment with a natural finish.',
+        '**Collaborative smile design:** A step-by-step planning process where Dr. Khan works directly with you to map out your overall aesthetic before treatment even begins.',
+        'To help make your treatment fit comfortably into your budget, flexible payment plans are available through our financing partners (subject to approval). Cosmetic care is offered at our Orlando office.',
+      ],
+    },
   },
 };
 
@@ -240,9 +292,11 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Empastes y atención restauradora',
         description: 'Los empastes y otros tratamientos restauradores reparan los dientes dañados por caries, grietas o fracturas.',
-        paragraphs: [
-          'Los empastes y otros tratamientos restauradores reparan los dientes dañados por caries, grietas o fracturas. Disponible {atOffices}.',
-        ],
+        lead: 'Recupere la fuerza, la función y la apariencia natural de su sonrisa.',
+        paragraphs: {
+          withOcoee: ['Ya sea para reparar caries leves, grietas o fracturas, nuestra atención restauradora está pensada para verse natural y sentirse como sus propios dientes. El Dr. Sheryar Khan utiliza materiales duraderos del color del diente que se integran con su sonrisa y protegen su salud dental a largo plazo sin sacrificar la estética.', 'Ofrecemos tratamientos restauradores completos en nuestros dos consultorios, Orlando y Ocoee.'],
+          orlandoOnly: ['Ya sea para reparar caries leves, grietas o fracturas, nuestra atención restauradora está pensada para verse natural y sentirse como sus propios dientes. El Dr. Sheryar Khan utiliza materiales duraderos del color del diente que se integran con su sonrisa y protegen su salud dental a largo plazo sin sacrificar la estética.', 'Ofrecemos tratamientos restauradores completos en nuestro consultorio de Orlando.'],
+        },
       },
       crowns: {
         title: 'Coronas',
@@ -251,8 +305,10 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Coronas',
         description: 'Una corona cubre y protege un diente dañado o debilitado. Las coronas requieren un trabajo de laboratorio dental.',
+        lead: 'Protección hecha a medida para devolver a su diente la fuerza, la función y la apariencia.',
         paragraphs: [
-          'Una corona cubre y protege un diente dañado o debilitado. Las coronas requieren un trabajo de laboratorio dental, por lo que no se completan el mismo día. La preparación de la corona puede comenzar en una visita de urgencia, y el Dr. Khan le explicará los pasos que siguen.',
+          'Una corona dental actúa como una cubierta protectora que envuelve por completo un diente debilitado o dañado para restaurar su estructura y prevenir otros problemas de salud. Como cada corona se elabora a medida en un laboratorio dental especializado para lograr un ajuste preciso y un aspecto natural, el tratamiento se completa en dos citas programadas y no el mismo día.',
+          'Si tiene dolor o una lesión dental urgente, la preparación inicial de la corona puede comenzar durante una visita de urgencia para estabilizar su diente de inmediato. El Dr. Sheryar Khan le explicará cada paso del proceso para que se sienta seguro y bien informado durante toda su atención.',
         ],
       },
       'root-canal': {
@@ -262,12 +318,17 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '(Orlando)',
         listLabel: 'Endodoncia (Orlando)',
         description: 'La endodoncia se realiza en nuestro consultorio de Orlando.',
+        lead: 'Salve su diente natural y elimine el dolor dental con una atención cuidadosa y enfocada.',
         paragraphs: {
           withOcoee: [
-            'Una endodoncia trata el tejido blando del interior de un diente, llamado pulpa, cuando está infectado o dañado. Se retira el tejido infectado, se limpia y sella el interior del diente y luego se restaura el diente. La endodoncia se realiza en nuestro consultorio de Orlando. Si usted es paciente de Ocoee y necesita una endodoncia, le programaremos la cita en Orlando. El retratamiento de endodoncia se deriva a otro profesional.',
+            'La endodoncia es un procedimiento habitual que alivia el dolor dental intenso y conserva su sonrisa natural. Cuando el tejido blando interno del diente (la pulpa) se inflama o se infecta por una caries profunda o una lesión, retiramos con cuidado el tejido infectado, limpiamos y sellamos a fondo el interior y restauramos el diente para que vuelva a funcionar con comodidad.',
+            '**Nota sobre el consultorio:** las endodoncias se realizan únicamente en nuestro consultorio de Orlando. Si es paciente de Ocoee y necesita una endodoncia, nuestro equipo coordinará su cita en nuestro consultorio de Orlando sin complicaciones.',
+            '**Derivaciones especializadas:** para retratamientos de conducto o casos de endodoncia muy complejos, trabajamos de cerca con endodoncistas locales de confianza para que reciba una atención especializada.',
           ],
           orlandoOnly: [
-            'Una endodoncia trata el tejido blando del interior de un diente, llamado pulpa, cuando está infectado o dañado. Se retira el tejido infectado, se limpia y sella el interior del diente y luego se restaura el diente. La endodoncia se realiza en nuestro consultorio de Orlando. El retratamiento de endodoncia se deriva a otro profesional.',
+            'La endodoncia es un procedimiento habitual que alivia el dolor dental intenso y conserva su sonrisa natural. Cuando el tejido blando interno del diente (la pulpa) se inflama o se infecta por una caries profunda o una lesión, retiramos con cuidado el tejido infectado, limpiamos y sellamos a fondo el interior y restauramos el diente para que vuelva a funcionar con comodidad.',
+            '**Nota sobre el consultorio:** las endodoncias se realizan únicamente en nuestro consultorio de Orlando.',
+            '**Derivaciones especializadas:** para retratamientos de conducto o casos de endodoncia muy complejos, trabajamos de cerca con endodoncistas locales de confianza para que reciba una atención especializada.',
           ],
         },
       },
@@ -278,8 +339,10 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Implantes dentales',
         description: 'Un implante reemplaza la raíz de un diente que falta y sostiene una corona u otro diente de reemplazo.',
+        lead: 'Una solución permanente y de aspecto natural para reemplazar los dientes que faltan y renovar su confianza.',
         paragraphs: [
-          'Un implante reemplaza la raíz de un diente que falta y sostiene una corona u otro diente de reemplazo. La colocación del implante puede realizarse el mismo día, sujeta a la idoneidad clínica y a la disponibilidad. El Dr. Khan planifica el tratamiento con usted en etapas claras, y los implantes son un área de especial atención en su práctica clínica.',
+          'Los implantes dentales son un reemplazo duradero y de aspecto natural para los dientes que faltan. Al sustituir la raíz del diente, el implante crea una base firme y duradera para una corona, un puente o un diente de reemplazo hechos a medida, que devuelve la función completa al masticar, ayuda a conservar la estructura del maxilar y se integra con su sonrisa.',
+          'El Dr. Khan ofrece tratamiento con implantes como parte de su práctica general. Trabaja de cerca con usted para planificar su tratamiento en etapas claras y transparentes, para que siempre sepa qué esperar. Según su evaluación clínica y la disponibilidad de citas, puede haber opciones de colocación de implantes el mismo día.',
         ],
       },
       dentures: {
@@ -289,9 +352,17 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Prótesis dentales',
         description: 'Las prótesis dentales reemplazan los dientes que faltan. El Dr. Khan le explicará las opciones y el proceso.',
-        paragraphs: [
-          'Las prótesis dentales reemplazan los dientes que faltan y están disponibles {atOffices}. El Dr. Khan le explicará las opciones y el proceso durante su visita.',
-        ],
+        lead: 'Reemplazo dental cómodo y de aspecto natural, pensado para devolverle la sonrisa y la confianza.',
+        paragraphs: {
+          withOcoee: [
+            'La falta de dientes no debería impedirle disfrutar de sus comidas favoritas, hablar con claridad o sonreír con confianza. Las dentaduras modernas ofrecen una solución cómoda y hecha a medida, adaptada a sus rasgos faciales naturales, que devuelve la función completa a su sonrisa.',
+            'Ya sea que necesite una dentadura completa o parcial, el Dr. Khan le explicará cada opción y cada paso del proceso durante su consulta, para que su nueva sonrisa se sienta firme y natural. Ofrecemos atención completa de dentaduras en nuestros dos consultorios, Orlando y Ocoee.',
+          ],
+          orlandoOnly: [
+            'La falta de dientes no debería impedirle disfrutar de sus comidas favoritas, hablar con claridad o sonreír con confianza. Las dentaduras modernas ofrecen una solución cómoda y hecha a medida, adaptada a sus rasgos faciales naturales, que devuelve la función completa a su sonrisa.',
+            'Ya sea que necesite una dentadura completa o parcial, el Dr. Khan le explicará cada opción y cada paso del proceso durante su consulta, para que su nueva sonrisa se sienta firme y natural. Ofrecemos atención completa de dentaduras en nuestro consultorio de Orlando.',
+          ],
+        },
       },
       'clear-aligners-braces': {
         title: 'Alineadores transparentes y brackets',
@@ -300,9 +371,21 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Alineadores transparentes y brackets',
         description: 'El Dr. Khan ofrece alineadores transparentes y brackets tradicionales.',
-        paragraphs: [
-          'El Dr. Khan ofrece alineadores transparentes y brackets tradicionales {atOffices}. Los alineadores transparentes son una serie de bandejas transparentes y removibles que mueven los dientes de forma gradual. Los brackets tradicionales usan soportes y alambres. La mayoría de nuestros casos de ortodoncia son con brackets tradicionales.',
-        ],
+        lead: 'Enderece sus dientes con opciones adaptadas a su estilo de vida, su comodidad y sus objetivos.',
+        paragraphs: {
+          withOcoee: [
+            'Una sonrisa bien alineada no solo aumenta su confianza, también favorece la salud bucal a largo plazo y la función al masticar. Contemporary Dental Care ofrece alineadores transparentes y brackets tradicionales para ayudarle a lograr una sonrisa recta y sana a su manera.',
+            '**Alineadores transparentes:** una serie de férulas hechas a medida y prácticamente invisibles que guían sus dientes con suavidad hasta su lugar. Como son removibles, puede comer, beber, cepillarse y usar hilo dental con total libertad.',
+            '**Brackets tradicionales:** un sistema de eficacia comprobada con brackets y alambres que logra una alineación precisa y eficaz en una gran variedad de casos. Por su fiabilidad y versatilidad, los brackets tradicionales son la mayoría de nuestros tratamientos de ortodoncia.',
+            'Ofrecemos consultas y atención de ortodoncia completas en nuestros dos consultorios, Orlando y Ocoee.',
+          ],
+          orlandoOnly: [
+            'Una sonrisa bien alineada no solo aumenta su confianza, también favorece la salud bucal a largo plazo y la función al masticar. Contemporary Dental Care ofrece alineadores transparentes y brackets tradicionales para ayudarle a lograr una sonrisa recta y sana a su manera.',
+            '**Alineadores transparentes:** una serie de férulas hechas a medida y prácticamente invisibles que guían sus dientes con suavidad hasta su lugar. Como son removibles, puede comer, beber, cepillarse y usar hilo dental con total libertad.',
+            '**Brackets tradicionales:** un sistema de eficacia comprobada con brackets y alambres que logra una alineación precisa y eficaz en una gran variedad de casos. Por su fiabilidad y versatilidad, los brackets tradicionales son la mayoría de nuestros tratamientos de ortodoncia.',
+            'Ofrecemos consultas y atención de ortodoncia completas en nuestro consultorio de Orlando.',
+          ],
+        },
       },
       cosmetic: {
         title: 'Odontología estética',
@@ -311,10 +394,21 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Odontología estética',
         description: 'Carillas, diseño de sonrisa y otros tratamientos estéticos, planificados según sus objetivos y su salud bucal.',
-        paragraphs: [
-          // Review: financing wording ("subject to approval"). Check against the financing partners' terms.
-          'El tratamiento estético se planifica según sus objetivos y su salud bucal. Las carillas son láminas finas hechas a medida que se adhieren a la superficie frontal de los dientes para cambiar su forma, color o alineación. El diseño de sonrisa planifica con usted el aspecto general de su sonrisa. El tratamiento estético se puede pagar a través de nuestros socios de financiamiento, sujeto a aprobación.',
-        ],
+        lead: 'Un enfoque personalizado para realzar su sonrisa natural con confianza y cuidado.',
+        paragraphs: {
+          withOcoee: [
+            'Su sonrisa es única, y la atención estética debe reflejar lo que usted imagina, sin descuidar su salud bucal a largo plazo. Ya sea que busque mejoras sutiles o un cambio completo, diseñamos cada tratamiento en torno a sus objetivos.',
+            '**Carillas de porcelana:** láminas ultrafinas hechas a medida que se adhieren a la parte frontal de los dientes para mejorar el color, la forma, la simetría y la alineación con un acabado natural.',
+            '**Diseño de sonrisa en conjunto:** un proceso de planificación paso a paso en el que el Dr. Khan trabaja directamente con usted para definir el aspecto general de su sonrisa antes de comenzar el tratamiento.',
+            'Para que su tratamiento se ajuste cómodamente a su presupuesto, ofrecemos planes de pago flexibles a través de nuestras empresas de financiamiento (sujeto a aprobación). Ofrecemos atención estética en nuestros dos consultorios, Orlando y Ocoee.',
+          ],
+          orlandoOnly: [
+            'Su sonrisa es única, y la atención estética debe reflejar lo que usted imagina, sin descuidar su salud bucal a largo plazo. Ya sea que busque mejoras sutiles o un cambio completo, diseñamos cada tratamiento en torno a sus objetivos.',
+            '**Carillas de porcelana:** láminas ultrafinas hechas a medida que se adhieren a la parte frontal de los dientes para mejorar el color, la forma, la simetría y la alineación con un acabado natural.',
+            '**Diseño de sonrisa en conjunto:** un proceso de planificación paso a paso en el que el Dr. Khan trabaja directamente con usted para definir el aspecto general de su sonrisa antes de comenzar el tratamiento.',
+            'Para que su tratamiento se ajuste cómodamente a su presupuesto, ofrecemos planes de pago flexibles a través de nuestras empresas de financiamiento (sujeto a aprobación). Ofrecemos atención estética en nuestro consultorio de Orlando.',
+          ],
+        },
       },
     },
   },
@@ -381,9 +475,11 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Restaurações e cuidados restauradores',
         description: 'Restaurações e outros tratamentos restauradores reparam dentes danificados por cárie, rachaduras ou quebras.',
-        paragraphs: [
-          'Restaurações e outros tratamentos restauradores reparam dentes danificados por cárie, rachaduras ou quebras. Disponível {atOffices}.',
-        ],
+        lead: 'Recupere a força, a função e a aparência natural do seu sorriso.',
+        paragraphs: {
+          withOcoee: ['Seja para reparar cáries leves, rachaduras ou quebras, nosso tratamento restaurador foi pensado para parecer natural e ser sentido como os seus próprios dentes. O Dr. Sheryar Khan utiliza materiais duráveis da cor do dente, que se integram ao seu sorriso e protegem a sua saúde bucal a longo prazo sem abrir mão da estética.', 'Tratamentos restauradores completos estão disponíveis nos nossos dois consultórios, Orlando e Ocoee.'],
+          orlandoOnly: ['Seja para reparar cáries leves, rachaduras ou quebras, nosso tratamento restaurador foi pensado para parecer natural e ser sentido como os seus próprios dentes. O Dr. Sheryar Khan utiliza materiais duráveis da cor do dente, que se integram ao seu sorriso e protegem a sua saúde bucal a longo prazo sem abrir mão da estética.', 'Tratamentos restauradores completos estão disponíveis no nosso consultório de Orlando.'],
+        },
       },
       crowns: {
         title: 'Coroas',
@@ -392,8 +488,10 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Coroas',
         description: 'Uma coroa cobre e protege um dente danificado ou enfraquecido. As coroas exigem um trabalho de laboratório odontológico.',
+        lead: 'Proteção feita sob medida para devolver ao seu dente a força, a função e a aparência.',
         paragraphs: [
-          'Uma coroa cobre e protege um dente danificado ou enfraquecido. As coroas exigem um trabalho de laboratório odontológico e, por isso, não são concluídas no mesmo dia. O preparo da coroa pode começar em um atendimento de emergência, e o Dr. Khan explicará as etapas seguintes.',
+          'Uma coroa dentária funciona como uma cobertura protetora que envolve por completo um dente enfraquecido ou danificado, restaurando a sua estrutura e prevenindo outros problemas de saúde. Como cada coroa é feita sob medida por um laboratório odontológico especializado, para um encaixe preciso e uma aparência natural, o tratamento é concluído em duas consultas agendadas, e não no mesmo dia.',
+          'Se você estiver com dor ou com uma lesão dentária urgente, o preparo inicial da coroa pode começar durante um atendimento de emergência para estabilizar o seu dente imediatamente. O Dr. Sheryar Khan vai explicar cada etapa do processo para que você se sinta confiante e bem informado durante todo o tratamento.',
         ],
       },
       'root-canal': {
@@ -403,12 +501,17 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '(Orlando)',
         listLabel: 'Tratamento de canal (Orlando)',
         description: 'O tratamento de canal é realizado no nosso consultório de Orlando.',
+        lead: 'Salve o seu dente natural e acabe com a dor de dente com um cuidado gentil e focado.',
         paragraphs: {
           withOcoee: [
-            'Um tratamento de canal trata o tecido mole interno do dente, chamado polpa, quando ele está infectado ou danificado. O tecido infectado é removido, o interior do dente é limpo e selado, e depois o dente é restaurado. O tratamento de canal é realizado no nosso consultório de Orlando. Se você é paciente de Ocoee e precisa de tratamento de canal, agendaremos a sua consulta em Orlando. O retratamento de canal é encaminhado a outro profissional.',
+            'O tratamento de canal é um procedimento rotineiro que alivia a dor de dente intensa e preserva o seu sorriso natural. Quando o tecido mole interno do dente (a polpa) fica inflamado ou infectado por uma cárie profunda ou uma lesão, removemos com cuidado o tecido infectado, limpamos e selamos bem o interior e restauramos o dente para que ele volte a funcionar com conforto.',
+            '**Observação sobre o local:** os tratamentos de canal são realizados exclusivamente no nosso consultório de Orlando. Se você é paciente de Ocoee e precisa de tratamento de canal, nossa equipe vai coordenar a sua consulta no consultório de Orlando sem complicações.',
+            '**Encaminhamentos especializados:** para retratamentos de canal ou casos de canal muito complexos, trabalhamos em estreita colaboração com endodontistas locais de confiança para que você receba um atendimento especializado.',
           ],
           orlandoOnly: [
-            'Um tratamento de canal trata o tecido mole interno do dente, chamado polpa, quando ele está infectado ou danificado. O tecido infectado é removido, o interior do dente é limpo e selado, e depois o dente é restaurado. O tratamento de canal é realizado no nosso consultório de Orlando. O retratamento de canal é encaminhado a outro profissional.',
+            'O tratamento de canal é um procedimento rotineiro que alivia a dor de dente intensa e preserva o seu sorriso natural. Quando o tecido mole interno do dente (a polpa) fica inflamado ou infectado por uma cárie profunda ou uma lesão, removemos com cuidado o tecido infectado, limpamos e selamos bem o interior e restauramos o dente para que ele volte a funcionar com conforto.',
+            '**Observação sobre o local:** os tratamentos de canal são realizados exclusivamente no nosso consultório de Orlando.',
+            '**Encaminhamentos especializados:** para retratamentos de canal ou casos de canal muito complexos, trabalhamos em estreita colaboração com endodontistas locais de confiança para que você receba um atendimento especializado.',
           ],
         },
       },
@@ -419,8 +522,10 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Implantes dentários',
         description: 'Um implante substitui a raiz de um dente ausente e sustenta uma coroa ou outro dente de reposição.',
+        lead: 'Uma solução permanente e de aparência natural para substituir dentes perdidos e renovar a sua confiança.',
         paragraphs: [
-          'Um implante substitui a raiz de um dente ausente e sustenta uma coroa ou outro dente de reposição. A colocação do implante pode ser feita no mesmo dia, sujeita à adequação clínica e à disponibilidade. O Dr. Khan planeja o tratamento com você em etapas claras, e os implantes são uma área de atenção especial no atendimento dele.',
+          'Os implantes dentários são uma substituição durável e de aparência natural para dentes perdidos. Ao substituir a própria raiz do dente, o implante cria uma base firme e duradoura para uma coroa, uma ponte ou um dente de substituição feitos sob medida, devolvendo a função completa da mastigação, ajudando a preservar a estrutura do maxilar e se integrando ao seu sorriso.',
+          'O Dr. Khan oferece tratamento com implantes como parte da sua clínica geral. Ele trabalha junto com você para planejar o tratamento em etapas claras e transparentes, para que você sempre saiba o que esperar. Dependendo da sua avaliação clínica e da disponibilidade de agenda, pode haver opções de colocação de implantes no mesmo dia.',
         ],
       },
       dentures: {
@@ -430,9 +535,17 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Prótese dentária',
         description: 'A prótese dentária substitui dentes ausentes. O Dr. Khan vai explicar as opções e o processo para você.',
-        paragraphs: [
-          'A prótese dentária substitui dentes ausentes e está disponível {atOffices}. O Dr. Khan vai explicar as opções e o processo para você durante a sua visita.',
-        ],
+        lead: 'Substituição dentária confortável e de aparência natural, pensada para devolver o seu sorriso e a sua confiança.',
+        paragraphs: {
+          withOcoee: [
+            'A falta de dentes não deve impedir você de aproveitar as suas comidas favoritas, falar com clareza ou sorrir com confiança. As dentaduras modernas oferecem uma solução confortável e feita sob medida, adaptada aos seus traços faciais naturais, que devolve a função completa ao seu sorriso.',
+            'Seja uma dentadura total ou parcial, o Dr. Khan vai explicar cada opção e cada etapa do processo durante a sua consulta, para que o seu novo sorriso fique firme e natural. O atendimento completo em dentaduras está disponível nos nossos dois consultórios, Orlando e Ocoee.',
+          ],
+          orlandoOnly: [
+            'A falta de dentes não deve impedir você de aproveitar as suas comidas favoritas, falar com clareza ou sorrir com confiança. As dentaduras modernas oferecem uma solução confortável e feita sob medida, adaptada aos seus traços faciais naturais, que devolve a função completa ao seu sorriso.',
+            'Seja uma dentadura total ou parcial, o Dr. Khan vai explicar cada opção e cada etapa do processo durante a sua consulta, para que o seu novo sorriso fique firme e natural. O atendimento completo em dentaduras está disponível no nosso consultório de Orlando.',
+          ],
+        },
       },
       'clear-aligners-braces': {
         title: 'Alinhadores transparentes e aparelho fixo',
@@ -441,9 +554,21 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Alinhadores transparentes e aparelho fixo',
         description: 'O Dr. Khan oferece alinhadores transparentes e aparelho fixo tradicional.',
-        paragraphs: [
-          'O Dr. Khan oferece alinhadores transparentes e aparelho fixo tradicional {atOffices}. Os alinhadores transparentes são uma série de moldeiras transparentes e removíveis que movem os dentes gradualmente. O aparelho fixo tradicional usa braquetes e fios. A maioria dos nossos casos de ortodontia é de aparelho fixo tradicional.',
-        ],
+        lead: 'Alinhe os seus dentes com opções adaptadas ao seu estilo de vida, ao seu conforto e aos seus objetivos.',
+        paragraphs: {
+          withOcoee: [
+            'Um sorriso bem alinhado não só aumenta a sua confiança, como também favorece a saúde bucal a longo prazo e a função mastigatória. A Contemporary Dental Care oferece alinhadores transparentes e aparelhos tradicionais para ajudar você a conquistar um sorriso alinhado e saudável do seu jeito.',
+            '**Alinhadores transparentes:** uma série de placas feitas sob medida e praticamente invisíveis que guiam os seus dentes suavemente até a posição certa. Como são removíveis, você pode comer, beber, escovar os dentes e usar fio dental com total liberdade.',
+            '**Aparelhos tradicionais:** um sistema consagrado, com bráquetes e fios, que oferece um alinhamento preciso e eficaz para uma grande variedade de casos. Pela sua confiabilidade e versatilidade comprovadas, os aparelhos tradicionais representam a maior parte dos nossos tratamentos ortodônticos.',
+            'Consultas e tratamentos ortodônticos completos são oferecidos nos nossos dois consultórios, Orlando e Ocoee.',
+          ],
+          orlandoOnly: [
+            'Um sorriso bem alinhado não só aumenta a sua confiança, como também favorece a saúde bucal a longo prazo e a função mastigatória. A Contemporary Dental Care oferece alinhadores transparentes e aparelhos tradicionais para ajudar você a conquistar um sorriso alinhado e saudável do seu jeito.',
+            '**Alinhadores transparentes:** uma série de placas feitas sob medida e praticamente invisíveis que guiam os seus dentes suavemente até a posição certa. Como são removíveis, você pode comer, beber, escovar os dentes e usar fio dental com total liberdade.',
+            '**Aparelhos tradicionais:** um sistema consagrado, com bráquetes e fios, que oferece um alinhamento preciso e eficaz para uma grande variedade de casos. Pela sua confiabilidade e versatilidade comprovadas, os aparelhos tradicionais representam a maior parte dos nossos tratamentos ortodônticos.',
+            'Consultas e tratamentos ortodônticos completos são oferecidos no nosso consultório de Orlando.',
+          ],
+        },
       },
       cosmetic: {
         title: 'Odontologia estética',
@@ -452,10 +577,21 @@ export const services: Record<Locale, ServicesMessages> = {
         summary: '',
         listLabel: 'Odontologia estética',
         description: 'Lentes de contato dental, design do sorriso e outros tratamentos estéticos, planejados de acordo com os seus objetivos e a sua saúde bucal.',
-        paragraphs: [
-          // Review: financing wording ("subject to approval"). Check against the financing partners' terms.
-          'O tratamento estético é planejado de acordo com os seus objetivos e a sua saúde bucal. Lentes de contato dental são lâminas finas feitas sob medida, coladas à face frontal dos dentes para mudar a forma, a cor ou o alinhamento. O design do sorriso planeja com você a aparência geral do seu sorriso. O tratamento estético pode ser pago por meio dos nossos parceiros de financiamento, sujeito a aprovação.',
-        ],
+        lead: 'Uma abordagem personalizada para realçar o seu sorriso natural com confiança e cuidado.',
+        paragraphs: {
+          withOcoee: [
+            'O seu sorriso é único, e o cuidado estético deve refletir o que você imagina, protegendo a sua saúde bucal a longo prazo. Seja para pequenos ajustes ou para uma transformação completa, planejamos cada tratamento em torno dos seus objetivos.',
+            '**Facetas de porcelana:** lâminas ultrafinas feitas sob medida, coladas na parte da frente dos dentes para melhorar a cor, a forma, a simetria e o alinhamento com um acabamento natural.',
+            '**Planejamento do sorriso em conjunto:** um processo de planejamento passo a passo em que o Dr. Khan trabalha diretamente com você para definir a estética geral do seu sorriso antes mesmo de o tratamento começar.',
+            'Para que o tratamento caiba confortavelmente no seu orçamento, há planos de pagamento flexíveis por meio dos nossos parceiros de financiamento (sujeito a aprovação). O atendimento estético é oferecido nos nossos dois consultórios, Orlando e Ocoee.',
+          ],
+          orlandoOnly: [
+            'O seu sorriso é único, e o cuidado estético deve refletir o que você imagina, protegendo a sua saúde bucal a longo prazo. Seja para pequenos ajustes ou para uma transformação completa, planejamos cada tratamento em torno dos seus objetivos.',
+            '**Facetas de porcelana:** lâminas ultrafinas feitas sob medida, coladas na parte da frente dos dentes para melhorar a cor, a forma, a simetria e o alinhamento com um acabamento natural.',
+            '**Planejamento do sorriso em conjunto:** um processo de planejamento passo a passo em que o Dr. Khan trabalha diretamente com você para definir a estética geral do seu sorriso antes mesmo de o tratamento começar.',
+            'Para que o tratamento caiba confortavelmente no seu orçamento, há planos de pagamento flexíveis por meio dos nossos parceiros de financiamento (sujeito a aprovação). O atendimento estético é oferecido no nosso consultório de Orlando.',
+          ],
+        },
       },
     },
   },
