@@ -1,12 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CardGrid, InfoCard } from '@/components/page/Cards';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { PagePhoto } from '@/components/page/PagePhoto';
 import { TeamGrid } from '@/components/page/TeamGrid';
 import { Section } from '@/components/page/Section';
-import { appointmentFormEnabled, routes, whenOcoee } from '@/content/site';
+import { routes, whenOcoee } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
@@ -24,16 +23,8 @@ export default async function AboutPage() {
   const lang = await getLocale();
   const messages = getMessages(lang);
   const t = messages.about.overview;
-  // Source wording: "Phone lines at both offices, an after-hours line, and an enquiry form
-  // for questions before your visit." The Ocoee and request-form holds are applied here.
-  const reachCopy = appointmentFormEnabled ? t.reach.withForm : t.reach.withoutForm;
   return <PageLayout>
     <PageIntro title={t.title} lead={whenOcoee(t.intro.withOcoee, t.intro.orlandoOnly)} />
-    <CardGrid>
-      <InfoCard title={t.honest.title}><p>{t.honest.body}</p></InfoCard>
-      <InfoCard title={t.reach.title}><p>{whenOcoee(reachCopy.withOcoee, reachCopy.orlandoOnly)}</p></InfoCard>
-      <InfoCard title={t.language.title}><p>{t.language.body}</p></InfoCard>
-    </CardGrid>
     <Section id="team" title={messages.about.team.title}>
       <PagePhoto photo="teamGroup" alt={messages.about.team.groupPhotoAlt} wide objectPosition="50% 0%" />
       <TeamGrid />

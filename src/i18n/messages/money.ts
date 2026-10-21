@@ -34,9 +34,11 @@ const en = {
       partners: 'We work with {partners}. Financing is arranged with the lender, subject to their approval and terms. Approval is not guaranteed.',
       /** The word before the last partner in the list of financing partners. */
       listAnd: 'and',
+      // The practice's wording of 21 October 2026; the link goes to the Contemporary Smile Club page.
       inHouse: {
-        heading: 'In-house payment plans.',
-        body: 'We also offer in-house payment plans.',
+        before: 'We also offer in-house payment plans. Check out ',
+        link: 'Contemporary Smile Club page',
+        after: '.',
       },
     },
     // The financial policy has its own page; the insurance page links to it.
@@ -165,8 +167,9 @@ export const money: Record<Locale, MoneyMessages> = {
         partners: 'Trabajamos con {partners}. El financiamiento se gestiona con el prestamista, sujeto a su aprobación y a sus condiciones. La aprobación no está garantizada.',
         listAnd: 'y',
         inHouse: {
-          heading: 'Planes de pago propios.',
-          body: 'También ofrecemos planes de pago propios.',
+          before: 'También ofrecemos planes de pago propios. Visite la ',
+          link: 'página del Club Contemporary Smile',
+          after: '.',
         },
       },
       policy: {
@@ -291,8 +294,9 @@ export const money: Record<Locale, MoneyMessages> = {
         partners: 'Trabalhamos com {partners}. O financiamento é contratado com a instituição financeira, sujeito à aprovação e aos termos dela. A aprovação não é garantida.',
         listAnd: 'e',
         inHouse: {
-          heading: 'Planos de pagamento próprios.',
-          body: 'Também oferecemos planos de pagamento próprios.',
+          before: 'Também oferecemos planos de pagamento próprios. Conheça a ',
+          link: 'página do Contemporary Smile Club',
+          after: '.',
         },
       },
       policy: {

@@ -362,6 +362,23 @@ test.describe('website fixes', () => {
     await expect(page.locator('main')).toContainText('Whether you need full or partial dentures');
   });
 
+  test('the footer menu opens the same dropdowns as the header', async ({ page }) => {
+    await page.goto('/');
+    const footerNav = page.locator('footer').getByRole('navigation').first();
+    await footerNav.getByRole('link', { name: 'Insurance & Payments' }).focus();
+    await expect(footerNav.getByRole('link', { name: 'Financial Policy & Appointments' })).toBeVisible();
+    await footerNav.getByRole('link', { name: 'Locations' }).focus();
+    await expect(footerNav.getByRole('link', { name: 'Ocoee' })).toBeVisible();
+  });
+
+  test('the top bar links to Instagram and Facebook, and the in-house plans line links to the Smile Club', async ({ page }) => {
+    await page.goto('/insurance');
+    await expect(page.locator('[class*="topBarSocial"]')).toContainText('Follow Us:');
+    await expect(page.locator('main').getByRole('link', { name: 'Contemporary Smile Club page' })).toHaveAttribute('href', '/membership');
+    await page.goto('/about');
+    await expect(page.getByText('Honest treatment planning')).toHaveCount(0);
+  });
+
   test('every page ends with the copyright line', async ({ page }) => {
     for (const path of ['/', '/faq', '/locations/orlando']) {
       await page.goto(path);
