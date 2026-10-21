@@ -13,10 +13,10 @@ export async function TopBar() {
   const t = getMessages(lang).common;
   return <div className={styles.topBar}>
     <p className={styles.topBarContacts}>
-      {offices.map(office => <a key={office.id} href={office.phoneHref} className={styles.topBarPhone}>{fill(t.callOffice, { name: office.name, phone: office.phone })}</a>)}
+      {offices.map(office => <a key={office.id} href={office.phoneHref} className={styles.topBarPhone}>{fill(t.officePhone, { name: office.name, phone: office.phone })}</a>)}
       <span>{t.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></span>
       <span>{t.footer.email} <a href={`mailto:${site.email}`}>{site.email}</a></span>
-      <span className={styles.topBarSocial}><SocialLinks followLabel={t.footer.follow} /></span>
+      <span className={styles.topBarSocial}><SocialLinks /></span>
     </p>
     <LanguageSwitcher current={lang} label={t.languageLabel} />
   </div>;
