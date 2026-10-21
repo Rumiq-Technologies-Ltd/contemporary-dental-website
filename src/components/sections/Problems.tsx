@@ -44,7 +44,7 @@ export async function Problems() {
   }
 
   // In these photos the faces fill the top, so the headline sits at the bottom (practice request, 21 October 2026).
-  const titlePlacements: Partial<Record<ServiceId, Problem['titlePlacement']>> = { emergency: 'bottom', 'cleanings-checkups': 'bottom', cosmetic: 'bottomNarrow' };
+  const titlePlacements: Partial<Record<ServiceId, Problem['titlePlacement']>> = { emergency: 'bottom', implants: 'bottom', 'cleanings-checkups': 'bottom', cosmetic: 'bottomNarrow' };
 
   function problem(id: ServiceId, text: ProblemText, photo: Problem['photo'], extraLinks: readonly ExtraLink[] = []): Problem {
     const service = findService(id);
@@ -62,7 +62,7 @@ export async function Problems() {
   const problems: readonly Problem[] = [
     problem('emergency', t.items.emergency, photos.toothPain),
     // Missing teeth has two answers, so it links to both the implants and the dentures pages.
-    problem('implants', t.items.implants, photos.toothModel, [{ id: 'dentures', label: t.items.implants.dentureLinkLabel }]),
+    problem('implants', t.items.implants, photos.missingTeeth, [{ id: 'dentures', label: t.items.implants.dentureLinkLabel }]),
     problem('clear-aligners-braces', t.items.alignersBraces, photos.clearAligner),
     problem('cleanings-checkups', t.items.checkups, photos.checkUp),
     problem('cosmetic', t.items.cosmetic, photos.smileMakeover),
