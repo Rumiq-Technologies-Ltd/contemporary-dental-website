@@ -21,7 +21,7 @@ Production builds are indexable and `robots.txt` welcomes all crawlers (it is no
 - Office map: each office card shows a Google Map (`components/ui/MapEmbed.tsx`, loaded when the page loads) and a "Get directions" link. The CSP allows frames only from `https://www.google.com`.
 - Offer list on Pricing: new-patient exam, October 2026 special, $2,999 implant offer. None is shown.
 - Implants: no offer, no full-arch or All-on-4 wording.
-- Dentures: no partial dentures.
+- Dentures: partial dentures are published; the practice confirmed on 21 October 2026 that it offers them at both offices.
 - Clear aligners and braces: no orthobrain wording and no vendor product names.
 - Technology: no speed claims and no CEREC, LANAP or 3D-printed restorations.
 - Notice of Privacy Practices: placeholder until the approved text is supplied. The privacy policy and terms follow the content file's outline only, are marked as drafts and are set to `noindex`.
@@ -71,7 +71,7 @@ Spanish (`/es`) and Portuguese (`/pt`) versions of the customer-facing pages are
 9. The C15 decision on website forms and data handling, then build the request form.
 10. A named privacy contact, and counsel for the privacy policy and terms.
 11. Counsel review of the items in C14 section 4; the offer decision tree; written terms for each offer.
-12. Confirmation of partial dentures at Orlando, and of card capture at booking or on arrival.
+12. Confirmation of card capture at booking or on arrival. (Partial dentures were confirmed on 21 October 2026.)
 13. The Google reviews URL.
 14. The legacy sitemap for URL mapping. Confirm the preferred host (`www` or the apex domain) and set `NEXT_PUBLIC_SITE_URL` in the Vercel Production environment.
 15. The practice's own photographs, to replace the stock images.

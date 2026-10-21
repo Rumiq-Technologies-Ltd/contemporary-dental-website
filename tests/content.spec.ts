@@ -185,7 +185,7 @@ test.describe('facts', () => {
 
   test('crowns are never described as same-day', async ({ page }) => {
     await page.goto('/services/crowns');
-    await expect(page.locator('main')).toContainText('they are not completed on the same day');
+    await expect(page.locator('main')).toContainText('completed over two scheduled visits rather than on the same day');
     await expect(page.locator('main')).not.toContainText(/same-day crown|crown in one visit/i);
   });
 
@@ -340,9 +340,6 @@ test.describe('website fixes', () => {
     await expect(main.getByText('Gentle preventive care to keep your smile healthy, bright, and strong.')).toBeVisible();
     await expect(main.getByText('We take digital X-rays only when clinically necessary', { exact: false })).toBeVisible();
     await expect(main.locator('a[href^="tel:"]')).toHaveCount(0);
-    // Other service pages keep their call buttons.
-    await page.goto('/services/crowns');
-    await expect(page.locator('main a[href^="tel:"]')).toHaveCount(2);
   });
 
   test('the extractions page shows its sub-header, same-day wording and the referral note in italics', async ({ page }) => {
@@ -352,6 +349,17 @@ test.describe('website fixes', () => {
     await expect(main.getByText('whenever clinically appropriate and schedule permitting', { exact: false })).toBeVisible();
     await expect(main.locator('em', { hasText: 'trusted local oral surgery partners' })).toHaveCount(1);
     await expect(main.locator('a[href^="tel:"]')).toHaveCount(0);
+  });
+
+  test('service pages have no call buttons, and labelled paragraphs show their labels in bold', async ({ page }) => {
+    for (const slug of ['restorative', 'crowns', 'root-canal', 'implants', 'dentures', 'clear-aligners-braces', 'cosmetic']) {
+      await page.goto(`/services/${slug}`);
+      await expect(page.locator('main a[href^="tel:"]')).toHaveCount(0);
+    }
+    await page.goto('/services/root-canal');
+    await expect(page.locator('main strong', { hasText: 'Location note:' })).toHaveCount(1);
+    await page.goto('/services/dentures');
+    await expect(page.locator('main')).toContainText('Whether you need full or partial dentures');
   });
 
   test('every page ends with the copyright line', async ({ page }) => {

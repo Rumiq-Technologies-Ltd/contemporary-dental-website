@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { CardGrid, LinkCard } from '@/components/page/Cards';
-import { CallButton } from '@/components/page/Actions';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
 import { PagePhoto } from '@/components/page/PagePhoto';
+import { emphasize } from '@/components/page/emphasize';
 import { Prose, Section } from '@/components/page/Section';
 import { TreatmentIllustrations } from '@/components/sections/TreatmentIllustrations';
 import { findService, getServicePages } from '@/content/services';
-import { offices } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { defaultLocale, localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
@@ -43,11 +42,8 @@ export default async function ServicePage({ params }: ServicePageProps) {
   if (!service) notFound();
   const related = getServicePages(lang).filter(item => item.id !== service.id);
   const copy = <Prose>
-    {service.paragraphs.map(paragraph => <p key={paragraph}>{paragraph}</p>)}
+    {service.paragraphs.map(paragraph => <p key={paragraph}>{emphasize(paragraph)}</p>)}
     {service.note && <p><em>{service.note}</em></p>}
-    {service.callButtons && <div className={styles.actions}>
-      {offices.map(office => <CallButton key={office.id} office={office} />)}
-    </div>}
   </Prose>;
   return <PageLayout>
     <PageIntro title={service.heading} lead={service.lead} />
