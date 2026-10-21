@@ -20,6 +20,11 @@
 .media img { object-fit: cover; }
 .media::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgb(0 0 0 / 0.6) 0%, rgb(0 0 0 / 0.1) 60%); }
 .mediaTitle { position: absolute; z-index: 1; left: clamp(20px, 3vw, 36px); right: 20px; top: clamp(20px, 3vw, 36px); font-size: clamp(3rem, 6vw, 5.5rem); line-height: 0.88; color: #ffffff; }
+/* Bottom headline: the shade runs up from the bottom, and the title stays narrow and on the left so it
+   clears the faces in the photo. */
+.mediaBottom::after { background: linear-gradient(0deg, rgb(0 0 0 / 0.65) 0%, rgb(0 0 0 / 0.1) 50%); }
+.mediaBottom .mediaTitle { top: auto; bottom: clamp(20px, 3vw, 36px); right: auto; font-size: clamp(2.4rem, 4.4vw, 4rem); }
+.mediaNarrow .mediaTitle { max-width: 3.6em; }
 
 .fact { display: grid; align-content: center; justify-items: start; gap: 16px; padding: clamp(28px, 4vw, 48px); background: var(--color-tint); color: var(--color-ink); }
 .big {
@@ -32,6 +37,8 @@
 
 @media (max-width: 899px) {
   .panel { grid-template-columns: minmax(0, 1fr); }
+  /* Phones show bottom-headline photos whole (they are cropped to 5:4), so no face is cut or covered. */
+  .mediaBottom { min-height: 0; aspect-ratio: 5 / 4; }
   .tabs { gap: 4px 20px; }
 }
 
