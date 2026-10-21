@@ -44,7 +44,7 @@ export async function Problems() {
   }
 
   // In these photos the faces fill the top, so the headline sits at the bottom (practice request, 21 October 2026).
-  const titlePlacements: Partial<Record<ServiceId, Problem['titlePlacement']>> = { 'cleanings-checkups': 'bottom', cosmetic: 'bottomNarrow' };
+  const titlePlacements: Partial<Record<ServiceId, Problem['titlePlacement']>> = { emergency: 'bottom', 'cleanings-checkups': 'bottom', cosmetic: 'bottomNarrow' };
 
   function problem(id: ServiceId, text: ProblemText, photo: Problem['photo'], extraLinks: readonly ExtraLink[] = []): Problem {
     const service = findService(id);
