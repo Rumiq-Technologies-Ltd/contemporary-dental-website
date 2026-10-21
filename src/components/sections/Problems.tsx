@@ -56,12 +56,12 @@ export async function Problems() {
   }
 
   const problems: readonly Problem[] = [
-    problem('emergency', t.items.emergency, photos.guides),
+    problem('emergency', t.items.emergency, photos.toothPain),
     // Missing teeth has two answers, so it links to both the implants and the dentures pages.
     problem('implants', t.items.implants, photos.toothModel, [{ id: 'dentures', label: t.items.implants.dentureLinkLabel }]),
     problem('clear-aligners-braces', t.items.alignersBraces, photos.clearAligner),
-    problem('cleanings-checkups', t.items.checkups, photos.assessment),
-    problem('cosmetic', t.items.cosmetic, photos.smile),
+    problem('cleanings-checkups', t.items.checkups, photos.checkUp),
+    problem('cosmetic', t.items.cosmetic, photos.smileMakeover),
   ];
 
   return <Screen id="treatments" labelledBy="treatments-title" className={styles.problems}>

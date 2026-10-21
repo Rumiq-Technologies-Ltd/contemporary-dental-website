@@ -13,6 +13,11 @@ import heroSmile from '../../public/images/hero/hero-smile.jpg';
 import extractionsPatient from '../../public/images/services/extractions-patient.jpg';
 import emergencyPatient from '../../public/images/services/emergency-patient.jpg';
 import restorativePatient from '../../public/images/services/restorative-patient.jpg';
+import cosmeticPatient from '../../public/images/services/cosmetic-patient.jpg';
+// Homepage "common problems" tab photos, supplied by the practice on 21 October 2026.
+import toothPain from '../../public/images/home/tooth-pain.jpg';
+import checkUp from '../../public/images/home/check-up.jpg';
+import smileMakeover from '../../public/images/home/smile-makeover.jpg';
 // Dr. Khan's portrait with its grey background replaced by the brand colour (see docs/content-holds.md).
 import doctorPortrait from '../../public/images/practice/dr-sheryar-khan-brand.jpg';
 import teamGroup from '../../public/images/practice/team-group.jpg';
@@ -45,7 +50,8 @@ import thumbCosmetic from '../../public/images/services/thumbnails/cosmetic.jpg'
 // no practice photograph exists yet (docs/image-credits.md).
 export const photos = {
   smile, assessment, appointments, medication, backPortrait, guides,
-  toothModel, clearAligner, teethModel, heroSmile, extractionsPatient, emergencyPatient, restorativePatient,
+  toothModel, clearAligner, teethModel, heroSmile, extractionsPatient, emergencyPatient, restorativePatient, cosmeticPatient,
+  toothPain, checkUp, smileMakeover,
   doctorPortrait, teamGroup, orlandoFront, orlandoEntrance, frontDesk,
   xrayTeamLandscape, xrayTeamPortrait, roomTeal, roomCream,
   thumbCleanings, thumbEmergency, thumbExtractions, thumbRestorative, thumbCrowns, thumbRootCanal, thumbImplants, thumbDentures, thumbAligners, thumbCosmetic,
