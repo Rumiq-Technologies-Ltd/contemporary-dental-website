@@ -40,7 +40,8 @@ Supplied on 20 October 2026. Their source and licence are not recorded yet: conf
 | `public/images/services/restorative-patient.jpg` | Fillings and restorative care page, beside the text |
 | `public/images/services/thumbnails/restorative.jpg` | Fillings and restorative care card on the services grid (replaces the earlier card photo) |
 | `public/images/services/thumbnails/cleanings-checkups.jpg` | Cleanings and check-ups card on the services grid (replaces the earlier card photo, 21 October 2026) |
-| `public/images/services/cosmetic-patient.jpg` | Cosmetic dentistry page, beside the text (21 October 2026) |
+| `public/images/services/cosmetic-patient.jpg` | Cosmetic dentistry page, beside the text (smiling patient in the chair, 21 October 2026) |
+| `public/images/services/thumbnails/cosmetic.jpg` | Cosmetic dentistry card on the services grid (replaces the earlier card photo, 21 October 2026) |
 | `public/images/home/tooth-pain.jpg` | Homepage "Tooth pain" tab (21 October 2026) |
 | `public/images/home/missing-teeth.jpg` | Homepage "Missing teeth" tab (21 October 2026) |
 | `public/images/home/crooked-teeth.jpg` | Homepage "Crooked teeth" tab (21 October 2026) |
