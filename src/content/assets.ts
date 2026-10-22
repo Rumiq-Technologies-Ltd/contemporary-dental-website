@@ -14,6 +14,10 @@ import extractionsPatient from '../../public/images/services/extractions-patient
 import emergencyPatient from '../../public/images/services/emergency-patient.jpg';
 import restorativePatient from '../../public/images/services/restorative-patient.jpg';
 import cosmeticPatient from '../../public/images/services/cosmetic-patient.jpg';
+import crownsPatient from '../../public/images/services/crowns-patient.jpg';
+import rootCanalPatient from '../../public/images/services/root-canal-patient.jpg';
+import implantsPatient from '../../public/images/services/implants-patient.jpg';
+import alignersPatient from '../../public/images/services/aligners-patient.jpg';
 // Homepage "common problems" tab photos, supplied by the practice on 21 October 2026.
 import toothPain from '../../public/images/home/tooth-pain.jpg';
 import crookedTeeth from '../../public/images/home/crooked-teeth.jpg';
@@ -53,6 +57,7 @@ import thumbCosmetic from '../../public/images/services/thumbnails/cosmetic.jpg'
 export const photos = {
   smile, assessment, appointments, medication, backPortrait, guides,
   toothModel, clearAligner, teethModel, heroSmile, extractionsPatient, emergencyPatient, restorativePatient, cosmeticPatient,
+  crownsPatient, rootCanalPatient, implantsPatient, alignersPatient,
   toothPain, missingTeeth, crookedTeeth, checkUp, smileMakeover,
   doctorPortrait, teamGroup, orlandoFront, orlandoEntrance, frontDesk,
   xrayTeamLandscape, xrayTeamPortrait, roomTeal, roomCream,

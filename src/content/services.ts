@@ -55,11 +55,11 @@ const definitions: readonly ServiceDefinition[] = [
   { id: 'emergency', href: routes.emergency, image: 'emergencyPatient', thumbnail: 'thumbEmergency' },
   { id: 'extractions', href: `${routes.services}/extractions`, image: 'extractionsPatient', imagePosition: '30% 50%', thumbnail: 'thumbExtractions' },
   { id: 'restorative', href: `${routes.services}/restorative`, image: 'restorativePatient', imagePosition: '72% 50%', thumbnail: 'thumbRestorative' },
-  { id: 'crowns', href: `${routes.services}/crowns`, image: 'assessment', thumbnail: 'thumbCrowns' },
-  { id: 'root-canal', href: `${routes.services}/root-canal`, image: 'teethModel', thumbnail: 'thumbRootCanal' },
-  { id: 'implants', href: `${routes.services}/implants`, image: 'toothModel', thumbnail: 'thumbImplants' },
+  { id: 'crowns', href: `${routes.services}/crowns`, image: 'crownsPatient', thumbnail: 'thumbCrowns' },
+  { id: 'root-canal', href: `${routes.services}/root-canal`, image: 'rootCanalPatient', thumbnail: 'thumbRootCanal' },
+  { id: 'implants', href: `${routes.services}/implants`, image: 'implantsPatient', thumbnail: 'thumbImplants' },
   { id: 'dentures', href: `${routes.services}/dentures`, image: 'roomCream', thumbnail: 'thumbDentures' },
-  { id: 'clear-aligners-braces', href: `${routes.services}/clear-aligners-braces`, image: 'clearAligner', thumbnail: 'thumbAligners' },
+  { id: 'clear-aligners-braces', href: `${routes.services}/clear-aligners-braces`, image: 'alignersPatient', thumbnail: 'thumbAligners' },
   { id: 'cosmetic', href: `${routes.services}/cosmetic`, image: 'cosmeticPatient', thumbnail: 'thumbCosmetic' },
 ];
 
