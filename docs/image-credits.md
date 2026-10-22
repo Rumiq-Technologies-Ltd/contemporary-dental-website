@@ -46,6 +46,7 @@ Supplied on 20 October 2026. Their source and licence are not recorded yet: conf
 | `public/images/services/thumbnails/root-canal.jpg` | Root canal card on the services grid (replaces the earlier card photo, 22 October 2026) |
 | `public/images/services/implants-patient.jpg` | Dental implants page, beside the text (22 October 2026) |
 | `public/images/services/aligners-patient.jpg` | Clear aligners and braces page, beside the text (22 October 2026) |
+| `public/images/services/thumbnails/clear-aligners-braces.jpg` | Clear aligners and braces card on the services grid (replaces the earlier card photo, 22 October 2026) |
 | `public/images/services/thumbnails/cosmetic.jpg` | Cosmetic dentistry card on the services grid (smiling patient in the chair, 21 October 2026) |
 | `public/images/home/tooth-pain.jpg` | Homepage "Tooth pain" tab (21 October 2026) |
 | `public/images/home/missing-teeth.jpg` | Homepage "Missing teeth" tab (21 October 2026) |
