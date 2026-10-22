@@ -47,12 +47,11 @@ Supplied on 20 October 2026. Their source and licence are not recorded yet: conf
 | `public/images/services/cosmetic-patient.jpg` | Cosmetic dentistry page, beside the text (woman with long hair, 21 October 2026) |
 | `public/images/services/cleanings-patient.jpg` | Cleanings and check-ups page, beside the text (22 October 2026) |
 | `public/images/services/crowns-patient.jpg` | Crowns page, beside the text (smiling woman, 22 October 2026) |
-| `public/images/services/root-canal-patient.jpg` | Root canal page, beside the text (22 October 2026) |
-| `public/images/services/thumbnails/root-canal.jpg` | Root canal card on the services grid (replaces the earlier card photo, 22 October 2026) |
+| `public/images/services/root-canal-patient.jpg` | Not used since 22 October 2026: the Root Canal page went back to `stock/teeth-model.jpg` |
 | `public/images/services/implants-patient.jpg` | Dental implants page, beside the text (smiling man in a yellow T-shirt, 22 October 2026) |
 | `public/images/services/dentures-patient.jpg` | Dentures page, beside the text (22 October 2026) |
 | `public/images/services/aligners-patient.jpg` | Clear aligners and braces page, beside the text (woman with a hand mirror, 22 October 2026) |
-| `public/images/services/thumbnails/clear-aligners-braces.jpg` | Clear aligners and braces card on the services grid (replaces the earlier card photo, 22 October 2026) |
+| `public/images/services/thumbnails/clear-aligners-braces.jpg` | Clear aligners and braces card on the services grid (woman with a hand mirror, matching the page, 22 October 2026) |
 | `public/images/services/thumbnails/cosmetic.jpg` | Cosmetic dentistry card on the services grid (smiling patient in the chair, 21 October 2026) |
 | `public/images/home/tooth-pain.jpg` | Homepage "Tooth pain" tab (21 October 2026) |
 | `public/images/home/missing-teeth.jpg` | Homepage "Missing teeth" tab (21 October 2026) |
@@ -68,7 +67,7 @@ Used under the [Pexels License](https://www.pexels.com/license/) (free for comme
 |---|---|---|
 | `tooth-model.jpg` | https://www.pexels.com/photo/close-up-photo-of-an-implant-tooth-6502340/ | Dental implants |
 | `clear-aligner.jpg` | https://www.pexels.com/photo/a-clear-retainer-on-a-person-s-hands-wearing-gloves-10896051/ | Clear aligners and braces |
-| `teeth-model.jpg` | https://www.pexels.com/photo/a-person-holding-a-teeth-model-and-a-dental-scaler-4269698/ | Root canal treatment |
+| `teeth-model.jpg` | https://www.pexels.com/photo/a-person-holding-a-teeth-model-and-a-dental-scaler-4269698/ | Root canal treatment page |
 | `treatment-room-light.jpg` | https://www.pexels.com/photo/modern-dental-office-with-dental-chair-equipment-35438269/ | Not used since the practice photographs were supplied |
 | `treatment-room-white.jpg` | https://www.pexels.com/photo/back-view-of-a-dental-chair-in-a-clinic-4269276/ | Not used since the practice photographs were supplied |
 | `treatment-room-blue.jpg` | https://www.pexels.com/photo/modern-dental-office-interior-with-equipment-30902075/ | Not used since the practice photographs were supplied |
