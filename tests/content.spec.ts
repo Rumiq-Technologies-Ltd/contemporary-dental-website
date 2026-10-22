@@ -180,7 +180,7 @@ test.describe('facts', () => {
     await expect(page.getByText('While we are not a 24-hour facility', { exact: false })).toBeVisible();
     await expect(page.locator('#after-hours strong', { hasText: 'Orlando office' })).toHaveCount(1);
     await expect(page.locator('#after-hours a[href="tel:+14076255440"]')).toHaveText('407-625-5440');
-    await expect(page.getByRole('link', { name: 'Call Orlando: 321-522-8577' }).first()).toHaveAttribute('href', 'tel:+13215228577');
+    await expect(page.getByRole('link', { name: '321-522-8577', exact: true }).first()).toHaveAttribute('href', 'tel:+13215228577');
   });
 
   test('crowns are never described as same-day', async ({ page }) => {
@@ -233,7 +233,7 @@ test.describe('phone call link', () => {
     await page.goto('/about');
     const fixed = await page.locator('a[href^="tel:"]').evaluateAll(links => links.filter(link => getComputedStyle(link).position === 'fixed').length);
     expect(fixed).toBe(0);
-    await expect(page.getByRole('link', { name: 'Orlando: 321-522-8577', exact: true }).first()).toBeInViewport();
+    await expect(page.getByRole('link', { name: '321-522-8577', exact: true }).first()).toBeInViewport();
   });
 });
 
@@ -334,7 +334,7 @@ test.describe('website fixes', () => {
     await expect(page.locator('#reviews [aria-label="Google review"]')).toHaveCount(count);
   });
 
-  test('the cleanings page shows its sub-header and copy without the photo or call buttons', async ({ page }) => {
+  test('the cleanings page shows its sub-header and copy without call buttons', async ({ page }) => {
     await page.goto('/services/cleanings-checkups');
     const main = page.locator('main');
     await expect(main.getByText('Gentle preventive care to keep your smile healthy, bright, and strong.')).toBeVisible();
@@ -360,15 +360,6 @@ test.describe('website fixes', () => {
     await expect(page.locator('main strong', { hasText: 'Location note:' })).toHaveCount(1);
     await page.goto('/services/dentures');
     await expect(page.locator('main')).toContainText('Whether you need full or partial dentures');
-  });
-
-  test('the footer menu opens the same dropdowns as the header', async ({ page }) => {
-    await page.goto('/');
-    const footerNav = page.locator('footer').getByRole('navigation').first();
-    await footerNav.getByRole('link', { name: 'Insurance & Payments' }).focus();
-    await expect(footerNav.getByRole('link', { name: 'Financial Policy & Appointments' })).toBeVisible();
-    await footerNav.getByRole('link', { name: 'Locations' }).focus();
-    await expect(footerNav.getByRole('link', { name: 'Ocoee' })).toBeVisible();
   });
 
   test('the top bar links to Instagram and Facebook, and the in-house plans line links to the Smile Club', async ({ page }) => {

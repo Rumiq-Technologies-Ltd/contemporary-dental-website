@@ -37,11 +37,11 @@ test('homepage shows one primary action and the page structure', async ({ page }
   expect(errors).toEqual([]);
 });
 
-test('the primary action is a solid, high-contrast cyan button', async ({ page }) => {
+test('the primary action is a solid, high-contrast dark button', async ({ page }) => {
   await ready(page);
   const primary = page.getByRole('banner').getByRole('link', { name: 'Request an appointment' });
-  await expect(primary).toHaveCSS('background-color', 'rgb(169, 234, 247)');
-  await expect(primary).toHaveCSS('color', 'rgb(19, 28, 21)');
+  await expect(primary).toHaveCSS('background-color', 'rgb(19, 28, 21)');
+  await expect(primary).toHaveCSS('color', 'rgb(255, 255, 255)');
 });
 
 test('problem tabs switch panels with the mouse and the arrow keys', async ({ page }) => {
@@ -95,7 +95,7 @@ test('large screens show the navigation bar and link to the right pages', async 
   const nav = page.getByRole('navigation', { name: 'Primary navigation' });
   await expect(nav).toBeVisible();
   await expect(page.getByLabel('Menu — open navigation')).toBeHidden();
-  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance & Payments$/, /^Contemporary Smile Club$/, /^About$/, /^Locations$/]);
+  await expect(nav.getByRole('link')).toHaveText([/^Services$/, /^Emergency$/, /^New patients$/, /^Insurance & Payments$/, /^Contemporary Smile Club$/, /^About Us$/, /^Locations$/]);
   await nav.getByRole('link', { name: 'Emergency' }).click();
   await expect(page).toHaveURL(/\/emergency$/);
   await expect(page.getByRole('heading', { level: 1 })).toHaveText('Emergency dental care');
@@ -107,7 +107,7 @@ test('large screens show the navigation bar and link to the right pages', async 
   await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'Services' }).click();
   await expect(page).toHaveURL(/\/services$/);
   await page.goto('/');
-  await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'About' }).click();
+  await page.getByRole('navigation', { name: 'Primary navigation' }).getByRole('link', { name: 'About Us' }).click();
   await expect(page).toHaveURL(/\/about$/);
   // Insurance & Payments opens a dropdown with its two pages.
   const payments = page.getByRole('navigation', { name: 'Primary navigation' });

@@ -24,7 +24,7 @@ export async function SiteHeader() {
       <Image src={brand.logoIcon} alt="" className={styles.logoIcon} priority />
       <Image src={brand.logoWordmark} alt="" className={styles.logoWordmark} priority />
     </Link>
-    <Link href={requestHref} className={`pill pill-accent ${styles.request}`}>{t.requestAppointment}</Link>
+    <Link href={requestHref} className={`pill pill-dark ${styles.request}`}>{t.requestAppointment}</Link>
     <SiteMenu items={items} requestHref={requestHref} t={t} />
     <SiteNav items={items} label={t.primaryNavigation} />
   </header>;
