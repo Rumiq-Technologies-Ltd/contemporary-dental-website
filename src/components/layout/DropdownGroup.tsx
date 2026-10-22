@@ -3,7 +3,7 @@
 import { useState, type MouseEvent, type ReactNode } from 'react';
 import styles from './layout.module.css';
 
-// A nav entry with a dropdown of sub-pages (header and footer). The dropdown opens on hover and on
+// A header nav entry with a dropdown of sub-pages. The dropdown opens on hover and on
 // keyboard focus in CSS; picking a sub-page closes it, even though the pointer and focus are still on
 // it, until the pointer leaves or focus comes back to the entry.
 export function DropdownGroup({ className, children }: { className: string; children: ReactNode }) {

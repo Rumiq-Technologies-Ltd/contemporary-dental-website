@@ -50,15 +50,14 @@ interface ServiceDefinition {
 // Held items from the content file (same-day crowns, implant offer, All-on-4,
 // partial dentures, orthobrain wording, trademarked product names) are left out on purpose.
 const definitions: readonly ServiceDefinition[] = [
-  // The cleanings page has no photo, at the practice's request (20 October 2026).
-  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, thumbnail: 'thumbCleanings' },
+  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, image: 'cleaningsPatient', thumbnail: 'thumbCleanings' },
   { id: 'emergency', href: routes.emergency, image: 'emergencyPatient', thumbnail: 'thumbEmergency' },
   { id: 'extractions', href: `${routes.services}/extractions`, image: 'extractionsPatient', imagePosition: '30% 50%', thumbnail: 'thumbExtractions' },
   { id: 'restorative', href: `${routes.services}/restorative`, image: 'restorativePatient', imagePosition: '72% 50%', thumbnail: 'thumbRestorative' },
   { id: 'crowns', href: `${routes.services}/crowns`, image: 'crownsPatient', thumbnail: 'thumbCrowns' },
   { id: 'root-canal', href: `${routes.services}/root-canal`, image: 'rootCanalPatient', thumbnail: 'thumbRootCanal' },
   { id: 'implants', href: `${routes.services}/implants`, image: 'implantsPatient', thumbnail: 'thumbImplants' },
-  { id: 'dentures', href: `${routes.services}/dentures`, image: 'roomCream', thumbnail: 'thumbDentures' },
+  { id: 'dentures', href: `${routes.services}/dentures`, image: 'denturesPatient', thumbnail: 'thumbDentures' },
   { id: 'clear-aligners-braces', href: `${routes.services}/clear-aligners-braces`, image: 'alignersPatient', thumbnail: 'thumbAligners' },
   { id: 'cosmetic', href: `${routes.services}/cosmetic`, image: 'cosmeticPatient', thumbnail: 'thumbCosmetic' },
 ];

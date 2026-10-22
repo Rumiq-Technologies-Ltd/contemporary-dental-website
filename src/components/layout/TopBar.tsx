@@ -1,6 +1,5 @@
 import { offices, site } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
-import { fill } from '@/i18n/fill';
 import { getLocale } from '@/i18n/server';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { SocialLinks } from './SocialLinks';
@@ -13,9 +12,10 @@ export async function TopBar() {
   const t = getMessages(lang).common;
   return <div className={styles.topBar}>
     <p className={styles.topBarContacts}>
-      {offices.map(office => <a key={office.id} href={office.phoneHref} className={styles.topBarPhone}>{fill(t.officePhone, { name: office.name, phone: office.phone })}</a>)}
+      {/* Like the after-hours line, only the number is a link; office names are the same in every language. */}
+      {offices.map(office => <span key={office.id}>{office.name}: <a href={office.phoneHref}>{office.phone}</a></span>)}
       <span>{t.afterHours} <a href={site.afterHoursHref}>{site.afterHoursPhone}</a></span>
-      <span>{t.footer.email} <a href={`mailto:${site.email}`}>{site.email}</a></span>
+      <span>{t.footer.email}: <a href={`mailto:${site.email}`}>{site.email}</a></span>
       <span className={styles.topBarSocial}><SocialLinks /></span>
     </p>
     <LanguageSwitcher current={lang} label={t.languageLabel} />

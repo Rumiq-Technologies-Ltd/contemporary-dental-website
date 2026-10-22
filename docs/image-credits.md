@@ -28,6 +28,10 @@ A photo that showed a patient in treatment was deleted at the owner's request. P
 
 `hero-smile.jpg`, a woman pointing to her smile, was supplied by the practice on 20 October 2026 for the homepage hero. Its source and licence are not recorded yet: confirm the practice holds the rights (or a model release, if it shows a patient) and add them here.
 
+## Team portraits supplied by the practice
+
+Jessica Salazar, Bruno Conte André, Tyrese Brown, Amanda Nguyen and Brittini Blankenship (`public/images/practice/`), supplied for the About page on 22 October 2026. Keep each person's written consent to publish on file.
+
 ## Service photos supplied by the practice
 
 Supplied on 20 October 2026. Their source and licence are not recorded yet: confirm the practice holds the rights (or a model release, if they show patients) and add them here.
@@ -38,14 +42,16 @@ Supplied on 20 October 2026. Their source and licence are not recorded yet: conf
 | `public/images/services/emergency-patient.jpg` | Emergency page, beside the text |
 | `public/images/services/thumbnails/emergency.jpg` | Emergency care card on the services grid (replaces the earlier card photo) |
 | `public/images/services/restorative-patient.jpg` | Fillings and restorative care page, beside the text |
-| `public/images/services/thumbnails/restorative.jpg` | Fillings and restorative care card on the services grid (replaces the earlier card photo) |
+| `public/images/services/thumbnails/restorative.jpg` | Fillings and restorative care card on the services grid (tooth model with a filling, 22 October 2026) |
 | `public/images/services/thumbnails/cleanings-checkups.jpg` | Cleanings and check-ups card on the services grid (replaces the earlier card photo, 21 October 2026) |
 | `public/images/services/cosmetic-patient.jpg` | Cosmetic dentistry page, beside the text (woman with long hair, 21 October 2026) |
-| `public/images/services/crowns-patient.jpg` | Crowns page, beside the text (22 October 2026) |
+| `public/images/services/cleanings-patient.jpg` | Cleanings and check-ups page, beside the text (22 October 2026) |
+| `public/images/services/crowns-patient.jpg` | Crowns page, beside the text (smiling woman, 22 October 2026) |
 | `public/images/services/root-canal-patient.jpg` | Root canal page, beside the text (22 October 2026) |
 | `public/images/services/thumbnails/root-canal.jpg` | Root canal card on the services grid (replaces the earlier card photo, 22 October 2026) |
-| `public/images/services/implants-patient.jpg` | Dental implants page, beside the text (22 October 2026) |
-| `public/images/services/aligners-patient.jpg` | Clear aligners and braces page, beside the text (22 October 2026) |
+| `public/images/services/implants-patient.jpg` | Dental implants page, beside the text (smiling man in a yellow T-shirt, 22 October 2026) |
+| `public/images/services/dentures-patient.jpg` | Dentures page, beside the text (22 October 2026) |
+| `public/images/services/aligners-patient.jpg` | Clear aligners and braces page, beside the text (woman with a hand mirror, 22 October 2026) |
 | `public/images/services/thumbnails/clear-aligners-braces.jpg` | Clear aligners and braces card on the services grid (replaces the earlier card photo, 22 October 2026) |
 | `public/images/services/thumbnails/cosmetic.jpg` | Cosmetic dentistry card on the services grid (smiling patient in the chair, 21 October 2026) |
 | `public/images/home/tooth-pain.jpg` | Homepage "Tooth pain" tab (21 October 2026) |

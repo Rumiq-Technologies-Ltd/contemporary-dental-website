@@ -1,36 +1,17 @@
 import Link from 'next/link';
-import { formatAddress, legalLinks, offices, routes, site } from '@/content/site';
+import { formatAddress, legalLinks, offices, site } from '@/content/site';
 import { getMessages } from '@/i18n/dictionaries';
 import { fill } from '@/i18n/fill';
-import { localePath } from '@/i18n/locales';
 import { getLocale } from '@/i18n/server';
-import { Icon } from '@/components/ui/Icon';
-import { DropdownGroup } from './DropdownGroup';
-import { localizedNavigation } from './navigation';
 import { SocialLinks } from './SocialLinks';
 import styles from './layout.module.css';
 
-// Closing footer shared by every page: the navigation and the main action, a giant wordmark,
-// then the contact details and legal links. Facts come from content/site.ts.
+// Closing footer shared by every page: a giant wordmark, then the contact details and legal links.
+// It has no menu: the header's menu stays on screen. Facts come from content/site.ts.
 export async function SiteFooter() {
   const lang = await getLocale();
   const t = getMessages(lang).common;
-  const items = localizedNavigation(lang, t);
   return <footer className={styles.siteFooter}>
-    <div className={styles.footerTop} data-reveal="">
-      <nav aria-label={t.footerNavigation} className={styles.footerNav}>
-        {/* Entries with sub-pages open the same dropdown as the header, on hover or keyboard focus. */}
-        {items.map(item => item.children
-          ? <DropdownGroup key={item.href} className={styles.footerGroup}>
-            <Link href={item.href} className={styles.footerNavLink}>{item.label}<Icon name="chevron" /></Link>
-            <ul className={styles.subnav}>
-              {item.children.map(child => <li key={child.href}><Link href={child.href} className={styles.subnavLink}>{child.label}</Link></li>)}
-            </ul>
-          </DropdownGroup>
-          : <Link key={item.href} href={item.href} className={styles.footerNavLink}>{item.label}</Link>)}
-      </nav>
-      <Link href={localePath(lang, routes.requestAppointment)} className="pill pill-dark">{t.requestAppointment}</Link>
-    </div>
     <p className={styles.footerWordmark} aria-hidden="true" data-wordmark="">Contemporary<br />Dental Care</p>
     <div className={styles.footerGrid} data-reveal="">
       {offices.map(office => <address key={office.id}>

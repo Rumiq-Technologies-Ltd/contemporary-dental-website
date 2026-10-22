@@ -40,7 +40,11 @@ const en = {
         role: 'General Dentist and Owner',
         bio: 'Dr. Sheryar is originally from Utah and founded Contemporary Dental Care in Orlando. He earned his DDS from Howard University College of Dentistry. He then completed a General Practice Residency at UCLA Medical Center, where he treated medically complex patients and handled dental emergencies. He has practiced since 2020. He comes from a multigenerational family of entrepreneurs, which shaped his interest in leadership and community. He focuses on modern technology, thorough treatment planning, and making patients feel heard and confident in their choices. His long-term goal is to bring dental, medical and wellness services together under one connected approach to patient care.',
       },
-      jessicaSalazar: { role: 'Dental Hygienist', languages: 'Speaks Spanish.' },
+      jessicaSalazar: {
+        role: 'Dental Hygienist',
+        languages: 'Speaks Spanish.',
+        bio: 'Originally from Venezuela, Jessica Salazar earned her dental degree in 2000, bringing over 25 years of dental knowledge and clinical experience to her patients. After moving to Orlando in 2019, she continued pursuing her passion for dentistry and, through dedication and hard work, earned her license as a Registered Dental Hygienist in Florida. She has been a proud member of the Contemporary Dental Care team since the practice first opened its doors. With a gentle touch and a friendly approach, she strives to make every dental cleaning a comfortable and positive experience. She loves sharing practical tips and personalized advice to help patients maintain healthy, beautiful smiles. And if Spanish is your preferred language, you’ll feel right at home! Outside the office, she enjoys spending time with her two sons, traveling, and being with family and friends.',
+      },
       brittiniBlankenship: {
         role: 'Regional Dental Manager',
         bio: 'Brittini started in dentistry right after high school and graduated from dental assisting school on the Dean\'s List with high honors as an Expanded Functions Dental Assistant. She moved from chairside work to Assistant Manager, then Office Manager, and later into regional management. In that role she worked with Dr. Khan to open and develop practices across Orlando. Today she oversees team development, patient experience, scheduling, billing and collections, marketing, community outreach, and operational systems. Because she started chairside, she understands the roles of the teams she manages. She believes good practices are built on strong teams, real patient relationships, accountability, and a place where patients and staff feel valued. Outside work she is a mom of three and spends much of her time at her kids\' sporting events.',
@@ -131,7 +135,7 @@ export const about: Record<Locale, AboutMessages> = {
           role: 'Odontólogo general y propietario',
           bio: '',
         },
-        jessicaSalazar: { role: 'Higienista dental', languages: 'Habla español.' },
+        jessicaSalazar: { role: 'Higienista dental', languages: 'Habla español.', bio: '' },
         brittiniBlankenship: {
           role: 'Gerente dental regional',
           bio: '',
@@ -221,7 +225,7 @@ export const about: Record<Locale, AboutMessages> = {
           role: 'Clínico geral e proprietário',
           bio: '',
         },
-        jessicaSalazar: { role: 'Higienista odontológica', languages: 'Fala espanhol.' },
+        jessicaSalazar: { role: 'Higienista odontológica', languages: 'Fala espanhol.', bio: '' },
         brittiniBlankenship: {
           role: 'Gerente regional odontológica',
           bio: '',

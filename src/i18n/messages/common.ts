@@ -12,8 +12,6 @@ const en = {
     lead: 'Our Spanish and Portuguese websites are on their way. Our team already speaks both languages, so call us and tell us your preferred language.',
   },
   callOffice: 'Call {name}: {phone}',
-  // The top bar's shorter office link, so the whole bar fits on one line.
-  officePhone: '{name}: {phone}',
   callPhone: 'Call {phone}',
   afterHours: 'After hours:',
   homeLabel: '{name} home',
@@ -22,7 +20,6 @@ const en = {
   menuLabel: 'Menu — open navigation',
   mainNavigation: 'Main navigation',
   primaryNavigation: 'Primary navigation',
-  footerNavigation: 'Footer',
   legalNavigation: 'Legal',
   nav: {
     services: 'Services',
@@ -30,7 +27,7 @@ const en = {
     newPatients: 'New patients',
     insurance: 'Insurance & Payments',
     club: 'Contemporary Smile Club',
-    about: 'About',
+    about: 'About Us',
     contact: 'Locations',
   },
   /** Pages in a menu entry's dropdown. */
@@ -101,7 +98,6 @@ export const common: Record<Locale, CommonMessages> = {
       lead: 'Nuestros sitios web en español y portugués están en camino. Nuestro equipo ya habla ambos idiomas, así que llámenos y díganos su idioma preferido.',
     },
     callOffice: 'Llame a {name}: {phone}',
-    officePhone: '{name}: {phone}',
     callPhone: 'Llame al {phone}',
     afterHours: 'Fuera del horario de atención:',
     homeLabel: 'Inicio de {name}',
@@ -110,7 +106,6 @@ export const common: Record<Locale, CommonMessages> = {
     menuLabel: 'Menú — abrir la navegación',
     mainNavigation: 'Navegación principal',
     primaryNavigation: 'Navegación principal',
-    footerNavigation: 'Pie de página',
     legalNavigation: 'Legal',
     nav: {
       services: 'Servicios',
@@ -118,7 +113,7 @@ export const common: Record<Locale, CommonMessages> = {
       newPatients: 'Pacientes nuevos',
       insurance: 'Seguros y pagos',
       club: 'Club Contemporary Smile',
-      about: 'Acerca de',
+      about: 'Sobre nosotros',
       contact: 'Ubicaciones',
     },
     navChildren: {
@@ -183,7 +178,6 @@ export const common: Record<Locale, CommonMessages> = {
       lead: 'Nossos sites em espanhol e português estão a caminho. Nossa equipe já fala os dois idiomas, então ligue para nós e diga seu idioma preferido.',
     },
     callOffice: 'Ligue para {name}: {phone}',
-    officePhone: '{name}: {phone}',
     callPhone: 'Ligue para {phone}',
     afterHours: 'Fora do horário:',
     homeLabel: 'Início, {name}',
@@ -192,7 +186,6 @@ export const common: Record<Locale, CommonMessages> = {
     menuLabel: 'Menu: abrir a navegação',
     mainNavigation: 'Navegação principal',
     primaryNavigation: 'Navegação principal',
-    footerNavigation: 'Rodapé',
     legalNavigation: 'Jurídico',
     nav: {
       services: 'Serviços',
@@ -200,7 +193,7 @@ export const common: Record<Locale, CommonMessages> = {
       newPatients: 'Novos pacientes',
       insurance: 'Convênios e pagamentos',
       club: 'Clube Contemporary Smile',
-      about: 'Sobre',
+      about: 'Sobre nós',
       contact: 'Localizações',
     },
     navChildren: {
