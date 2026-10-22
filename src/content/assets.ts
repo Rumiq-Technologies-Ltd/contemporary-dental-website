@@ -19,6 +19,7 @@ import crownsPatient from '../../public/images/services/crowns-patient.jpg';
 import rootCanalPatient from '../../public/images/services/root-canal-patient.jpg';
 import implantsPatient from '../../public/images/services/implants-patient.jpg';
 import alignersPatient from '../../public/images/services/aligners-patient.jpg';
+import denturesPatient from '../../public/images/services/dentures-patient.jpg';
 // Homepage "common problems" tab photos, supplied by the practice on 21 October 2026.
 import toothPain from '../../public/images/home/tooth-pain.jpg';
 import crookedTeeth from '../../public/images/home/crooked-teeth.jpg';
@@ -27,6 +28,12 @@ import checkUp from '../../public/images/home/check-up.jpg';
 import smileMakeover from '../../public/images/home/smile-makeover.jpg';
 // Dr. Khan's portrait with its grey background replaced by the brand colour (see docs/content-holds.md).
 import doctorPortrait from '../../public/images/practice/dr-sheryar-khan-brand.jpg';
+// Team portraits supplied by the practice for the About page (22 October 2026).
+import brittiniPortrait from '../../public/images/practice/brittini-blankenship.jpg';
+import brunoPortrait from '../../public/images/practice/bruno-conte-andre.jpg';
+import amandaPortrait from '../../public/images/practice/amanda-nguyen.jpg';
+import jessicaPortrait from '../../public/images/practice/jessica-salazar.jpg';
+import tyresePortrait from '../../public/images/practice/tyrese-brown.jpg';
 import teamGroup from '../../public/images/practice/team-group.jpg';
 import orlandoFront from '../../public/images/practice/orlando-office-front.jpg';
 import orlandoEntrance from '../../public/images/practice/orlando-office-entrance.jpg';
@@ -58,9 +65,9 @@ import thumbCosmetic from '../../public/images/services/thumbnails/cosmetic.jpg'
 export const photos = {
   smile, assessment, appointments, medication, backPortrait, guides,
   toothModel, clearAligner, teethModel, heroSmile, extractionsPatient, emergencyPatient, restorativePatient, cosmeticPatient,
-  cleaningsPatient, crownsPatient, rootCanalPatient, implantsPatient, alignersPatient,
+  cleaningsPatient, crownsPatient, rootCanalPatient, implantsPatient, alignersPatient, denturesPatient,
   toothPain, missingTeeth, crookedTeeth, checkUp, smileMakeover,
-  doctorPortrait, teamGroup, orlandoFront, orlandoEntrance, frontDesk,
+  doctorPortrait, brittiniPortrait, brunoPortrait, amandaPortrait, jessicaPortrait, tyresePortrait, teamGroup, orlandoFront, orlandoEntrance, frontDesk,
   xrayTeamLandscape, xrayTeamPortrait, roomTeal, roomCream,
   thumbCleanings, thumbEmergency, thumbExtractions, thumbRestorative, thumbCrowns, thumbRootCanal, thumbImplants, thumbDentures, thumbAligners, thumbCosmetic,
 };
