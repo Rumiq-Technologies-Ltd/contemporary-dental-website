@@ -48,7 +48,6 @@ Supplied on 20 October 2026. Their source and licence are not recorded yet: conf
 | `public/images/services/cleanings-patient.jpg` | Cleanings and check-ups page, beside the text (22 October 2026) |
 | `public/images/services/crowns-patient.jpg` | Crowns page, beside the text (smiling woman, 22 October 2026) |
 | `public/images/services/root-canal-patient.jpg` | Root canal page, beside the text (22 October 2026) |
-| `public/images/services/thumbnails/root-canal.jpg` | Root canal card on the services grid (replaces the earlier card photo, 22 October 2026) |
 | `public/images/services/implants-patient.jpg` | Dental implants page, beside the text (smiling man in a yellow T-shirt, 22 October 2026) |
 | `public/images/services/dentures-patient.jpg` | Dentures page, beside the text (22 October 2026) |
 | `public/images/services/aligners-patient.jpg` | Clear aligners and braces page, beside the text (woman with a hand mirror, 22 October 2026) |
