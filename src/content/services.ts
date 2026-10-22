@@ -50,8 +50,7 @@ interface ServiceDefinition {
 // Held items from the content file (same-day crowns, implant offer, All-on-4,
 // partial dentures, orthobrain wording, trademarked product names) are left out on purpose.
 const definitions: readonly ServiceDefinition[] = [
-  // The cleanings page has no photo, at the practice's request (20 October 2026).
-  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, thumbnail: 'thumbCleanings' },
+  { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, image: 'cleaningsPatient', thumbnail: 'thumbCleanings' },
   { id: 'emergency', href: routes.emergency, image: 'emergencyPatient', thumbnail: 'thumbEmergency' },
   { id: 'extractions', href: `${routes.services}/extractions`, image: 'extractionsPatient', imagePosition: '30% 50%', thumbnail: 'thumbExtractions' },
   { id: 'restorative', href: `${routes.services}/restorative`, image: 'restorativePatient', imagePosition: '72% 50%', thumbnail: 'thumbRestorative' },

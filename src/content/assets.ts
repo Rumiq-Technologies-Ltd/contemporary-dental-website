@@ -14,6 +14,7 @@ import extractionsPatient from '../../public/images/services/extractions-patient
 import emergencyPatient from '../../public/images/services/emergency-patient.jpg';
 import restorativePatient from '../../public/images/services/restorative-patient.jpg';
 import cosmeticPatient from '../../public/images/services/cosmetic-patient.jpg';
+import cleaningsPatient from '../../public/images/services/cleanings-patient.jpg';
 import crownsPatient from '../../public/images/services/crowns-patient.jpg';
 import rootCanalPatient from '../../public/images/services/root-canal-patient.jpg';
 import implantsPatient from '../../public/images/services/implants-patient.jpg';
@@ -57,7 +58,7 @@ import thumbCosmetic from '../../public/images/services/thumbnails/cosmetic.jpg'
 export const photos = {
   smile, assessment, appointments, medication, backPortrait, guides,
   toothModel, clearAligner, teethModel, heroSmile, extractionsPatient, emergencyPatient, restorativePatient, cosmeticPatient,
-  crownsPatient, rootCanalPatient, implantsPatient, alignersPatient,
+  cleaningsPatient, crownsPatient, rootCanalPatient, implantsPatient, alignersPatient,
   toothPain, missingTeeth, crookedTeeth, checkUp, smileMakeover,
   doctorPortrait, teamGroup, orlandoFront, orlandoEntrance, frontDesk,
   xrayTeamLandscape, xrayTeamPortrait, roomTeal, roomCream,

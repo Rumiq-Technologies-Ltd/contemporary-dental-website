@@ -41,7 +41,8 @@ Supplied on 20 October 2026. Their source and licence are not recorded yet: conf
 | `public/images/services/thumbnails/restorative.jpg` | Fillings and restorative care card on the services grid (replaces the earlier card photo) |
 | `public/images/services/thumbnails/cleanings-checkups.jpg` | Cleanings and check-ups card on the services grid (replaces the earlier card photo, 21 October 2026) |
 | `public/images/services/cosmetic-patient.jpg` | Cosmetic dentistry page, beside the text (woman with long hair, 21 October 2026) |
-| `public/images/services/crowns-patient.jpg` | Crowns page, beside the text (22 October 2026) |
+| `public/images/services/cleanings-patient.jpg` | Cleanings and check-ups page, beside the text (22 October 2026) |
+| `public/images/services/crowns-patient.jpg` | Crowns page, beside the text (smiling woman, 22 October 2026) |
 | `public/images/services/root-canal-patient.jpg` | Root canal page, beside the text (22 October 2026) |
 | `public/images/services/thumbnails/root-canal.jpg` | Root canal card on the services grid (replaces the earlier card photo, 22 October 2026) |
 | `public/images/services/implants-patient.jpg` | Dental implants page, beside the text (22 October 2026) |
