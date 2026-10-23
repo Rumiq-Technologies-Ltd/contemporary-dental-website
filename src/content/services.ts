@@ -52,8 +52,8 @@ interface ServiceDefinition {
 const definitions: readonly ServiceDefinition[] = [
   { id: 'cleanings-checkups', href: `${routes.services}/cleanings-checkups`, image: 'cleaningsPatient', thumbnail: 'thumbCleanings' },
   { id: 'emergency', href: routes.emergency, image: 'emergencyPatient', thumbnail: 'thumbEmergency' },
-  { id: 'extractions', href: `${routes.services}/extractions`, image: 'extractionsPatient', imagePosition: '30% 50%', thumbnail: 'thumbExtractions' },
-  { id: 'restorative', href: `${routes.services}/restorative`, image: 'restorativePatient', imagePosition: '72% 50%', thumbnail: 'thumbRestorative' },
+  { id: 'extractions', href: `${routes.services}/extractions`, image: 'extractionsPatient', thumbnail: 'thumbExtractions' },
+  { id: 'restorative', href: `${routes.services}/restorative`, image: 'restorativePatient', thumbnail: 'thumbRestorative' },
   { id: 'crowns', href: `${routes.services}/crowns`, image: 'crownsPatient', thumbnail: 'thumbCrowns' },
   { id: 'root-canal', href: `${routes.services}/root-canal`, image: 'rootCanalPatient', thumbnail: 'thumbRootCanal' },
   { id: 'implants', href: `${routes.services}/implants`, image: 'implantsPatient', thumbnail: 'thumbImplants' },

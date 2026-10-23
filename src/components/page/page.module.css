@@ -50,7 +50,7 @@
 /* Service pages: the page hero and the text sit in the left column beside the photo. */
 .introColumn { display: grid; align-content: center; gap: clamp(28px, 4vw, 56px); min-width: 0; }
 @media (min-width: 900px) {
-  /* The whole photo, at its own shape, lines up with the top of the page hero. */
+  /* The photo lines up with the top of the page hero. */
   .introSplit { align-items: start; }
   .introSplit .intro { margin-right: 0; }
   .introSplit .intro h1 { font-size: clamp(3rem, 5.6vw, 5.4rem); }
@@ -62,8 +62,8 @@
 .photo img { object-fit: cover; }
 .photoWide { aspect-ratio: 3 / 2; }
 .photoSquare { aspect-ratio: 1 / 1; }
-/* Natural: the frame takes the photo's own shape (set inline), so nothing is cropped. */
-.photoNatural { max-height: none; }
+/* Service pages: one 5:4 frame for every service photo (ServicePhoto). */
+.photoService { aspect-ratio: 5 / 4; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 20px; }
 .card {
@@ -124,6 +124,7 @@
 @media (max-width: 899px) {
   .split { grid-template-columns: 1fr; }
   .photo { aspect-ratio: 4 / 3; max-height: 420px; }
+  .photoService { aspect-ratio: 5 / 4; max-height: none; }
   .card, .office, .member { padding: 22px; }
   .table th { width: 40%; }
   .faq details p { padding-right: 0; }

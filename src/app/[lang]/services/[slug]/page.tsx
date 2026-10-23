@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import { CardGrid, LinkCard } from '@/components/page/Cards';
 import { PageIntro } from '@/components/page/PageIntro';
 import { PageLayout } from '@/components/page/PageLayout';
-import { PagePhoto } from '@/components/page/PagePhoto';
+import { ServicePhoto } from '@/components/page/ServicePhoto';
 import { emphasize } from '@/components/page/emphasize';
 import { Prose, Section } from '@/components/page/Section';
 import { TreatmentIllustrations } from '@/components/sections/TreatmentIllustrations';
@@ -46,15 +46,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
     {service.note && <p><em>{service.note}</em></p>}
   </Prose>;
   return <PageLayout>
-    {/* With a photo, the heading, sub-header and text share the left column and the whole photo sits
-        beside them, uncropped (practice's choices of 23 October 2026); phones stack them. */}
+    {/* With a photo, the heading, sub-header and text share the left column and the photo sits beside them
+        in the same 5:4 frame on every service page (practice's choices of 23 October 2026); phones stack them. */}
     {service.image
       ? <div className={`${styles.split} ${styles.introSplit}`}>
         <div className={styles.introColumn}>
           <PageIntro title={service.heading} lead={service.lead} />
           {copy}
         </div>
-        <PagePhoto photo={service.image} objectPosition={service.imagePosition} natural priority />
+        <ServicePhoto photo={service.image} focus={service.imagePosition} />
       </div>
       : <>
         <PageIntro title={service.heading} lead={service.lead} />
