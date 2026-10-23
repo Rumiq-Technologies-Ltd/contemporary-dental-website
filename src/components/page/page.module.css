@@ -47,6 +47,15 @@
 .split { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 80px); align-items: center; }
 /* Text and photo start at the same line, for a split whose text is shorter than the photo. */
 .splitTop { align-items: start; }
+/* Service pages: the page hero and the text sit in the left column beside the photo. */
+.introColumn { display: grid; align-content: center; gap: clamp(28px, 4vw, 56px); min-width: 0; }
+@media (min-width: 900px) {
+  .introSplit { align-items: stretch; }
+  /* The photo takes the column's height instead of its own shape, so neither side leaves a gap. */
+  .introSplit > .photo { aspect-ratio: auto; min-height: 100%; }
+  .introSplit .intro { margin-right: 0; }
+  .introSplit .intro h1 { font-size: clamp(3rem, 5.6vw, 5.4rem); }
+}
 /* Two offices side by side on wide screens; stacked on tablets and phones. */
 .offices { display: grid; grid-template-columns: minmax(0, 1fr); gap: clamp(56px, 6vw, 80px); align-items: start; }
 @media (min-width: 900px) { .offices { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(32px, 4vw, 64px); } }
