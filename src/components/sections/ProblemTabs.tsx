@@ -80,7 +80,7 @@ export function ProblemTabs({ problems, label }: ProblemTabsProps) {
     {problems.map((problem, index) => <div key={problem.id} role="tabpanel" id={`problem-panel-${problem.id}`}
       aria-labelledby={`problem-tab-${problem.id}`} hidden={index !== active} className={styles.panel} data-tilt="2" ref={element => { panels.current[index] = element; }}>
       <div className={[styles.media, problem.titlePlacement === 'bottom' && styles.mediaBottom].filter(Boolean).join(' ')} data-media="">
-        <Image src={problem.photo} alt="" fill sizes="(max-width: 899px) 100vw, 50vw" placeholder="blur" data-scroll-zoom="" />
+        <Image src={problem.photo} alt="" fill sizes="(max-width: 899px) 100vw, 50vw" quality={90} placeholder="blur" data-scroll-zoom="" />
         <h3 className={styles.mediaTitle}>{problem.headline}</h3>
       </div>
       <div className={styles.fact}>

@@ -38,25 +38,25 @@ Supplied on 20 October 2026. Their source and licence are not recorded yet: conf
 
 | File | Used on |
 |---|---|
-| `public/images/services/extractions-patient.jpg` | Tooth extractions page, beside the text |
-| `public/images/services/emergency-patient.jpg` | Emergency page, beside the text |
-| `public/images/services/thumbnails/emergency.jpg` | Emergency care card on the services grid (replaces the earlier card photo) |
-| `public/images/services/restorative-patient.jpg` | Fillings and restorative care page, beside the text (patient and assistant, 23 October 2026) |
-| `public/images/services/thumbnails/restorative.jpg` | Fillings and restorative care card on the services grid (tooth model with a filling, 22 October 2026) |
-| `public/images/services/thumbnails/cleanings-checkups.jpg` | Cleanings and check-ups card on the services grid (replaces the earlier card photo, 21 October 2026) |
-| `public/images/services/cosmetic-patient.jpg` | Cosmetic dentistry page, beside the text (woman with long hair, 21 October 2026) |
+| `public/images/services/extractions-patient.webp` | Tooth extractions page, beside the text |
+| `public/images/services/emergency-patient.webp` | Emergency page, beside the text |
+| `public/images/services/thumbnails/emergency.webp` | Emergency care card on the services grid (replaces the earlier card photo) |
+| `public/images/services/restorative-patient.webp` | Fillings and restorative care page, beside the text (patient and assistant, 23 October 2026) |
+| `public/images/services/thumbnails/restorative.webp` | Fillings and restorative care card on the services grid (tooth model with a filling, 22 October 2026) |
+| `public/images/services/thumbnails/cleanings-checkups.webp` | Cleanings and check-ups card on the services grid (replaces the earlier card photo, 21 October 2026) |
+| `public/images/services/cosmetic-patient.webp` | Cosmetic dentistry page, beside the text (woman with long hair, 21 October 2026) |
 | `public/images/services/cleanings-patient.jpg` | Cleanings and check-ups page, beside the text (22 October 2026) |
 | `public/images/services/crowns-patient.jpg` | Crowns page, beside the text (smiling woman, 22 October 2026) |
-| `public/images/services/root-canal-patient.jpg` | Root canal page, beside the text (smiling woman in a blue T-shirt, 23 October 2026) |
-| `public/images/services/implants-patient.jpg` | Dental implants page, beside the text (smiling man in a blue T-shirt, 23 October 2026) |
+| `public/images/services/root-canal-patient.webp` | Root canal page, beside the text (smiling woman in a blue T-shirt, 23 October 2026) |
+| `public/images/services/implants-patient.webp` | Dental implants page, beside the text (smiling man in a blue T-shirt, 23 October 2026) |
 | `public/images/services/dentures-patient.jpg` | Dentures page, beside the text (22 October 2026) |
-| `public/images/services/aligners-patient.jpg` | Clear aligners and braces page, beside the text (woman with a hand mirror, 22 October 2026) |
-| `public/images/services/thumbnails/cosmetic.jpg` | Cosmetic dentistry card on the services grid (smiling patient in the chair, 21 October 2026) |
-| `public/images/home/tooth-pain.jpg` | Homepage "Tooth pain" tab (21 October 2026) |
-| `public/images/home/missing-teeth.jpg` | Homepage "Missing teeth" tab (21 October 2026) |
-| `public/images/home/crooked-teeth.jpg` | Homepage "Crooked teeth" tab (21 October 2026) |
-| `public/images/home/check-up.jpg` | Homepage "Check-up due" tab (21 October 2026) |
-| `public/images/home/smile-makeover.jpg` | Homepage "Smile makeover" tab (21 October 2026) |
+| `public/images/services/aligners-patient.webp` | Clear aligners and braces page, beside the text (woman with a hand mirror, 22 October 2026) |
+| `public/images/services/thumbnails/cosmetic.webp` | Cosmetic dentistry card on the services grid (smiling patient in the chair, 21 October 2026) |
+| `public/images/home/tooth-pain.webp` | Homepage "Tooth pain" tab (21 October 2026) |
+| `public/images/home/missing-teeth.webp` | Homepage "Missing teeth" tab (21 October 2026) |
+| `public/images/home/crooked-teeth.webp` | Homepage "Crooked teeth" tab (21 October 2026) |
+| `public/images/home/check-up.webp` | Homepage "Check-up due" tab (21 October 2026) |
+| `public/images/home/smile-makeover.webp` | Homepage "Smile makeover" tab (21 October 2026) |
 
 ## Stock photographs (`public/images/stock/`)
 
