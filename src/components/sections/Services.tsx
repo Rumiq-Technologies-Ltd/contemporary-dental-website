@@ -20,7 +20,7 @@ export async function Services() {
     {services.map((service, index) => <li key={service.id} data-reveal="flip" style={{ '--i': index % 4 } as CSSProperties}>
       <article className={styles.card} data-tilt="">
         <div className={styles.media}>
-          <Image src={photos[service.thumbnail]} alt="" fill sizes="(max-width: 639px) 100vw, (max-width: 1099px) 50vw, 25vw" placeholder="blur" />
+          <Image src={photos[service.thumbnail]} alt="" fill sizes="(max-width: 639px) 100vw, (max-width: 1099px) 50vw, 25vw" quality={90} placeholder="blur" />
           <SaveService id={service.id} title={service.title} labels={common.saveService} className={styles.save} />
         </div>
         <div className={styles.body}>

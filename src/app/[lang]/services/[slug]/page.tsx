@@ -46,15 +46,15 @@ export default async function ServicePage({ params }: ServicePageProps) {
     {service.note && <p><em>{service.note}</em></p>}
   </Prose>;
   return <PageLayout>
-    {/* With a photo, the heading, sub-header and text share the left column and the photo matches their
-        height on larger screens (practice's choice of 23 October 2026); phones stack them. */}
+    {/* With a photo, the heading, sub-header and text share the left column and the whole photo sits
+        beside them, uncropped (practice's choices of 23 October 2026); phones stack them. */}
     {service.image
       ? <div className={`${styles.split} ${styles.introSplit}`}>
         <div className={styles.introColumn}>
           <PageIntro title={service.heading} lead={service.lead} />
           {copy}
         </div>
-        <PagePhoto photo={service.image} objectPosition={service.imagePosition} priority />
+        <PagePhoto photo={service.image} objectPosition={service.imagePosition} natural priority />
       </div>
       : <>
         <PageIntro title={service.heading} lead={service.lead} />
